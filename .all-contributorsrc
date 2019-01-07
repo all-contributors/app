@@ -1,0 +1,21 @@
+{
+  "projectOwner": "all-contributors",
+  "projectName": "bot",
+  "imageSize": 100,
+  "repoType": "github",
+  "commit": false,
+  "contributorsPerLine": 7,
+  "contributors": [
+    {
+      "login": "jakebolam",
+      "name": "Jake Bolam",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/3534236?v=4",
+      "profile": "https://jakebolam.com",
+      "contributions": [
+        "infra",
+        "code",
+        "doc"
+      ]
+    }
+  ]
+}
