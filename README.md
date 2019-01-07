@@ -8,6 +8,31 @@ The repository contains the code for the All Contributors GitHub Bot. Contributi
 [![Chat on Slack](https://img.shields.io/badge/slack-join-ff69b4.svg)](https://join.slack.com/t/all-contributors/shared_invite/enQtNTE3ODMyMTA4NTk0LTUwZDMxZGZkMmViMzYzYzk2YTM2NjRkZGM5Yzc0ZTc5NmYzNWY3Y2Q0ZTY3ZmFhZDgyY2E3ZmIzNWQwMTUxZmE)
 
 
+## Usage (End Vision)
+### Setup
+1. Install App
+2. Please setup your `README.md` and `.all-contributorsrc` using the all-contributors-cli tool
+
+### Adding contributions
+1. Comment on Issue/PR etc with text:
+- @AllContributorBot please add me for infrastructure, testing and code (Can also use the short terms, full key coming soon)
+OR - @AllContributorBot please add jakebolam for infrastructure, testing and code
+2. Bot will look for `.all-contributorsrc` if not found, comments on pr to run setup
+3. If user exists, add new contribution, if not add user and add contribution
+
+
+### Future command ideas
+- If the bot has an open pull request, don't open another one?
+
+#### init command
+- @AllContributorBot init
+Puts up initial pull request for `README.md` and `.all-contributorsrc`
+
+#### remove command
+- @AllContributorBot please remove me/user for blah
+Puts up a PR for removal
+
+
 ## Contributing
 If you have suggestions for how AllContributorsBot could be improved, or want to report a bug, open an issue! We'd love all and any contributions.
 
