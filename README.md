@@ -1,7 +1,7 @@
 # AllContributorsBot
 A bot for automatically adding all-contributors. 🤖
 
-[![Build](https://img.shields.io/circleci/project/github/all-contributors/bot/master.svg)](https://circleci.com/gh/all-contributors/bot)
+[![Build](https://img.shields.io/circleci/project/github/all-contributors/all-contributors-bot/master.svg)](https://circleci.com/gh/all-contributors/all-contributors-bot)
 [![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg)](#contributors)
 [![Chat on Slack](https://img.shields.io/badge/slack-join-ff69b4.svg)](https://join.slack.com/t/all-contributors/shared_invite/enQtNTE3ODMyMTA4NTk0LTUwZDMxZGZkMmViMzYzYzk2YTM2NjRkZGM5Yzc0ZTc5NmYzNWY3Y2Q0ZTY3ZmFhZDgyY2E3ZmIzNWQwMTUxZmE)
 
