@@ -6,10 +6,10 @@
 
 ```sh
 # Install dependencies
-npm install
+yarn install
 
 # Run the bot
-npm start
+yarn start
 ```
 
 ## Contributing
@@ -17,7 +17,3 @@ npm start
 If you have suggestions for how AllContributorsBot could be improved, or want to report a bug, open an issue! We'd love all and any contributions.
 
 For more, check out the [Contributing Guide](CONTRIBUTING.md).
-
-## License
-
-[ISC](LICENSE) © 2019 Jake Bolam <jake.bolam@gmail.com> (https://all-contributors.js.org)
