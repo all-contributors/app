@@ -3,5 +3,6 @@
 
 >Built with [Probot](https://github.com/probot/probot)
 
+For more information on building apps: https://probot.github.io/docs/
 
-tldr: https://probot.github.io/docs/development/
+To get your app running against GitHub, see: https://probot.github.io/docs/development/

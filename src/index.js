@@ -8,12 +8,12 @@ const getFileContents = async (context, filePath) => {
         repo,
         path: filePath,
     })
-    app.log(file)
+    context.log(file)
 
     // contents can be an array if its a directory, should be an edge case
     const contentBinary = file.data.content
     const content = Buffer.from(contentBinary, 'base64').toString()
-    app.log(content)
+    context.log(content)
     return content
 }
 
@@ -45,6 +45,12 @@ module.exports = app => {
         // Could have command to add self: context.sender.avatar_url
 
         const rcFileContent = getFileContents(context, ALL_CONTRIBUTORS_RC)
+        if (!rcFileContent) {
+            createComment(
+                context,
+                'Please setup your project for all-contributors using the all-contributors-cli tool',
+            )
+        }
 
         let readmeFileContentsList
         if (rcFileContent.files) {
@@ -52,12 +58,10 @@ module.exports = app => {
                 throw new Error(`Cannot update more than 2 files`)
             }
             const rcFileContentPromises = rcFileContent.files.map(filePath => {
-                getFileContents(context, filePath).then(content => {
-                    return {
-                        filePath,
-                        content,
-                    }
-                })
+                getFileContents(context, filePath).then(content => ({
+                    filePath,
+                    content,
+                }))
             })
 
             readmeFileContentsList = await Promise.all(rcFileContentPromises)
@@ -71,6 +75,8 @@ module.exports = app => {
             ]
         }
 
+        app.log(readmeFileContentsList)
+
         // const results = addContributor({
         //   rcFileContent: content
         //   readmeFileContentsList
@@ -81,10 +87,4 @@ module.exports = app => {
         // results.rcFileContent
         // results.readMeFileContent
     })
-
-    // For more information on building apps:
-    // https://probot.github.io/docs/
-
-    // To get your app running against GitHub, see:
-    // https://probot.github.io/docs/development/
 }
