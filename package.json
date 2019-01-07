@@ -1,0 +1,49 @@
+{
+  "name": "AllContributorsBot",
+  "version": "0.0.1",
+  "description": "A bot for automatically adding all your contributors",
+  "author": "Jake Bolam <jake.bolam@gmail.com> (https://all-contributors.js.org)",
+  "repository": "https://github.com/all-contributors/bot.git",
+  "homepage": "https://github.com/all-contributors/bot",
+  "bugs": "https://github.com/all-contributors/bot/issues",
+  "keywords": [
+    "probot",
+    "github",
+    "probot-app"
+  ],
+  "scripts": {
+    "dev": "nodemon",
+    "start": "probot run ./index.js",
+    "lint": "standard --fix",
+    "test": "jest && standard",
+    "test:watch": "jest --watch --notify --notifyMode=change --coverage"
+  },
+  "dependencies": {
+    "probot": "^7.2.0"
+  },
+  "devDependencies": {
+    "jest": "^22.4.3",
+    "nock": "^10.0.0",
+    "nodemon": "^1.17.2",
+    "smee-client": "^1.0.2",
+    "standard": "^10.0.3"
+  },
+  "engines": {
+    "node": ">= 8.3.0"
+  },
+  "standard": {
+    "env": [
+      "jest"
+    ]
+  },
+  "nodemonConfig": {
+    "exec": "npm start",
+    "watch": [
+      ".env",
+      "."
+    ]
+  },
+  "jest": {
+    "testEnvironment": "node"
+  }
+}
