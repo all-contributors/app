@@ -1,10 +1,13 @@
 {
-  "projectOwner": "all-contributors",
   "projectName": "bot",
-  "imageSize": 100,
+  "projectOwner": "all-contribtuors",
   "repoType": "github",
+  "repoHost": "https://github.com",
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
   "commit": false,
-  "contributorsPerLine": 7,
   "contributors": [
     {
       "login": "jakebolam",
@@ -12,9 +15,10 @@
       "avatar_url": "https://avatars2.githubusercontent.com/u/3534236?v=4",
       "profile": "https://jakebolam.com",
       "contributions": [
-        "infra",
         "code",
-        "doc"
+        "ideas",
+        "infra",
+        "test"
       ]
     }
   ]
