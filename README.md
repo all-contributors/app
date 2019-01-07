@@ -1,7 +1,5 @@
 # AllContributorsBot
-A bot for automatically adding all your contributors
-
-The repository contains the code for the All Contributors GitHub Bot. Contributions welcome!
+A bot for automatically adding all-contributors. 🤖
 
 [![Build](https://img.shields.io/circleci/project/github/all-contributors/bot/master.svg)](https://circleci.com/gh/all-contributors/bot)
 [![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg)](#contributors)
