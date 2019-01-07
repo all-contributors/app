@@ -13,7 +13,7 @@
   ],
   "scripts": {
     "dev": "nodemon",
-    "start": "probot run ./index.js",
+    "start": "probot run ./src/index.js",
     "lint": "eslint .",
     "lint-fix": "eslint --fix .",
     "test": "jest",
@@ -36,7 +36,7 @@
     "smee-client": "^1.0.2"
   },
   "nodemonConfig": {
-    "exec": "npm start",
+    "exec": "yarn start",
     "watch": [
       ".env",
       "."
