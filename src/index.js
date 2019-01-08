@@ -91,7 +91,5 @@ module.exports = app => {
         //
         // results.rcFileContent
         // results.readMeFileContent
-
-        throw new Error(`Test Sentry`)
     })
 }
