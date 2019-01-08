@@ -33,8 +33,6 @@ module.exports = app => {
             return
         }
 
-        throw new Error(`Test Sentry`)
-
         const payload = context.payload
         app.log(context)
         const username = payload.comment.user.login
@@ -93,5 +91,7 @@ module.exports = app => {
         //
         // results.rcFileContent
         // results.readMeFileContent
+
+        throw new Error(`Test Sentry`)
     })
 }
