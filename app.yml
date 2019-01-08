@@ -22,8 +22,8 @@ default_events:
 # - deployment_status
 # - fork
 # - gollum
-# - issue_comment
-- issues
+- issue_comment
+# - issues
 # - label
 # - milestone
 # - member
@@ -62,7 +62,7 @@ default_permissions:
 
   # Repository contents, commits, branches, downloads, releases, and merges.
   # https://developer.github.com/v3/apps/permissions/#permission-on-contents
-  # contents: read
+  contents: write
 
   # Deployments and deployment statuses.
   # https://developer.github.com/v3/apps/permissions/#permission-on-deployments
@@ -82,7 +82,7 @@ default_permissions:
 
   # Pull requests and related comments, assignees, labels, milestones, and merges.
   # https://developer.github.com/v3/apps/permissions/#permission-on-pull-requests
-  # pull_requests: read
+  pull_requests: write
 
   # Manage the post-receive hooks for a repository.
   # https://developer.github.com/v3/apps/permissions/#permission-on-repository-hooks
@@ -126,14 +126,15 @@ default_permissions:
 
 
 # The name of the GitHub App. Defaults to the name specified in package.json
-# name: My Probot App
+name: AllContributors Test Bot
 
 # The homepage of your GitHub App.
-# url: https://example.com/
+url: https://all-contributors.js.org
 
 # A description of the GitHub App.
-# description: A description of my awesome app
+description: All Contributors Bot
 
 # Set to true when your GitHub App is available to the public or false when it is only accessible to the owner of the app.
 # Default: true
-# public: false
+# Set to false for launching private instances
+public: false
