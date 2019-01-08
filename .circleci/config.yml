@@ -38,7 +38,7 @@ jobs:
       - run: yarn test-ci
       - run: yarn codecov
       - store_test_results:
-          path: junit.xml
+          path: artifacts/test-results
   lint:
     <<: *docker_defaults
     working_directory: ~/repo

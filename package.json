@@ -53,5 +53,9 @@
   "jest": {
     "testEnvironment": "node",
     "collectCoverage": true
+  },
+  "jest-junit": {
+    "suiteName": "All Contributor Bot tests",
+    "outputDirectory": "artifacts/test-results"
   }
 }

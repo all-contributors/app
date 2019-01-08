@@ -8,13 +8,13 @@ custom:
   stage: ${opt:stage, self:provider.stage}
   appId:
     dev: '23178'
-    prod: '23178' # TODO: change this
+    prod: '23186'
   logLevel:
     dev: debug
     prod: debug # TODO change to info soon
   sentryDsn:
     dev: ''
-    prod: ''
+    prod: 'https://e950ab524cde4682a740c218c15a461d@sentry.io/1366866'
 
 provider:
   name: aws

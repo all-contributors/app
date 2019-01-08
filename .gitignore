@@ -1,5 +1,5 @@
+artifacts
 coverage
-junit.xml
 node_modules
 
 .env
