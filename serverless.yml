@@ -1,0 +1,41 @@
+service: all-contributors-bot
+frameworkVersion: '=1.35.1'
+
+plugins:
+  - serverless-offline # must be last
+
+custom:
+  stage: ${opt:stage, self:provider.stage}
+  appId:
+    dev: '23178'
+    prod: '23178' # TODO: change this
+  logLevel:
+    dev: debug
+    prod: debug # TODO change to info soon
+  sentryDsn:
+    dev: ''
+    prod: ''
+
+provider:
+  name: aws
+  region: us-east-1
+  runtime: nodejs8.10
+  memorySize: 512
+  timeout: 30
+  environment:
+    APP_ID: ${self:custom.appId.${self:custom.stage}}
+    DEBUG_LEVEL: ${self:custom.logLevel.${self:custom.stage}}
+    SENTRY_DSN:  ${self:custom.sentryDsn.${self:custom.stage}}
+    DISABLE_STATS: true
+    INSTALLATION_TOKEN_TTL: 3540
+    WEBHOOK_SECRET: ${env:WEBHOOK_SECRET}
+    PRIVATE_KEY: ${env:PRIVATE_KEY}
+
+functions:
+  githubWebhook:
+    handler: src/handler.probot
+    events:
+      - http:
+          path: /
+          method: post
+          cors: true

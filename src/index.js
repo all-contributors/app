@@ -28,6 +28,11 @@ module.exports = app => {
 
     // issueComment.edited
     app.on('issue_comment.created', async context => {
+        if (!context.isBot) {
+            app.log('From a bot, exiting')
+            return
+        }
+
         const payload = context.payload
         app.log(context)
         const username = payload.comment.user.login

@@ -12,14 +12,16 @@
     "probot-app"
   ],
   "scripts": {
-    "dev": "nodemon",
-    "start": "probot run ./src/index.js",
+    "start": "nodemon",
+    "start-probot": "probot run ./src/index.js",
+    "start-serverless": "serverless offline start",
     "lint": "eslint .",
     "lint-fix": "eslint --fix .",
     "test": "jest",
     "test-watch": "jest --watch --notify --notifyMode=change --coverage"
   },
   "dependencies": {
+    "@probot/serverless-lambda": "^0.2.0",
     "all-contributors-cli": "^5.6.1",
     "probot": "^7.2.0"
   },
@@ -33,10 +35,12 @@
     "nock": "^10.0.0",
     "nodemon": "^1.17.2",
     "prettier": "^1.15.3",
+    "serverless": "^1.35.1",
+    "serverless-offline": "^3.31.3",
     "smee-client": "^1.0.2"
   },
   "nodemonConfig": {
-    "exec": "yarn start",
+    "exec": "yarn start-probot",
     "watch": [
       ".env",
       "."
