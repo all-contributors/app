@@ -28,10 +28,12 @@ module.exports = app => {
 
     // issueComment.edited
     app.on('issue_comment.created', async context => {
-        if (!context.isBot) {
+        if (context.isBot) {
             app.log('From a bot, exiting')
             return
         }
+
+        throw new Error(`Test Sentry`)
 
         const payload = context.payload
         app.log(context)
