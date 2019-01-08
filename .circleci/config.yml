@@ -35,16 +35,25 @@ jobs:
     working_directory: ~/repo
     steps:
       - prep_env
-      - run: yarn test
+      - run: yarn test-ci
+      - run: yarn codecov
+      - store_test_results:
+          path: junit.xml
   lint:
     <<: *docker_defaults
     working_directory: ~/repo
     steps:
       - prep_env
       - run: yarn lint
+  deploy:
+    <<: *docker_defaults
+    working_directory: ~/repo
+    steps:
+      - prep_env
+      - run: STAGE=prod ./.circleci/deploy.sh
 workflows:
   version: 2
-  validate_and_deploy:
+  test_and_deploy:
     jobs:
       - node_modules
       - test:
@@ -53,6 +62,13 @@ workflows:
       - lint:
           requires:
             - node_modules
+      - deploy:
+          requires:
+            - test
+            - lint
+          filters:
+            branches:
+              only: master
 
 
 experimental:

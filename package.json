@@ -7,6 +7,7 @@
   "homepage": "https://github.com/all-contributors/bot",
   "bugs": "https://github.com/all-contributors/bot/issues",
   "keywords": [
+    "all-contributors",
     "probot",
     "github",
     "probot-app"
@@ -18,7 +19,8 @@
     "lint": "eslint .",
     "lint-fix": "eslint --fix .",
     "test": "jest",
-    "test-watch": "jest --watch --notify --notifyMode=change --coverage"
+    "test-watch": "jest --watch --notify --notifyMode=change",
+    "test-ci": "jest --reporters ./node_modules/jest-junit"
   },
   "dependencies": {
     "@probot/serverless-lambda": "^0.2.0",
@@ -27,11 +29,13 @@
   },
   "devDependencies": {
     "@tophat/eslint-config": "^0.1.4",
+    "codecov": "^3.1.0",
     "eslint": "^5.12.0",
     "eslint-config-prettier": "^3.3.0",
     "eslint-plugin-jest": "^22.1.2",
     "eslint-plugin-prettier": "^3.0.1",
     "jest": "^22.4.3",
+    "jest-junit": "^5.2.0",
     "nock": "^10.0.0",
     "nodemon": "^1.17.2",
     "prettier": "^1.15.3",
@@ -47,6 +51,7 @@
     ]
   },
   "jest": {
-    "testEnvironment": "node"
+    "testEnvironment": "node",
+    "collectCoverage": true
   }
 }
