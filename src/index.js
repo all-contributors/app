@@ -71,7 +71,13 @@ async function processNewIssueComment(context) {
     // })
 
     // TODO: Create branch, update files
+    // GET master state when we read files
+    // https://octokit.github.io/rest.js/#api-Git-createRef
+    // https://octokit.github.io/rest.js/#api-Repos-updateFile
+
     // TODO: post pull request
+    // https://octokit.github.io/rest.js/#api-Pulls-createFromIssue
+
     // TODO: Comment back with link to pull request
 }
 

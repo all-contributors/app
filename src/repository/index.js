@@ -19,6 +19,7 @@ class Repository {
     }
 
     async getFileContents(filePath) {
+        // https://octokit.github.io/rest.js/#api-Repos-getContents
         const file = await this.context.github.repos.getContents({
             owner: this.owner,
             repo: this.repo,
