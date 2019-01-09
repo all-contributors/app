@@ -18,21 +18,8 @@ A bot for automatically adding all-contributors. 🤖
 3. If user exists, add new contribution, if not add user and add contribution
 
 
-### Future command ideas
-- If the bot has an open pull request, don't open another one?
-- @AllContributorBot please add **me** for code
-
-#### init command
-- @AllContributorBot init
-Puts up initial pull request for `README.md` and `.all-contributorsrc`
-
-#### remove command
-- @AllContributorBot please remove me/user for blah
-Puts up a PR for removal
-
-
 ## Contributing
-If you have suggestions for how AllContributorsBot could be improved, or want to report a bug, open an issue! We'd love all and any contributions.
+If you have suggestions for how AllContributorsBot could be improved, or want to report a bug, [open an issue](https://github.com/all-contributors/all-contributors-bot/issues)!
 
 For more, check out the [Contributing Guide](CONTRIBUTING.md).
 
