@@ -1,95 +1,96 @@
 const GIHUB_BOT_NAME = '@AllContributorsBot'
 const ALL_CONTRIBUTORS_RC = '.all-contributorsrc'
 
-const getFileContents = async (context, filePath) => {
-    const { repo, owner } = context.repo()
-    const file = await context.github.repos.getContents({
-        owner,
-        repo,
-        path: filePath,
-    })
-    context.log(file)
+const { Repository, ResourceNotFoundError} = require('./repository')
+// const parseComment = require('./parse-comment')
 
-    // contents can be an array if its a directory, should be an edge case
-    const contentBinary = file.data.content
-    const content = Buffer.from(contentBinary, 'base64').toString()
-    context.log(content)
-    return content
-}
-
-const createComment = async (context, body) => {
+async function createComment({ context, body }) {
     const issueComment = context.issue({ body })
     return context.github.issues.createComment(issueComment)
 }
 
-module.exports = app => {
-    // Your code here
-    app.log('Yay, the app was loaded!')
+async function getReadmeFileContentsByPath({ repository, rcFileContent }) {
+    if (Array.isArray(rcFileContent.files)) {
+        return repository.getMultipleFileContents(rcFileContent.files)
+    } else {
+        // default 'files' is ['README.md']
+        return repository.getMultipleFileContents(['README.md'])
+    }
+}
 
-    // issueComment.edited
-    app.on('issue_comment.created', async context => {
-        if (context.isBot) {
-            app.log('From a bot, exiting')
+async function processNewIssueComment(context) {
+    if (context.isBot) {
+        context.log('From a bot, exiting')
+        return
+    }
+
+    const fromUser = context.payload.comment.user.login
+    const commentBody = context.payload.comment.body
+    const hasMentionedBotName = commentBody.includes(GIHUB_BOT_NAME)
+
+    if (!hasMentionedBotName) {
+        context.log('Message not for us, exiting')
+        return
+    }
+
+    const repository = new Repository(context)
+
+    let rcFileContent
+    try {
+        rcFileContent = repository.getFileContents(ALL_CONTRIBUTORS_RC)
+    } catch (error) {
+        if (error instanceof ResourceNotFoundError) {
+            await createComment({
+                context,
+                body: `@${fromUser} Please setup ${repository.getFullname()} for all-contributors using the [all-contributors-cli](https://github.com/all-contributors/all-contributors-cli) tool.`,
+            })
+            context.log(error)
             return
         }
+    }
 
-        const payload = context.payload
-        app.log(context)
-        const username = payload.comment.user.login
-        // .user.avatar_url
-        // .user.html_url
-        const repository = payload.repository.full_name
-        const commentBody = payload.comment.body
-        const mentionedBotName = commentBody.includes(GIHUB_BOT_NAME)
-        app.log(
-            `Mentioned Bot Name: ${mentionedBotName}. Repo: ${repository} User: ${username}. Comment: ${commentBody}`,
-        )
+    // TODO
+    // const { who, contributions } = parseComment(commentBody)
+    // We had trouble reading your comment. Basic usage:\n\n\`@${GIHUB_BOT_NAME} please add jakebolam for code\`
+    const who = 'jakebolam'
+    const contributions = ['code']
 
-        // body contains `@AllContributorsBot`
+    const readmeFileContentsByPath = getReadmeFileContentsByPath({
+        repository,
+        rcFileContent,
+    })
 
-        // Could have command to add self: context.sender.avatar_url
+    // // TODO: add PR to allContributorsCLI for node api? (Or refactor out?)
+    // const {newRcFileContent, newReadmeFileContentsList} = allContributors.addContributor({
+    //     rcFileContent,
+    //     readmeFileContentsByPath,
+    //       username: who,
+    //       contributors: contributions,
+    //     contextToAvoidApiCalls
+    //
+    // })
 
-        const rcFileContent = getFileContents(context, ALL_CONTRIBUTORS_RC)
-        if (!rcFileContent) {
-            createComment(
+    // TODO: Create branch, update files
+    // TODO: post pull request
+    // TODO: Comment back with link to pull request
+}
+
+module.exports = app => {
+    // issueComment.edited
+    app.on('issue_comment.created', async context => {
+        app.debug(context)
+        try {
+            await processNewIssueComment(context)
+        } catch (error) {
+            await createComment({
                 context,
-                'Please setup your project for all-contributors using the all-contributors-cli tool',
-            )
-        }
-
-        let readmeFileContentsList
-        if (rcFileContent.files) {
-            if (rcFileContent.files.length > 2) {
-                throw new Error(`Cannot update more than 2 files`)
-            }
-            const rcFileContentPromises = rcFileContent.files.map(filePath => {
-                getFileContents(context, filePath).then(content => ({
-                    filePath,
-                    content,
-                }))
+                body: `@${
+                    context.payload.comment.user.login
+                } we had trouble processing your request. \n\nError: ${
+                    error.message
+                }`,
             })
-
-            readmeFileContentsList = await Promise.all(rcFileContentPromises)
-        } else {
-            // default 'files', ['README.md']
-            readmeFileContentsList = [
-                {
-                    filePath: 'README.md',
-                    content: await getFileContents(context, 'README.md'),
-                },
-            ]
+            throw error
         }
-
-        app.log(readmeFileContentsList)
-
-        // const results = addContributor({
-        //   rcFileContent: content
-        //   readmeFileContentsList
-        //   username: 'blah',
-        //   contributors: 'blah'
-        // })
-        //
-        // results.rcFileContent
-        // results.readMeFileContent
     })
 }

@@ -52,7 +52,11 @@
   },
   "jest": {
     "testEnvironment": "node",
-    "collectCoverage": true
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "src/*.js",
+      "!**/node_modules/**"
+    ]
   },
   "jest-junit": {
     "suiteName": "All Contributor Bot tests",
