@@ -25,6 +25,7 @@ async function getReadmeFileContentsByPath({ repository, files }) {
 
 async function addContributor({ options, login, contributions }) {
     // TODO: fetch details
+    // https://octokit.github.io/rest.js/#api-Users-getByUsername
     const name = 'Jake Bolam'
     const avatarUrl = 'https://my-example-avatar.example.com'
     const profile = 'https://jakebolam.com'
