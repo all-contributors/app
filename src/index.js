@@ -1,21 +1,58 @@
+const {
+    addContributorWithDetails,
+    generate: generateContentFile,
+} = require('all-contributors-cli')
+
+const { Repository, ResourceNotFoundError } = require('./repository')
+// const parseComment = require('./parse-comment')
+
 const GIHUB_BOT_NAME = '@AllContributorsBot'
 const ALL_CONTRIBUTORS_RC = '.all-contributorsrc'
-
-const { Repository, ResourceNotFoundError} = require('./repository')
-// const parseComment = require('./parse-comment')
 
 async function createComment({ context, body }) {
     const issueComment = context.issue({ body })
     return context.github.issues.createComment(issueComment)
 }
 
-async function getReadmeFileContentsByPath({ repository, rcFileContent }) {
-    if (Array.isArray(rcFileContent.files)) {
-        return repository.getMultipleFileContents(rcFileContent.files)
+async function getReadmeFileContentsByPath({ repository, files }) {
+    if (Array.isArray(files)) {
+        return repository.getMultipleFileContents(files)
     } else {
         // default 'files' is ['README.md']
         return repository.getMultipleFileContents(['README.md'])
     }
+}
+
+async function addContributor({ options, login, contributions }) {
+    // TODO: fetch details
+    const name = 'Jake Bolam'
+    const avatarUrl = 'https://my-example-avatar.example.com'
+    const profile = 'https://jakebolam.com'
+
+    const newContributorsList = await addContributorWithDetails({
+        options,
+        login,
+        contributions,
+        name,
+        avatar_url: avatarUrl,
+        profile,
+    })
+    return { ...options, contributors: newContributorsList }
+}
+
+async function generateContentFiles({ options, readmeFileContentsByPath }) {
+    const newReadmeFileContentsByPath = {}
+    Object.entires(readmeFileContentsByPath).forEach(
+        ([filePath, fileContents]) => {
+            const newFileContents = generateContentFile(
+                options,
+                options.contributors,
+                fileContents,
+            )
+            newReadmeFileContentsByPath[filePath] = newFileContents
+        },
+    )
+    return newReadmeFileContentsByPath
 }
 
 async function processNewIssueComment(context) {
@@ -35,9 +72,9 @@ async function processNewIssueComment(context) {
 
     const repository = new Repository(context)
 
-    let rcFileContent
+    let optionsFileContent
     try {
-        rcFileContent = repository.getFileContents(ALL_CONTRIBUTORS_RC)
+        optionsFileContent = repository.getFileContents(ALL_CONTRIBUTORS_RC)
     } catch (error) {
         if (error instanceof ResourceNotFoundError) {
             await createComment({
@@ -52,23 +89,27 @@ async function processNewIssueComment(context) {
     // TODO parse comment and gain intentions
     // const { who, contributions } = parseComment(commentBody)
     // We had trouble reading your comment. Basic usage:\n\n\`@${GIHUB_BOT_NAME} please add jakebolam for code\`
-    const who = 'jakebolam'
+    const login = 'jakebolam'
     const contributions = ['code']
 
-    const readmeFileContentsByPath = getReadmeFileContentsByPath({
-        repository,
-        rcFileContent,
+    const newOptionsContent = await addContributor({
+        options: optionsFileContent,
+        login,
+        contributions,
     })
+    context.log(newOptionsContent)
 
-    // // TODO: add PR to allContributorsCLI for node api? (Or refactor out?)
-    // const {newRcFileContent, newReadmeFileContentsList} = allContributors.addContributor({
-    //     rcFileContent,
-    //     readmeFileContentsByPath,
-    //       username: who,
-    //       contributors: contributions,
-    //     contextToAvoidApiCalls
-    //
-    // })
+    const readmeFileContentsByPath = await getReadmeFileContentsByPath({
+        repository,
+        files: optionsFileContent.files,
+    })
+    context.log(readmeFileContentsByPath)
+
+    const newReadmeFileContentsByPath = await generateContentFiles({
+        options: newOptionsContent,
+        readmeFileContentsByPath,
+    })
+    context.log(newReadmeFileContentsByPath)
 
     // TODO: Create branch, update files
     // GET master state when we read files
@@ -83,8 +124,9 @@ async function processNewIssueComment(context) {
 
 module.exports = app => {
     // issueComment.edited
+    // Issue comments and PR comments both create issue_comment events
     app.on('issue_comment.created', async context => {
-        app.debug(context)
+        app.log(context)
         try {
             await processNewIssueComment(context)
         } catch (error) {
