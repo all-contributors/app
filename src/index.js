@@ -49,7 +49,7 @@ async function processNewIssueComment(context) {
         }
     }
 
-    // TODO
+    // TODO parse comment and gain intentions
     // const { who, contributions } = parseComment(commentBody)
     // We had trouble reading your comment. Basic usage:\n\n\`@${GIHUB_BOT_NAME} please add jakebolam for code\`
     const who = 'jakebolam'
