@@ -27,14 +27,13 @@ class Repository {
         })
 
         // Returns empty if file not found
-        if (file.data.content) {
+        if (!file.data || !file.data.content) {
             throw new ResourceNotFoundError(filePath, this.full_name)
         }
 
         // Contents can be an array if its a directory, should be an edge case, and we can just crash
         const contentBinary = file.data.content
         const content = Buffer.from(contentBinary, 'base64').toString()
-        this.context.log(content)
         return content
     }
 
@@ -52,8 +51,12 @@ class Repository {
         })
 
         const getFilesMultipleList = await Promise.all(getFilesMultiple)
-
         const multipleFileContentsByPath = {}
+        getFilesMultipleList.forEach(({ filePath, content }) => {
+            multipleFileContentsByPath[filePath] = content
+        })
+
+        return
     }
 }
 

@@ -1,0 +1,20 @@
+{
+    "data": {
+        "name": ".all-contributorsrc",
+        "path": ".all-contributorsrc",
+        "sha": "dff34f715bca51114c0336a49381456a926806d5",
+        "size": 507,
+        "url": "https://api.github.com/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc?ref=master",
+        "html_url": "https://github.com/all-contributors/all-contributors-bot/blob/master/.all-contributorsrc",
+        "git_url": "https://api.github.com/repos/all-contributors/all-contributors-bot/git/blobs/dff34f715bca51114c0336a49381456a926806d5",
+        "download_url": "https://raw.githubusercontent.com/all-contributors/all-contributors-bot/master/.all-contributorsrc",
+        "type": "file",
+        "content": "ewogICJwcm9qZWN0TmFtZSI6ICJib3QiLAogICJwcm9qZWN0T3duZXIiOiAi\nYWxsLWNvbnRyaWJ0dW9ycyIsCiAgInJlcG9UeXBlIjogImdpdGh1YiIsCiAg\nInJlcG9Ib3N0IjogImh0dHBzOi8vZ2l0aHViLmNvbSIsCiAgImZpbGVzIjog\nWwogICAgIlJFQURNRS5tZCIKICBdLAogICJpbWFnZVNpemUiOiAxMDAsCiAg\nImNvbW1pdCI6IGZhbHNlLAogICJjb250cmlidXRvcnMiOiBbCiAgICB7CiAg\nICAgICJsb2dpbiI6ICJqYWtlYm9sYW0iLAogICAgICAibmFtZSI6ICJKYWtl\nIEJvbGFtIiwKICAgICAgImF2YXRhcl91cmwiOiAiaHR0cHM6Ly9hdmF0YXJz\nMi5naXRodWJ1c2VyY29udGVudC5jb20vdS8zNTM0MjM2P3Y9NCIsCiAgICAg\nICJwcm9maWxlIjogImh0dHBzOi8vamFrZWJvbGFtLmNvbSIsCiAgICAgICJj\nb250cmlidXRpb25zIjogWwogICAgICAgICJjb2RlIiwKICAgICAgICAiaWRl\nYXMiLAogICAgICAgICJpbmZyYSIsCiAgICAgICAgInRlc3QiCiAgICAgIF0K\nICAgIH0KICBdCn0K\n",
+        "encoding": "base64",
+        "_links": {
+            "self": "https://api.github.com/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc?ref=master",
+            "git": "https://api.github.com/repos/all-contributors/all-contributors-bot/git/blobs/dff34f715bca51114c0336a49381456a926806d5",
+            "html": "https://github.com/all-contributors/all-contributors-bot/blob/master/.all-contributorsrc"
+        }
+    }
+}

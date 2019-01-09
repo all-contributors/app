@@ -13,7 +13,7 @@ A bot for automatically adding all-contributors. 🤖
 2. Please setup your `README.md` and `.all-contributorsrc` using the all-contributors-cli tool
 
 ### Adding contributions
-1. Comment on Issue/PR etc with text: @AllContributorBot please add jakebolam for infrastructure, testing and code (Can also use the short terms, full key coming soon)
+1. Comment on Issue/PR etc with text: `@AllContributorBot please add jakebolam for infrastructure, testing and code` (Can also use the short terms, full key coming soon)
 2. Bot will look for `.all-contributorsrc` if not found, comments on pr to run setup
 3. If user exists, add new contribution, if not add user and add contribution
 

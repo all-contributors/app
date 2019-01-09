@@ -1,3 +1,5 @@
+/* eslint-disable camelcase */
+
 const {
     addContributorWithDetails,
     generate: generateContentFile,
@@ -23,19 +25,41 @@ async function getReadmeFileContentsByPath({ repository, files }) {
     }
 }
 
-async function addContributor({ options, login, contributions }) {
-    // TODO: fetch details
-    // https://octokit.github.io/rest.js/#api-Users-getByUsername
-    const name = 'Jake Bolam'
-    const avatarUrl = 'https://my-example-avatar.example.com'
-    const profile = 'https://jakebolam.com'
+async function getUserDetials({ context, username }) {
+    // TODO: optimzation, if commenting user is the user we're adding we can avoid an api call
+    // const commentUser = context.payload.comment.user.login
+    // if (user === commentUser) {
+    //     return {
+    //         name: context.payload.comment.user.name
+    //         avatarUrl: context.payload.comment.avatar_url
+    //         profile:
+    //     }
+    // }
 
+    const result = await context.github.users.getByUsername({ username })
+    const { avatar_url, blog, html_url, name } = result.data
+
+    return {
+        name: name || username,
+        avatar_url,
+        profile: blog || html_url,
+    }
+}
+
+async function addContributor({
+    options,
+    login,
+    contributions,
+    name,
+    avatar_url,
+    profile,
+}) {
     const newContributorsList = await addContributorWithDetails({
         options,
         login,
         contributions,
         name,
-        avatar_url: avatarUrl,
+        avatar_url,
         profile,
     })
     return { ...options, contributors: newContributorsList }
@@ -75,41 +99,62 @@ async function processNewIssueComment(context) {
 
     let optionsFileContent
     try {
-        optionsFileContent = repository.getFileContents(ALL_CONTRIBUTORS_RC)
+        const rawOptionsFileContent = await repository.getFileContents(
+            ALL_CONTRIBUTORS_RC,
+        )
+        optionsFileContent = JSON.parse(rawOptionsFileContent)
+        // TODO: if JSON has error report that
     } catch (error) {
         if (error instanceof ResourceNotFoundError) {
             await createComment({
                 context,
-                body: `@${fromUser} Please setup ${repository.getFullname()} for all-contributors using the [all-contributors-cli](https://github.com/all-contributors/all-contributors-cli) tool.`,
+                body: `@${fromUser} This project is not yet setup for [all-contributors](https://github.com/all-contributors/all-contributors).\n
+You will need to first setup [${
+                    repository.repo
+                }](https://github.com/${repository.getFullname()}) using the [all-contributors-cli](https://github.com/all-contributors/all-contributors-cli) tool.`,
             })
             context.log(error)
             return
         }
     }
+    context.log('Options Content')
+    context.log(optionsFileContent)
 
     // TODO parse comment and gain intentions
     // const { who, contributions } = parseComment(commentBody)
     // We had trouble reading your comment. Basic usage:\n\n\`@${GIHUB_BOT_NAME} please add jakebolam for code\`
-    const login = 'jakebolam'
+    const who = 'jakebolam'
     const contributions = ['code']
+
+    const { name, avatar_url, profile } = await getUserDetials({
+        context,
+        username: who,
+    })
 
     const newOptionsContent = await addContributor({
         options: optionsFileContent,
-        login,
+        login: who,
         contributions,
+        name,
+        avatar_url,
+        profile,
     })
+    context.log('New Options Content')
     context.log(newOptionsContent)
 
     const readmeFileContentsByPath = await getReadmeFileContentsByPath({
         repository,
         files: optionsFileContent.files,
     })
+
+    context.log('Readme file contents by path')
     context.log(readmeFileContentsByPath)
 
     const newReadmeFileContentsByPath = await generateContentFiles({
         options: newOptionsContent,
         readmeFileContentsByPath,
     })
+    context.log('New readme file contents by path')
     context.log(newReadmeFileContentsByPath)
 
     // TODO: Create branch, update files
@@ -127,7 +172,6 @@ module.exports = app => {
     // issueComment.edited
     // Issue comments and PR comments both create issue_comment events
     app.on('issue_comment.created', async context => {
-        app.log(context)
         try {
             await processNewIssueComment(context)
         } catch (error) {
