@@ -16,12 +16,12 @@ function hasMentionedBotName(context) {
 
 async function processIssueComment({ context, commentReply }) {
     if (context.isBot) {
-        context.log('From a bot, exiting')
+        context.debug.log('From a bot, exiting')
         return
     }
 
     if (!hasMentionedBotName(context)) {
-        context.log('Message not for us, exiting')
+        context.debug.log('Message not for us, exiting')
         return
     }
 
@@ -40,7 +40,7 @@ async function processIssueComment({ context, commentReply }) {
     const contributions = ['code']
 
     const { name, avatar_url, profile } = await getUserDetails({
-        context,
+        github: context.github,
         username: who,
     })
 
@@ -84,8 +84,10 @@ async function processIssueCommentSafe(context) {
         if (!error.handled) {
             commentReply.reply(`We had trouble processing your request`)
             commentReply.reply(`Error: ${error.message}`)
+            context.log.debug(error)
+        } else {
+            context.log.error(error)
         }
-        context.log(error) // TODO: if handled context.log as debug?
         throw error
     } finally {
         await commentReply.send()

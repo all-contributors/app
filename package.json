@@ -56,7 +56,9 @@
     "collectCoverageFrom": [
       "src/*.js",
       "!**/node_modules/**"
-    ]
+    ],
+    "setupFiles": ["<rootDir>/test/setup.js"],
+    "setupTestFrameworkScriptFile": "<rootDir>/test/setupPerTest.js"
   },
   "jest-junit": {
     "suiteName": "All Contributor Bot tests",

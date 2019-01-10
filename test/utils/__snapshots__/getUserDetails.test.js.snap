@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Get User Details gets user details when user exists 1`] = `
+Object {
+  "avatar_url": undefined,
+  "name": "jakebolam",
+  "profile": undefined,
+}
+`;
+
+exports[`Get User Details throws error when user does not exists 1`] = `"Could not find no-such-user on github."`;

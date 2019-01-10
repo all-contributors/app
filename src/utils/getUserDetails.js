@@ -1,4 +1,6 @@
-async function getUserDetials({ context, username }) {
+const { UserNotFoundError } = require('./errors')
+
+async function getUserDetials({ github, username }) {
     // TODO: optimzation, if commenting user is the user we're adding we can avoid an api call
     // const commentUser = context.payload.comment.user.login
     // if (user === commentUser) {
@@ -9,7 +11,17 @@ async function getUserDetials({ context, username }) {
     //     }
     // }
 
-    const result = await context.github.users.getByUsername({ username })
+    let result
+    try {
+        result = await github.users.getByUsername({ username })
+    } catch (error) {
+        if (error.code === 404) {
+            throw new UserNotFoundError(username)
+        } else {
+            throw error
+        }
+    }
+
     const { avatar_url, blog, html_url, name } = result.data
 
     return {

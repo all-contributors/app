@@ -28,7 +28,6 @@ class OptionsConfig {
                             error.message
                         }`,
                     )
-                    this.context.log(error)
                     error.handled = true
                     throw error
                 }

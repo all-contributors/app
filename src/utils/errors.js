@@ -5,6 +5,14 @@ class ResourceNotFoundError extends Error {
     }
 }
 
+class UserNotFoundError extends Error {
+    constructor(username) {
+        super(`Could not find ${username} on github.`)
+        this.name = this.constructor.name
+    }
+}
+
 module.exports = {
     ResourceNotFoundError,
+    UserNotFoundError,
 }
