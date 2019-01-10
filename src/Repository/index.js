@@ -56,7 +56,7 @@ class Repository {
         return multipleFileContentsByPath
     }
 
-    async createPullRequest({title, body, fileContentsByPath}) {
+    async createPullRequest({ title, body, fileContentsByPath }) {
         // TODO: Create branch, update files
         // GET master state when we read files
         // https://octokit.github.io/rest.js/#api-Git-createRef
