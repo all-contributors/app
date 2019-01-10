@@ -58,6 +58,7 @@ class OptionsConfig {
     }
 
     async addContributor({ login, contributions, name, avatar_url, profile }) {
+        // TODO: this method should also handle updating a contributor to avoid there previous contributions being blown away
         const newContributorsList = await addContributorWithDetails({
             options: this.options,
             login,

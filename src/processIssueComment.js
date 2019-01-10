@@ -9,12 +9,6 @@ const getUserDetails = require('./utils/getUserDetails')
 const { GIHUB_BOT_NAME } = require('./utils/settings')
 const { AllContributorBotError } = require('./utils/errors')
 
-function hasMentionedBotName(context) {
-    const commentBody = context.payload.comment.body
-    const hasMentionedBotName = commentBody.includes(GIHUB_BOT_NAME)
-    return hasMentionedBotName
-}
-
 async function processIssueComment({ context, commentReply }) {
     const repository = new Repository(context)
     const optionsConfig = new OptionsConfig({
@@ -65,6 +59,12 @@ async function processIssueComment({ context, commentReply }) {
     commentReply.reply(
         `I've put up [a pull request](#${pullRequestNumber}) to add ${who}! :tada:`,
     )
+}
+
+function hasMentionedBotName(context) {
+    const commentBody = context.payload.comment.body
+    const hasMentionedBotName = commentBody.includes(GIHUB_BOT_NAME)
+    return hasMentionedBotName
 }
 
 async function processIssueCommentSafe({ context }) {
