@@ -57,109 +57,129 @@ describe('All Contributors app - End to end', () => {
         })
     })
 
-    // test('Fail path, no readme file (configuration error)', async () => {
-    //     nock('https://api.github.com')
-    //         .post('/app/installations/11111/access_tokens')
-    //         .reply(200, { token: 'test' })
-    //
-    //     nock('https://api.github.com')
-    //         .get(
-    //             '/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc',
-    //         )
-    //         .reply(200, reposGetContentsAllContributorsRCdata)
-    //
-    //     nock('https://api.github.com')
-    //         .get(
-    //             '/users/jakebolam',
-    //         )
-    //         .reply(200, usersGetByUsernameJakeBolamdata)
-    //
-    //        TODO: how does this fail?
-    //        nock('https://api.github.com')
-    //        .get(
-    //            '/repos/all-contributors/all-contributors-bot/contents/README.md',
-    //        )
-    //       .reply(404)
-    //
-    //     await probot.receive({
-    //         name: 'issue_comment',
-    //         payload: issue_commentCreatedPayload,
-    //     })
-    // })
+    test('Fail path, no readme file (configuration error)', async () => {
+        nock('https://api.github.com')
+            .post('/app/installations/11111/access_tokens')
+            .reply(200, { token: 'test' })
 
-    // test('Fail path, no such user', async () => {
-    //     nock('https://api.github.com')
-    //         .post('/app/installations/11111/access_tokens')
-    //         .reply(200, { token: 'test' })
-    //
-    //     nock('https://api.github.com')
-    //         .get(
-    //             '/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc',
-    //         )
-    //         .reply(200, reposGetContentsAllContributorsRCdata)
-    //
-    //     nock('https://api.github.com')
-    //         .get(
-    //             '/users/jakebolam',
-    //         )
-    //         .reply(404)
-    //
-    //     await probot.receive({
-    //         name: 'issue_comment',
-    //         payload: issue_commentCreatedPayload,
-    //     })
-    // })
+        nock('https://api.github.com')
+            .get(
+                '/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc',
+            )
+            .reply(200, reposGetContentsAllContributorsRCdata)
 
-    // test('Fail path, no allcontributors file (repo needs setup)', async () => {
-    //     nock('https://api.github.com')
-    //         .post('/app/installations/11111/access_tokens')
-    //         .reply(200, { token: 'test' })
-    //
-    //     // TODO how does this fail?
-    //     nock('https://api.github.com')
-    //         .get(
-    //             '/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc',
-    //         )
-    //         .reply(404)
-    //
-    //     nock('https://api.github.com')
-    //         .post(
-    //             '/repos/all-contributors/all-contributors-bot/issues/1/comments',
-    //             body => {
-    //                 expect(body).toMatchSnapshot()
-    //                 return true
-    //             },
-    //         )
-    //         .reply(200)
-    //
-    //     await probot.receive({
-    //         name: 'issue_comment',
-    //         payload: issue_commentCreatedPayload,
-    //     })
-    // })
+        nock('https://api.github.com')
+            .get('/users/jakebolam')
+            .reply(200, usersGetByUsernameJakeBolamdata)
 
-    // test('Fail path,Network is dead for getting anything, crahes and sends error message', async () => {
-    //     nock('https://api.github.com')
-    //         .post('/app/installations/11111/access_tokens')
-    //         .reply(200, { token: 'test' })
-    //
-    //     nock('https://api.github.com')
-    //         .post(
-    //             '/repos/all-contributors/all-contributors-bot/issues/1/comments',
-    //             body => {
-    //                 expect(body).toMatchSnapshot()
-    //                 return true
-    //             },
-    //         )
-    //         .reply(200)
-    //
-    //     const error = await rejectionOf(
-    //         probot.receive({
-    //             name: 'issue_comment',
-    //             payload: issue_commentCreatedPayload,
-    //         }),
-    //     )
-    //     expect(error instanceof Error).toBeTruthy()
-    //     expect(error.message).toMatchSnapshot()
-    // })
+        nock('https://api.github.com')
+            .get(
+                '/repos/all-contributors/all-contributors-bot/contents/README.md',
+            )
+            .reply(404)
+
+        nock('https://api.github.com')
+            .post(
+                '/repos/all-contributors/all-contributors-bot/issues/1/comments',
+                body => {
+                    expect(body).toMatchSnapshot()
+                    return true
+                },
+            )
+            .reply(200)
+
+        await probot.receive({
+            name: 'issue_comment',
+            payload: issue_commentCreatedPayload,
+        })
+    })
+
+    test('Fail path, no such user', async () => {
+        nock('https://api.github.com')
+            .post('/app/installations/11111/access_tokens')
+            .reply(200, { token: 'test' })
+
+        nock('https://api.github.com')
+            .get(
+                '/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc',
+            )
+            .reply(200, reposGetContentsAllContributorsRCdata)
+
+        nock('https://api.github.com')
+            .get('/users/jakebolam')
+            .reply(404)
+
+        nock('https://api.github.com')
+            .post(
+                '/repos/all-contributors/all-contributors-bot/issues/1/comments',
+                body => {
+                    expect(body).toMatchSnapshot()
+                    return true
+                },
+            )
+            .reply(200)
+
+        await probot.receive({
+            name: 'issue_comment',
+            payload: issue_commentCreatedPayload,
+        })
+    })
+
+    test('Fail path, no allcontributors file (repo needs setup)', async () => {
+        nock('https://api.github.com')
+            .post('/app/installations/11111/access_tokens')
+            .reply(200, { token: 'test' })
+
+        nock('https://api.github.com')
+            .get(
+                '/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc',
+            )
+            .reply(404)
+
+        nock('https://api.github.com')
+            .post(
+                '/repos/all-contributors/all-contributors-bot/issues/1/comments',
+                body => {
+                    expect(body).toMatchSnapshot()
+                    return true
+                },
+            )
+            .reply(200)
+
+        await probot.receive({
+            name: 'issue_comment',
+            payload: issue_commentCreatedPayload,
+        })
+    })
+
+    test('Fail path, Unknown error (e.g. Network is dead, service down etc, our code is bad) crashes and sends error message', async () => {
+        nock('https://api.github.com')
+            .post('/app/installations/11111/access_tokens')
+            .reply(200, { token: 'test' })
+
+        nock('https://api.github.com')
+            .get(
+                '/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc',
+            )
+            .reply(500)
+
+        nock('https://api.github.com')
+            .post(
+                '/repos/all-contributors/all-contributors-bot/issues/1/comments',
+                body => {
+                    expect(body).toMatchSnapshot()
+                    return true
+                },
+            )
+            .reply(200)
+
+        const error = await rejectionOf(
+            probot.receive({
+                name: 'issue_comment',
+                payload: issue_commentCreatedPayload,
+            }),
+        )
+        expect(error instanceof Error).toBeTruthy()
+        expect(error).toMatchSnapshot()
+    })
 })

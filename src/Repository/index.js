@@ -15,15 +15,19 @@ class Repository {
 
     async getFileContents(filePath) {
         // https://octokit.github.io/rest.js/#api-Repos-getContents
-        const file = await this.context.github.repos.getContents({
-            owner: this.owner,
-            repo: this.repo,
-            path: filePath,
-        })
-
-        // Returns empty if file not found
-        if (!file.data || !file.data.content) {
-            throw new ResourceNotFoundError(filePath, this.full_name)
+        let file
+        try {
+            file = await this.context.github.repos.getContents({
+                owner: this.owner,
+                repo: this.repo,
+                path: filePath,
+            })
+        } catch (error) {
+            if (error.code === 404) {
+                throw new ResourceNotFoundError(filePath, this.full_name)
+            } else {
+                throw error
+            }
         }
 
         // Contents can be an array if its a directory, should be an edge case, and we can just crash
@@ -44,7 +48,6 @@ class Repository {
         })
 
         const getFilesMultipleList = await Promise.all(getFilesMultiple)
-        debugger
         const multipleFileContentsByPath = {}
         getFilesMultipleList.forEach(({ filePath, content }) => {
             multipleFileContentsByPath[filePath] = content

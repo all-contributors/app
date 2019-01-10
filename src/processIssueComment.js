@@ -90,7 +90,7 @@ async function processIssueCommentSafe({ context }) {
         } else {
             context.log.error(error)
             commentReply.reply(`We had trouble processing your request`)
-            commentReply.reply(`Error: ${error.message}`)
+            commentReply.reply(`Error: ${error.message || error.code || error}`)
             throw error
         }
     } finally {

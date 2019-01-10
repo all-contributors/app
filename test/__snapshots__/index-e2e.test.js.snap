@@ -1,5 +1,43 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`All Contributors app - End to end Fail path, Unknown error (e.g. Network is dead, service down etc, our code is bad) crashes and sends error message 1`] = `
+Object {
+  "body": "@jakebolam 
+
+We had trouble processing your request
+
+Error: 500",
+}
+`;
+
+exports[`All Contributors app - End to end Fail path, Unknown error (e.g. Network is dead, service down etc, our code is bad) crashes and sends error message 2`] = `[HttpError]`;
+
+exports[`All Contributors app - End to end Fail path, no allcontributors file (repo needs setup) 1`] = `
+Object {
+  "body": "@jakebolam 
+
+This project is not yet setup for [all-contributors](https://github.com/all-contributors/all-contributors).
+
+    You will need to first setup [all-contributors-bot](https://github.com/all-contributors/all-contributors-bot) using the [all-contributors-cli](https://github.com/all-contributors/all-contributors-cli) tool.",
+}
+`;
+
+exports[`All Contributors app - End to end Fail path, no readme file (configuration error) 1`] = `
+Object {
+  "body": "@jakebolam 
+
+File README.md was not found in the repository (all-contributors/all-contributors-bot).",
+}
+`;
+
+exports[`All Contributors app - End to end Fail path, no such user 1`] = `
+Object {
+  "body": "@jakebolam 
+
+Could not find the user jakebolam on github.",
+}
+`;
+
 exports[`All Contributors app - End to end Happy path, add correct new contributor 1`] = `
 Object {
   "body": "@jakebolam 

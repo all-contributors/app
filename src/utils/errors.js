@@ -7,14 +7,14 @@ class AllContributorBotError extends Error {
 
 class ResourceNotFoundError extends AllContributorBotError {
     constructor(filepath, fullRepoName) {
-        super(`File ${filepath} was not found in repository (${fullRepoName}).`)
+        super(`File ${filepath} was not found in the repository (${fullRepoName}).`)
         this.name = this.constructor.name
     }
 }
 
 class UserNotFoundError extends AllContributorBotError {
     constructor(username) {
-        super(`Could not find ${username} on github.`)
+        super(`Could not find the user ${username} on github.`)
         this.name = this.constructor.name
     }
 }
