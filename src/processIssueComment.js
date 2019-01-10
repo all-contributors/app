@@ -51,8 +51,6 @@ async function processIssueComment({ context, commentReply }) {
         originalSha: optionsConfig.getOriginalSha(),
     }
 
-    debugger
-
     const pullRequestNumber = await repository.createPullRequestFromFiles({
         title: `docs: add ${who} as a contributor`,
         body: `Adds ${who} as a contributor for ${contributions.join(

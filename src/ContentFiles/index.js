@@ -34,7 +34,6 @@ class ContentFiles {
     async generate(optionsConfig) {
         const options = optionsConfig.get()
         const newFilesByPath = {}
-        debugger
         Object.entries(this.contentFilesByPath).forEach(
             ([filePath, { content, sha }]) => {
                 const newFileContents = generateContentFile(

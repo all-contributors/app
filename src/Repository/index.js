@@ -127,12 +127,7 @@ class Repository {
         return result.data.number
     }
 
-    async createPullRequestFromFiles({
-        title,
-        body,
-        filesByPath,
-        branchName,
-    }) {
+    async createPullRequestFromFiles({ title, body, filesByPath, branchName }) {
         await this.createBranch(branchName)
 
         await this.updateFiles({
