@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Repository createPullRequest with files 1`] = `
+Object {
+  "ref": "refs/heads/all-contributors/add-jakebolam",
+  "sha": "aa218f56b14c9653891f9e74264a383fa43fefbd",
+}
+`;
+
+exports[`Repository createPullRequest with files 2`] = `
+Object {
+  "branch": "all-contributors/add-jakebolam",
+  "content": "eyJ0ZXN0IjoidGVzdCBjb250ZW50In0=",
+  "message": "docs: update .all-contributorsrc",
+  "sha": "aa218f56b14c9653891f9e74264a383fa43fefbe",
+}
+`;
+
+exports[`Repository createPullRequest with files 3`] = `
+Object {
+  "branch": "all-contributors/add-jakebolam",
+  "content": "VXBkYXRlZCBsaXN0",
+  "message": "docs: update README.md",
+  "sha": "aa218f56b14c9653891f9e74264a383fa43fefbl",
+}
+`;
+
+exports[`Repository createPullRequest with files 4`] = `
+Object {
+  "branch": "all-contributors/add-jakebolam",
+  "content": "VXBkYXRlZCBsaXN0IGluIG5lc3RlZCBmb2xkZXI=",
+  "message": "docs: update /nested-folder/SOME-DOC.md",
+  "sha": "aa218f56b14de653891f9e74264a383fa43fefbd",
+}
+`;
+
+exports[`Repository createPullRequest with files 5`] = `
+Object {
+  "base": "master",
+  "body": "Pull request body",
+  "head": "all-contributors/add-jakebolam",
+  "maintainer_can_modify": true,
+  "title": "Pull request title",
+}
+`;

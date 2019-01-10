@@ -8,9 +8,18 @@ const issue_commentCreatedPayload = require('./fixtures/issue_comment.created.js
 const reposGetContentsAllContributorsRCdata = require('./fixtures/repos.getContents.all-contributorsrc.json')
 const usersGetByUsernameJakeBolamdata = require('./fixtures/users.getByUsername.jakebolam.json')
 const reposGetContentsREADMEMDdata = require('./fixtures/repos.getContents.README.md.json')
+const gitGetRefdata = require('./fixtures/git.getRef.json')
+const gitCreateRefdata = require('./fixtures/git.createRef.json')
+const reposUpdateFiledata = require('./fixtures/repos.updateFile.json')
+const pullsCreatedata = require('./fixtures/pulls.create.json')
 
 describe('All Contributors app - End to end', () => {
     let probot
+
+    const verifyBody = body => {
+        expect(body).toMatchSnapshot()
+        return true
+    }
 
     beforeEach(() => {
         probot = new Probot({})
@@ -42,12 +51,50 @@ describe('All Contributors app - End to end', () => {
             .reply(200, reposGetContentsREADMEMDdata)
 
         nock('https://api.github.com')
+            .get(
+                `/repos/all-contributors/all-contributors-bot/git/refs/heads/master`,
+            )
+            .reply(200, gitGetRefdata)
+
+        nock('https://api.github.com')
+            .post(
+                `/repos/all-contributors/all-contributors-bot/git/refs`,
+                verifyBody,
+            )
+            .reply(201, gitCreateRefdata)
+
+        nock('https://api.github.com')
+            .put(
+                `/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc`,
+                verifyBody,
+            )
+            .reply(200, reposUpdateFiledata)
+
+        nock('https://api.github.com')
+            .put(
+                `/repos/all-contributors/all-contributors-bot/contents/README.md`,
+                verifyBody,
+            )
+            .reply(200, reposUpdateFiledata)
+
+        nock('https://api.github.com')
+            .put(
+                `/repos/all-contributors/all-contributors-bot/contents//nested-folder/SOME-DOC.md`,
+                verifyBody,
+            )
+            .reply(200, reposUpdateFiledata)
+
+        nock('https://api.github.com')
+            .post(
+                `/repos/all-contributors/all-contributors-bot/pulls`,
+                verifyBody,
+            )
+            .reply(201, pullsCreatedata)
+
+        nock('https://api.github.com')
             .post(
                 '/repos/all-contributors/all-contributors-bot/issues/1/comments',
-                body => {
-                    expect(body).toMatchSnapshot()
-                    return true
-                },
+                verifyBody,
             )
             .reply(200)
 
@@ -81,10 +128,7 @@ describe('All Contributors app - End to end', () => {
         nock('https://api.github.com')
             .post(
                 '/repos/all-contributors/all-contributors-bot/issues/1/comments',
-                body => {
-                    expect(body).toMatchSnapshot()
-                    return true
-                },
+                verifyBody,
             )
             .reply(200)
 
@@ -112,10 +156,7 @@ describe('All Contributors app - End to end', () => {
         nock('https://api.github.com')
             .post(
                 '/repos/all-contributors/all-contributors-bot/issues/1/comments',
-                body => {
-                    expect(body).toMatchSnapshot()
-                    return true
-                },
+                verifyBody,
             )
             .reply(200)
 
@@ -139,10 +180,7 @@ describe('All Contributors app - End to end', () => {
         nock('https://api.github.com')
             .post(
                 '/repos/all-contributors/all-contributors-bot/issues/1/comments',
-                body => {
-                    expect(body).toMatchSnapshot()
-                    return true
-                },
+                verifyBody,
             )
             .reply(200)
 
@@ -166,10 +204,7 @@ describe('All Contributors app - End to end', () => {
         nock('https://api.github.com')
             .post(
                 '/repos/all-contributors/all-contributors-bot/issues/1/comments',
-                body => {
-                    expect(body).toMatchSnapshot()
-                    return true
-                },
+                verifyBody,
             )
             .reply(200)
 

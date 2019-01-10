@@ -5,18 +5,20 @@ const { addContributorWithDetails } = require('all-contributors-cli')
 const { ResourceNotFoundError } = require('../utils/errors')
 
 class OptionsConfig {
-    constructor({ context, repository, commentReply }) {
-        this.context = context
+    constructor({ repository, commentReply }) {
         this.repository = repository
         this.commentReply = commentReply
-        this.options = null
+        this.options
+        this.originalOptionsSha
     }
 
     async fetch() {
         try {
-            const rawOptionsFileContent = await this.repository.getFileContents(
-                ALL_CONTRIBUTORS_RC,
-            )
+            const {
+                content: rawOptionsFileContent,
+                sha,
+            } = await this.repository.getFile(ALL_CONTRIBUTORS_RC)
+            this.originalOptionsSha = sha
             try {
                 const optionsConfig = JSON.parse(rawOptionsFileContent)
                 this.options = optionsConfig
@@ -55,6 +57,10 @@ class OptionsConfig {
 
     getPath() {
         return ALL_CONTRIBUTORS_RC
+    }
+
+    getOriginalSha() {
+        return this.originalOptionsSha
     }
 
     async addContributor({ login, contributions, name, avatar_url, profile }) {

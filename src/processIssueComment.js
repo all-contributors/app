@@ -10,9 +10,11 @@ const { GIHUB_BOT_NAME } = require('./utils/settings')
 const { AllContributorBotError } = require('./utils/errors')
 
 async function processIssueComment({ context, commentReply }) {
-    const repository = new Repository(context)
+    const repository = new Repository({
+        ...context.repo(),
+        github: context.github,
+    })
     const optionsConfig = new OptionsConfig({
-        context,
         repository,
         commentReply,
     })
@@ -43,17 +45,23 @@ async function processIssueComment({ context, commentReply }) {
     })
     await contentFiles.fetch(optionsConfig)
     await contentFiles.generate(optionsConfig)
-    const fileContentsByPathToUpdate = contentFiles.get()
-    fileContentsByPathToUpdate[optionsConfig.getPath()] = optionsConfig.getRaw()
+    const filesByPathToUpdate = contentFiles.get()
+    filesByPathToUpdate[optionsConfig.getPath()] = {
+        content: optionsConfig.getRaw(),
+        originalSha: optionsConfig.getOriginalSha(),
+    }
 
-    const pullRequestNumber = await repository.createPullRequest({
-        title: `docs: add ${who} as contributor`,
+    debugger
+
+    const pullRequestNumber = await repository.createPullRequestFromFiles({
+        title: `docs: add ${who} as a contributor`,
         body: `Adds ${who} as a contributor for ${contributions.join(
-            ',',
-        )}.\n\n This was requested by ${commentReply.replyingToWho()} on ${
+            ', ',
+        )}.\n\nThis was requested by ${commentReply.replyingToWho()} [in this comment](${
             commentReply.replyingToWhere
-        }`,
-        fileContentsByPath: fileContentsByPathToUpdate,
+        })`,
+        filesByPath: filesByPathToUpdate,
+        branchName: `all-contributors/add-${who}`,
     })
 
     commentReply.reply(

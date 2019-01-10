@@ -26,7 +26,7 @@ exports[`All Contributors app - End to end Fail path, no readme file (configurat
 Object {
   "body": "@jakebolam 
 
-File README.md was not found in the repository (all-contributors/all-contributors-bot).",
+File README.md was not found in the repository (undefined).",
 }
 `;
 

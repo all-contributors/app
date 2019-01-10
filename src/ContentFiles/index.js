@@ -21,30 +21,34 @@ class ContentFiles {
                 )
             }
 
-            this.contentFilesByPath = await this.repository.getMultipleFileContents(
+            this.contentFilesByPath = await this.repository.getMultipleFiles(
                 options.files,
             )
         } else {
-            this.contentFilesByPath = await this.repository.getMultipleFileContents(
-                ['README.md'],
-            )
+            this.contentFilesByPath = await this.repository.getMultipleFiles([
+                'README.md',
+            ])
         }
     }
 
     async generate(optionsConfig) {
         const options = optionsConfig.get()
-        const newReadmeFileContentsByPath = {}
+        const newFilesByPath = {}
+        debugger
         Object.entries(this.contentFilesByPath).forEach(
-            ([filePath, fileContents]) => {
+            ([filePath, { content, sha }]) => {
                 const newFileContents = generateContentFile(
                     options,
                     options.contributors,
-                    fileContents,
+                    content,
                 )
-                newReadmeFileContentsByPath[filePath] = newFileContents
+                newFilesByPath[filePath] = {
+                    content: newFileContents,
+                    originalSha: sha,
+                }
             },
         )
-        this.contentFilesByPath = newReadmeFileContentsByPath
+        this.contentFilesByPath = newFilesByPath
     }
 
     get() {
