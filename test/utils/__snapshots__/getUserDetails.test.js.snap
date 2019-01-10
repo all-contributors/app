@@ -2,9 +2,9 @@
 
 exports[`Get User Details gets user details when user exists 1`] = `
 Object {
-  "avatar_url": undefined,
-  "name": "jakebolam",
-  "profile": undefined,
+  "avatar_url": "https://avatars2.githubusercontent.com/u/3534236?v=4",
+  "name": "Jake Bolam",
+  "profile": "https://jakebolam.com",
 }
 `;
 

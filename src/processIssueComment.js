@@ -7,6 +7,7 @@ const getUserDetails = require('./utils/getUserDetails')
 // const parseComment = require('./parse-comment')
 
 const { GIHUB_BOT_NAME } = require('./utils/settings')
+const { AllContributorBotError } = require('./utils/errors')
 
 function hasMentionedBotName(context) {
     const commentBody = context.payload.comment.body
@@ -15,16 +16,6 @@ function hasMentionedBotName(context) {
 }
 
 async function processIssueComment({ context, commentReply }) {
-    if (context.isBot) {
-        context.debug.log('From a bot, exiting')
-        return
-    }
-
-    if (!hasMentionedBotName(context)) {
-        context.debug.log('Message not for us, exiting')
-        return
-    }
-
     const repository = new Repository(context)
     const optionsConfig = new OptionsConfig({
         context,
@@ -77,16 +68,29 @@ async function processIssueComment({ context, commentReply }) {
 }
 
 async function processIssueCommentSafe({ context }) {
+    if (context.isBot) {
+        context.log.debug('From a bot, exiting')
+        return
+    }
+
+    if (!hasMentionedBotName(context)) {
+        context.log.debug('Message not for us, exiting')
+        return
+    }
+
     const commentReply = new CommentReply({ context })
     try {
         await processIssueComment({ context, commentReply })
     } catch (error) {
         if (error.handled) {
             context.log.debug(error)
+        } else if (error instanceof AllContributorBotError) {
+            context.log.error(error)
+            commentReply.reply(error.message)
         } else {
+            context.log.error(error)
             commentReply.reply(`We had trouble processing your request`)
             commentReply.reply(`Error: ${error.message}`)
-            context.log.error(error)
             throw error
         }
     } finally {

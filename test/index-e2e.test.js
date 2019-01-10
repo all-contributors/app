@@ -41,6 +41,16 @@ describe('All Contributors app - End to end', () => {
             )
             .reply(200, reposGetContentsREADMEMDdata)
 
+        nock('https://api.github.com')
+            .post(
+                '/repos/all-contributors/all-contributors-bot/issues/1/comments',
+                body => {
+                    expect(body).toMatchSnapshot()
+                    return true
+                },
+            )
+            .reply(200)
+
         await probot.receive({
             name: 'issue_comment',
             payload: issue_commentCreatedPayload,

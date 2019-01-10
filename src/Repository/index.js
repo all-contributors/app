@@ -35,24 +35,22 @@ class Repository {
     async getMultipleFileContents(filePathsArray) {
         // TODO: can probably optimise this instead of sending a request per file
         const repository = this
-        if (filePathsArray.length > 5) {
-            throw new Error(`Cannot fetch more than 5 files.`)
-        }
 
         const getFilesMultiple = filePathsArray.map(filePath => {
-            repository.getFileContents(filePath).then(content => ({
+            return repository.getFileContents(filePath).then(content => ({
                 filePath,
                 content,
             }))
         })
 
         const getFilesMultipleList = await Promise.all(getFilesMultiple)
+        debugger
         const multipleFileContentsByPath = {}
         getFilesMultipleList.forEach(({ filePath, content }) => {
             multipleFileContentsByPath[filePath] = content
         })
 
-        return
+        return multipleFileContentsByPath
     }
 
     async createPullRequest({title, body, fileContentsByPath}) {
@@ -63,6 +61,8 @@ class Repository {
 
         // TODO: post pull request
         // https://octokit.github.io/rest.js/#api-Pulls-createFromIssue
+        const pullRequestNumber = 1
+
         return pullRequestNumber
     }
 }

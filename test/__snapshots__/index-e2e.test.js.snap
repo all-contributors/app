@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`All Contributors app - End to end Happy path, add correct new contributor 1`] = `
+Object {
+  "body": "@jakebolam 
+
+I've put up [a pull request](#1) to add jakebolam! :tada:",
+}
+`;
