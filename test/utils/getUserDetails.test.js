@@ -40,7 +40,7 @@ describe('Get User Details', () => {
         expect(error.message).toMatchSnapshot()
     })
 
-    test('handles 500', async () => {
+    test('throws error on 500', async () => {
         const mockUser = 'mock-user'
 
         nock('https://api.github.com')
