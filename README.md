@@ -7,10 +7,13 @@ A bot for automatically adding all-contributors. 🤖
 [![Chat on Slack](https://img.shields.io/badge/slack-join-ff69b4.svg)](https://join.slack.com/t/all-contributors/shared_invite/enQtNTE3ODMyMTA4NTk0LTUwZDMxZGZkMmViMzYzYzk2YTM2NjRkZGM5Yzc0ZTc5NmYzNWY3Y2Q0ZTY3ZmFhZDgyY2E3ZmIzNWQwMTUxZmE)
 
 
-## Usage (End Vision)
-### Setup
+## Installation
 1. Install App
-2. Please setup your `README.md` and `.all-contributorsrc` using the all-contributors-cli tool
+2. Please setup your `README.md` and `.all-contributorsrc` using the [all-contributors-cli tool](https://github.com/all-contributors/all-contributors-cli)
+* In the future we want to remove the need for the CLI tool, if you want to help out [see the issue](https://github.com/all-contributors/all-contributors-bot/issues/3)
+
+
+## Usage
 
 ### Adding contributions
 1. Comment on Issue/PR etc with text: `@AllContributorBot please add jakebolam for infrastructure, testing and code` (Can also use the short terms, full key coming soon)
@@ -19,7 +22,7 @@ A bot for automatically adding all-contributors. 🤖
 
 
 ## Contributing
-If you have suggestions for how AllContributorsBot could be improved, or want to report a bug, [open an issue](https://github.com/all-contributors/all-contributors-bot/issues)!
+If you have suggestions for how the AllContributorsBot could be improved, or want to report a bug, [open an issue](https://github.com/all-contributors/all-contributors-bot/issues)!
 
 For more, check out the [Contributing Guide](CONTRIBUTING.md).
 
