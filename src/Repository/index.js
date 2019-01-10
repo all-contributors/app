@@ -1,9 +1,4 @@
-class ResourceNotFoundError extends Error {
-    constructor(filepath, fullRepoName) {
-        super(`File ${filepath} was not found in repository (${fullRepoName}).`)
-        this.name = this.constructor.name
-    }
-}
+const { ResourceNotFoundError } = require('../utils/errors')
 
 class Repository {
     constructor(context) {
@@ -38,6 +33,7 @@ class Repository {
     }
 
     async getMultipleFileContents(filePathsArray) {
+        // TODO: can probably optimise this instead of sending a request per file
         const repository = this
         if (filePathsArray.length > 5) {
             throw new Error(`Cannot fetch more than 5 files.`)
@@ -58,9 +54,17 @@ class Repository {
 
         return
     }
+
+    async createPullRequest({title, body, fileContentsByPath}) {
+        // TODO: Create branch, update files
+        // GET master state when we read files
+        // https://octokit.github.io/rest.js/#api-Git-createRef
+        // https://octokit.github.io/rest.js/#api-Repos-updateFile
+
+        // TODO: post pull request
+        // https://octokit.github.io/rest.js/#api-Pulls-createFromIssue
+        return pullRequestNumber
+    }
 }
 
-module.exports = {
-    Repository,
-    ResourceNotFoundError,
-}
+module.exports = Repository
