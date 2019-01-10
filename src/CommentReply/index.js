@@ -16,7 +16,7 @@ class CommentReply {
     }
 
     reply(message) {
-        this.message = `\n\n${message}`
+        this.message += `\n\n${message}`
     }
 
     async send() {

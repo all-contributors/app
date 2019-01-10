@@ -29,8 +29,8 @@ class OptionsConfig {
                         }`,
                     )
                     error.handled = true
-                    throw error
                 }
+                throw error
             }
         } catch (error) {
             if (error instanceof ResourceNotFoundError) {
@@ -40,8 +40,8 @@ class OptionsConfig {
         this.repository.repo
     }](https://github.com/${this.repository.getFullname()}) using the [all-contributors-cli](https://github.com/all-contributors/all-contributors-cli) tool.`)
                 error.handled = true
-                throw error
             }
+            throw error
         }
     }
 

@@ -1,3 +1,9 @@
+describe('parse-comment', () => {
+    test('Example test', () => {
+        expect(true).toBe(true)
+    })
+})
+
 // process.env.TZ = 'UTC'
 //
 // const expect = require('expect')

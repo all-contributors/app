@@ -76,19 +76,19 @@ async function processIssueComment({ context, commentReply }) {
     )
 }
 
-async function processIssueCommentSafe(context) {
-    const commentReply = new CommentReply(context)
+async function processIssueCommentSafe({ context }) {
+    const commentReply = new CommentReply({ context })
     try {
         await processIssueComment({ context, commentReply })
     } catch (error) {
-        if (!error.handled) {
-            commentReply.reply(`We had trouble processing your request`)
-            commentReply.reply(`Error: ${error.message}`)
+        if (error.handled) {
             context.log.debug(error)
         } else {
+            commentReply.reply(`We had trouble processing your request`)
+            commentReply.reply(`Error: ${error.message}`)
             context.log.error(error)
+            throw error
         }
-        throw error
     } finally {
         await commentReply.send()
     }

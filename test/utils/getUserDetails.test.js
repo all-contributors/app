@@ -5,7 +5,7 @@ const { UserNotFoundError } = require('../../src/utils/errors')
 
 const { rejectionOf } = require('../testUtils')
 const mockUserAPIReturn = require('../../test/fixtures/users.getByUsername')
-const mockGithub = require('../../test/fixtures/mockGithub')
+const mockGithub = require('../mocks/mockGithub')
 
 describe('Get User Details', () => {
     test('gets user details when user exists', async () => {
