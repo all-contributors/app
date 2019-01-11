@@ -9,6 +9,9 @@ custom:
   appId:
     dev: '23178'
     prod: '23186'
+  botName:
+    dev: '@AllContributorsDev'
+    prod: '@AllContributorsBot'
   logLevel:
     dev: debug
     prod: debug # TODO change to info soon
@@ -23,6 +26,7 @@ provider:
   memorySize: 512
   timeout: 30
   environment:
+    BOT_NAME: ${self:custom.botName.${self:custom.stage}}
     APP_ID: ${self:custom.appId.${self:custom.stage}}
     DEBUG_LEVEL: ${self:custom.logLevel.${self:custom.stage}}
     SENTRY_DSN:  ${self:custom.sentryDsn.${self:custom.stage}}
