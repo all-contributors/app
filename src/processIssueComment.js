@@ -4,28 +4,19 @@ const OptionsConfig = require('./OptionsConfig')
 const ContentFiles = require('./ContentFiles')
 
 const getUserDetails = require('./utils/getUserDetails')
-// const parseComment = require('./parse-comment')
+const parseComment = require('./utils/parse-comment')
 
 const { GIHUB_BOT_NAME } = require('./utils/settings')
 const { AllContributorBotError } = require('./utils/errors')
 
-async function processIssueComment({ context, commentReply }) {
-    const repository = new Repository({
-        ...context.repo(),
-        github: context.github,
-    })
-    const optionsConfig = new OptionsConfig({
-        repository,
-        commentReply,
-    })
-    await optionsConfig.fetch()
-
-    // TODO parse comment and gain intentions
-    // const { who, contributions } = parseComment(commentBody)
-    // We had trouble reading your comment. Basic usage:\n\n\`@${GIHUB_BOT_NAME} please add jakebolam for code\`
-    const who = 'jakebolam'
-    const contributions = ['code']
-
+async function processAddContributor({
+    context,
+    commentReply,
+    repository,
+    optionsConfig,
+    who,
+    contributions,
+}) {
     const { name, avatar_url, profile } = await getUserDetails({
         github: context.github,
         username: who,
@@ -55,9 +46,7 @@ async function processIssueComment({ context, commentReply }) {
         title: `docs: add ${who} as a contributor`,
         body: `Adds ${who} as a contributor for ${contributions.join(
             ', ',
-        )}.\n\nThis was requested by ${commentReply.replyingToWho()} [in this comment](${
-            commentReply.replyingToWhere()
-        })`,
+        )}.\n\nThis was requested by ${commentReply.replyingToWho()} [in this comment](${commentReply.replyingToWhere()})`,
         filesByPath: filesByPathToUpdate,
         branchName: `all-contributors/add-${who}`,
     })
@@ -65,6 +54,46 @@ async function processIssueComment({ context, commentReply }) {
     commentReply.reply(
         `I've put up [a pull request](${pullRequestURL}) to add ${who}! :tada:`,
     )
+}
+
+async function processIssueComment({ context, commentReply }) {
+    const repository = new Repository({
+        ...context.repo(),
+        github: context.github,
+    })
+    const optionsConfig = new OptionsConfig({
+        repository,
+        commentReply,
+    })
+    await optionsConfig.fetch()
+
+    const commentBody = context.payload.comment.body
+    const parsedComment = parseComment(commentBody)
+    if (!parsedComment.action) {
+        commentReply.reply(`I could not determine your intention.`)
+        commentReply.reply(
+            `Basic usage: @${GIHUB_BOT_NAME} please add jakebolam for code, doc`,
+        )
+        return
+    }
+
+    if (parsedComment.action === 'add') {
+        await processAddContributor({
+            context,
+            commentReply,
+            repository,
+            optionsConfig,
+            who: parsedComment.who,
+            contributions: parsedComment.contributions,
+        })
+        return
+    }
+
+    commentReply.reply(`I'm not sure how to ${parsedComment.action}`)
+    commentReply.reply(
+        `Basic usage: @${GIHUB_BOT_NAME} please add jakebolam for code, doc`,
+    )
+    return
 }
 
 function hasMentionedBotName(context) {

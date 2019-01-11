@@ -1,41 +1,89 @@
-// const chrono = require('chrono-node')
-//
-// const matcher = /^remind @?([^\s]+)(?: to )?(.*)$/
-//
-// const parser = new chrono.Chrono()
-// parser.refiners.push(require('./lib/refiners/start-of-day'))
-//
-// const options = {
-//   forwardDate: true,
-//   startOfDay: 9
+const nlp = require('compromise')
+
+const validContributionTypes = [
+    'blog',
+    'bug',
+    'code',
+    'design',
+    'doc',
+    'eventOrganizing',
+    'example',
+    'financial',
+    'fundingFinding',
+    'ideas',
+    'infra',
+    'platform',
+    'plugin',
+    'question',
+    'review',
+    'security',
+    'talk',
+    'test',
+    'tool',
+    'translation',
+    'tutorial',
+    'userTesting',
+    'video',
+]
+
+// TODO
+// const contributionTypeMappings = {
+//     'event organizing': 'eventOrganizing',
+//     'funding finding': 'fundingFinding',
+//     'user testing': 'user testing',
 // }
-//
-// module.exports = (input, from) => {
-//   const match = input.match(matcher)
-//   if (!match) {
-//     // This doesn't look like a reminder, so bail early
-//     return null
-//   }
-//
-//   // Pull out the initial matches
-//   let [, who, what] = match
-//
-//   // Use chrono to extract the `when` from the `what`
-//   const when = parser.parse(what, from, options)
-//
-//   if (when.length < 1) {
-//     // What kind of reminder doesn't have a date?
-//     return null
-//   }
-//
-//   // Remove any time expressions from the `what`
-//   when.forEach(w => {
-//     what = what.replace(w.text, '')
-//   })
-//
-//   // Clean up whitespace and common connecting words
-//   what = what.trim()
-//   what = what.replace(/^(to|that) /, '').replace(/ on$/, '')
-//
-//   return {who, what, when: when[0].start.date()}
-// }
+
+const Contributions = {}
+
+validContributionTypes.forEach(type => {
+    Contributions[type] = 'Contribution'
+})
+
+const plugin = {
+    words: {
+        ...Contributions,
+    },
+    patterns: {
+        // 'add #person for #Contribution': 'AddContributor',
+        // "i can't (log|sign|get) in to my? #Software": 'LoginIssue'
+    },
+}
+nlp.plugin(plugin)
+
+function parseAddComment(doc, action) {
+    const who = doc.match(`${action} [.]`).data()[0].normal
+
+    // TODO: handle plurals (e.g. some said docs)
+    const contributions = doc
+        .match('#Contribution')
+        .data()
+        .map(data => {
+            // This removes whitespace, commas etc
+            return data.normal
+        })
+
+    return {
+        action: 'add',
+        who,
+        contributions,
+    }
+}
+
+function parseComment(message) {
+    const doc = nlp(message)
+
+    if (doc.verbs().data().length === 0) {
+        return {}
+    }
+
+    const action = doc.verbs().data()[0].normal
+    if (action === 'add') {
+        return parseAddComment(doc, action)
+    }
+
+    return {
+        action,
+    }
+}
+
+module.exports = parseComment
