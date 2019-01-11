@@ -51,19 +51,19 @@ async function processIssueComment({ context, commentReply }) {
         originalSha: optionsConfig.getOriginalSha(),
     }
 
-    const pullRequestNumber = await repository.createPullRequestFromFiles({
+    const pullRequestURL = await repository.createPullRequestFromFiles({
         title: `docs: add ${who} as a contributor`,
         body: `Adds ${who} as a contributor for ${contributions.join(
             ', ',
         )}.\n\nThis was requested by ${commentReply.replyingToWho()} [in this comment](${
-            commentReply.replyingToWhere
+            commentReply.replyingToWhere()
         })`,
         filesByPath: filesByPathToUpdate,
         branchName: `all-contributors/add-${who}`,
     })
 
     commentReply.reply(
-        `I've put up [a pull request](#${pullRequestNumber}) to add ${who}! :tada:`,
+        `I've put up [a pull request](${pullRequestURL}) to add ${who}! :tada:`,
     )
 }
 

@@ -124,7 +124,7 @@ class Repository {
             base: 'master',
             maintainer_can_modify: true,
         })
-        return result.data.number
+        return result.data.html_url
     }
 
     async createPullRequestFromFiles({ title, body, filesByPath, branchName }) {
@@ -135,13 +135,13 @@ class Repository {
             branchName,
         })
 
-        const pullRequestNumber = await this.createPullRequest({
+        const pullRequestURL = await this.createPullRequest({
             title,
             body,
             branchName,
         })
 
-        return pullRequestNumber
+        return pullRequestURL
     }
 }
 

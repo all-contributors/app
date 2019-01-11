@@ -52,7 +52,7 @@ class OptionsConfig {
     }
 
     getRaw() {
-        return JSON.stringify(this.options)
+        return `${JSON.stringify(this.options, null, 2)}\n`
     }
 
     getPath() {
