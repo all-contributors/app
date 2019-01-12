@@ -219,6 +219,5 @@ describe('All Contributors app - End to end', () => {
             }),
         )
         expect(error instanceof Error).toBeTruthy()
-        expect(error).toMatchSnapshot()
     })
 })

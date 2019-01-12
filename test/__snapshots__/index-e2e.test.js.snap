@@ -4,54 +4,8 @@ exports[`All Contributors app - End to end Fail path, Unknown error (e.g. Networ
 Object {
   "body": "@jakebolam 
 
-We had trouble processing your request
-
-Error: request to https://api.github.com/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc failed, reason: Nock: No match for request {
-  \\"method\\": \\"GET\\",
-  \\"url\\": \\"https://api.github.com/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc\\",
-  \\"headers\\": {
-    \\"accept\\": [
-      \\"application/vnd.github.v3+json\\"
-    ],
-    \\"user-agent\\": [
-      \\"octokit.js/16.8.0 Node.js/8.10.0 (macOS High Sierra; x64)\\"
-    ],
-    \\"authorization\\": [
-      \\"token test\\"
-    ],
-    \\"accept-encoding\\": [
-      \\"gzip,deflate\\"
-    ],
-    \\"connection\\": [
-      \\"close\\"
-    ]
-  }
-}",
+We had trouble processing your request. Please try again later.",
 }
-`;
-
-exports[`All Contributors app - End to end Fail path, Unknown error (e.g. Network is dead, service down etc, our code is bad) crashes and sends error message 2`] = `
-[HttpError: request to https://api.github.com/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc failed, reason: Nock: No match for request {
-  "method": "GET",
-  "url": "https://api.github.com/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc",
-  "headers": {
-    "accept": [
-      "application/vnd.github.v3+json"
-    ],
-    "user-agent": [
-      "octokit.js/16.8.0 Node.js/8.10.0 (macOS High Sierra; x64)"
-    ],
-    "authorization": [
-      "token test"
-    ],
-    "accept-encoding": [
-      "gzip,deflate"
-    ],
-    "connection": [
-      "close"
-    ]
-  }
-}]
 `;
 
 exports[`All Contributors app - End to end Fail path, no allcontributors file (repo needs setup) 1`] = `
