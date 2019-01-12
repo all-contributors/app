@@ -3,7 +3,9 @@ const rejectionOf = promise =>
         value => {
             throw value
         },
-        reason => reason,
+        reason => {
+            return reason
+        },
     )
 
 module.exports = {

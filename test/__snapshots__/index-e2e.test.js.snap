@@ -6,11 +6,53 @@ Object {
 
 We had trouble processing your request
 
-Error: 500",
+Error: request to https://api.github.com/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc failed, reason: Nock: No match for request {
+  \\"method\\": \\"GET\\",
+  \\"url\\": \\"https://api.github.com/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc\\",
+  \\"headers\\": {
+    \\"accept\\": [
+      \\"application/vnd.github.v3+json\\"
+    ],
+    \\"user-agent\\": [
+      \\"octokit.js/16.8.0 Node.js/8.10.0 (macOS High Sierra; x64)\\"
+    ],
+    \\"authorization\\": [
+      \\"token test\\"
+    ],
+    \\"accept-encoding\\": [
+      \\"gzip,deflate\\"
+    ],
+    \\"connection\\": [
+      \\"close\\"
+    ]
+  }
+}",
 }
 `;
 
-exports[`All Contributors app - End to end Fail path, Unknown error (e.g. Network is dead, service down etc, our code is bad) crashes and sends error message 2`] = `[HttpError]`;
+exports[`All Contributors app - End to end Fail path, Unknown error (e.g. Network is dead, service down etc, our code is bad) crashes and sends error message 2`] = `
+[HttpError: request to https://api.github.com/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc failed, reason: Nock: No match for request {
+  "method": "GET",
+  "url": "https://api.github.com/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc",
+  "headers": {
+    "accept": [
+      "application/vnd.github.v3+json"
+    ],
+    "user-agent": [
+      "octokit.js/16.8.0 Node.js/8.10.0 (macOS High Sierra; x64)"
+    ],
+    "authorization": [
+      "token test"
+    ],
+    "accept-encoding": [
+      "gzip,deflate"
+    ],
+    "connection": [
+      "close"
+    ]
+  }
+}]
+`;
 
 exports[`All Contributors app - End to end Fail path, no allcontributors file (repo needs setup) 1`] = `
 Object {
@@ -40,8 +82,45 @@ Could not find the user jakebolam on github.",
 
 exports[`All Contributors app - End to end Happy path, add correct new contributor 1`] = `
 Object {
+  "ref": "refs/heads/all-contributors/add-jakebolam",
+  "sha": "aa218f56b14c9653891f9e74264a383fa43fefbd",
+}
+`;
+
+exports[`All Contributors app - End to end Happy path, add correct new contributor 2`] = `
+Object {
+  "branch": "all-contributors/add-jakebolam",
+  "content": "IyBBbGxDb250cmlidXRvcnNCb3QKQSBib3QgZm9yIGF1dG9tYXRpY2FsbHkgYWRkaW5nIGFsbC1jb250cmlidXRvcnMuIPCfpJYKClshW0J1aWxkXShodHRwczovL2ltZy5zaGllbGRzLmlvL2NpcmNsZWNpL3Byb2plY3QvZ2l0aHViL2FsbC1jb250cmlidXRvcnMvYWxsLWNvbnRyaWJ1dG9ycy1ib3QvbWFzdGVyLnN2ZyldKGh0dHBzOi8vY2lyY2xlY2kuY29tL2doL2FsbC1jb250cmlidXRvcnMvYWxsLWNvbnRyaWJ1dG9ycy1ib3QpClshW0NvdmVyYWdlXShodHRwczovL2ltZy5zaGllbGRzLmlvL2NvZGVjb3YvYy9naXRodWIvYWxsLWNvbnRyaWJ1dG9ycy9hbGwtY29udHJpYnV0b3JzLWJvdC5zdmcpXShodHRwczovL2NvZGVjb3YuaW8vZ2l0aHViL2FsbC1jb250cmlidXRvcnMvYWxsLWNvbnRyaWJ1dG9ycy1ib3QpClshW0FsbCBDb250cmlidXRvcnNdKGh0dHBzOi8vaW1nLnNoaWVsZHMuaW8vYmFkZ2UvYWxsX2NvbnRyaWJ1dG9ycy0xLW9yYW5nZS5zdmc/c3R5bGU9ZmxhdC1zcXVhcmUpXSgjY29udHJpYnV0b3JzKQpbIVtDaGF0IG9uIFNsYWNrXShodHRwczovL2ltZy5zaGllbGRzLmlvL2JhZGdlL3NsYWNrLWpvaW4tZmY2OWI0LnN2ZyldKGh0dHBzOi8vam9pbi5zbGFjay5jb20vdC9hbGwtY29udHJpYnV0b3JzL3NoYXJlZF9pbnZpdGUvZW5RdE5URTNPRE15TVRBNE5UazBMVFV3WkRNeFpHWmtNbVZpTXpZell6azJZVE0yTmpSa1pHTTVZemMwWlRjNU5tWXpOV1kzWTJRMFpUWTNabUZoWkRneVkyRTNabUl6TldRd01UVXhabUUpCgoKIyMgSW5zdGFsbGF0aW9uCjEuIEluc3RhbGwgQXBwCjIuIFBsZWFzZSBzZXR1cCB5b3VyIGBSRUFETUUubWRgIGFuZCBgLmFsbC1jb250cmlidXRvcnNyY2AgdXNpbmcgdGhlIFthbGwtY29udHJpYnV0b3JzLWNsaSB0b29sXShodHRwczovL2dpdGh1Yi5jb20vYWxsLWNvbnRyaWJ1dG9ycy9hbGwtY29udHJpYnV0b3JzLWNsaSkKPiBJbiB0aGUgZnV0dXJlIHdlIHdhbnQgdG8gcmVtb3ZlIHRoZSBuZWVkIGZvciB0aGUgQ0xJIHRvb2wsIGlmIHlvdSB3YW50IHRvIGhlbHAgb3V0IFtzZWUgdGhlIGlzc3VlXShodHRwczovL2dpdGh1Yi5jb20vYWxsLWNvbnRyaWJ1dG9ycy9hbGwtY29udHJpYnV0b3JzLWJvdC9pc3N1ZXMvMykKCgojIyBVc2FnZQoKIyMjIEFkZGluZyBjb250cmlidXRpb25zCjEuIENvbW1lbnQgb24gSXNzdWUvUFIgZXRjIHdpdGggdGV4dDogYEBBbGxDb250cmlidXRvckJvdCBwbGVhc2UgYWRkIGpha2Vib2xhbSBmb3IgaW5mcmFzdHJ1Y3R1cmUsIHRlc3RpbmcgYW5kIGNvZGVgIChDYW4gYWxzbyB1c2UgdGhlIHNob3J0IHRlcm1zLCBmdWxsIGtleSBjb21pbmcgc29vbikKMi4gQm90IHdpbGwgbG9vayBmb3IgYC5hbGwtY29udHJpYnV0b3JzcmNgIGlmIG5vdCBmb3VuZCwgY29tbWVudHMgb24gcHIgdG8gcnVuIHNldHVwCjMuIElmIHVzZXIgZXhpc3RzLCBhZGQgbmV3IGNvbnRyaWJ1dGlvbiwgaWYgbm90IGFkZCB1c2VyIGFuZCBhZGQgY29udHJpYnV0aW9uCgoKIyMgQ29udHJpYnV0aW5nCklmIHlvdSBoYXZlIHN1Z2dlc3Rpb25zIGZvciBob3cgdGhlIEFsbENvbnRyaWJ1dG9yc0JvdCBjb3VsZCBiZSBpbXByb3ZlZCwgb3Igd2FudCB0byByZXBvcnQgYSBidWcsIFtvcGVuIGFuIGlzc3VlXShodHRwczovL2dpdGh1Yi5jb20vYWxsLWNvbnRyaWJ1dG9ycy9hbGwtY29udHJpYnV0b3JzLWJvdC9pc3N1ZXMpIQoKRm9yIG1vcmUsIGNoZWNrIG91dCB0aGUgW0NvbnRyaWJ1dGluZyBHdWlkZV0oQ09OVFJJQlVUSU5HLm1kKS4KCiMjIENvbnRyaWJ1dG9ycwoKVGhhbmtzIGdvZXMgdG8gdGhlc2Ugd29uZGVyZnVsIHBlb3BsZSAoW2Vtb2ppIGtleV0oaHR0cHM6Ly9naXRodWIuY29tL2FsbC1jb250cmlidXRvcnMvYWxsLWNvbnRyaWJ1dG9ycyNlbW9qaS1rZXkpKToKCjwhLS0gQUxMLUNPTlRSSUJVVE9SUy1MSVNUOlNUQVJUIC0gRG8gbm90IHJlbW92ZSBvciBtb2RpZnkgdGhpcyBzZWN0aW9uIC0tPgo8IS0tIHByZXR0aWVyLWlnbm9yZSAtLT4KfCBbPGltZyBzcmM9Imh0dHBzOi8vYXZhdGFyczIuZ2l0aHVidXNlcmNvbnRlbnQuY29tL3UvMzUzNDIzNj92PTQiIHdpZHRoPSIxMDBweDsiLz48YnIgLz48c3ViPjxiPkpha2UgQm9sYW08L2I+PC9zdWI+XShodHRwczovL2pha2Vib2xhbS5jb20pPGJyIC8+W/CfkrtdKGh0dHBzOi8vZ2l0aHViLmNvbS9hbGwtY29udHJpYnR1b3JzL2JvdC9jb21taXRzP2F1dGhvcj1qYWtlYm9sYW0gIkNvZGUiKSBb8J+ah10oI2luZnJhLWpha2Vib2xhbSAiSW5mcmFzdHJ1Y3R1cmUgKEhvc3RpbmcsIEJ1aWxkLVRvb2xzLCBldGMpIikgfAp8CjwhLS0gQUxMLUNPTlRSSUJVVE9SUy1MSVNUOkVORCAtLT4KClRoaXMgcHJvamVjdCBmb2xsb3dzIHRoZSBbYWxsLWNvbnRyaWJ1dG9yc10oaHR0cHM6Ly9naXRodWIuY29tL2FsbC1jb250cmlidXRvcnMvYWxsLWNvbnRyaWJ1dG9ycykgc3BlY2lmaWNhdGlvbi4gQ29udHJpYnV0aW9ucyBvZiBhbnkga2luZCB3ZWxjb21lCgojIyBMSUNFTlNFCgpbTUlUXShMSUNFTlNFKQo=",
+  "message": "docs: update README.md",
+  "sha": "bfce087f5fbed22257de1ee5056b20de63da0a13",
+}
+`;
+
+exports[`All Contributors app - End to end Happy path, add correct new contributor 3`] = `
+Object {
+  "branch": "all-contributors/add-jakebolam",
+  "content": "ewogICJwcm9qZWN0TmFtZSI6ICJib3QiLAogICJwcm9qZWN0T3duZXIiOiAiYWxsLWNvbnRyaWJ0dW9ycyIsCiAgInJlcG9UeXBlIjogImdpdGh1YiIsCiAgInJlcG9Ib3N0IjogImh0dHBzOi8vZ2l0aHViLmNvbSIsCiAgImZpbGVzIjogWwogICAgIlJFQURNRS5tZCIKICBdLAogICJpbWFnZVNpemUiOiAxMDAsCiAgImNvbW1pdCI6IGZhbHNlLAogICJjb250cmlidXRvcnMiOiBbCiAgICB7CiAgICAgICJsb2dpbiI6ICJqYWtlYm9sYW0iLAogICAgICAibmFtZSI6ICJKYWtlIEJvbGFtIiwKICAgICAgImF2YXRhcl91cmwiOiAiaHR0cHM6Ly9hdmF0YXJzMi5naXRodWJ1c2VyY29udGVudC5jb20vdS8zNTM0MjM2P3Y9NCIsCiAgICAgICJwcm9maWxlIjogImh0dHBzOi8vamFrZWJvbGFtLmNvbSIsCiAgICAgICJjb250cmlidXRpb25zIjogWwogICAgICAgICJjb2RlIiwKICAgICAgICAiaW5mcmEiCiAgICAgIF0KICAgIH0KICBdCn0K",
+  "message": "docs: update .all-contributorsrc",
+  "sha": "dff34f715bca51114c0336a49381456a926806d5",
+}
+`;
+
+exports[`All Contributors app - End to end Happy path, add correct new contributor 4`] = `
+Object {
+  "base": "master",
+  "body": "Adds jakebolam as a contributor for code, doc, infra.
+
+This was requested by jakebolam [in this comment](https://github.com/all-contributors/all-contributors-bot/pull/1#issuecomment-453012966)",
+  "head": "all-contributors/add-jakebolam",
+  "maintainer_can_modify": true,
+  "title": "docs: add jakebolam as a contributor",
+}
+`;
+
+exports[`All Contributors app - End to end Happy path, add correct new contributor 5`] = `
+Object {
   "body": "@jakebolam 
 
-I've put up [a pull request](#1) to add jakebolam! :tada:",
+I've put up [a pull request](https://github.com/all-contributors/all-contributors-bot/pull/1347) to add jakebolam! :tada:",
 }
 `;

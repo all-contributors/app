@@ -81,6 +81,8 @@ describe('Repository', () => {
             },
             branchName: 'all-contributors/add-jakebolam',
         })
-        expect(pullRequestNumber).toEqual(1347)
+        expect(pullRequestNumber).toEqual(
+            'https://github.com/all-contributors/all-contributors-bot/pull/1347',
+        )
     })
 })
