@@ -13,6 +13,28 @@ describe('parseComment', () => {
             contributions: ['doc', 'infra', 'code'],
         })
     })
+
+    test('Basic intent to add - non name username', () => {
+        expect(
+            parseComment(
+                `@${GIHUB_BOT_NAME} please add tbenning for design`,
+            ),
+        ).toEqual({
+            action: 'add',
+            who: 'tbenning',
+            contributions: ['design'],
+        })
+
+        expect(
+            parseComment(
+                `@${GIHUB_BOT_NAME} please add Rbot25_RULES for design`,
+            ),
+        ).toEqual({
+            action: 'add',
+            who: 'Rbot25_RULES',
+            contributions: ['tools'],
+        })
+    })
     //
     // test('Basic intent to add (with plurals)', () => {
     //     expect(
