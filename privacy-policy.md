@@ -43,4 +43,4 @@ I may update this privacy policy from time to time. Thus, you are advised to rev
 If you have any questions or suggestions about my Privacy Policy, do not hesitate to contact me at `jake.bolam@gmail.com`.
 
 ### Notes to users updating this policy
-This is linked to from the github marketplace for the bot
+This is linked to from the github marketplace from the bots listing page
