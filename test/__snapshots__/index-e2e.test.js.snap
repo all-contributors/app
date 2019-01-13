@@ -62,7 +62,7 @@ Object {
 exports[`All Contributors app - End to end Happy path, add correct new contributor 4`] = `
 Object {
   "base": "master",
-  "body": "Adds jakebolam as a contributor for code, doc, infra.
+  "body": "Adds @jakebolam as a contributor for code, doc, infra.
 
 This was requested by jakebolam [in this comment](https://github.com/all-contributors/all-contributors-bot/pull/1#issuecomment-453012966)",
   "head": "all-contributors/add-jakebolam",
@@ -75,6 +75,6 @@ exports[`All Contributors app - End to end Happy path, add correct new contribut
 Object {
   "body": "@jakebolam 
 
-I've put up [a pull request](https://github.com/all-contributors/all-contributors-bot/pull/1347) to add jakebolam! :tada:",
+I've put up [a pull request](https://github.com/all-contributors/all-contributors-bot/pull/1347) to add @jakebolam! :tada:",
 }
 `;
