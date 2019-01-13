@@ -45,7 +45,7 @@ async function processAddContributor({
 
     const pullRequestURL = await repository.createPullRequestFromFiles({
         title: `docs: add ${who} as a contributor`,
-        body: `Adds ${who} as a contributor for ${contributions.join(
+        body: `Adds @${who} as a contributor for ${contributions.join(
             ', ',
         )}.\n\nThis was requested by ${commentReply.replyingToWho()} [in this comment](${commentReply.replyingToWhere()})`,
         filesByPath: filesByPathToUpdate,
@@ -53,7 +53,7 @@ async function processAddContributor({
     })
 
     commentReply.reply(
-        `I've put up [a pull request](${pullRequestURL}) to add ${who}! :tada:`,
+        `I've put up [a pull request](${pullRequestURL}) to add @${who}! :tada:`,
     )
 }
 
