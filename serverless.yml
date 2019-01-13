@@ -10,8 +10,8 @@ custom:
     dev: '23178'
     prod: '23186'
   botName:
-    dev: '@AllContributorsDev'
-    prod: '@AllContributorsBot'
+    dev: 'AllContributorsDev'
+    prod: 'AllContributorsBot'
   logLevel:
     dev: debug
     prod: debug # TODO change to info soon
