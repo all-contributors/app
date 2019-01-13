@@ -7,6 +7,8 @@ A bot for automatically adding all-contributors. 🤖
 [![Chat on Slack](https://img.shields.io/badge/slack-join-ff69b4.svg)](https://join.slack.com/t/all-contributors/shared_invite/enQtNTE3ODMyMTA4NTk0LTUwZDMxZGZkMmViMzYzYzk2YTM2NjRkZGM5Yzc0ZTc5NmYzNWY3Y2Q0ZTY3ZmFhZDgyY2E3ZmIzNWQwMTUxZmE)
 
 
+[![Example usage screenshot](docs/usage.jpeg)](#Usage)
+
 ## Installation
 1. Install App
 2. Please setup your `README.md` and `.all-contributorsrc` using the [all-contributors-cli tool](https://github.com/all-contributors/all-contributors-cli)
