@@ -1,13 +1,13 @@
 # AllContributorsBot
-A bot for automatically adding all-contributors. 🤖
 
 [![Build](https://img.shields.io/circleci/project/github/all-contributors/all-contributors-bot/master.svg)](https://circleci.com/gh/all-contributors/all-contributors-bot)
 [![Coverage](https://img.shields.io/codecov/c/github/all-contributors/all-contributors-bot.svg)](https://codecov.io/github/all-contributors/all-contributors-bot)
 [![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg)](#contributors)
 [![Chat on Slack](https://img.shields.io/badge/slack-join-ff69b4.svg)](https://join.slack.com/t/all-contributors/shared_invite/enQtNTE3ODMyMTA4NTk0LTUwZDMxZGZkMmViMzYzYzk2YTM2NjRkZGM5Yzc0ZTc5NmYzNWY3Y2Q0ZTY3ZmFhZDgyY2E3ZmIzNWQwMTUxZmE)
 
+A bot for automatically adding all-contributors. 🤖
 
-[![Example usage screenshot](docs/usage.jpeg)](#Usage)
+<a href="#Usage"><img alt="Example usage screenshot" src="docs/usage.jpeg" width="500px"></a>
 
 ## Installation
 1. Install App
