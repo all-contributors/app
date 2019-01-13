@@ -42,6 +42,7 @@ validContributionTypes.forEach(type => {
 const plugin = {
     words: {
         ...Contributions,
+        add: 'Action',
     },
     patterns: {
         // 'add #person for #Contribution': 'AddContributor',
@@ -51,7 +52,23 @@ const plugin = {
 nlp.plugin(plugin)
 
 function parseAddComment(doc, action) {
-    const who = doc.match(`${action} [.]`).data()[0].normal
+    const who = doc
+        .match(`${action} [.]`)
+        .normalize({
+            whitespace: true, // remove hyphens, newlines, and force one space between words
+            case: false, // keep only first-word, and 'entity' titlecasing
+            numbers: false, // turn 'seven' to '7'
+            punctuation: true, // remove commas, semicolons - but keep sentence-ending punctuation
+            unicode: false, // visually romanize/anglicize 'Björk' into 'Bjork'.
+            contractions: false, // turn "isn't" to "is not"
+            acronyms: false, //remove periods from acronyms, like 'F.B.I.'
+            parentheses: false, //remove words inside brackets (like these)
+            possessives: false, // turn "Google's tax return" to "Google tax return"
+            plurals: false, // turn "batmobiles" into "batmobile"
+            verbs: false, // turn all verbs into Infinitive form - "I walked" → "I walk"
+            honorifics: false, //turn 'Vice Admiral John Smith' to 'John Smith'
+        })
+        .data()[0].text
 
     // TODO: handle plurals (e.g. some said docs)
     const contributions = doc
@@ -72,17 +89,17 @@ function parseAddComment(doc, action) {
 function parseComment(message) {
     const doc = nlp(message)
 
-    if (doc.verbs().data().length === 0) {
-        return {}
-    }
+    const action = doc
+        .match('#Action')
+        .normalize()
+        .out('string')
 
-    const action = doc.verbs().data()[0].normal
     if (action === 'add') {
         return parseAddComment(doc, action)
     }
 
     return {
-        action,
+        action: false,
     }
 }
 

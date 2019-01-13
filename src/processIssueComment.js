@@ -6,6 +6,7 @@ const ContentFiles = require('./ContentFiles')
 const getUserDetails = require('./utils/getUserDetails')
 const parseComment = require('./utils/parse-comment')
 
+const isMessageForBot = require('./utils/isMessageForBot')
 const { GIHUB_BOT_NAME } = require('./utils/settings')
 const { AllContributorBotError } = require('./utils/errors')
 
@@ -69,13 +70,6 @@ async function processIssueComment({ context, commentReply }) {
 
     const commentBody = context.payload.comment.body
     const parsedComment = parseComment(commentBody)
-    if (!parsedComment.action) {
-        commentReply.reply(`I could not determine your intention.`)
-        commentReply.reply(
-            `Basic usage: @${GIHUB_BOT_NAME} please add jakebolam for code, doc`,
-        )
-        return
-    }
 
     if (parsedComment.action === 'add') {
         await processAddContributor({
@@ -89,17 +83,14 @@ async function processIssueComment({ context, commentReply }) {
         return
     }
 
-    commentReply.reply(`I'm not sure how to ${parsedComment.action}`)
+    commentReply.reply(`I could not determine your intention.`)
     commentReply.reply(
-        `Basic usage: @${GIHUB_BOT_NAME} please add jakebolam for code, doc`,
+        `Basic usage: @${GIHUB_BOT_NAME} please add jakebolam for code, doc and infra`,
+    )
+    commentReply(
+        `For other usage see the [documentation](https://github.com/all-contributors/all-contributors-bot#usage)`,
     )
     return
-}
-
-function hasMentionedBotName(context) {
-    const commentBody = context.payload.comment.body
-    const hasMentionedBotName = commentBody.includes(GIHUB_BOT_NAME)
-    return hasMentionedBotName
 }
 
 async function processIssueCommentSafe({ context }) {
@@ -108,7 +99,8 @@ async function processIssueCommentSafe({ context }) {
         return
     }
 
-    if (!hasMentionedBotName(context)) {
+    const commentBody = context.payload.comment.body
+    if (!isMessageForBot(commentBody)) {
         context.log.debug('Message not for us, exiting')
         return
     }
