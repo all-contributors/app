@@ -20,3 +20,19 @@ Ideas not as issues yet:
 - If the bot has an open pull request, don't open another one?
 - How do we handle failure modes?
 - Should we switch to typescript?
+
+
+
+### Testing serverless locally
+`yarn add serverless-dotenv-plugin`
+
+in `serverless.yml` plugins add:
+`- serverless-dotenv-plugin`
+
+
+Create file test-file.json with payload
+```
+curl -vX POST http://localhost:3000/ -d @test-payload.json \
+--header "Content-Type: application/json" \
+--header "X-GitHub-Event: issue_comment"
+```

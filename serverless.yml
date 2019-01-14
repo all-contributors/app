@@ -7,14 +7,14 @@ plugins:
 custom:
   stage: ${opt:stage, self:provider.stage}
   appId:
-    dev: '23178'
+    dev: '23544'
     prod: '23186'
   botName:
-    dev: 'AllContributorsDev'
+    dev: 'AllContributorsDevBot'
     prod: 'AllContributorsBot'
   logLevel:
     dev: debug
-    prod: debug # TODO change to info soon
+    prod: info
   sentryDsn:
     dev: ''
     prod: 'https://e950ab524cde4682a740c218c15a461d@sentry.io/1366866'
@@ -28,7 +28,7 @@ provider:
   environment:
     BOT_NAME: ${self:custom.botName.${self:custom.stage}}
     APP_ID: ${self:custom.appId.${self:custom.stage}}
-    DEBUG_LEVEL: ${self:custom.logLevel.${self:custom.stage}}
+    LOG_LEVEL: ${self:custom.logLevel.${self:custom.stage}}
     SENTRY_DSN:  ${self:custom.sentryDsn.${self:custom.stage}}
     DISABLE_STATS: true
     INSTALLATION_TOKEN_TTL: 3540
