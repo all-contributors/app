@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ContentFiles Add's new contributor 1`] = `
+Object {
+  "contributors": Array [
+    Object {
+      "avatar_url": "https://avatars2.githubusercontent.com/u/3534236?v=4",
+      "contributions": Array [
+        "code",
+        "ideas",
+        "infra",
+        "test",
+      ],
+      "login": "jakebolam",
+      "name": "Jake Bolam",
+      "profile": "https://jakebolam.com",
+    },
+    Object {
+      "avatar_url": "https://tylerbenning.com/profile.png",
+      "contributions": Array [
+        "design",
+      ],
+      "login": "tbenning",
+      "name": "Tyler Benning",
+      "profile": "https://tylerbenning.com",
+    },
+  ],
+}
+`;
