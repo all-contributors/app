@@ -6,29 +6,21 @@ const AllContributorBotError = require('../utils/errors')
  *  Fetches, stores, generates, and updates the readme content files for the contributors list
  */
 class ContentFiles {
-    constructor({ context, repository }) {
-        this.context = context
+    constructor({ repository }) {
         this.repository = repository
         this.contentFilesByPath = null
     }
 
     async fetch(optionsConfig) {
         const options = optionsConfig.get()
-        if (Array.isArray(options.files)) {
-            if (options.files.length > 5) {
-                throw new AllContributorBotError(
-                    `Your .all-contributorsrc cannot contain more than 5 files.`,
-                )
-            }
-
-            this.contentFilesByPath = await this.repository.getMultipleFiles(
-                options.files,
+        if (options.files.length > 5) {
+            throw new AllContributorBotError(
+                `Your .all-contributorsrc cannot contain more than 5 files.`,
             )
-        } else {
-            this.contentFilesByPath = await this.repository.getMultipleFiles([
-                'README.md',
-            ])
         }
+        this.contentFilesByPath = await this.repository.getMultipleFiles(
+            options.files,
+        )
     }
 
     async generate(optionsConfig) {
