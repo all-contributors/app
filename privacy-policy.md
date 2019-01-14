@@ -16,7 +16,7 @@ When installing the the app you grant it access to the following three scopes
 
 2. **Read & write access to [issues](https://developer.github.com/v3/apps/permissions/#permission-on-issues)**
 
-   The app responds to comments on issues/pull-reuqests when a user types `@AllContributorsBot` the write perimission is required for this behaviour.
+   The app responds to comments on issues/pull-reuqests when a user types `@all-contributors` the write perimission is required for this behaviour.
 
 3. **Read & write access to [contents](https://developer.github.com/v3/apps/permissions/#permission-on-contents)**
 

@@ -11,7 +11,7 @@ custom:
     prod: '23186'
   botName:
     dev: 'AllContributorsDevBot'
-    prod: 'AllContributorsBot'
+    prod: 'all-contributors'
   logLevel:
     dev: debug
     prod: info
