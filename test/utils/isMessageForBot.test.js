@@ -15,13 +15,6 @@ describe('isMessageForBot', () => {
                 `@allcontributors[bot] please add jakebolam for doc, infra and code`,
             ),
         ).toBe(true)
-
-        // TODO: Legacy phase this one out
-        expect(
-            isMessageForBot(
-                `@AllContributorsBot please add jakebolam for doc, infra and code`,
-            ),
-        ).toBe(true)
     })
 
     test('Not for us', () => {
