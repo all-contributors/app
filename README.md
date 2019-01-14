@@ -10,9 +10,9 @@ A bot for automatically adding all-contributors. 🤖
 <a href="#Usage"><img alt="Example usage screenshot" src="docs/usage.png" width="500px"></a>
 
 ## Installation
-1. Install App
-2. Please setup your `README.md` and `.all-contributorsrc` using the [all-contributors-cli tool](https://github.com/all-contributors/all-contributors-cli)
-> In the future we want to remove the need for the CLI tool, if you want to help out [see issue #3](https://github.com/all-contributors/all-contributors-bot/issues/3)
+1. [Install the GitHub App](https://github.com/apps/allcontributors)
+2. Setup your `README.md` and `.all-contributorsrc` using the [all-contributors-cli tool](https://github.com/all-contributors/all-contributors-cli)
+> In the future we want to remove the need for this setup with the CLI tool, if you want to help out [see issue #3](https://github.com/all-contributors/all-contributors-bot/issues/3)
 
 
 ## Usage
