@@ -48,7 +48,14 @@ class OptionsConfig {
     }
 
     get() {
-        return this.options
+        const options = this.options
+        if (!Array.isArray(options.files)) {
+            options.files = ['README.md']
+        }
+        if (!Number.isInteger(options.contributorsPerLine)) {
+            options.contributorsPerLine = 7
+        }
+        return options
     }
 
     getRaw() {

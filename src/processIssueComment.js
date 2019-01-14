@@ -32,7 +32,6 @@ async function processAddContributor({
     })
 
     const contentFiles = new ContentFiles({
-        context,
         repository,
     })
     await contentFiles.fetch(optionsConfig)
