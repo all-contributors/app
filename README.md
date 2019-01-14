@@ -7,7 +7,7 @@
 
 A bot for automatically adding all-contributors. 🤖
 
-<a href="#Usage"><img alt="Example usage screenshot" src="docs/usage.jpeg" width="500px"></a>
+<a href="#Usage"><img alt="Example usage screenshot" src="docs/usage.png" width="500px"></a>
 
 ## Installation
 1. Install App
@@ -18,7 +18,7 @@ A bot for automatically adding all-contributors. 🤖
 ## Usage
 
 ### Adding contributions
-1. Comment on Issue/PR etc with text: `@all-contributors please add jakebolam for infrastructure, testing and code` (Can also use the short terms, full key coming soon)
+1. Comment on Issue/PR etc with text: `@all-contributors please add jakebolam for infra, test and code` (Full words coming soon, see #30)
 2. Bot will look for `.all-contributorsrc` if not found, comments on pr to run setup
 3. If user exists, add new contribution, if not add user and add contribution
 
