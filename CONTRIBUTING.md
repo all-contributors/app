@@ -36,3 +36,8 @@ curl -vX POST http://localhost:3000/ -d @test-payload.json \
 --header "Content-Type: application/json" \
 --header "X-GitHub-Event: issue_comment"
 ```
+
+
+## Monitoring:
+Sentry: https://sentry.io/all-contributors/github-bot/
+AWS Lambda: https://console.aws.amazon.com/lambda/home?region=us-east-1#/functions/all-contributors-bot-prod-githubWebhook?tab=monitoring
