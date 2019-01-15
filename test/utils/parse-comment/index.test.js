@@ -58,11 +58,11 @@ describe('parseComment', () => {
     test('Support adding people with mentions', () => {
         expect(
             parseComment(
-                `@${testBotName} please add @jakebolam for infrastructure`,
+                `@${testBotName} please add @sinchang for infrastructure`,
             ),
         ).toEqual({
             action: 'add',
-            who: 'jakebolam',
+            who: 'sinchang',
             contributions: ['infra'],
         })
     })
