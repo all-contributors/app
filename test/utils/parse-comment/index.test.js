@@ -69,13 +69,13 @@ describe('parseComment', () => {
     //     })
 
     //
-    // test('Basic intent to add (with plurals)', () => {
-    //     expect(
-    //         parseComment(`@${testBotName} please add dat2 for docs`),
-    //     ).toEqual({
-    //         action: 'add',
-    //         who: 'dat2',
-    //         contributions: ['doc'],
-    //     })
-    // })
+    test('Basic intent to add (with plurals)', () => {
+        expect(
+            parseComment(`@${testBotName} please add dat2 for docs`),
+        ).toEqual({
+            action: 'add',
+            who: 'dat2',
+            contributions: ['doc'],
+        })
+    })
 })
