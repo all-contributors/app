@@ -46,15 +46,15 @@ describe('parseComment', () => {
     test('Support full words (like infrastructure)', () => {
         expect(
             parseComment(
-                `@${testBotName} please add jakebolam for infrastructure, documentation, user testing`,
+                `@${testBotName} please add jakebolam for infrastructure, documentation`,
             ),
         ).toEqual({
             action: 'add',
             who: 'jakebolam',
-            contributions: ['infra', 'doc', 'userTesting'],
+            contributions: ['infra', 'doc'],
         })
     })
-    
+
     test('Support split words (like user testing)', () => {
         expect(
             parseComment(
@@ -63,7 +63,7 @@ describe('parseComment', () => {
         ).toEqual({
             action: 'add',
             who: 'jakebolam',
-            contributions: ['infra', 'userTEsting'],
+            contributions: ['infra', 'userTesting'],
         })
     })
 
