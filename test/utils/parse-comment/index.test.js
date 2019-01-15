@@ -56,17 +56,17 @@ describe('parseComment', () => {
     })
 
     // TODO: make it so this works
-//     test('Support split words (like user testing)', () => {
-//         expect(
-//             parseComment(
-//                 `@${testBotName} please add jakebolam for infrastructure, user testing`,
-//             ),
-//         ).toEqual({
-//             action: 'add',
-//             who: 'jakebolam',
-//             contributions: ['infra', 'userTesting'],
-//         })
-//     })
+    //     test('Support split words (like user testing)', () => {
+    //         expect(
+    //             parseComment(
+    //                 `@${testBotName} please add jakebolam for infrastructure, user testing`,
+    //             ),
+    //         ).toEqual({
+    //             action: 'add',
+    //             who: 'jakebolam',
+    //             contributions: ['infra', 'userTesting'],
+    //         })
+    //     })
 
     //
     // test('Basic intent to add (with plurals)', () => {
