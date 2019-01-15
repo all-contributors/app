@@ -62,7 +62,7 @@ describe('ContentFiles', () => {
         contentFiles.contentFilesByPath = {
             'README.md': {
                 content: mockTestFileContentNoTable,
-                sha: mockSha
+                sha: mockSha,
             },
         }
 
@@ -105,7 +105,6 @@ describe('ContentFiles', () => {
             },
         }
         contentFiles.generate(mockOptionsConfig2)
-
 
         const readme2 = contentFiles.get()['README.md']
         expect(readme2.content).toMatchSnapshot()
