@@ -106,6 +106,83 @@ describe('All Contributors app - End to end', () => {
         })
     })
 
+    test('Happy path, add correct new contributor, no allcontributors file (repo needs init first)', async () => {
+        jest.setTimeout(10000)
+
+        nock('https://api.github.com')
+            .post('/app/installations/11111/access_tokens')
+            .reply(200, { token: 'test' })
+
+        nock('https://api.github.com')
+            .get(
+                '/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc',
+            )
+            .reply(404)
+
+        nock('https://api.github.com')
+            .get('/users/jakebolam')
+            .reply(200, usersGetByUsernameJakeBolamdata)
+
+        nock('https://api.github.com')
+            .get(
+                '/repos/all-contributors/all-contributors-bot/contents/README.md',
+            )
+            .reply(200, reposGetContentsREADMEMDdata)
+
+        nock('https://api.github.com')
+            .get(
+                `/repos/all-contributors/all-contributors-bot/git/refs/heads/master`,
+            )
+            .reply(200, gitGetRefdata)
+
+        nock('https://api.github.com')
+            .post(
+                `/repos/all-contributors/all-contributors-bot/git/refs`,
+                verifyBody,
+            )
+            .reply(201, gitCreateRefdata)
+
+        nock('https://api.github.com')
+            .put(
+                `/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc`,
+                verifyBody,
+            )
+            .reply(201, reposUpdateFiledata)
+
+        nock('https://api.github.com')
+            .put(
+                `/repos/all-contributors/all-contributors-bot/contents/README.md`,
+                verifyBody,
+            )
+            .reply(200, reposUpdateFiledata)
+
+        nock('https://api.github.com')
+            .put(
+                `/repos/all-contributors/all-contributors-bot/contents//nested-folder/SOME-DOC.md`,
+                verifyBody,
+            )
+            .reply(200, reposUpdateFiledata)
+
+        nock('https://api.github.com')
+            .post(
+                `/repos/all-contributors/all-contributors-bot/pulls`,
+                verifyBody,
+            )
+            .reply(201, pullsCreatedata)
+
+        nock('https://api.github.com')
+            .post(
+                '/repos/all-contributors/all-contributors-bot/issues/1/comments',
+                verifyBody,
+            )
+            .reply(200)
+
+        await probot.receive({
+            name: 'issue_comment',
+            payload: issue_commentCreatedPayload,
+        })
+    })
+
     test('Fail path, no readme file (configuration error)', async () => {
         nock('https://api.github.com')
             .post('/app/installations/11111/access_tokens')
@@ -153,30 +230,6 @@ describe('All Contributors app - End to end', () => {
 
         nock('https://api.github.com')
             .get('/users/jakebolam')
-            .reply(404)
-
-        nock('https://api.github.com')
-            .post(
-                '/repos/all-contributors/all-contributors-bot/issues/1/comments',
-                verifyBody,
-            )
-            .reply(200)
-
-        await probot.receive({
-            name: 'issue_comment',
-            payload: issue_commentCreatedPayload,
-        })
-    })
-
-    test('Fail path, no allcontributors file (repo needs setup)', async () => {
-        nock('https://api.github.com')
-            .post('/app/installations/11111/access_tokens')
-            .reply(200, { token: 'test' })
-
-        nock('https://api.github.com')
-            .get(
-                '/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc',
-            )
             .reply(404)
 
         nock('https://api.github.com')

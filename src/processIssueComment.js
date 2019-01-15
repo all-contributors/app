@@ -8,7 +8,10 @@ const parseComment = require('./utils/parse-comment')
 
 const isMessageForBot = require('./utils/isMessageForBot')
 const { GIHUB_BOT_NAME } = require('./utils/settings')
-const { AllContributorBotError } = require('./utils/errors')
+const {
+    AllContributorBotError,
+    ResourceNotFoundError,
+} = require('./utils/errors')
 
 async function processAddContributor({
     context,
@@ -35,7 +38,10 @@ async function processAddContributor({
         repository,
     })
     await contentFiles.fetch(optionsConfig)
-    await contentFiles.generate(optionsConfig)
+    if (optionsConfig.getOriginalSha() === undefined) {
+        contentFiles.init()
+    }
+    contentFiles.generate(optionsConfig)
     const filesByPathToUpdate = contentFiles.get()
     filesByPathToUpdate[optionsConfig.getPath()] = {
         content: optionsConfig.getRaw(),
@@ -65,7 +71,15 @@ async function processIssueComment({ context, commentReply }) {
         repository,
         commentReply,
     })
-    await optionsConfig.fetch()
+    try {
+        await optionsConfig.fetch()
+    } catch (error) {
+        if (error instanceof ResourceNotFoundError) {
+            optionsConfig.init()
+        } else {
+            throw error
+        }
+    }
 
     const commentBody = context.payload.comment.body
     const parsedComment = parseComment(commentBody)
@@ -111,7 +125,7 @@ async function processIssueCommentSafe({ context }) {
         if (error.handled) {
             context.log.debug(error)
         } else if (error instanceof AllContributorBotError) {
-            context.log.error(error)
+            context.log.info(error)
             commentReply.reply(error.message)
         } else {
             context.log.error(error)

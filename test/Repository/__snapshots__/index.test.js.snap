@@ -1,5 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Repository create new file 1`] = `
+Object {
+  "branch": "all-contributors/add-jakebolam",
+  "content": "SGVsbG8gV29ybGQ=",
+  "message": "docs: create notes/hello.txt",
+}
+`;
+
 exports[`Repository createPullRequest with files 1`] = `
 Object {
   "ref": "refs/heads/all-contributors/add-jakebolam",
