@@ -6,11 +6,11 @@ const AllContributorBotError = require('../utils/errors')
 function modifyFiles({ contentFilesByPath, fileContentModifierFunction }) {
     const newFilesByPath = {}
     Object.entries(contentFilesByPath).forEach(
-        ([filePath, { content, sha }]) => {
+        ([filePath, { content, sha, originalSha }]) => {
             const newFileContents = fileContentModifierFunction(content)
             newFilesByPath[filePath] = {
                 content: newFileContents,
-                originalSha: sha,
+                originalSha: sha || originalSha,
             }
         },
     )

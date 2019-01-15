@@ -58,9 +58,11 @@ describe('ContentFiles', () => {
         const contentFiles = new ContentFiles({
             repository: mockRepository,
         })
+        const mockSha = 'mock sha right here yo'
         contentFiles.contentFilesByPath = {
             'README.md': {
                 content: mockTestFileContentNoTable,
+                sha: mockSha,
             },
         }
 
@@ -73,6 +75,39 @@ describe('ContentFiles', () => {
         }
         contentFiles.init(mockOptionsConfig)
 
-        expect(contentFiles.get()['README.md'].content).toMatchSnapshot()
+        const readme = contentFiles.get()['README.md']
+        expect(readme.content).toMatchSnapshot()
+        expect(readme.originalSha).toEqual(mockSha)
+
+        const mockOptionsConfig2 = {
+            get: function() {
+                return {
+                    contributorsPerLine: 7,
+                    contributors: [
+                        {
+                            login: 'jakebolam',
+                            name: 'Jake Bolam',
+                            avatar_url:
+                                'https://avatars2.githubusercontent.com/u/3534236?v=4',
+                            profile: 'https://jakebolam.com',
+                            contributions: ['code', 'ideas', 'infra', 'test'],
+                        },
+                        {
+                            login: 'tbenning',
+                            name: 'tbenning',
+                            avatar_url:
+                                'https://avatars2.githubusercontent.com/u/7265547?v=4',
+                            profile: 'https://github.com/tbenning',
+                            contributions: ['design'],
+                        },
+                    ],
+                }
+            },
+        }
+        contentFiles.generate(mockOptionsConfig2)
+
+        const readme2 = contentFiles.get()['README.md']
+        expect(readme2.content).toMatchSnapshot()
+        expect(readme2.originalSha).toEqual(mockSha)
     })
 })
