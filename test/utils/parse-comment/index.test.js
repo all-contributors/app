@@ -42,6 +42,32 @@ describe('parseComment', () => {
             action: false,
         })
     })
+
+    test('Support full words (like infrastructure)', () => {
+        expect(
+            parseComment(
+                `@${testBotName} please add jakebolam for infrastructure, documentation`,
+            ),
+        ).toEqual({
+            action: 'add',
+            who: 'jakebolam',
+            contributions: ['infra', 'doc'],
+        })
+    })
+
+    // TODO: make it so this works
+    //     test('Support split words (like user testing)', () => {
+    //         expect(
+    //             parseComment(
+    //                 `@${testBotName} please add jakebolam for infrastructure, user testing`,
+    //             ),
+    //         ).toEqual({
+    //             action: 'add',
+    //             who: 'jakebolam',
+    //             contributions: ['infra', 'userTesting'],
+    //         })
+    //     })
+
     //
     // test('Basic intent to add (with plurals)', () => {
     //     expect(
