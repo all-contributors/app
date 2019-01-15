@@ -24,6 +24,7 @@ const validContributionTypes = [
     'tutorial',
     'userTesting',
     'video',
+    //@TODO add maintenance once https://github.com/all-contributors/all-contributors-cli/pull/142 is merged
 ]
 
 const contributionTypeMappings = {
@@ -32,6 +33,7 @@ const contributionTypeMappings = {
     'user testing': 'userTesting',
     documentation: 'doc',
     infrastructure: 'infra',
+    testing: 'test',
 }
 
 const Contributions = {}
@@ -79,18 +81,20 @@ function parseAddComment(doc, action) {
 
     // TODO: handle plurals (e.g. some said docs)
     let contributions = doc
-        .match('#Contribution')
+        .normalize({ plurals: true })
+        .words()
+        // .match('#Contribution')
+        .slice(5)
         .data()
         .map(data => {
             // This removes whitespace, commas etc
-            return data.normal
+            let type = data.normal
+            if (type === 'tests') type = 'test'
+            if (contributionTypeMappings[type])
+                return contributionTypeMappings[type]
+            return type
         })
-
-    contributions = contributions.map(type => {
-        if (contributionTypeMappings[type])
-            return contributionTypeMappings[type]
-        return type
-    })
+        .filter(data => data !== 'and')
 
     return {
         action: 'add',
