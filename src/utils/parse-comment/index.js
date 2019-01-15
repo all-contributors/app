@@ -79,7 +79,6 @@ function parseAddComment(doc, action) {
 
     const who = whoMatched.startsWith('@') ? whoMatched.substr(1) : whoMatched
 
-    // TODO: handle plurals (e.g. some said docs)
     let contributions = doc
         .normalize({ plurals: true })
         .words()
