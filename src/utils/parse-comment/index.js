@@ -6,14 +6,12 @@ const validContributionTypes = [
     'code',
     'design',
     'doc',
-    'documentation',
     'eventOrganizing',
     'example',
     'financial',
     'fundingFinding',
     'ideas',
     'infra',
-    'infrastructure',
     'platform',
     'plugin',
     'question',
@@ -29,6 +27,9 @@ const validContributionTypes = [
 ]
 
 const contributionTypeMappings = {
+    'event organizing': 'eventOrganizing',
+    'funding finding': 'fundingFinding',
+    'user testing': 'userTesting',
     documentation: 'doc',
     infrastructure: 'infra',
 }
@@ -37,6 +38,10 @@ const Contributions = {}
 
 validContributionTypes.forEach(type => {
     Contributions[type] = 'Contribution'
+})
+
+Object.keys(contributionTypeMappings).forEach(type => {
+    Contributions[`${type}`] = 'Contribution'
 })
 
 const plugin = {
