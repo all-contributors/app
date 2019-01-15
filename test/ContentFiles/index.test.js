@@ -9,8 +9,12 @@ describe('ContentFiles', () => {
         path.join(__dirname, 'test-readme-file.md'),
         'utf8',
     )
+    const mockTestFileContentNoTable = fs.readFileSync(
+        path.join(__dirname, 'test-readme-file-no-table.md'),
+        'utf8',
+    )
 
-    test(`Add's new contributor`, async () => {
+    test(`Add's new contributor`, () => {
         const contentFiles = new ContentFiles({
             repository: mockRepository,
         })
@@ -45,7 +49,29 @@ describe('ContentFiles', () => {
                 }
             },
         }
-        await contentFiles.generate(mockOptionsConfig)
+        contentFiles.generate(mockOptionsConfig)
+
+        expect(contentFiles.get()['README.md'].content).toMatchSnapshot()
+    })
+
+    test(`Init content`, () => {
+        const contentFiles = new ContentFiles({
+            repository: mockRepository,
+        })
+        contentFiles.contentFilesByPath = {
+            'README.md': {
+                content: mockTestFileContentNoTable,
+            },
+        }
+
+        const mockOptionsConfig = {
+            get: function() {
+                return {
+                    contributorsPerLine: 7,
+                }
+            },
+        }
+        contentFiles.init(mockOptionsConfig)
 
         expect(contentFiles.get()['README.md'].content).toMatchSnapshot()
     })

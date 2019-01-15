@@ -97,12 +97,38 @@ class Repository {
         })
     }
 
-    async updateFiles({ filesByPath, branchName }) {
-        // TODO: can probably optimise this instead of sending a request per file
+    async createFile({ filePath, content, branchName }) {
+        const contentBinary = Buffer.from(content).toString('base64')
+
+        //octokit.github.io/rest.js/#api-Repos-createFile
+        await this.github.repos.createFile({
+            owner: this.owner,
+            repo: this.repo,
+            path: filePath,
+            message: `docs: create ${filePath}`,
+            content: contentBinary,
+            branch: branchName,
+        })
+    }
+
+    async createOrUpdateFile({ filePath, content, branchName, originalSha }) {
+        if (originalSha === undefined) {
+            await this.createFile({ filePath, content, branchName })
+        } else {
+            await this.updateFile({
+                filePath,
+                content,
+                branchName,
+                originalSha,
+            })
+        }
+    }
+
+    async createOrUpdateFiles({ filesByPath, branchName }) {
         const repository = this
-        const updateFilesMultiple = Object.entries(filesByPath).map(
+        const createOrUpdateFilesMultiple = Object.entries(filesByPath).map(
             ([filePath, { content, originalSha }]) => {
-                return repository.updateFile({
+                return repository.createOrUpdateFile({
                     filePath,
                     content,
                     branchName,
@@ -111,7 +137,7 @@ class Repository {
             },
         )
 
-        await Promise.all(updateFilesMultiple)
+        await Promise.all(createOrUpdateFilesMultiple)
     }
 
     async createPullRequest({ title, body, branchName }) {
@@ -130,7 +156,7 @@ class Repository {
     async createPullRequestFromFiles({ title, body, filesByPath, branchName }) {
         await this.createBranch(branchName)
 
-        await this.updateFiles({
+        await this.createOrUpdateFiles({
             filesByPath,
             branchName,
         })

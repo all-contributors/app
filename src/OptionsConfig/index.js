@@ -2,8 +2,6 @@ const ALL_CONTRIBUTORS_RC = '.all-contributorsrc'
 
 const { addContributorWithDetails } = require('all-contributors-cli')
 
-const { ResourceNotFoundError } = require('../utils/errors')
-
 class OptionsConfig {
     constructor({ repository, commentReply }) {
         this.repository = repository
@@ -13,37 +11,40 @@ class OptionsConfig {
     }
 
     async fetch() {
+        const {
+            content: rawOptionsFileContent,
+            sha,
+        } = await this.repository.getFile(ALL_CONTRIBUTORS_RC)
+        this.originalOptionsSha = sha
         try {
-            const {
-                content: rawOptionsFileContent,
-                sha,
-            } = await this.repository.getFile(ALL_CONTRIBUTORS_RC)
-            this.originalOptionsSha = sha
-            try {
-                const optionsConfig = JSON.parse(rawOptionsFileContent)
-                this.options = optionsConfig
-                return optionsConfig
-            } catch (error) {
-                if (error instanceof SyntaxError) {
-                    this.commentReply.reply(
-                        `This project's configuration file has malformed JSON: ${ALL_CONTRIBUTORS_RC}. Error:: ${
-                            error.message
-                        }`,
-                    )
-                    error.handled = true
-                }
-                throw error
-            }
+            const optionsConfig = JSON.parse(rawOptionsFileContent)
+            this.options = optionsConfig
+            return optionsConfig
         } catch (error) {
-            if (error instanceof ResourceNotFoundError) {
-                this.commentReply
-                    .reply(`This project is not yet setup for [all-contributors](https://github.com/all-contributors/all-contributors).\n
-    You will need to first setup [${
-        this.repository.repo
-    }](https://github.com/${this.repository.getFullname()}) using the [all-contributors-cli](https://github.com/all-contributors/all-contributors-cli) tool.`)
+            if (error instanceof SyntaxError) {
+                this.commentReply.reply(
+                    `This project's configuration file has malformed JSON: ${ALL_CONTRIBUTORS_RC}. Error:: ${
+                        error.message
+                    }`,
+                )
                 error.handled = true
             }
             throw error
+        }
+    }
+
+    init() {
+        const { repo, owner } = this.repository
+        this.options = {
+            projectName: repo,
+            projectOwner: owner,
+            repoType: 'github',
+            repoHost: 'https://github.com',
+            files: ['README.md'],
+            imageSize: 100,
+            commit: false,
+            contributors: [],
+            contributorsPerLine: 7,
         }
     }
 

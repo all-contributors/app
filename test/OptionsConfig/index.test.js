@@ -1,7 +1,10 @@
 const OptionsConfig = require('../../src/OptionsConfig')
 
 describe('ContentFiles', () => {
-    const mockRepository = {}
+    const mockRepository = {
+        repo: 'all-contributors-bot-test',
+        owner: 'all-contributors',
+    }
     const mockCommentReply = {}
 
     test(`Add's new contributor`, async () => {
@@ -72,6 +75,29 @@ describe('ContentFiles', () => {
                     contributions: ['code', 'ideas', 'infra', 'test', 'doc'],
                 },
             ],
+        })
+    })
+
+    test(`Inits the contributor file`, () => {
+        const optionsConfig = new OptionsConfig({
+            repository: mockRepository,
+            commentReply: mockCommentReply,
+        })
+
+        expect(optionsConfig.options).toBeUndefined()
+
+        optionsConfig.init()
+
+        expect(optionsConfig.options).toEqual({
+            projectName: mockRepository.repo,
+            projectOwner: mockRepository.owner,
+            repoType: 'github',
+            repoHost: 'https://github.com',
+            files: ['README.md'],
+            imageSize: 100,
+            commit: false,
+            contributors: [],
+            contributorsPerLine: 7,
         })
     })
 })

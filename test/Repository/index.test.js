@@ -15,12 +15,27 @@ describe('Repository', () => {
         github: mockGithub,
     })
 
-    test('createPullRequest with files', async () => {
-        const verifyBody = body => {
-            expect(body).toMatchSnapshot()
-            return true
-        }
+    const verifyBody = body => {
+        expect(body).toMatchSnapshot()
+        return true
+    }
 
+    test('create new file', async () => {
+        nock('https://api.github.com')
+            .put(
+                `/repos/all-contributors/all-contributors-bot/contents/notes/hello.txt`,
+                verifyBody,
+            )
+            .reply(201, reposUpdateFiledata)
+
+        await repository.createFile({
+            content: 'Hello World',
+            filePath: 'notes/hello.txt',
+            branchName: 'all-contributors/add-jakebolam',
+        })
+    })
+
+    test('createPullRequest with files', async () => {
         nock('https://api.github.com')
             .get(
                 `/repos/all-contributors/all-contributors-bot/git/refs/heads/master`,

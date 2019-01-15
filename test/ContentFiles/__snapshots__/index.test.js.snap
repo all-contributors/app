@@ -18,7 +18,7 @@ Thanks goes to these wonderful people ([emoji key](https://github.com/all-contri
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore -->
-| [<img src=\\"https://avatars2.githubusercontent.com/u/3534236?v=4\\" width=\\"100px;\\"/><br /><sub><b>Jake Bolam</b></sub>](https://jakebolam.com)<br />[💻](#code-jakebolam \\"Code\\") [🤔](#ideas-jakebolam \\"Ideas, Planning, & Feedback\\") [🚇](#infra-jakebolam \\"Infrastructure (Hosting, Build-Tools, etc)\\") [⚠️](#test-jakebolam \\"Tests\\") | [<img src=\\"https://avatars2.githubusercontent.com/u/7265547?v=4\\" width=\\"100px;\\"/><br /><sub><b>tbenning</b></sub>](https://github.com/tbenning)<br />[🎨](#design-tbenning \\"Design\\") |
+| [<img src=\\"https://avatars2.githubusercontent.com/u/3534236?v=4\\" width=\\"100px;\\" alt=\\"Jake Bolam\\"/><br /><sub><b>Jake Bolam</b></sub>](https://jakebolam.com)<br />[💻](#code-jakebolam \\"Code\\") [🤔](#ideas-jakebolam \\"Ideas, Planning, & Feedback\\") [🚇](#infra-jakebolam \\"Infrastructure (Hosting, Build-Tools, etc)\\") [⚠️](#test-jakebolam \\"Tests\\") | [<img src=\\"https://avatars2.githubusercontent.com/u/7265547?v=4\\" width=\\"100px;\\" alt=\\"tbenning\\"/><br /><sub><b>tbenning</b></sub>](https://github.com/tbenning)<br />[🎨](#design-tbenning \\"Design\\") |
 | :---: | :---: |
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
@@ -28,4 +28,29 @@ This project follows the [all-contributors](https://github.com/all-contributors/
 
 [MIT](LICENSE)
 "
+`;
+
+exports[`ContentFiles Init content 1`] = `
+"# TestContentFIles
+[![All Contributors](https://img.shields.io/badge/all_contributors-0-orange.svg?style=flat-square)](#contributors)
+
+A test for content files generation
+
+### Content
+1. Stuff here
+2. Yeah boy
+
+## LICENSE
+
+[MIT](LICENSE)
+
+## Contributors
+
+Thanks goes to these wonderful people ([emoji key](https://github.com/all-contributors/all-contributors#emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore -->
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!"
 `;

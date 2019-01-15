@@ -10,17 +10,14 @@ A bot for automatically adding all-contributors.
 <a href="#Usage"><img alt="Example usage screenshot" src="docs/usage.png" width="500px"></a>
 
 ## Installation
-1. [Install the GitHub App](https://github.com/apps/allcontributors)
-2. Setup your `README.md` and `.all-contributorsrc` using the [all-contributors-cli tool](https://github.com/all-contributors/all-contributors-cli)
-> In the future we want to remove the need for this setup with the CLI tool, if you want to help out [see issue #3](https://github.com/all-contributors/all-contributors-bot/issues/3)
-
+[Install the GitHub App](https://github.com/apps/allcontributors) and [configure your repositories](https://github.com/apps/allcontributors/installations/new)
 
 ## Usage
 
 ### Adding contributions
-1. Comment on Issue/PR etc with text: `@all-contributors please add jakebolam for infra, test and code` (Full words coming soon, [see issue #30](https://github.com/all-contributors/all-contributors-bot/issues/30))
-2. Bot will look for `.all-contributorsrc` if not found, comments on pr to run setup
-3. If user exists, add new contribution, if not add user and add contribution
+Comment on Issue/PR etc with text: `@all-contributors please add @jakebolam for infrastructure, test and code`
+
+@all-contributors will then creates a PR to add the contributor and respond to you
 
 
 ## Contributing

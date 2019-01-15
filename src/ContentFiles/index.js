@@ -1,6 +1,21 @@
 const { generate: generateContentFile } = require('all-contributors-cli')
+const { initBadge, initContributorsList } = require('all-contributors-cli')
 
 const AllContributorBotError = require('../utils/errors')
+
+function modifyFiles({ contentFilesByPath, fileContentModifierFunction }) {
+    const newFilesByPath = {}
+    Object.entries(contentFilesByPath).forEach(
+        ([filePath, { content, sha }]) => {
+            const newFileContents = fileContentModifierFunction(content)
+            newFilesByPath[filePath] = {
+                content: newFileContents,
+                originalSha: sha,
+            }
+        },
+    )
+    return newFilesByPath
+}
 
 /*
  *  Fetches, stores, generates, and updates the readme content files for the contributors list
@@ -23,22 +38,30 @@ class ContentFiles {
         )
     }
 
-    async generate(optionsConfig) {
+    init() {
+        const newFilesByPath = modifyFiles({
+            contentFilesByPath: this.contentFilesByPath,
+            fileContentModifierFunction: function(content) {
+                const contentWithBadge = initBadge(content)
+                const contentWithList = initContributorsList(contentWithBadge)
+                return contentWithList
+            },
+        })
+        this.contentFilesByPath = newFilesByPath
+    }
+
+    generate(optionsConfig) {
         const options = optionsConfig.get()
-        const newFilesByPath = {}
-        Object.entries(this.contentFilesByPath).forEach(
-            ([filePath, { content, sha }]) => {
-                const newFileContents = generateContentFile(
+        const newFilesByPath = modifyFiles({
+            contentFilesByPath: this.contentFilesByPath,
+            fileContentModifierFunction: function(content) {
+                return generateContentFile(
                     options,
                     options.contributors,
                     content,
                 )
-                newFilesByPath[filePath] = {
-                    content: newFileContents,
-                    originalSha: sha,
-                }
             },
-        )
+        })
         this.contentFilesByPath = newFilesByPath
     }
 
