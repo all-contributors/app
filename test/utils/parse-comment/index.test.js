@@ -46,12 +46,12 @@ describe('parseComment', () => {
     test('Support full words (like infrastructure) instead of just keys like infra', () => {
         expect(
             parseComment(
-                `@${testBotName} please add jakebolam for infrastructure, documentation`,
+                `@${testBotName} please add jakebolam for infrastructure, documentation, user testing`,
             ),
         ).toEqual({
             action: 'add',
             who: 'jakebolam',
-            contributions: ['infra', 'doc'],
+            contributions: ['infra', 'doc', 'userTesting'],
         })
     })
 
