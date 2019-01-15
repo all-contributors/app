@@ -114,6 +114,7 @@ class Repository {
         await Promise.all(updateFilesMultiple)
     }
 
+    // TODO: add the possibility to use the default branch (cf. [#4](https://github.com/all-contributors/all-contributors-bot/issues/4))
     async createPullRequest({ title, body, branchName }) {
         const result = await this.github.pulls.create({
             owner: this.owner,
