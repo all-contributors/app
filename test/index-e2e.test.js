@@ -246,7 +246,7 @@ describe('All Contributors app - End to end', () => {
     })
 
     test('Fail path, Unknown error (e.g. Network is dead, service down etc, our code is bad) crashes and sends error message', async () => {
-        jest.setTimeout(30000) // TODO: why does this test take so long
+        jest.setTimeout(20000)
 
         nock('https://api.github.com')
             .post('/app/installations/11111/access_tokens')

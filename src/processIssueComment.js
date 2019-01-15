@@ -76,6 +76,8 @@ async function processIssueComment({ context, commentReply }) {
     } catch (error) {
         if (error instanceof ResourceNotFoundError) {
             optionsConfig.init()
+        } else {
+            throw error
         }
     }
 
@@ -123,7 +125,7 @@ async function processIssueCommentSafe({ context }) {
         if (error.handled) {
             context.log.debug(error)
         } else if (error instanceof AllContributorBotError) {
-            context.log.debug(error)
+            context.log.info(error)
             commentReply.reply(error.message)
         } else {
             context.log.error(error)
