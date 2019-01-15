@@ -100,7 +100,7 @@ async function processIssueComment({ context, commentReply }) {
     commentReply.reply(
         `Basic usage: @${GIHUB_BOT_NAME} please add jakebolam for code, doc and infra`,
     )
-    commentReply(
+    commentReply.reply(
         `For other usage see the [documentation](https://github.com/all-contributors/all-contributors-bot#usage)`,
     )
     return
