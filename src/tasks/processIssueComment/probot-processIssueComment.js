@@ -57,18 +57,26 @@ async function processAddContributor({
         originalSha: optionsConfig.getOriginalSha(),
     }
 
-    const pullRequestURL = await repository.createPullRequestFromFiles({
-        title: `docs: add ${who} as a contributor`,
-        body: `Adds @${who} as a contributor for ${contributions.join(
-            ', ',
-        )}.\n\nThis was requested by ${commentReply.replyingToWho()} [in this comment](${commentReply.replyingToWhere()})`,
-        filesByPath: filesByPathToUpdate,
-        branchName: `all-contributors/add-${who}`,
-    })
+    const safeWho = getSafeRef(who)
+    if (contributions.length) {
+        const pullRequestURL = await repository.createPullRequestFromFiles({
+            title: `docs: add ${who} as a contributor`,
+            body: `Adds @${who} as a contributor for ${contributions.join(
+                ', ',
+            )}.\n\nThis was requested by ${commentReply.replyingToWho()} [in this comment](${commentReply.replyingToWhere()})`,
+            filesByPath: filesByPathToUpdate,
+            branchName: `all-contributors/add-${safeWho}`,
+            defaultBranch,
+        })
 
-    commentReply.reply(
-        `I've put up [a pull request](${pullRequestURL}) to add @${who}! :tada:`,
-    )
+        commentReply.reply(
+            `I've put up [a pull request](${pullRequestURL}) to add @${who}! :tada:`,
+        )
+    } else {
+        commentReply.reply(
+            `I could not find any contributions associated to @${who}! :sod:`,
+        )
+    }
 }
 
 async function probotProcessIssueComment({ context, commentReply }) {
