@@ -19,6 +19,8 @@ Comment on Issue/PR etc with text: `@all-contributors please add @jakebolam for 
 
 @all-contributors will then creates a PR to add the contributor and respond to you
 
+> If this is your first time asking @all-contributors to add a contributor, you will need to ensure you have a `README.md` file in the root of the project (it can be empty).
+
 
 ## Contributing
 If you have suggestions for how the AllContributorsBot could be improved, or want to report a bug, [open an issue](https://github.com/all-contributors/all-contributors-bot/issues)!
