@@ -15,9 +15,14 @@ A bot for automatically adding all-contributors.
 ## Usage
 
 ### Adding contributions
-Comment on Issue/PR etc with text: `@all-contributors please add @jakebolam for infrastructure, test and code`
+Comment on Issue or Pull Request with text:
+```
+@all-contributors please add @jakebolam for infrastructure, test and code
+```
 
-@all-contributors will then creates a PR to add the contributor and respond to you
+The bot will then create a Pull Request to add the contributor, then reply with the pull request details.
+
+> If this is your first time adding a contributor, you will need to ensure you have a `README.md` file in the root of the project (it can be empty).
 
 
 ## Contributing
