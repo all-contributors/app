@@ -57,7 +57,7 @@ const plugin = {
 nlp.plugin(plugin)
 
 function parseAddComment(doc, action) {
-    let who = doc
+    const whoMatched = doc
         .match(`${action} [.]`)
         .normalize({
             whitespace: true, // remove hyphens, newlines, and force one space between words
@@ -75,7 +75,7 @@ function parseAddComment(doc, action) {
         })
         .data()[0].text
 
-    if (who.startsWith('@')) who = who.substr(1)
+    const who = whoMatched.startsWith('@') ? whoMatched.substr(1) : whoMatched
 
     // TODO: handle plurals (e.g. some said docs)
     let contributions = doc
