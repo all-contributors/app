@@ -6,12 +6,14 @@ const validContributionTypes = [
     'code',
     'design',
     'doc',
+    'documentation',
     'eventOrganizing',
     'example',
     'financial',
     'fundingFinding',
     'ideas',
     'infra',
+    'infrastructure',
     'platform',
     'plugin',
     'question',
@@ -26,12 +28,10 @@ const validContributionTypes = [
     'video',
 ]
 
-// TODO
-// const contributionTypeMappings = {
-//     'event organizing': 'eventOrganizing',
-//     'funding finding': 'fundingFinding',
-//     'user testing': 'user testing',
-// }
+const contributionTypeMappings = {
+    documentation: 'doc',
+    infrastructure: 'infra',
+}
 
 const Contributions = {}
 
@@ -71,13 +71,19 @@ function parseAddComment(doc, action) {
         .data()[0].text
 
     // TODO: handle plurals (e.g. some said docs)
-    const contributions = doc
+    let contributions = doc
         .match('#Contribution')
         .data()
         .map(data => {
             // This removes whitespace, commas etc
             return data.normal
         })
+
+    contributions = contributions.map(type => {
+        if (contributionTypeMappings[type])
+            return contributionTypeMappings[type]
+        return type
+    })
 
     return {
         action: 'add',

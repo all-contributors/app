@@ -42,6 +42,19 @@ describe('parseComment', () => {
             action: false,
         })
     })
+
+    test('Support full words (like infrastructure) instead of just keys like infra', () => {
+        expect(
+            parseComment(
+                `@${testBotName} please add jakebolam for infrastructure, documentation`,
+            ),
+        ).toEqual({
+            action: 'add',
+            who: 'jakebolam',
+            contributions: ['infra', 'doc'],
+        })
+    })
+
     //
     // test('Basic intent to add (with plurals)', () => {
     //     expect(
