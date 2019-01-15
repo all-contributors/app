@@ -55,6 +55,18 @@ describe('parseComment', () => {
         })
     })
 
+    test('Support adding people with mentions', () => {
+        expect(
+            parseComment(
+                `@${testBotName} please add @jakebolam for infrastructure`,
+            ),
+        ).toEqual({
+            action: 'add',
+            who: 'jakebolam',
+            contributions: ['infra'],
+        })
+    })
+
     // TODO: make it so this works
     //     test('Support split words (like user testing)', () => {
     //         expect(
