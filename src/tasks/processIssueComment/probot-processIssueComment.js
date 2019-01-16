@@ -22,6 +22,12 @@ async function processAddContributor({
     contributions,
     defaultBranch,
 }) {
+    if (!contributions.length) {
+        return commentReply.reply(
+            `I couldn't determine any contributions to add, did you specify any contributions?`,
+        )
+    }
+
     const { name, avatar_url, profile } = await getUserDetails({
         github: context.github,
         username: who,
@@ -49,24 +55,18 @@ async function processAddContributor({
         originalSha: optionsConfig.getOriginalSha(),
     }
 
-    if (contributions.length) {
-        const pullRequestURL = await repository.createPullRequestFromFiles({
-            title: `docs: add ${who} as a contributor`,
-            body: `Adds @${who} as a contributor for ${contributions.join(
-                ', ',
-            )}.\n\nThis was requested by ${commentReply.replyingToWho()} [in this comment](${commentReply.replyingToWhere()})`,
-            filesByPath: filesByPathToUpdate,
-            branchName: `all-contributors/add-${who}`,
-        })
+    const pullRequestURL = await repository.createPullRequestFromFiles({
+        title: `docs: add ${who} as a contributor`,
+        body: `Adds @${who} as a contributor for ${contributions.join(
+            ', ',
+        )}.\n\nThis was requested by ${commentReply.replyingToWho()} [in this comment](${commentReply.replyingToWhere()})`,
+        filesByPath: filesByPathToUpdate,
+        branchName: `all-contributors/add-${who}`,
+    })
 
-        commentReply.reply(
-            `I've put up [a pull request](${pullRequestURL}) to add @${who}! :tada:`,
-        )
-    } else {
-        commentReply.reply(
-            `I could not find any contributions associated to @${who}! :sod:`,
-        )
-    }
+    commentReply.reply(
+        `I've put up [a pull request](${pullRequestURL}) to add @${who}! :tada:`,
+    )
 }
 
 async function probotProcessIssueComment({ context, commentReply }) {
