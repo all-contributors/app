@@ -20,6 +20,7 @@ async function processAddContributor({
     optionsConfig,
     who,
     contributions,
+    defaultBranch,
 }) {
     const { name, avatar_url, profile } = await getUserDetails({
         github: context.github,
@@ -55,6 +56,7 @@ async function processAddContributor({
         )}.\n\nThis was requested by ${commentReply.replyingToWho()} [in this comment](${commentReply.replyingToWhere()})`,
         filesByPath: filesByPathToUpdate,
         branchName: `all-contributors/add-${who}`,
+        defaultBranch,
     })
 
     commentReply.reply(
@@ -92,6 +94,7 @@ async function processIssueComment({ context, commentReply }) {
             optionsConfig,
             who: parsedComment.who,
             contributions: parsedComment.contributions,
+            defaultBranch: context.payload.repository.default_branch,
         })
         return
     }
