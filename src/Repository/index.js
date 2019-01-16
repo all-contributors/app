@@ -61,17 +61,17 @@ class Repository {
         return multipleFilesByPath
     }
 
-    async getHeadRef() {
+    async getHeadRef(defaultBranch) {
         const result = await this.github.git.getRef({
             owner: this.owner,
             repo: this.repo,
-            ref: `heads/master`,
+            ref: `heads/${defaultBranch}`,
         })
         return result.data.object.sha
     }
 
-    async createBranch(branchName) {
-        const fromSha = await this.getHeadRef()
+    async createBranch({ branchName, defaultBranch }) {
+        const fromSha = await this.getHeadRef(defaultBranch)
 
         // https://octokit.github.io/rest.js/#api-Git-createRef
         await this.github.git.createRef({
@@ -140,21 +140,27 @@ class Repository {
         await Promise.all(createOrUpdateFilesMultiple)
     }
 
-    async createPullRequest({ title, body, branchName }) {
+    async createPullRequest({ title, body, branchName, defaultBranch }) {
         const result = await this.github.pulls.create({
             owner: this.owner,
             repo: this.repo,
             title,
             body,
             head: branchName,
-            base: 'master',
+            base: defaultBranch,
             maintainer_can_modify: true,
         })
         return result.data.html_url
     }
 
-    async createPullRequestFromFiles({ title, body, filesByPath, branchName }) {
-        await this.createBranch(branchName)
+    async createPullRequestFromFiles({
+        title,
+        body,
+        filesByPath,
+        branchName,
+        defaultBranch,
+    }) {
+        await this.createBranch({ branchName, defaultBranch })
 
         await this.createOrUpdateFiles({
             filesByPath,
@@ -165,6 +171,7 @@ class Repository {
             title,
             body,
             branchName,
+            defaultBranch,
         })
 
         return pullRequestURL
