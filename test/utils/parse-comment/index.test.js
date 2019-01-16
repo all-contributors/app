@@ -67,6 +67,26 @@ describe('parseComment', () => {
         })
     })
 
+    test('Support alternative sentences', () => {
+        expect(
+            parseComment(`@${testBotName} add @sinchang for infrastructure`),
+        ).toEqual({
+            action: 'add',
+            who: 'sinchang',
+            contributions: ['infra'],
+        })
+
+        expect(
+            parseComment(
+                `Jane you're crushing it in documentation and infrastructure, let's add jane.doe23 for her contributions. cc @${testBotName}`,
+            ),
+        ).toEqual({
+            action: 'add',
+            who: 'jane.doe23',
+            contributions: ['doc', 'infra'],
+        })
+    })
+
     // TODO: make it so this works
     //     test('Support split words (like user testing)', () => {
     //         expect(
@@ -80,14 +100,13 @@ describe('parseComment', () => {
     //         })
     //     })
 
-    //
-    // test('Basic intent to add (with plurals)', () => {
-    //     expect(
-    //         parseComment(`@${testBotName} please add dat2 for docs`),
-    //     ).toEqual({
-    //         action: 'add',
-    //         who: 'dat2',
-    //         contributions: ['doc'],
-    //     })
-    // })
+    test('Basic intent to add (with plurals)', () => {
+        expect(
+            parseComment(`@${testBotName} please add dat2 for docs`),
+        ).toEqual({
+            action: 'add',
+            who: 'dat2',
+            contributions: ['doc'],
+        })
+    })
 })

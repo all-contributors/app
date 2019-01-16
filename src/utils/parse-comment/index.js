@@ -27,11 +27,44 @@ const validContributionTypes = [
 ]
 
 const contributionTypeMappings = {
-    'event organizing': 'eventOrganizing',
-    'funding finding': 'fundingFinding',
-    'user testing': 'userTesting',
+    blogs: 'blog',
+    blogging: 'blog',
+    bugs: 'bug',
+    codes: 'code',
+    coding: 'code',
+    designing: 'design',
+    desigs: 'design',
+    doc: 'doc',
+    docs: 'doc',
+    documenting: 'doc',
     documentation: 'doc',
+    events: 'eventOrganizing',
+    'event organizing': 'eventOrganizing',
+    eventOrganizing: 'eventOrganizing',
+    examples: 'example',
+    finance: 'financial',
+    financials: 'financial',
+    funds: 'fundingFinding',
+    'fund finding': 'fundingFinding',
+    'funding finding': 'fundingFinding',
+    idea: 'ideas',
+    infras: 'infra',
     infrastructure: 'infra',
+    platforms: 'platform',
+    plugins: 'plugin',
+    questions: 'question',
+    reviews: 'review',
+    securing: 'security',
+    talks: 'talk',
+    tests: 'test',
+    testing: 'test',
+    tools: 'tool',
+    tooling: 'tool',
+    translations: 'translation',
+    tutorials: 'tutorial',
+    'user testing': 'userTesting',
+    userTesting: 'userTesting',
+    videoes: 'video',
 }
 
 const Contributions = {}
@@ -54,6 +87,7 @@ const plugin = {
         // "i can't (log|sign|get) in to my? #Software": 'LoginIssue'
     },
 }
+debugger
 nlp.plugin(plugin)
 
 function parseAddComment(doc, action) {
@@ -76,21 +110,19 @@ function parseAddComment(doc, action) {
         .data()[0].text
 
     const who = whoMatched.startsWith('@') ? whoMatched.substr(1) : whoMatched
-
-    // TODO: handle plurals (e.g. some said docs)
-    let contributions = doc
+    debugger
+    const contributions = doc
         .match('#Contribution')
         .data()
         .map(data => {
             // This removes whitespace, commas etc
             return data.normal
         })
-
-    contributions = contributions.map(type => {
-        if (contributionTypeMappings[type])
-            return contributionTypeMappings[type]
-        return type
-    })
+        .map(type => {
+            if (contributionTypeMappings[type])
+                return contributionTypeMappings[type]
+            return type
+        })
 
     return {
         action: 'add',
