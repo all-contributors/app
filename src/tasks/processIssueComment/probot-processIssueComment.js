@@ -69,14 +69,9 @@ async function processAddContributor({
             defaultBranch,
         })
 
-        commentReply.reply(
-            `I've put up [a pull request](${pullRequestURL}) to add @${who}! :tada:`,
-        )
-    } else {
-        commentReply.reply(
-            `I could not find any contributions associated to @${who}! :sod:`,
-        )
-    }
+    commentReply.reply(
+        `I've put up [a pull request](${pullRequestURL}) to add @${who}! :tada:`,
+    )
 }
 
 async function probotProcessIssueComment({ context, commentReply }) {
