@@ -8,7 +8,10 @@ const parseComment = require('./utils/parse-comment')
 
 const isMessageForBot = require('./utils/isMessageForBot')
 const { GIHUB_BOT_NAME } = require('./utils/settings')
-const { AllContributorBotError } = require('./utils/errors')
+const {
+    AllContributorBotError,
+    ResourceNotFoundError,
+} = require('./utils/errors')
 
 async function processAddContributor({
     context,
@@ -17,6 +20,7 @@ async function processAddContributor({
     optionsConfig,
     who,
     contributions,
+    defaultBranch,
 }) {
     const { name, avatar_url, profile } = await getUserDetails({
         github: context.github,
@@ -35,7 +39,10 @@ async function processAddContributor({
         repository,
     })
     await contentFiles.fetch(optionsConfig)
-    await contentFiles.generate(optionsConfig)
+    if (optionsConfig.getOriginalSha() === undefined) {
+        contentFiles.init()
+    }
+    contentFiles.generate(optionsConfig)
     const filesByPathToUpdate = contentFiles.get()
     filesByPathToUpdate[optionsConfig.getPath()] = {
         content: optionsConfig.getRaw(),
@@ -49,6 +56,7 @@ async function processAddContributor({
         )}.\n\nThis was requested by ${commentReply.replyingToWho()} [in this comment](${commentReply.replyingToWhere()})`,
         filesByPath: filesByPathToUpdate,
         branchName: `all-contributors/add-${who}`,
+        defaultBranch,
     })
 
     commentReply.reply(
@@ -65,7 +73,15 @@ async function processIssueComment({ context, commentReply }) {
         repository,
         commentReply,
     })
-    await optionsConfig.fetch()
+    try {
+        await optionsConfig.fetch()
+    } catch (error) {
+        if (error instanceof ResourceNotFoundError) {
+            optionsConfig.init()
+        } else {
+            throw error
+        }
+    }
 
     const commentBody = context.payload.comment.body
     const parsedComment = parseComment(commentBody)
@@ -78,6 +94,7 @@ async function processIssueComment({ context, commentReply }) {
             optionsConfig,
             who: parsedComment.who,
             contributions: parsedComment.contributions,
+            defaultBranch: context.payload.repository.default_branch,
         })
         return
     }
@@ -86,7 +103,7 @@ async function processIssueComment({ context, commentReply }) {
     commentReply.reply(
         `Basic usage: @${GIHUB_BOT_NAME} please add jakebolam for code, doc and infra`,
     )
-    commentReply(
+    commentReply.reply(
         `For other usage see the [documentation](https://github.com/all-contributors/all-contributors-bot#usage)`,
     )
     return
@@ -111,7 +128,7 @@ async function processIssueCommentSafe({ context }) {
         if (error.handled) {
             context.log.debug(error)
         } else if (error instanceof AllContributorBotError) {
-            context.log.error(error)
+            context.log.info(error)
             commentReply.reply(error.message)
         } else {
             context.log.error(error)

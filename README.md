@@ -2,6 +2,7 @@
 
 [![Build](https://img.shields.io/circleci/project/github/all-contributors/all-contributors-bot/master.svg)](https://circleci.com/gh/all-contributors/all-contributors-bot)
 [![Coverage](https://img.shields.io/codecov/c/github/all-contributors/all-contributors-bot.svg)](https://codecov.io/github/all-contributors/all-contributors-bot)
+[![Greenkeeper badge](https://badges.greenkeeper.io/all-contributors/all-contributors-bot.svg)](https://greenkeeper.io/)
 [![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors)
 [![Chat on Slack](https://img.shields.io/badge/slack-join-ff69b4.svg)](https://join.slack.com/t/all-contributors/shared_invite/enQtNTE3ODMyMTA4NTk0LTUwZDMxZGZkMmViMzYzYzk2YTM2NjRkZGM5Yzc0ZTc5NmYzNWY3Y2Q0ZTY3ZmFhZDgyY2E3ZmIzNWQwMTUxZmE)
 
@@ -10,17 +11,19 @@ A bot for automatically adding all-contributors.
 <a href="#Usage"><img alt="Example usage screenshot" src="docs/usage.png" width="500px"></a>
 
 ## Installation
-1. [Install the GitHub App](https://github.com/apps/allcontributors)
-2. Setup your `README.md` and `.all-contributorsrc` using the [all-contributors-cli tool](https://github.com/all-contributors/all-contributors-cli)
-> In the future we want to remove the need for this setup with the CLI tool, if you want to help out [see issue #3](https://github.com/all-contributors/all-contributors-bot/issues/3)
-
+[Install the GitHub App](https://github.com/apps/allcontributors) and [configure your repositories](https://github.com/apps/allcontributors/installations/new)
 
 ## Usage
 
 ### Adding contributions
-1. Comment on Issue/PR etc with text: `@all-contributors please add jakebolam for infra, test and code` (Full words coming soon, [see issue #30](https://github.com/all-contributors/all-contributors-bot/issues/30))
-2. Bot will look for `.all-contributorsrc` if not found, comments on pr to run setup
-3. If user exists, add new contribution, if not add user and add contribution
+Comment on Issue or Pull Request with text:
+```
+@all-contributors please add @jakebolam for infrastructure, test and code
+```
+
+The bot will then create a Pull Request to add the contributor, then reply with the pull request details.
+
+> If this is your first time adding a contributor, you will need to ensure you have a `README.md` file in the root of the project (it can be empty).
 
 
 ## Contributing

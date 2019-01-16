@@ -61,17 +61,17 @@ class Repository {
         return multipleFilesByPath
     }
 
-    async getHeadRef() {
+    async getHeadRef(defaultBranch) {
         const result = await this.github.git.getRef({
             owner: this.owner,
             repo: this.repo,
-            ref: `heads/master`,
+            ref: `heads/${defaultBranch}`,
         })
         return result.data.object.sha
     }
 
-    async createBranch(branchName) {
-        const fromSha = await this.getHeadRef()
+    async createBranch({ branchName, defaultBranch }) {
+        const fromSha = await this.getHeadRef(defaultBranch)
 
         // https://octokit.github.io/rest.js/#api-Git-createRef
         await this.github.git.createRef({
@@ -97,12 +97,38 @@ class Repository {
         })
     }
 
-    async updateFiles({ filesByPath, branchName }) {
-        // TODO: can probably optimise this instead of sending a request per file
+    async createFile({ filePath, content, branchName }) {
+        const contentBinary = Buffer.from(content).toString('base64')
+
+        //octokit.github.io/rest.js/#api-Repos-createFile
+        await this.github.repos.createFile({
+            owner: this.owner,
+            repo: this.repo,
+            path: filePath,
+            message: `docs: create ${filePath}`,
+            content: contentBinary,
+            branch: branchName,
+        })
+    }
+
+    async createOrUpdateFile({ filePath, content, branchName, originalSha }) {
+        if (originalSha === undefined) {
+            await this.createFile({ filePath, content, branchName })
+        } else {
+            await this.updateFile({
+                filePath,
+                content,
+                branchName,
+                originalSha,
+            })
+        }
+    }
+
+    async createOrUpdateFiles({ filesByPath, branchName }) {
         const repository = this
-        const updateFilesMultiple = Object.entries(filesByPath).map(
+        const createOrUpdateFilesMultiple = Object.entries(filesByPath).map(
             ([filePath, { content, originalSha }]) => {
-                return repository.updateFile({
+                return repository.createOrUpdateFile({
                     filePath,
                     content,
                     branchName,
@@ -111,27 +137,32 @@ class Repository {
             },
         )
 
-        await Promise.all(updateFilesMultiple)
+        await Promise.all(createOrUpdateFilesMultiple)
     }
 
-    // TODO: add the possibility to use the default branch (cf. [#4](https://github.com/all-contributors/all-contributors-bot/issues/4))
-    async createPullRequest({ title, body, branchName }) {
+    async createPullRequest({ title, body, branchName, defaultBranch }) {
         const result = await this.github.pulls.create({
             owner: this.owner,
             repo: this.repo,
             title,
             body,
             head: branchName,
-            base: 'master',
+            base: defaultBranch,
             maintainer_can_modify: true,
         })
         return result.data.html_url
     }
 
-    async createPullRequestFromFiles({ title, body, filesByPath, branchName }) {
-        await this.createBranch(branchName)
+    async createPullRequestFromFiles({
+        title,
+        body,
+        filesByPath,
+        branchName,
+        defaultBranch,
+    }) {
+        await this.createBranch({ branchName, defaultBranch })
 
-        await this.updateFiles({
+        await this.createOrUpdateFiles({
             filesByPath,
             branchName,
         })
@@ -140,6 +171,7 @@ class Repository {
             title,
             body,
             branchName,
+            defaultBranch,
         })
 
         return pullRequestURL
