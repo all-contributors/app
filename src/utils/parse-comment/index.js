@@ -40,6 +40,8 @@ const Contributions = {}
 
 validContributionTypes.forEach(type => {
     Contributions[type] = 'Contribution'
+    // Add plural forms (not all possible ones tho)
+    Contributions[`${type}s`] = 'Contribution'
 })
 
 Object.keys(contributionTypeMappings).forEach(type => {
@@ -80,20 +82,15 @@ function parseAddComment(doc, action) {
     const who = whoMatched.startsWith('@') ? whoMatched.substr(1) : whoMatched
 
     let contributions = doc
-        .normalize({ plurals: true })
-        .words()
-        // .match('#Contribution')
-        .slice(5)
+        .match('#Contribution')
         .data()
         .map(data => {
             // This removes whitespace, commas etc
             let type = data.normal
-            if (type === 'tests') type = 'test'
             if (contributionTypeMappings[type])
                 return contributionTypeMappings[type]
             return type
         })
-        .filter(data => data !== 'and')
 
     return {
         action: 'add',
