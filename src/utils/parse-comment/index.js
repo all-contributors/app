@@ -12,6 +12,7 @@ const validContributionTypes = [
     'fundingFinding',
     'ideas',
     'infra',
+    'maintenance',
     'platform',
     'plugin',
     'question',
@@ -32,6 +33,7 @@ const contributionTypeMappings = {
     'user testing': 'userTesting',
     documentation: 'doc',
     infrastructure: 'infra',
+    maintaining: 'maintenance',
 }
 
 const Contributions = {}
