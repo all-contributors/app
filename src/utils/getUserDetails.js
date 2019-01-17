@@ -15,7 +15,7 @@ async function getUserDetials({ github, username }) {
     try {
         result = await github.users.getByUsername({ username })
     } catch (error) {
-        if (error.code === 404) {
+        if (error.status === 404) {
             throw new UserNotFoundError(username)
         } else {
             throw error
