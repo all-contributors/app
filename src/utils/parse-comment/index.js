@@ -81,12 +81,13 @@ function parseAddComment(doc, action) {
 
     const who = whoMatched.startsWith('@') ? whoMatched.substr(1) : whoMatched
 
-    let contributions = doc
+    const contributions = doc
         .match('#Contribution')
         .data()
         .map(data => {
             // This removes whitespace, commas etc
             let type = data.normal
+            if (type !== 'ideas' && /s$/.test(type)) type = type.slice(0, -1) //-> singular
             if (contributionTypeMappings[type])
                 return contributionTypeMappings[type]
             return type
