@@ -127,7 +127,6 @@ function parseAddComment(message, action) {
     )
     const contributions = doc
         .match('#Contribution')
-        .lump()
         .data()
         .map(data => {
             // This removes whitespace, commas etc
