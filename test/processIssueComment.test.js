@@ -1,5 +1,5 @@
 const processIssueComment = require('../src/processIssueComment')
-const { GIHUB_BOT_NAME } = require('../src/utils/settings')
+// const { GIHUB_BOT_NAME } = require('../src/utils/settings')
 
 describe('Process Issue Comment', () => {
     test('If bot, exit, do not attempt to reply', async () => {
