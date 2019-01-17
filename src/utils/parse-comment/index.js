@@ -91,7 +91,7 @@ const plugin = {
     words: {
         ...Contributions,
         add: 'Action',
-    }
+    },
 }
 
 nlp.plugin(plugin)
