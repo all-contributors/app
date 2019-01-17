@@ -117,13 +117,14 @@ function parseAddComment(message, action) {
 
     const who = whoMatched.startsWith('@') ? whoMatched.substr(1) : whoMatched
 
+    // Contributions
     const doc = nlp(message).toLowerCase()
+    // This is to support multi word 'matches' (altho the compromise docs say it supports this *confused*)
     Object.entries(contributionTypeMultiWordMapping).forEach(
         ([multiWordType, singleWordType]) => {
             doc.replace(multiWordType, singleWordType)
         },
     )
-
     const contributions = doc
         .match('#Contribution')
         .lump()

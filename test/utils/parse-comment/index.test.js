@@ -47,11 +47,13 @@ describe('parseComment', () => {
         })
     })
 
-    test('Intent unknown', () => {
+    test('Basic intent to add - with plurals', () => {
         expect(
-            parseComment(`@${testBotName} please lollmate for tool`),
+            parseComment(`@${testBotName} please add dat2 for docs`),
         ).toEqual({
-            action: false,
+            action: 'add',
+            who: 'dat2',
+            contributions: ['doc'],
         })
     })
 
@@ -121,35 +123,23 @@ describe('parseComment', () => {
         })
     })
 
-    test('Support split words types that are referenced via other terms', () => {
+    test('Support split words types that are referenced via other terms (e.g. a plural split word)', () => {
         expect(
             parseComment(
-                `@${testBotName} please add jakebolam for infrastructure, funds`,
+                `@${testBotName} please add @jakebolam for infrastructure, funds`,
             ),
         ).toEqual({
             action: 'add',
             who: 'jakebolam',
             contributions: ['infra', 'fundingFinding'],
         })
-
-        expect(
-            parseComment(
-                `@${testBotName} please add jakebolam for infrastructure, user testing and testing`,
-            ),
-        ).toEqual({
-            action: 'add',
-            who: 'jakebolam',
-            contributions: ['infra', 'userTesting', 'test'],
-        })
     })
 
-    test('Basic intent to add (with plurals)', () => {
+    test('Intent unknown', () => {
         expect(
-            parseComment(`@${testBotName} please add dat2 for docs`),
+            parseComment(`@${testBotName} please lollmate for tool`),
         ).toEqual({
-            action: 'add',
-            who: 'dat2',
-            contributions: ['doc'],
+            action: false,
         })
     })
 })
