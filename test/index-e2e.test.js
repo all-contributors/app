@@ -31,14 +31,19 @@ describe('All Contributors app - End to end', () => {
 
     test('Happy path, add correct new contributor', async () => {
         jest.setTimeout(10000)
-
         nock('https://api.github.com')
             .post('/app/installations/11111/access_tokens')
             .reply(200, { token: 'test' })
 
         nock('https://api.github.com')
             .get(
-                '/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc',
+                `/repos/all-contributors/all-contributors-bot/git/refs/heads/all-contributors/add-jakebolam`,
+            )
+            .reply(404, gitGetRefdata)
+
+        nock('https://api.github.com')
+            .get(
+                '/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc?ref=master',
             )
             .reply(200, reposGetContentsAllContributorsRCdata)
 
@@ -48,7 +53,7 @@ describe('All Contributors app - End to end', () => {
 
         nock('https://api.github.com')
             .get(
-                '/repos/all-contributors/all-contributors-bot/contents/README.md',
+                '/repos/all-contributors/all-contributors-bot/contents/README.md?ref=master',
             )
             .reply(200, reposGetContentsREADMEMDdata)
 
@@ -115,7 +120,13 @@ describe('All Contributors app - End to end', () => {
 
         nock('https://api.github.com')
             .get(
-                '/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc',
+                `/repos/all-contributors/all-contributors-bot/git/refs/heads/all-contributors/add-jakebolam`,
+            )
+            .reply(404, gitGetRefdata)
+
+        nock('https://api.github.com')
+            .get(
+                '/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc?ref=master',
             )
             .reply(404)
 
@@ -125,7 +136,7 @@ describe('All Contributors app - End to end', () => {
 
         nock('https://api.github.com')
             .get(
-                '/repos/all-contributors/all-contributors-bot/contents/README.md',
+                '/repos/all-contributors/all-contributors-bot/contents/README.md?ref=master',
             )
             .reply(200, reposGetContentsREADMEMDdata)
 
@@ -184,13 +195,21 @@ describe('All Contributors app - End to end', () => {
     })
 
     test('Fail path, no readme file (configuration error)', async () => {
+        jest.setTimeout(10000)
+
         nock('https://api.github.com')
             .post('/app/installations/11111/access_tokens')
             .reply(200, { token: 'test' })
 
         nock('https://api.github.com')
             .get(
-                '/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc',
+                `/repos/all-contributors/all-contributors-bot/git/refs/heads/all-contributors/add-jakebolam`,
+            )
+            .reply(404, gitGetRefdata)
+
+        nock('https://api.github.com')
+            .get(
+                '/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc?ref=master',
             )
             .reply(200, reposGetContentsAllContributorsRCdata)
 
@@ -200,7 +219,7 @@ describe('All Contributors app - End to end', () => {
 
         nock('https://api.github.com')
             .get(
-                '/repos/all-contributors/all-contributors-bot/contents/README.md',
+                '/repos/all-contributors/all-contributors-bot/contents/README.md?ref=master',
             )
             .reply(404)
 
@@ -224,7 +243,13 @@ describe('All Contributors app - End to end', () => {
 
         nock('https://api.github.com')
             .get(
-                '/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc',
+                `/repos/all-contributors/all-contributors-bot/git/refs/heads/all-contributors/add-jakebolam`,
+            )
+            .reply(404, gitGetRefdata)
+
+        nock('https://api.github.com')
+            .get(
+                '/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc?ref=master',
             )
             .reply(200, reposGetContentsAllContributorsRCdata)
 
@@ -254,7 +279,13 @@ describe('All Contributors app - End to end', () => {
 
         nock('https://api.github.com')
             .get(
-                '/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc',
+                `/repos/all-contributors/all-contributors-bot/git/refs/heads/all-contributors/add-jakebolam`,
+            )
+            .reply(404, gitGetRefdata)
+
+        nock('https://api.github.com')
+            .get(
+                '/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc?ref=master',
             )
             .reply(500)
 

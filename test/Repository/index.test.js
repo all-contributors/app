@@ -13,6 +13,7 @@ describe('Repository', () => {
         repo: 'all-contributors-bot',
         owner: 'all-contributors',
         github: mockGithub,
+        defaultBranch: 'master',
     })
 
     const verifyBody = body => {
@@ -36,9 +37,11 @@ describe('Repository', () => {
     })
 
     test('createPullRequest with files', async () => {
+        const basedBranch = 'master'
+        repository.setBasedBranch(basedBranch)
         nock('https://api.github.com')
             .get(
-                `/repos/all-contributors/all-contributors-bot/git/refs/heads/master`,
+                `/repos/all-contributors/all-contributors-bot/git/refs/heads/${basedBranch}`,
             )
             .reply(200, gitGetRefdata)
 
@@ -95,7 +98,6 @@ describe('Repository', () => {
                 },
             },
             branchName: 'all-contributors/add-jakebolam',
-            defaultBranch: 'master',
         })
         expect(pullRequestNumber).toEqual(
             'https://github.com/all-contributors/all-contributors-bot/pull/1347',

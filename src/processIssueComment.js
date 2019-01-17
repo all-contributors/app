@@ -20,7 +20,6 @@ async function processAddContributor({
     optionsConfig,
     who,
     contributions,
-    defaultBranch,
 }) {
     const { name, avatar_url, profile } = await getUserDetails({
         github: context.github,
@@ -56,7 +55,6 @@ async function processAddContributor({
         )}.\n\nThis was requested by ${commentReply.replyingToWho()} [in this comment](${commentReply.replyingToWhere()})`,
         filesByPath: filesByPathToUpdate,
         branchName: `all-contributors/add-${who}`,
-        defaultBranch,
     })
 
     commentReply.reply(
@@ -65,14 +63,29 @@ async function processAddContributor({
 }
 
 async function processIssueComment({ context, commentReply }) {
+    const commentBody = context.payload.comment.body
+    const { who, action, contributions } = parseComment(commentBody)
+    const branchName = `all-contributors/add-${who}`
+    const defaultBranch = context.payload.repository.default_branch
     const repository = new Repository({
         ...context.repo(),
         github: context.github,
+        defaultBranch,
     })
+
+    try {
+        await repository.getHeadRef(branchName)
+        repository.setBasedBranch(branchName)
+    } catch (error) {
+        if (error.code !== 404) throw error
+        repository.setBasedBranch(defaultBranch)
+    }
+
     const optionsConfig = new OptionsConfig({
         repository,
         commentReply,
     })
+
     try {
         await optionsConfig.fetch()
     } catch (error) {
@@ -83,18 +96,14 @@ async function processIssueComment({ context, commentReply }) {
         }
     }
 
-    const commentBody = context.payload.comment.body
-    const parsedComment = parseComment(commentBody)
-
-    if (parsedComment.action === 'add') {
+    if (action === 'add') {
         await processAddContributor({
             context,
             commentReply,
             repository,
             optionsConfig,
-            who: parsedComment.who,
-            contributions: parsedComment.contributions,
-            defaultBranch: context.payload.repository.default_branch,
+            who,
+            contributions,
         })
         return
     }
