@@ -83,21 +83,13 @@ class Repository {
     async createBranch(branchName) {
         const fromSha = await this.getHeadRef(this.defaultBranch)
 
-        try {
-            // https://octokit.github.io/rest.js/#api-Git-createRef
-            await this.github.git.createRef({
-                owner: this.owner,
-                repo: this.repo,
-                ref: `refs/heads/${branchName}`,
-                sha: fromSha,
-            })
-
-            return false
-        } catch (error) {
-            // branch already exists
-            if (error.code === 422) return true
-            throw error
-        }
+        // https://octokit.github.io/rest.js/#api-Git-createRef
+        await this.github.git.createRef({
+            owner: this.owner,
+            repo: this.repo,
+            ref: `refs/heads/${branchName}`,
+            sha: fromSha,
+        })
     }
 
     async updateFile({ filePath, content, branchName, originalSha }) {
