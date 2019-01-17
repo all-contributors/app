@@ -15,6 +15,18 @@ describe('parseComment', () => {
         })
     })
 
+    test('Basic intent to add - ignore case (for action and contributions, NOT for user)', () => {
+        expect(
+            parseComment(
+                `@${testBotName} please Add jakeBolam for DOC, inFra and coDe`,
+            ),
+        ).toEqual({
+            action: 'add',
+            who: 'jakeBolam',
+            contributions: ['doc', 'infra', 'code'],
+        })
+    })
+
     test('Basic intent to add - non name username', () => {
         expect(
             parseComment(`@${testBotName} please add tbenning for design`),
@@ -87,18 +99,49 @@ describe('parseComment', () => {
         })
     })
 
-    // TODO: make it so this works
-    //     test('Support split words (like user testing)', () => {
-    //         expect(
-    //             parseComment(
-    //                 `@${testBotName} please add jakebolam for infrastructure, user testing`,
-    //             ),
-    //         ).toEqual({
-    //             action: 'add',
-    //             who: 'jakebolam',
-    //             contributions: ['infra', 'userTesting'],
-    //         })
-    //     })
+    test('Support split words (like user testing)', () => {
+        expect(
+            parseComment(
+                `@${testBotName} please add jakebolam for infrastructure, fund finding`,
+            ),
+        ).toEqual({
+            action: 'add',
+            who: 'jakebolam',
+            contributions: ['infra', 'fundingFinding'],
+        })
+
+        expect(
+            parseComment(
+                `@${testBotName} please add jakebolam for infrastructure, user testing and testing`,
+            ),
+        ).toEqual({
+            action: 'add',
+            who: 'jakebolam',
+            contributions: ['infra', 'userTesting', 'test'],
+        })
+    })
+
+    test('Support split words types that are referenced via other terms', () => {
+        expect(
+            parseComment(
+                `@${testBotName} please add jakebolam for infrastructure, funds`,
+            ),
+        ).toEqual({
+            action: 'add',
+            who: 'jakebolam',
+            contributions: ['infra', 'fundingFinding'],
+        })
+
+        expect(
+            parseComment(
+                `@${testBotName} please add jakebolam for infrastructure, user testing and testing`,
+            ),
+        ).toEqual({
+            action: 'add',
+            who: 'jakebolam',
+            contributions: ['infra', 'userTesting', 'test'],
+        })
+    })
 
     test('Basic intent to add (with plurals)', () => {
         expect(

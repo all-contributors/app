@@ -1,15 +1,16 @@
 const nlp = require('compromise')
 
+// Types that are valid (multi words must all be lower case)
 const validContributionTypes = [
     'blog',
     'bug',
     'code',
     'design',
     'doc',
-    'eventOrganizing',
+    'eventorganizing',
     'example',
     'financial',
-    'fundingFinding',
+    'fundingfinding',
     'ideas',
     'infra',
     'platform',
@@ -22,10 +23,18 @@ const validContributionTypes = [
     'tool',
     'translation',
     'tutorial',
-    'userTesting',
+    'usertesting',
     'video',
 ]
 
+// Types that are valid multi words, that we need to re map back to there camelCase parts
+const validMultiContributionTypesMapping = {
+    eventorganizing: 'eventOrganizing',
+    fundingfinding: 'fundingFinding',
+    usertesting: 'userTesting',
+}
+
+// Additional terms to match to types (plurals, aliases etc)
 const contributionTypeMappings = {
     blogs: 'blog',
     blogging: 'blog',
@@ -38,15 +47,10 @@ const contributionTypeMappings = {
     docs: 'doc',
     documenting: 'doc',
     documentation: 'doc',
-    events: 'eventOrganizing',
-    'event organizing': 'eventOrganizing',
-    eventOrganizing: 'eventOrganizing',
     examples: 'example',
     finance: 'financial',
     financials: 'financial',
-    funds: 'fundingFinding',
-    'fund finding': 'fundingFinding',
-    'funding finding': 'fundingFinding',
+    funds: 'fundingfinding',
     idea: 'ideas',
     infras: 'infra',
     infrastructure: 'infra',
@@ -62,9 +66,15 @@ const contributionTypeMappings = {
     tooling: 'tool',
     translations: 'translation',
     tutorials: 'tutorial',
-    'user testing': 'userTesting',
-    userTesting: 'userTesting',
     videoes: 'video',
+}
+
+// Additional terms to match to types (plurals, aliases etc) that are multi word
+const contributionTypeMultiWordMapping = {
+    'event organizing': 'eventOrganizing',
+    'fund finding': 'fundingFinding',
+    'funding finding': 'fundingFinding',
+    'user testing': 'userTesting',
 }
 
 const Contributions = {}
@@ -81,17 +91,13 @@ const plugin = {
     words: {
         ...Contributions,
         add: 'Action',
-    },
-    patterns: {
-        // 'add #person for #Contribution': 'AddContributor',
-        // "i can't (log|sign|get) in to my? #Software": 'LoginIssue'
-    },
+    }
 }
-debugger
+
 nlp.plugin(plugin)
 
-function parseAddComment(doc, action) {
-    const whoMatched = doc
+function parseAddComment(message, action) {
+    const whoMatched = nlp(message)
         .match(`${action} [.]`)
         .normalize({
             whitespace: true, // remove hyphens, newlines, and force one space between words
@@ -110,9 +116,17 @@ function parseAddComment(doc, action) {
         .data()[0].text
 
     const who = whoMatched.startsWith('@') ? whoMatched.substr(1) : whoMatched
-    debugger
+
+    const doc = nlp(message).toLowerCase()
+    Object.entries(contributionTypeMultiWordMapping).forEach(
+        ([multiWordType, singleWordType]) => {
+            doc.replace(multiWordType, singleWordType)
+        },
+    )
+
     const contributions = doc
         .match('#Contribution')
+        .lump()
         .data()
         .map(data => {
             // This removes whitespace, commas etc
@@ -121,6 +135,12 @@ function parseAddComment(doc, action) {
         .map(type => {
             if (contributionTypeMappings[type])
                 return contributionTypeMappings[type]
+            return type
+        })
+        .map(type => {
+            // Convert usertesting to userTesting for the node api
+            if (validMultiContributionTypesMapping[type])
+                return validMultiContributionTypesMapping[type]
             return type
         })
 
@@ -135,12 +155,13 @@ function parseComment(message) {
     const doc = nlp(message)
 
     const action = doc
+        .toLowerCase()
         .match('#Action')
         .normalize()
         .out('string')
 
     if (action === 'add') {
-        return parseAddComment(doc, action)
+        return parseAddComment(message, action)
     }
 
     return {
