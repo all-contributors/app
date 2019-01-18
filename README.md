@@ -18,7 +18,7 @@ A bot for automatically adding all-contributors.
 ### Adding contributions
 Comment on Issue or Pull Request with text:
 ```
-@all-contributors please add @jakebolam for infrastructure, test and code
+@all-contributors please add @jakebolam for infrastructure, tests and code
 ```
 
 The bot will then create a Pull Request to add the contributor, then reply with the pull request details.

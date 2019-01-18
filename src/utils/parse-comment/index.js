@@ -1,15 +1,16 @@
 const nlp = require('compromise')
 
+// Types that are valid (multi words must all be lower case)
 const validContributionTypes = [
     'blog',
     'bug',
     'code',
     'design',
     'doc',
-    'eventOrganizing',
+    'eventorganizing',
     'example',
     'financial',
-    'fundingFinding',
+    'fundingfinding',
     'ideas',
     'infra',
     'maintenance',
@@ -23,17 +24,59 @@ const validContributionTypes = [
     'tool',
     'translation',
     'tutorial',
-    'userTesting',
+    'usertesting',
     'video',
 ]
 
+// Types that are valid multi words, that we need to re map back to there camelCase parts
+const validMultiContributionTypesMapping = {
+    eventorganizing: 'eventOrganizing',
+    fundingfinding: 'fundingFinding',
+    usertesting: 'userTesting',
+}
+
+// Additional terms to match to types (plurals, aliases etc)
 const contributionTypeMappings = {
-    'event organizing': 'eventOrganizing',
-    'funding finding': 'fundingFinding',
-    'user testing': 'userTesting',
+    blogs: 'blog',
+    blogging: 'blog',
+    bugs: 'bug',
+    codes: 'code',
+    coding: 'code',
+    designing: 'design',
+    desigs: 'design',
+    doc: 'doc',
+    docs: 'doc',
+    documenting: 'doc',
     documentation: 'doc',
+    examples: 'example',
+    finance: 'financial',
+    financials: 'financial',
+    funds: 'fundingfinding',
+    idea: 'ideas',
+    infras: 'infra',
     infrastructure: 'infra',
     maintaining: 'maintenance',
+    platforms: 'platform',
+    plugins: 'plugin',
+    questions: 'question',
+    reviews: 'review',
+    securing: 'security',
+    talks: 'talk',
+    tests: 'test',
+    testing: 'test',
+    tools: 'tool',
+    tooling: 'tool',
+    translations: 'translation',
+    tutorials: 'tutorial',
+    videoes: 'video',
+}
+
+// Additional terms to match to types (plurals, aliases etc) that are multi word
+const contributionTypeMultiWordMapping = {
+    'event organizing': 'eventOrganizing',
+    'fund finding': 'fundingFinding',
+    'funding finding': 'fundingFinding',
+    'user testing': 'userTesting',
 }
 
 const Contributions = {}
@@ -51,15 +94,12 @@ const plugin = {
         ...Contributions,
         add: 'Action',
     },
-    patterns: {
-        // 'add #person for #Contribution': 'AddContributor',
-        // "i can't (log|sign|get) in to my? #Software": 'LoginIssue'
-    },
 }
+
 nlp.plugin(plugin)
 
-function parseAddComment(doc, action) {
-    const whoMatched = doc
+function parseAddComment(message, action) {
+    const whoMatched = nlp(message)
         .match(`${action} [.]`)
         .normalize({
             whitespace: true, // remove hyphens, newlines, and force one space between words
@@ -79,20 +119,32 @@ function parseAddComment(doc, action) {
 
     const who = whoMatched.startsWith('@') ? whoMatched.substr(1) : whoMatched
 
-    // TODO: handle plurals (e.g. some said docs)
-    let contributions = doc
+    // Contributions
+    const doc = nlp(message).toLowerCase()
+    // This is to support multi word 'matches' (altho the compromise docs say it supports this *confused*)
+    Object.entries(contributionTypeMultiWordMapping).forEach(
+        ([multiWordType, singleWordType]) => {
+            doc.replace(multiWordType, singleWordType)
+        },
+    )
+    const contributions = doc
         .match('#Contribution')
         .data()
         .map(data => {
             // This removes whitespace, commas etc
             return data.normal
         })
-
-    contributions = contributions.map(type => {
-        if (contributionTypeMappings[type])
-            return contributionTypeMappings[type]
-        return type
-    })
+        .map(type => {
+            if (contributionTypeMappings[type])
+                return contributionTypeMappings[type]
+            return type
+        })
+        .map(type => {
+            // Convert usertesting to userTesting for the node api
+            if (validMultiContributionTypesMapping[type])
+                return validMultiContributionTypesMapping[type]
+            return type
+        })
 
     return {
         action: 'add',
@@ -105,12 +157,13 @@ function parseComment(message) {
     const doc = nlp(message)
 
     const action = doc
+        .toLowerCase()
         .match('#Action')
         .normalize()
         .out('string')
 
     if (action === 'add') {
-        return parseAddComment(doc, action)
+        return parseAddComment(message, action)
     }
 
     return {
