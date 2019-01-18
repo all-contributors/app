@@ -151,44 +151,40 @@ class Repository {
     }
 
     async createPullRequest({ title, body, branchName }) {
-        try {
-            const result = await this.github.pulls.create({
-                owner: this.owner,
-                repo: this.repo,
-                title,
-                body,
-                head: branchName,
-                base: this.defaultBranch,
-                maintainer_can_modify: true,
-            })
-            return { pullRequestURL: result.data.html_url, result: true }
-        } catch (error) {
-            // pull request is already open
-            if (error.code === 422) return { pullRequestURL: '', result: false }
-            throw error
-        }
+        const result = await this.github.pulls.create({
+            owner: this.owner,
+            repo: this.repo,
+            title,
+            body,
+            head: branchName,
+            base: this.defaultBranch,
+            maintainer_can_modify: true,
+        })
+        return result.data.html_url
     }
 
     async createPullRequestFromFiles({ title, body, filesByPath, branchName }) {
         if (this.basedBranch === this.defaultBranch)
-            this.createBranch(branchName)
+            await this.createBranch(branchName)
 
         await this.createOrUpdateFiles({
             filesByPath,
             branchName,
         })
 
-        const { pullRequestURL, result } = await this.createPullRequest({
-            title,
-            body,
-            branchName,
-        })
+        try {
+            const pullRequestURL = await this.createPullRequest({
+                title,
+                body,
+                branchName,
+            })
+            return pullRequestURL
+        } catch (error) {
+            if (error.status === 422)
+                throw new AllContributorBotError('Pull request is already open')
 
-        // TODO
-        if (!result)
-            throw new AllContributorBotError('Pull request is already open')
-
-        return pullRequestURL
+            throw error
+        }
     }
 }
 

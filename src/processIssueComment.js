@@ -77,7 +77,7 @@ async function processIssueComment({ context, commentReply }) {
         await repository.getHeadRef(branchName)
         repository.setBasedBranch(branchName)
     } catch (error) {
-        if (error.code !== 404) throw error
+        if (error.status !== 404) throw error
         repository.setBasedBranch(defaultBranch)
     }
 
