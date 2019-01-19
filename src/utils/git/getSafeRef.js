@@ -1,3 +1,5 @@
+/* eslint-disable no-useless-escape */
+
 function getSafeRef(ref) {
     // Replace fullstops
     // ~, ^ or : ? * [
