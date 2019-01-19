@@ -31,7 +31,7 @@ class Repository {
                 ref: this.basedBranch,
             })
         } catch (error) {
-            if (error.code === 404) {
+            if (error.status === 404) {
                 throw new ResourceNotFoundError(filePath, this.full_name)
             } else {
                 throw error

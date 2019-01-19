@@ -24,7 +24,7 @@
   },
   "dependencies": {
     "@probot/serverless-lambda": "^0.2.0",
-    "all-contributors-cli": "^5.9.1",
+    "all-contributors-cli": "^5.10.1",
     "compromise": "^11.13.0",
     "probot": "^8.0.0-octokit-16-preview"
   },
@@ -42,6 +42,7 @@
     "prettier": "^1.15.3",
     "serverless": "^1.35.1",
     "serverless-offline": "^4.0.0",
+    "shelljs": "^0.8.3",
     "smee-client": "^1.0.2"
   },
   "nodemonConfig": {

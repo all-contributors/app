@@ -13,6 +13,8 @@ const {
     ResourceNotFoundError,
 } = require('./utils/errors')
 
+const getSafeRef = require('./utils/git/getSafeRef')
+
 async function processAddContributor({
     context,
     commentReply,
@@ -48,13 +50,14 @@ async function processAddContributor({
         originalSha: optionsConfig.getOriginalSha(),
     }
 
+    const safeWho = getSafeRef(who)
     const pullRequestURL = await repository.createPullRequestFromFiles({
         title: `docs: add ${who} as a contributor`,
         body: `Adds @${who} as a contributor for ${contributions.join(
             ', ',
         )}.\n\nThis was requested by ${commentReply.replyingToWho()} [in this comment](${commentReply.replyingToWhere()})`,
         filesByPath: filesByPathToUpdate,
-        branchName: `all-contributors/add-${who}`,
+        branchName: `all-contributors/add-${safeWho}`,
     })
 
     commentReply.reply(
