@@ -51,7 +51,7 @@ async function processAddContributor({
         originalSha: optionsConfig.getOriginalSha(),
     }
 
-    const safeWho = getSafeRef(`add-${who}`)
+    const safeWho = getSafeRef(who)
     const pullRequestURL = await repository.createPullRequestFromFiles({
         title: `docs: add ${who} as a contributor`,
         body: `Adds @${who} as a contributor for ${contributions.join(
