@@ -42,6 +42,7 @@
     "prettier": "^1.15.3",
     "serverless": "^1.35.1",
     "serverless-offline": "^4.0.0",
+    "shelljs": "^0.8.3",
     "smee-client": "^1.0.2"
   },
   "nodemonConfig": {

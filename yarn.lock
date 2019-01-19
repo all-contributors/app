@@ -280,7 +280,6 @@ align-text@^0.1.1, align-text@^0.1.3:
 all-contributors-cli@^5.10.1:
   version "5.10.1"
   resolved "https://registry.yarnpkg.com/all-contributors-cli/-/all-contributors-cli-5.10.1.tgz#1bb5cfcfcd60ec5e07a1c3d23c1c29c94ba14138"
-  integrity sha512-Vpvdiliiw6YEjSrEun3hN8FR80nwOMgvrThGsNd1RY6DhpPuhLLp2MTPrMSmPuaUBZIcD3DxtHqvbK8HQ7zEwg==
   dependencies:
     async "^2.0.0-rc.1"
     chalk "^2.3.0"
@@ -936,7 +935,6 @@ cache-manager@^2.4.0:
 call@4.x.x:
   version "4.0.2"
   resolved "https://registry.yarnpkg.com/call/-/call-4.0.2.tgz#df76f5f51ee8dd48b856ac8400f7e69e6d7399c4"
-  integrity sha1-33b19R7o3Ui4VqyEAPfmnm1zmcQ=
   dependencies:
     boom "5.x.x"
     hoek "4.x.x"
@@ -2366,7 +2364,6 @@ growly@^1.3.0:
 h2o2@^6.1.0:
   version "6.1.0"
   resolved "https://registry.yarnpkg.com/h2o2/-/h2o2-6.1.0.tgz#2b2e7fcca0e3665c9497645e3203af99ed9033f1"
-  integrity sha1-Ky5/zKDjZlyUl2ReMgOvme2QM/E=
   dependencies:
     boom "5.x.x"
     hoek "4.x.x"
@@ -2400,7 +2397,6 @@ hapi-cors-headers@^1.0.3:
 hapi@^16.7.0:
   version "16.7.0"
   resolved "https://registry.yarnpkg.com/hapi/-/hapi-16.7.0.tgz#3bb39517971df81e8198ec04751455e8b6cb0871"
-  integrity sha512-UeMX1LMWmHEIgMlwZGK/3lhI7X0VRvOioVply0Y9qF+/O5woGdQzNB8ZmDnLOBjnB6bdWWHyo5DEamuCsE1vmg==
   dependencies:
     accept "2.x.x"
     ammo "2.x.x"
@@ -2693,6 +2689,10 @@ inquirer@^6.1.0:
     strip-ansi "^5.0.0"
     through "^2.3.6"
 
+interpret@^1.0.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/interpret/-/interpret-1.2.0.tgz#d5061a6224be58e8083985f5014d844359576296"
+
 invariant@^2.2.2, invariant@^2.2.4:
   version "2.2.4"
   resolved "https://registry.yarnpkg.com/invariant/-/invariant-2.2.4.tgz#610f3c92c9359ce1db616e538008d23ff35158e6"
@@ -2977,7 +2977,6 @@ isemail@2.x.x:
 isemail@3.x.x:
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/isemail/-/isemail-3.2.0.tgz#59310a021931a9fb06bbb51e155ce0b3f236832c"
-  integrity sha512-zKqkK+O+dGqevc93KNsbZ/TqTUFd46MwWjYOoMrjIMZ51eU7DtQG3Wmd9SQQT7i7RVnuTPEiYEWHU3MSbxC1Tg==
   dependencies:
     punycode "2.x.x"
 
@@ -3220,7 +3219,6 @@ jest-jasmine2@^23.6.0:
 jest-junit@^6.0.1:
   version "6.0.1"
   resolved "https://registry.yarnpkg.com/jest-junit/-/jest-junit-6.0.1.tgz#7c24b2aff4ddfce3a8c0e0c84978123c0d4a945a"
-  integrity sha512-gMJb8qqyLKTD4pyaU8gjQv6wiudAqEFFt2VFswJ/+swB69WQh5mMn8tezR9B8ukejHjFbq5y9qbYWxi9uZeQZA==
   dependencies:
     jest-config "^23.6.0"
     jest-validate "^23.0.1"
@@ -3397,7 +3395,6 @@ joi@10.x.x:
 joi@11.x.x:
   version "11.4.0"
   resolved "https://registry.yarnpkg.com/joi/-/joi-11.4.0.tgz#f674897537b625e9ac3d0b7e1604c828ad913ccb"
-  integrity sha512-O7Uw+w/zEWgbL6OcHbyACKSj0PkQeUgmehdoXVSxt92QFCq4+1390Rwh5moI2K/OgC7D8RHRZqHZxT2husMJHA==
   dependencies:
     hoek "4.x.x"
     isemail "3.x.x"
@@ -4517,7 +4514,6 @@ pn@^1.1.0:
 podium@1.x.x:
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/podium/-/podium-1.3.0.tgz#3c490f54d16f10f5260cbe98641f1cb733a8851c"
-  integrity sha512-ZIujqk1pv8bRZNVxwwwq0BhXilZ2udycQT3Kp8ah3f3TcTmVg7ILJsv/oLf47gRa2qeiP584lNq+pfvS9U3aow==
   dependencies:
     hoek "4.x.x"
     items "2.x.x"
@@ -4767,6 +4763,12 @@ realpath-native@^1.0.0:
   dependencies:
     util.promisify "^1.0.0"
 
+rechoir@^0.6.2:
+  version "0.6.2"
+  resolved "https://registry.yarnpkg.com/rechoir/-/rechoir-0.6.2.tgz#85204b54dba82d5742e28c96756ef43af50e3384"
+  dependencies:
+    resolve "^1.1.6"
+
 regenerator-runtime@^0.10.5:
   version "0.10.5"
   resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.10.5.tgz#336c3efc1220adcedda2c9fab67b5a7955a33658"
@@ -4900,7 +4902,7 @@ resolve@1.1.7:
   version "1.1.7"
   resolved "https://registry.yarnpkg.com/resolve/-/resolve-1.1.7.tgz#203114d82ad2c5ed9e8e0411b3932875e889e97b"
 
-resolve@^1.3.2, resolve@^1.4.0:
+resolve@^1.1.6, resolve@^1.3.2, resolve@^1.4.0:
   version "1.9.0"
   resolved "https://registry.yarnpkg.com/resolve/-/resolve-1.9.0.tgz#a14c6fdfa8f92a7df1d996cb7105fa744658ea06"
   dependencies:
@@ -5063,7 +5065,6 @@ serve-static@1.13.2:
 serverless-offline@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/serverless-offline/-/serverless-offline-4.0.0.tgz#3ba9fe467ed6b7a0e4661160b2d7929bd5ca03df"
-  integrity sha512-KG8wzrMZyOdI3MtDRahZq0u1O+MCHTRQVugitTo5wfLJKCqWSdtSXy6lW18NLMHoPYfCf+5hdB3vT/nCK6zqug==
   dependencies:
     "@babel/core" "^7.0.0"
     "@babel/register" "^7.0.0"
@@ -5157,6 +5158,14 @@ shebang-regex@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/shebang-regex/-/shebang-regex-1.0.0.tgz#da42f49740c0b42db2ca9728571cb190c98efea3"
 
+shelljs@^0.8.3:
+  version "0.8.3"
+  resolved "https://registry.yarnpkg.com/shelljs/-/shelljs-0.8.3.tgz#a7f3319520ebf09ee81275b2368adb286659b097"
+  dependencies:
+    glob "^7.0.0"
+    interpret "^1.0.0"
+    rechoir "^0.6.2"
+
 shellwords@^0.1.1:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/shellwords/-/shellwords-0.1.1.tgz#d6b9181c1a48d397324c84871efbcfc73fc0654b"
@@ -5228,7 +5237,6 @@ snapdragon@^0.8.1:
 somever@1.x.x:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/somever/-/somever-1.0.1.tgz#28a5c7de0d55f781af52fbce9960db1b84ce206e"
-  integrity sha512-PCDMBcega4n7wuBUKmkiXidF3cOwtHHGg2qJYl0Rkw7StZqORoCgqce7HUuWNta/NAiQhwLDezNnTANxEWPCGA==
   dependencies:
     hoek "4.x.x"
 
@@ -5348,7 +5356,6 @@ stack-utils@^1.0.1:
 statehood@5.x.x:
   version "5.0.3"
   resolved "https://registry.yarnpkg.com/statehood/-/statehood-5.0.3.tgz#c07a75620db5379b60d2edd47f538002a8ac7dd6"
-  integrity sha512-YrPrCt10t3ImH/JMO5szSwX7sCm8HoqVl3VFLOa9EZ1g/qJx/ZmMhN+2uzPPB/vaU6hpkJpXxcBWsgIkkG+MXA==
   dependencies:
     boom "5.x.x"
     cryptiles "3.x.x"
@@ -5455,7 +5462,6 @@ strip-outer@^1.0.0:
 subtext@5.x.x:
   version "5.0.0"
   resolved "https://registry.yarnpkg.com/subtext/-/subtext-5.0.0.tgz#9c3f083018bb1586b167ad8cfd87083f5ccdfe0f"
-  integrity sha512-2nXG1G1V+K64Z20cQII7k0s38J2DSycMXBLMAk9RXUFG0uAkAbLSVoa88croX9VhTdBCJbLAe9g6LmzKwpJhhQ==
   dependencies:
     boom "5.x.x"
     content "3.x.x"
