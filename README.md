@@ -3,7 +3,7 @@
 [![Build](https://img.shields.io/circleci/project/github/all-contributors/all-contributors-bot/master.svg)](https://circleci.com/gh/all-contributors/all-contributors-bot)
 [![Coverage](https://img.shields.io/codecov/c/github/all-contributors/all-contributors-bot.svg)](https://codecov.io/github/all-contributors/all-contributors-bot)
 [![Greenkeeper badge](https://badges.greenkeeper.io/all-contributors/all-contributors-bot.svg)](https://greenkeeper.io/)
-[![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors)
+[![All Contributors](https://img.shields.io/badge/all_contributors-4-orange.svg?style=flat-square)](#contributors)
 [![Chat on Slack](https://img.shields.io/badge/slack-join-ff69b4.svg)](https://join.slack.com/t/all-contributors/shared_invite/enQtNTE3ODMyMTA4NTk0LTUwZDMxZGZkMmViMzYzYzk2YTM2NjRkZGM5Yzc0ZTc5NmYzNWY3Y2Q0ZTY3ZmFhZDgyY2E3ZmIzNWQwMTUxZmE)
 
 A bot for automatically adding all-contributors.
@@ -37,8 +37,8 @@ Thanks goes to these wonderful people ([emoji key](https://github.com/all-contri
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore -->
-| [<img src="https://avatars2.githubusercontent.com/u/3534236?v=4" width="100px;" alt="Jake Bolam"/><br /><sub><b>Jake Bolam</b></sub>](https://jakebolam.com)<br />[💻](https://github.com/all-contribtuors/bot/commits?author=jakebolam "Code") [🤔](#ideas-jakebolam "Ideas, Planning, & Feedback") [🚇](#infra-jakebolam "Infrastructure (Hosting, Build-Tools, etc)") [⚠️](https://github.com/all-contribtuors/bot/commits?author=jakebolam "Tests") | [<img src="https://avatars2.githubusercontent.com/u/7265547?v=4" width="100px;" alt="tbenning"/><br /><sub><b>tbenning</b></sub>](https://github.com/tbenning)<br />[🎨](#design-tbenning "Design") | [<img src="https://avatars0.githubusercontent.com/u/3297859?v=4" width="100px;" alt="Jeff Wen"/><br /><sub><b>Jeff Wen</b></sub>](https://sinchang.me)<br />[⚠️](https://github.com/all-contribtuors/bot/commits?author=sinchang "Tests") [💻](https://github.com/all-contribtuors/bot/commits?author=sinchang "Code") |
-| :---: | :---: | :---: |
+| [<img src="https://avatars2.githubusercontent.com/u/3534236?v=4" width="100px;" alt="Jake Bolam"/><br /><sub><b>Jake Bolam</b></sub>](https://jakebolam.com)<br />[💻](https://github.com/all-contribtuors/bot/commits?author=jakebolam "Code") [🤔](#ideas-jakebolam "Ideas, Planning, & Feedback") [🚇](#infra-jakebolam "Infrastructure (Hosting, Build-Tools, etc)") [⚠️](https://github.com/all-contribtuors/bot/commits?author=jakebolam "Tests") | [<img src="https://avatars2.githubusercontent.com/u/7265547?v=4" width="100px;" alt="tbenning"/><br /><sub><b>tbenning</b></sub>](https://github.com/tbenning)<br />[🎨](#design-tbenning "Design") | [<img src="https://avatars0.githubusercontent.com/u/3297859?v=4" width="100px;" alt="Jeff Wen"/><br /><sub><b>Jeff Wen</b></sub>](https://sinchang.me)<br />[⚠️](https://github.com/all-contribtuors/bot/commits?author=sinchang "Tests") [💻](https://github.com/all-contribtuors/bot/commits?author=sinchang "Code") | [<img src="https://avatars3.githubusercontent.com/in/505?v=4" width="100px;" alt="Greenkeeper[bot]"/><br /><sub><b>Greenkeeper[bot]</b></sub>](https://github.com/apps/greenkeeper)<br />[🚇](#infra-Greenkeeper[bot] "Infrastructure (Hosting, Build-Tools, etc)") |
+| :---: | :---: | :---: | :---: |
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome
