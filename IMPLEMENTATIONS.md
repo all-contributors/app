@@ -4,6 +4,7 @@ This is a list of projects which are using the all-contributors github bot. To a
 list, please [make a pull request](CONTRIBUTING.md)!
 
 - [all-contributors org](https://github.com/all-contributors)
+- [thechangelog org](https://github.com/thechangelog)
 - [netlify-cms](https://github.com/netlify/netlify-cms)
 
 
