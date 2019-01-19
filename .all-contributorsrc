@@ -48,6 +48,15 @@
       "contributions": [
         "infra"
       ]
+    },
+    {
+      "login": "allcontributors[bot]",
+      "name": "allcontributors[bot]",
+      "avatar_url": "https://avatars0.githubusercontent.com/in/23186?v=4",
+      "profile": "https://github.com/apps/allcontributors",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7
