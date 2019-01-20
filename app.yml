@@ -125,9 +125,6 @@ default_permissions:
   # organization_administration: read
 
 
-# The name of the GitHub App. Defaults to the name specified in package.json
-name: AllContributors Test Bot
-
 # The homepage of your GitHub App.
 url: https://all-contributors.js.org
 
