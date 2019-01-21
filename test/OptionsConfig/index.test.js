@@ -87,7 +87,7 @@ describe('ContentFiles', () => {
 
         await optionsConfig.addContributor({
             login: 'jakebolam',
-            contributions: ['doc'],
+            contributions: ['ideas'],
             name: 'Jake Bolam',
             avatar_url: 'https://avatars2.githubusercontent.com/u/3534236?v=4',
             profile: 'jakebolam.com',
@@ -100,7 +100,7 @@ describe('ContentFiles', () => {
                 avatar_url:
                     'https://avatars2.githubusercontent.com/u/3534236?v=4',
                 profile: 'http://jakebolam.com',
-                contributions: ['code', 'ideas', 'infra', 'test', 'doc'],
+                contributions: ['ideas'],
             },
         ])
     })
