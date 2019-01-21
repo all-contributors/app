@@ -23,7 +23,6 @@
     "test-ci": "jest --reporters ./node_modules/jest-junit --collectCoverage"
   },
   "dependencies": {
-    "@probot/serverless-lambda": "^0.2.0",
     "all-contributors-cli": "^5.10.1",
     "compromise": "^11.13.0",
     "probot": "^8.0.0-octokit-16-preview"

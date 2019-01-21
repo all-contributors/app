@@ -24,7 +24,7 @@ Ideas not as issues yet:
 
 
 ### Testing serverless locally
-`yarn add serverless-dotenv-plugin`
+`yarn add serverless-dotenv-plugin --dev`
 
 in `serverless.yml` plugins add:
 `- serverless-dotenv-plugin`
