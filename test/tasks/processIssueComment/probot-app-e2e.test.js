@@ -1,7 +1,9 @@
 const nock = require('nock')
 const { Probot } = require('probot')
 
-const processIssueCommentApp = require('../../../src/tasks/processIssueComment/probot-app')
+const {
+    processIssueCommentApp,
+} = require('../../../src/tasks/processIssueComment/probot-processIssueComment')
 const { rejectionOf } = require('../../testUtils')
 
 const issue_commentCreatedPayload = require('../../fixtures/issue_comment.created.json')

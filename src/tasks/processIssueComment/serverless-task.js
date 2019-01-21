@@ -1,12 +1,12 @@
 const getProbot = require('../../utils/getProbot')
-const probotApp = require('./probot-app')
+const { processIssueCommentApp } = require('./probot-processIssueComment')
 
 module.exports.handler = async (event, context) => {
     context.callbackWaitsForEmptyEventLoop = false
 
     try {
         const probot = getProbot()
-        probot.load(probotApp)
+        probot.load(processIssueCommentApp)
 
         const { name, payload } = JSON.parse(event.body)
         await probot.receive({
