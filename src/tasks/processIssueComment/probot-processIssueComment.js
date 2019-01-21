@@ -1,13 +1,12 @@
-const CommentReply = require('./CommentReply')
-const Repository = require('./Repository')
-const OptionsConfig = require('./OptionsConfig')
-const ContentFiles = require('./ContentFiles')
+const CommentReply = require('./CommentReply/index')
+const Repository = require('./Repository/index')
+const OptionsConfig = require('./OptionsConfig/index')
+const ContentFiles = require('./ContentFiles/index')
 
 const getUserDetails = require('./utils/getUserDetails')
-const parseComment = require('./utils/parse-comment')
+const parseComment = require('./utils/parse-comment/index')
 
-const isMessageForBot = require('./utils/isMessageForBot')
-const { GIHUB_BOT_NAME } = require('./utils/settings')
+const { GIHUB_BOT_NAME } = require('../../utils/settings')
 const {
     AllContributorBotError,
     ResourceNotFoundError,
@@ -67,7 +66,7 @@ async function processAddContributor({
     )
 }
 
-async function processIssueComment({ context, commentReply }) {
+async function probotProcessIssueComment({ context, commentReply }) {
     const repository = new Repository({
         ...context.repo(),
         github: context.github,
@@ -112,21 +111,10 @@ async function processIssueComment({ context, commentReply }) {
     return
 }
 
-async function processIssueCommentSafe({ context }) {
-    if (context.isBot) {
-        context.log.debug('From a bot, exiting')
-        return
-    }
-
-    const commentBody = context.payload.comment.body
-    if (!isMessageForBot(commentBody)) {
-        context.log.debug('Message not for us, exiting')
-        return
-    }
-
+async function probotProcessIssueCommentSafe({ context }) {
     const commentReply = new CommentReply({ context })
     try {
-        await processIssueComment({ context, commentReply })
+        await probotProcessIssueComment({ context, commentReply })
     } catch (error) {
         if (error.handled) {
             context.log.debug(error)
@@ -145,4 +133,4 @@ async function processIssueCommentSafe({ context }) {
     }
 }
 
-module.exports = processIssueCommentSafe
+module.exports = probotProcessIssueCommentSafe
