@@ -15,14 +15,12 @@ module.exports.handler = async (event, context) => {
         })
         return {
             statusCode: 200,
-            body: JSON.stringify({
-                message: `Received ${name}.${payload.action}`,
-            }),
+            body: 'Processed comment',
         }
     } catch (error) {
         return {
             statusCode: 500,
-            body: JSON.stringify(error.message),
+            body: error.message,
         }
     }
 }
