@@ -1,4 +1,4 @@
-const parseComment = require('../../../../../src/tasks/processIssueComment/utils/parse-comment/index')
+const parseComment = require('../../../../../src/tasks/processIssueComment/utils/parse-comment')
 
 describe('parseComment', () => {
     const testBotName = 'AllContributorsBotTest'

@@ -1,10 +1,10 @@
-const CommentReply = require('./CommentReply/index')
-const Repository = require('./Repository/index')
-const OptionsConfig = require('./OptionsConfig/index')
-const ContentFiles = require('./ContentFiles/index')
+const CommentReply = require('./CommentReply')
+const Repository = require('./Repository')
+const OptionsConfig = require('./OptionsConfig')
+const ContentFiles = require('./ContentFiles')
 
 const getUserDetails = require('./utils/getUserDetails')
-const parseComment = require('./utils/parse-comment/index')
+const parseComment = require('./utils/parse-comment')
 
 const { GIHUB_BOT_NAME } = require('../../utils/settings')
 const {

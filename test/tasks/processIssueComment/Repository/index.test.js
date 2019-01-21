@@ -1,6 +1,6 @@
 const nock = require('nock')
 
-const Repository = require('../../../../src/tasks/processIssueComment/Repository/index')
+const Repository = require('../../../../src/tasks/processIssueComment/Repository')
 
 const gitGetRefdata = require('../../../fixtures/git.getRef.json')
 const gitCreateRefdata = require('../../../fixtures/git.createRef.json')
