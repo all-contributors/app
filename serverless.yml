@@ -37,9 +37,16 @@ provider:
 
 functions:
   githubWebhook:
-    handler: src/handler.probot
+    handler: src/serverless-webhook.handler
     events:
       - http:
           path: /
           method: post
+          cors: true
+  stats:
+    handler: src/serverless-stats.handler
+    events:
+      - http:
+          path: /stats
+          method: get
           cors: true
