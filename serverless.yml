@@ -18,6 +18,15 @@ custom:
   sentryDsn:
     dev: ''
     prod: 'https://e950ab524cde4682a740c218c15a461d@sentry.io/1366866'
+  stageSettings:
+    CacheClusterEnabled: true
+    CacheClusterSize: '0.5'
+    MethodSettings:
+      - CachingEnabled: true
+      - HttpMethod: GET
+        ResourcePath: "/stats"
+        CachingEnabled: true
+        CacheTtlInSeconds: 3600
 
 provider:
   name: aws
@@ -37,9 +46,16 @@ provider:
 
 functions:
   githubWebhook:
-    handler: src/handler.probot
+    handler: src/serverless-webhook.handler
     events:
       - http:
           path: /
           method: post
+          cors: true
+  stats:
+    handler: src/serverless-stats.handler
+    events:
+      - http:
+          path: /stats
+          method: get
           cors: true
