@@ -25,7 +25,8 @@
   "dependencies": {
     "all-contributors-cli": "^5.10.1",
     "compromise": "^11.13.0",
-    "probot": "^8.0.0-octokit-16-preview"
+    "probot": "^8.0.0-octokit-16-preview",
+    "serverless-api-gateway-caching": "^1.2.2"
   },
   "devDependencies": {
     "@tophat/eslint-config": "^0.1.4",

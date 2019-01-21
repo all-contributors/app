@@ -2,9 +2,12 @@ service: all-contributors-bot
 frameworkVersion: '=1.35.1'
 
 plugins:
+  - serverless-api-gateway-caching
   - serverless-offline # must be last
 
 custom:
+  apiGatewayCaching:
+    enabled: true
   stage: ${opt:stage, self:provider.stage}
   appId:
     dev: '23544'
@@ -18,15 +21,6 @@ custom:
   sentryDsn:
     dev: ''
     prod: 'https://e950ab524cde4682a740c218c15a461d@sentry.io/1366866'
-  stageSettings:
-    CacheClusterEnabled: true
-    CacheClusterSize: '0.5'
-    MethodSettings:
-      - CachingEnabled: true
-      - HttpMethod: GET
-        ResourcePath: "/stats"
-        CachingEnabled: true
-        CacheTtlInSeconds: 3600
 
 provider:
   name: aws
@@ -59,3 +53,6 @@ functions:
           path: /stats
           method: get
           cors: true
+          caching:
+            enabled: true
+            ttlInSeconds: 3600
