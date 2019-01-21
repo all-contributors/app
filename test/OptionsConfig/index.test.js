@@ -78,6 +78,33 @@ describe('ContentFiles', () => {
         })
     })
 
+    test(`If profile URL is missing protocol, add it for them`, async () => {
+        const optionsConfig = new OptionsConfig({
+            repository: mockRepository,
+            commentReply: mockCommentReply,
+        })
+        optionsConfig.init()
+
+        await optionsConfig.addContributor({
+            login: 'jakebolam',
+            contributions: ['ideas'],
+            name: 'Jake Bolam',
+            avatar_url: 'https://avatars2.githubusercontent.com/u/3534236?v=4',
+            profile: 'jakebolam.com',
+        })
+
+        expect(optionsConfig.options.contributors).toEqual([
+            {
+                login: 'jakebolam',
+                name: 'Jake Bolam',
+                avatar_url:
+                    'https://avatars2.githubusercontent.com/u/3534236?v=4',
+                profile: 'http://jakebolam.com',
+                contributions: ['ideas'],
+            },
+        ])
+    })
+
     test(`Inits the contributor file`, () => {
         const optionsConfig = new OptionsConfig({
             repository: mockRepository,
