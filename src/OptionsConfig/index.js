@@ -72,13 +72,17 @@ class OptionsConfig {
     }
 
     async addContributor({ login, contributions, name, avatar_url, profile }) {
+        const profileWithProtocol = profile.startsWith('http')
+            ? profile
+            : `http://${profile}`
+
         const newContributorsList = await addContributorWithDetails({
             options: this.options,
             login,
             contributions,
             name,
             avatar_url,
-            profile,
+            profile: profileWithProtocol,
         })
         const newOptions = {
             ...this.options,
