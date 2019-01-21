@@ -2,12 +2,9 @@ service: all-contributors-bot
 frameworkVersion: '=1.35.1'
 
 plugins:
-  - serverless-api-gateway-caching
   - serverless-offline # must be last
 
 custom:
-  apiGatewayCaching:
-    enabled: true
   stage: ${opt:stage, self:provider.stage}
   appId:
     dev: '23544'
@@ -53,6 +50,3 @@ functions:
           path: /stats
           method: get
           cors: true
-          caching:
-            enabled: true
-            ttlInSeconds: 3600
