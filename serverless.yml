@@ -53,7 +53,7 @@ functions:
     handler: src/serverless-stats.handler
     events:
       - http:
-          path: /stats
+          path: /probot/stats
           method: get
           cors: true
 
