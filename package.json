@@ -14,7 +14,7 @@
   ],
   "scripts": {
     "start": "nodemon",
-    "start-probot": "probot run ./src/index.js",
+    "start-probot": "probot run ./src/tasks/processIssueComment/probot-processIssueComment.js",
     "start-serverless": "serverless offline start",
     "lint": "eslint .",
     "lint-fix": "eslint --fix .",
@@ -41,6 +41,7 @@
     "nodemon": "^1.17.2",
     "prettier": "^1.15.3",
     "serverless": "^1.35.1",
+    "serverless-dotenv-plugin": "^2.0.1",
     "serverless-offline": "^4.0.0",
     "shelljs": "^0.8.3",
     "smee-client": "^1.0.2"

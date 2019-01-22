@@ -4,6 +4,10 @@ const {
 
 describe('Serverless Webhook', () => {
     test('If bot, exit, do not attempt to reply', async () => {
+        // const mockLambda = jest.fn()
+        // jest.mock('aws-sdk', {
+        //     Lambda: mockLambda,
+        // })
         const mockEvent = {
             headers: {
                 'x-github-event': 'issue_comment',
@@ -21,8 +25,6 @@ describe('Serverless Webhook', () => {
         const mockContext = {}
         const response = await serverlessWebhookHandler(mockEvent, mockContext)
         expect(response.body).toEqual('Not from a user, exiting')
-        // expect(lambda.invoke).not.toHaveBeenCalled()
+        //expect(mockLambda.invoke).not.toHaveBeenCalled()
     })
 })
-
-// 'Message not for us, exiting'

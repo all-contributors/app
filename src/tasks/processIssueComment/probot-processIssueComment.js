@@ -142,6 +142,4 @@ function processIssueCommentApp(app) {
     })
 }
 
-module.exports = {
-    processIssueCommentApp,
-}
+module.exports = processIssueCommentApp

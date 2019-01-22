@@ -1,7 +1,9 @@
 const nock = require('nock')
 
 const getUserDetails = require('../../../../src/tasks/processIssueComment/utils/getUserDetails')
-const { UserNotFoundError } = require('../../../../src/tasks/processIssueComment/utils/errors')
+const {
+    UserNotFoundError,
+} = require('../../../../src/tasks/processIssueComment/utils/errors')
 
 const { rejectionOf } = require('../../../testUtils')
 const mockUserAPIReturn = require('../../../fixtures/users.getByUsername.jakebolam.json')

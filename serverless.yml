@@ -2,6 +2,7 @@ service: all-contributors-bot
 frameworkVersion: '=1.35.1'
 
 plugins:
+  - serverless-dotenv-plugin
   - serverless-offline # must be last
 
 custom:

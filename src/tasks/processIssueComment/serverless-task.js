@@ -1,5 +1,5 @@
 const getProbot = require('../../utils/getProbot')
-const { processIssueCommentApp } = require('./probot-processIssueComment')
+const processIssueCommentApp = require('./probot-processIssueComment')
 
 module.exports.handler = async (event, context) => {
     context.callbackWaitsForEmptyEventLoop = false
