@@ -11,27 +11,33 @@ A bot for automatically adding all-contributors.
 <a href="#Usage"><img alt="Example usage screenshot" src="docs/usage.png" width="500px"></a>
 
 ## Installation
-[Install the GitHub App](https://github.com/apps/allcontributors) and [configure your repositories](https://github.com/apps/allcontributors/installations/new)
+1. [Install the GitHub App](https://github.com/apps/allcontributors/installations/new) and configure your repositories
+<a href="https://github.com/apps/allcontributors/installations/new">
+    <img alt="App Install Screenshot" src="docs/app-install.png" width="500px">
+</a>
 
 ## Usage
 
 ### Adding contributions
-Comment on Issue or Pull Request with text:
+ Comment on Issue or Pull Request, asking @all-contributors to add a contributor:
 ```
 @all-contributors please add @jakebolam for infrastructure, tests and code
 ```
 
 The bot will then create a Pull Request to add the contributor, then reply with the pull request details.
 
-> If this is your first time adding a contributor, you will need to ensure you have a `README.md` file in the root of the project (it can be empty).
+> Your request to the bot doesn't need to be perfect. The bot uses some basic Natural Language Parsing to determine your intent, for more information on acceptable messages [visit the @all-contributors website](https://all-contributors.js.org/docs/bot).
 
 
-## Contributing
-If you have suggestions for how the AllContributorsBot could be improved, or want to report a bug, [open an issue](https://github.com/all-contributors/all-contributors-bot/issues)!
+### Contribution Types
+If you want to know more about the types you can recognize for, [check out the reference key](https://all-contributors.js.org/docs/reference).
+
+## Contributing to the @all-contributors bot
+If you have suggestions for how the @all-contributors bot could be improved, or want to report a bug, [open an issue](https://github.com/all-contributors/all-contributors-bot/issues)!
 
 For more, check out the [Contributing Guide](CONTRIBUTING.md).
 
-## Contributors
+## Contributors, bot builders
 
 Thanks goes to these wonderful people ([emoji key](https://github.com/all-contributors/all-contributors#emoji-key)):
 
