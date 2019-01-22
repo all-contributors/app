@@ -1,0 +1,10 @@
+coverage:
+  status:
+    project: off
+    changes: on
+    patch:
+      default:
+        target: auto
+        base: pr
+
+comment: off
