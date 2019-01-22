@@ -6,7 +6,6 @@ const ContentFiles = require('./ContentFiles')
 const getUserDetails = require('./utils/getUserDetails')
 const parseComment = require('./utils/parse-comment')
 
-const { GIHUB_BOT_NAME } = require('../../utils/settings')
 const {
     AllContributorBotError,
     ResourceNotFoundError,
@@ -103,7 +102,7 @@ async function probotProcessIssueComment({ context, commentReply }) {
 
     commentReply.reply(`I could not determine your intention.`)
     commentReply.reply(
-        `Basic usage: @${GIHUB_BOT_NAME} please add jakebolam for code, doc and infra`,
+        `Basic usage: @all-contributors please add @jakebolam for code, doc and infra`,
     )
     commentReply.reply(
         `For other usage see the [documentation](https://github.com/all-contributors/all-contributors-bot#usage)`,

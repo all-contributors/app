@@ -8,10 +8,9 @@ module.exports.handler = async (event, context) => {
         const probot = getProbot()
         probot.load(processIssueCommentApp)
 
-        const { name, payload } = JSON.parse(event.body)
         await probot.receive({
-            name,
-            payload,
+            name: event.name,
+            payload: event.payload,
         })
         return {
             statusCode: 200,

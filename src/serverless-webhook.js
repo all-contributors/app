@@ -43,19 +43,18 @@ module.exports.handler = async (event, context) => {
             }
         }
 
+        const processIssueCommentPayload = JSON.stringify({
+            name,
+            payload,
+        })
+
         lambda.invoke({
             FunctionName: `${
                 process.env.SERVICE_NAME_AND_STAGE
             }-processIssueComment`,
             InvocationType: 'Event',
             LogType: 'None',
-            Payload: new Buffer(
-                JSON.stringify({
-                    name,
-                    payload,
-                }),
-            ),
-            Qualifier: process.env.SERVERLESS_STAGE,
+            Payload: new Buffer(processIssueCommentPayload),
         })
 
         return {

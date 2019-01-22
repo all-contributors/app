@@ -1,7 +1,7 @@
 const isMessageForBot = require('../../src/utils/isMessageForBot')
 
 describe('isMessageForBot', () => {
-    const testBotName = 'AllContributorsBotTest'
+    const testBotName = 'all-contributors'
 
     test('For us', () => {
         expect(

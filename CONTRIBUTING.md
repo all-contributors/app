@@ -30,11 +30,18 @@ in `serverless.yml` plugins add:
 `- serverless-dotenv-plugin`
 
 
-Create file test-file.json with payload
+Create file test-webhook-file.json with payload
 ```
-curl -vX POST http://localhost:3000/ -d @test-payload.json \
+curl -vX POST http://localhost:3000/ -d @test-webhook-payload.json \
 --header "Content-Type: application/json" \
 --header "X-GitHub-Event: issue_comment"
+```
+
+Create test-task-payload.json
+```
+yarn serverless invoke local \
+--function processIssueComment \
+--path test-task-payload.json
 ```
 
 
