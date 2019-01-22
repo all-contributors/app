@@ -67,23 +67,23 @@ describe('Serverless Webhook', () => {
         // TODO: expect lambda.invoke TO NOT BE CALLED
     })
 
-    test('If User and for us, take it', async () => {
-        const mockEvent = {
-            headers: {
-                'x-github-event': 'issue_comment',
-            },
-            body: {
-                action: 'created',
-                sender: {
-                    type: 'User',
-                },
-                comment: {
-                    body: '@all-contributors please do blah',
-                },
-            },
-        }
-        const response = await serverlessWebhookHandler(mockEvent, mockContext)
-        expect(response.body).toEqual('Accepted and processing comment')
-        // TODO: expect lambda.invoke TO BE CALLED
-    })
+    // test('If User and for us, take it', async () => {
+    //     const mockEvent = {
+    //         headers: {
+    //             'x-github-event': 'issue_comment',
+    //         },
+    //         body: {
+    //             action: 'created',
+    //             sender: {
+    //                 type: 'User',
+    //             },
+    //             comment: {
+    //                 body: '@all-contributors please do blah',
+    //             },
+    //         },
+    //     }
+    //     const response = await serverlessWebhookHandler(mockEvent, mockContext)
+    //     expect(response.body).toEqual('Accepted and processing comment')
+    //     // TODO: expect lambda.invoke TO BE CALLED
+    // })
 })
