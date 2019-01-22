@@ -1,11 +1,11 @@
 {
-  "name": "AllContributorsBot",
-  "version": "0.0.1",
+  "name": "all-contributors-bot",
+  "version": "1.0.0",
   "description": "A bot for automatically adding all your contributors",
-  "author": "Jake Bolam <jake.bolam@gmail.com> (https://all-contributors.js.org)",
-  "repository": "https://github.com/all-contributors/bot.git",
-  "homepage": "https://github.com/all-contributors/bot",
-  "bugs": "https://github.com/all-contributors/bot/issues",
+  "author": "Jake Bolam <jake.bolam@gmail.com> (https://jakebolam.com)",
+  "repository": "https://github.com/all-contributors/all-contributors-bot.git",
+  "homepage": "https://github.com/all-contributors/all-contributors-bot",
+  "bugs": "https://github.com/all-contributors/all-contributors-bot/issues",
   "keywords": [
     "all-contributors",
     "probot",
