@@ -29,7 +29,7 @@ Ideas not as issues yet:
 in `serverless.yml` plugins add:
 `- serverless-dotenv-plugin`
 
-
+## Adding tasks to the queue
 Create file test-webhook-file.json with payload
 ```
 curl -vX POST http://localhost:3000/ -d @test-webhook-payload.json \
@@ -37,6 +37,7 @@ curl -vX POST http://localhost:3000/ -d @test-webhook-payload.json \
 --header "X-GitHub-Event: issue_comment"
 ```
 
+## Executing tasks
 Create test-task-payload.json
 ```
 yarn serverless invoke local \
