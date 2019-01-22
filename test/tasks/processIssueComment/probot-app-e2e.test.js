@@ -5,6 +5,7 @@ const processIssueCommentApp = require('../../../src/tasks/processIssueComment/p
 const { rejectionOf } = require('../../testUtils')
 
 const issue_commentCreatedPayload = require('../../fixtures/issue_comment.created.json')
+const issue_commentCreatedPayloadUnknownIntention = require('../../fixtures/issue_commented.created.unknown-intention.json')
 const reposGetContentsAllContributorsRCdata = require('../../fixtures/repos.getContents.all-contributorsrc.json')
 const usersGetByUsernameJakeBolamdata = require('../../fixtures/users.getByUsername.jakebolam.json')
 const reposGetContentsREADMEMDdata = require('../../fixtures/repos.getContents.README.md.json')
@@ -242,6 +243,30 @@ describe('All Contributors app - End to end', () => {
         await probot.receive({
             name: 'issue_comment',
             payload: issue_commentCreatedPayload,
+        })
+    })
+
+    test('Fail path, unknown intention', async () => {
+        nock('https://api.github.com')
+            .post('/app/installations/11111/access_tokens')
+            .reply(200, { token: 'test' })
+
+        nock('https://api.github.com')
+            .get(
+                '/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc',
+            )
+            .reply(200, reposGetContentsAllContributorsRCdata)
+
+        nock('https://api.github.com')
+            .post(
+                '/repos/all-contributors/all-contributors-bot/issues/1/comments',
+                verifyBody,
+            )
+            .reply(200)
+
+        await probot.receive({
+            name: 'issue_comment',
+            payload: issue_commentCreatedPayloadUnknownIntention,
         })
     })
 
