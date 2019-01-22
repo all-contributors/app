@@ -25,20 +25,15 @@ Ideas not as issues yet:
 
 ### Testing serverless locally
 
-#### Adding tasks to the queue
+TODO: make smee plugin for serverless
+
+`yarn start-serverless`
+
 Create file test-webhook-file.json with payload
 ```
 curl -vX POST http://localhost:3000/ -d @test-webhook-payload.json \
 --header "Content-Type: application/json" \
 --header "X-GitHub-Event: issue_comment"
-```
-
-#### Executing tasks
-Create test-task-payload.json
-```
-yarn serverless invoke local \
---function processIssueComment \
---path test-task-payload.json
 ```
 
 
