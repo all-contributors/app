@@ -1,7 +1,7 @@
 const fs = require('fs')
 const path = require('path')
 
-const ContentFiles = require('../../src/ContentFiles')
+const ContentFiles = require('../../../../src/tasks/processIssueComment/ContentFiles')
 
 describe('ContentFiles', () => {
     const mockRepository = {}

@@ -1,4 +1,4 @@
-const getProbot = require('./probot/getProbot')
+const getProbot = require('./utils/getProbot')
 
 async function getInstallations(app) {
     const github = await app.auth()

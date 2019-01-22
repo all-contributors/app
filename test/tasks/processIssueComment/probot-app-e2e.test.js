@@ -1,17 +1,18 @@
 const nock = require('nock')
 const { Probot } = require('probot')
 
-const allContributorsApp = require('../src')
-const { rejectionOf } = require('./testUtils')
+const processIssueCommentApp = require('../../../src/tasks/processIssueComment/probot-processIssueComment')
+const { rejectionOf } = require('../../testUtils')
 
-const issue_commentCreatedPayload = require('./fixtures/issue_comment.created.json')
-const reposGetContentsAllContributorsRCdata = require('./fixtures/repos.getContents.all-contributorsrc.json')
-const usersGetByUsernameJakeBolamdata = require('./fixtures/users.getByUsername.jakebolam.json')
-const reposGetContentsREADMEMDdata = require('./fixtures/repos.getContents.README.md.json')
-const gitGetRefdata = require('./fixtures/git.getRef.json')
-const gitCreateRefdata = require('./fixtures/git.createRef.json')
-const reposUpdateFiledata = require('./fixtures/repos.updateFile.json')
-const pullsCreatedata = require('./fixtures/pulls.create.json')
+const issue_commentCreatedPayload = require('../../fixtures/issue_comment.created.json')
+const issue_commentCreatedPayloadUnknownIntention = require('../../fixtures/issue_commented.created.unknown-intention.json')
+const reposGetContentsAllContributorsRCdata = require('../../fixtures/repos.getContents.all-contributorsrc.json')
+const usersGetByUsernameJakeBolamdata = require('../../fixtures/users.getByUsername.jakebolam.json')
+const reposGetContentsREADMEMDdata = require('../../fixtures/repos.getContents.README.md.json')
+const gitGetRefdata = require('../../fixtures/git.getRef.json')
+const gitCreateRefdata = require('../../fixtures/git.createRef.json')
+const reposUpdateFiledata = require('../../fixtures/repos.updateFile.json')
+const pullsCreatedata = require('../../fixtures/pulls.create.json')
 
 describe('All Contributors app - End to end', () => {
     let probot
@@ -23,7 +24,7 @@ describe('All Contributors app - End to end', () => {
 
     beforeEach(() => {
         probot = new Probot({})
-        const app = probot.load(allContributorsApp)
+        const app = probot.load(processIssueCommentApp)
 
         // just return a test token
         app.app = () => 'test'
@@ -267,6 +268,30 @@ describe('All Contributors app - End to end', () => {
         await probot.receive({
             name: 'issue_comment',
             payload: issue_commentCreatedPayload,
+        })
+    })
+
+    test('Fail path, unknown intention', async () => {
+        nock('https://api.github.com')
+            .post('/app/installations/11111/access_tokens')
+            .reply(200, { token: 'test' })
+
+        nock('https://api.github.com')
+            .get(
+                '/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc',
+            )
+            .reply(200, reposGetContentsAllContributorsRCdata)
+
+        nock('https://api.github.com')
+            .post(
+                '/repos/all-contributors/all-contributors-bot/issues/1/comments',
+                verifyBody,
+            )
+            .reply(200)
+
+        await probot.receive({
+            name: 'issue_comment',
+            payload: issue_commentCreatedPayloadUnknownIntention,
         })
     })
 

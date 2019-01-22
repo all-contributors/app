@@ -1,6 +1,6 @@
 const { exec } = require('shelljs')
 
-const getSafeRef = require('../../../src/utils/git/getSafeRef')
+const getSafeRef = require('../../../../../src/tasks/processIssueComment/utils/git/getSafeRef')
 
 const testIsBranchSafe = function(branchNameIn, branchNameOut) {
     const safeRef = getSafeRef(branchNameIn)

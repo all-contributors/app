@@ -1,4 +1,4 @@
-const OptionsConfig = require('../../src/OptionsConfig')
+const OptionsConfig = require('../../../../src/tasks/processIssueComment/OptionsConfig')
 
 describe('ContentFiles', () => {
     const mockRepository = {

@@ -1,7 +1,7 @@
-const parseComment = require('../../../src/utils/parse-comment')
+const parseComment = require('../../../../../src/tasks/processIssueComment/utils/parse-comment')
 
 describe('parseComment', () => {
-    const testBotName = 'AllContributorsBotTest'
+    const testBotName = 'all-contributors'
 
     test('Basic intent to add', () => {
         expect(

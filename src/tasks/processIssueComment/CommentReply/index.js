@@ -5,6 +5,7 @@ class CommentReply {
     constructor({ context }) {
         this.context = context
         this.message = ''
+        this.sent = false
     }
 
     replyingToWho() {
@@ -20,6 +21,10 @@ class CommentReply {
     }
 
     async send() {
+        if (this.sent) {
+            throw new Error('Message already sent')
+        }
+        this.sent = true
         const fromUser = this.replyingToWho()
         const body = `@${fromUser} ${this.message}`
         const issueComment = this.context.issue({ body })

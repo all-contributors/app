@@ -71,7 +71,7 @@ class Repository {
         return multipleFilesByPath
     }
 
-    async getHeadRef(branchName) {
+    async getRef(branchName) {
         const result = await this.github.git.getRef({
             owner: this.owner,
             repo: this.repo,
@@ -81,7 +81,7 @@ class Repository {
     }
 
     async createBranch(branchName) {
-        const fromSha = await this.getHeadRef(this.defaultBranch)
+        const fromSha = await this.getRef(this.defaultBranch)
 
         // https://octokit.github.io/rest.js/#api-Git-createRef
         await this.github.git.createRef({
@@ -164,8 +164,8 @@ class Repository {
     }
 
     async createPullRequestFromFiles({ title, body, filesByPath, branchName }) {
-        if (this.basedBranch === this.defaultBranch)
-            await this.createBranch(branchName)
+        const branchNameExists = branchName === this.basedBranch
+        if (branchNameExists) await this.createBranch(branchName)
 
         await this.createOrUpdateFiles({
             filesByPath,

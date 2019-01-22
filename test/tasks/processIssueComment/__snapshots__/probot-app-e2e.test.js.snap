@@ -24,6 +24,18 @@ Could not find the user jakebolam on github.",
 }
 `;
 
+exports[`All Contributors app - End to end Fail path, unknown intention 1`] = `
+Object {
+  "body": "@jakebolam 
+
+I could not determine your intention.
+
+Basic usage: @all-contributors please add @jakebolam for code, doc and infra
+
+For other usage see the [documentation](https://github.com/all-contributors/all-contributors-bot#usage)",
+}
+`;
+
 exports[`All Contributors app - End to end Happy path, add correct new contributor 1`] = `
 Object {
   "ref": "refs/heads/all-contributors/add-jakebolam",
