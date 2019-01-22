@@ -27,6 +27,7 @@ class CommentReply {
         this.sent = true
         const fromUser = this.replyingToWho()
         const body = `@${fromUser} ${this.message}`
+        this.context.log.info(`Sending comment: ${body}`)
         const issueComment = this.context.issue({ body })
         return this.context.github.issues.createComment(issueComment)
     }
