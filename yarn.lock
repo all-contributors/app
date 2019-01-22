@@ -138,17 +138,17 @@
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@octokit/plugin-enterprise-compatibility/-/plugin-enterprise-compatibility-1.0.0.tgz#46399ad8eed7325bdc14ad6e10ed625226388cc7"
 
-"@octokit/plugin-retry@^2.0.0":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@octokit/plugin-retry/-/plugin-retry-2.0.0.tgz#36e9ba610a376fcda7d06082fb49b5bfb3e8d737"
+"@octokit/plugin-retry@^2.1.1":
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/@octokit/plugin-retry/-/plugin-retry-2.1.1.tgz#703a0b148a0c3c18554d0ea80cb3145f0cfef2f6"
   dependencies:
-    bottleneck "^2.15.0"
+    bottleneck "^2.15.3"
 
-"@octokit/plugin-throttling@^2.1.0":
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/@octokit/plugin-throttling/-/plugin-throttling-2.1.0.tgz#0e831be4585eb77cc566096867ca96e269603ba6"
+"@octokit/plugin-throttling@^2.2.1":
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/@octokit/plugin-throttling/-/plugin-throttling-2.3.0.tgz#27ebf6e2ff161bb44b05ee8db959c6a3cf9be57e"
   dependencies:
-    bottleneck "^2.15.0"
+    bottleneck "^2.15.3"
 
 "@octokit/request@2.2.1", "@octokit/request@^2.1.2":
   version "2.2.1"
@@ -774,9 +774,9 @@ boom@7.x.x, boom@^7.3.0:
   dependencies:
     hoek "6.x.x"
 
-bottleneck@^2.15.0:
-  version "2.15.0"
-  resolved "https://registry.yarnpkg.com/bottleneck/-/bottleneck-2.15.0.tgz#538ec3a32f0e94a06e934bcb2080eb2c4c901c5a"
+bottleneck@^2.15.3:
+  version "2.15.3"
+  resolved "https://registry.yarnpkg.com/bottleneck/-/bottleneck-2.15.3.tgz#64f2fc1a5e4c506fd5b73863ac3f2ab1d2d6a349"
 
 boxen@^1.2.1:
   version "1.3.0"
@@ -4574,14 +4574,14 @@ private@^0.1.8:
   version "0.1.8"
   resolved "https://registry.yarnpkg.com/private/-/private-0.1.8.tgz#2381edb3689f7a53d653190060fcf822d2f368ff"
 
-probot@^8.0.0-octokit-16-preview:
-  version "8.0.0-octokit-16-preview"
-  resolved "https://registry.yarnpkg.com/probot/-/probot-8.0.0-octokit-16-preview.tgz#3023488939fa01cc6753d85f0ee6ce9d36bf5c4b"
+probot@^8.0.0-beta.1:
+  version "8.0.0-beta.1"
+  resolved "https://registry.yarnpkg.com/probot/-/probot-8.0.0-beta.1.tgz#a30bf44a7909053ec4b2907897f11e2dbc229822"
   dependencies:
     "@octokit/graphql" "2.0.1"
     "@octokit/plugin-enterprise-compatibility" "^1.0.0"
-    "@octokit/plugin-retry" "^2.0.0"
-    "@octokit/plugin-throttling" "^2.1.0"
+    "@octokit/plugin-retry" "^2.1.1"
+    "@octokit/plugin-throttling" "^2.2.1"
     "@octokit/rest" "^16.8.0"
     "@octokit/webhooks" "^5.0.2"
     "@types/supports-color" "^5.3.0"
