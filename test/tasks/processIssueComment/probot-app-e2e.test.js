@@ -1,17 +1,17 @@
 const nock = require('nock')
 const { Probot } = require('probot')
 
-const allContributorsApp = require('../src')
-const { rejectionOf } = require('./testUtils')
+const processIssueCommentApp = require('../../../src/tasks/processIssueComment/probot-processIssueComment')
+const { rejectionOf } = require('../../testUtils')
 
-const issue_commentCreatedPayload = require('./fixtures/issue_comment.created.json')
-const reposGetContentsAllContributorsRCdata = require('./fixtures/repos.getContents.all-contributorsrc.json')
-const usersGetByUsernameJakeBolamdata = require('./fixtures/users.getByUsername.jakebolam.json')
-const reposGetContentsREADMEMDdata = require('./fixtures/repos.getContents.README.md.json')
-const gitGetRefdata = require('./fixtures/git.getRef.json')
-const gitCreateRefdata = require('./fixtures/git.createRef.json')
-const reposUpdateFiledata = require('./fixtures/repos.updateFile.json')
-const pullsCreatedata = require('./fixtures/pulls.create.json')
+const issue_commentCreatedPayload = require('../../fixtures/issue_comment.created.json')
+const reposGetContentsAllContributorsRCdata = require('../../fixtures/repos.getContents.all-contributorsrc.json')
+const usersGetByUsernameJakeBolamdata = require('../../fixtures/users.getByUsername.jakebolam.json')
+const reposGetContentsREADMEMDdata = require('../../fixtures/repos.getContents.README.md.json')
+const gitGetRefdata = require('../../fixtures/git.getRef.json')
+const gitCreateRefdata = require('../../fixtures/git.createRef.json')
+const reposUpdateFiledata = require('../../fixtures/repos.updateFile.json')
+const pullsCreatedata = require('../../fixtures/pulls.create.json')
 
 describe('All Contributors app - End to end', () => {
     let probot
@@ -23,7 +23,7 @@ describe('All Contributors app - End to end', () => {
 
     beforeEach(() => {
         probot = new Probot({})
-        const app = probot.load(allContributorsApp)
+        const app = probot.load(processIssueCommentApp)
 
         // just return a test token
         app.app = () => 'test'

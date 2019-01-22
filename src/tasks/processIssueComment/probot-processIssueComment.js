@@ -6,8 +6,6 @@ const ContentFiles = require('./ContentFiles')
 const getUserDetails = require('./utils/getUserDetails')
 const parseComment = require('./utils/parse-comment')
 
-const isMessageForBot = require('./utils/isMessageForBot')
-const { GIHUB_BOT_NAME } = require('./utils/settings')
 const {
     AllContributorBotError,
     ResourceNotFoundError,
@@ -67,7 +65,7 @@ async function processAddContributor({
     )
 }
 
-async function processIssueComment({ context, commentReply }) {
+async function probotProcessIssueComment({ context, commentReply }) {
     const repository = new Repository({
         ...context.repo(),
         github: context.github,
@@ -104,7 +102,7 @@ async function processIssueComment({ context, commentReply }) {
 
     commentReply.reply(`I could not determine your intention.`)
     commentReply.reply(
-        `Basic usage: @${GIHUB_BOT_NAME} please add jakebolam for code, doc and infra`,
+        `Basic usage: @all-contributors please add @jakebolam for code, doc and infra`,
     )
     commentReply.reply(
         `For other usage see the [documentation](https://github.com/all-contributors/all-contributors-bot#usage)`,
@@ -112,21 +110,10 @@ async function processIssueComment({ context, commentReply }) {
     return
 }
 
-async function processIssueCommentSafe({ context }) {
-    if (context.isBot) {
-        context.log.debug('From a bot, exiting')
-        return
-    }
-
-    const commentBody = context.payload.comment.body
-    if (!isMessageForBot(commentBody)) {
-        context.log.debug('Message not for us, exiting')
-        return
-    }
-
+async function probotProcessIssueCommentSafe({ context }) {
     const commentReply = new CommentReply({ context })
     try {
-        await processIssueComment({ context, commentReply })
+        await probotProcessIssueComment({ context, commentReply })
     } catch (error) {
         if (error.handled) {
             context.log.debug(error)
@@ -145,4 +132,13 @@ async function processIssueCommentSafe({ context }) {
     }
 }
 
-module.exports = processIssueCommentSafe
+function processIssueCommentApp(app) {
+    // issueComment.edited
+    // Issue comments and PR comments both create issue_comment events
+    app.on('issue_comment.created', async context => {
+        app.log.trace(context)
+        await probotProcessIssueCommentSafe({ context })
+    })
+}
+
+module.exports = processIssueCommentApp

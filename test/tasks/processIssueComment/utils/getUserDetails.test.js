@@ -1,11 +1,13 @@
 const nock = require('nock')
 
-const getUserDetails = require('../../src/utils/getUserDetails')
-const { UserNotFoundError } = require('../../src/utils/errors')
+const getUserDetails = require('../../../../src/tasks/processIssueComment/utils/getUserDetails')
+const {
+    UserNotFoundError,
+} = require('../../../../src/tasks/processIssueComment/utils/errors')
 
-const { rejectionOf } = require('../testUtils')
-const mockUserAPIReturn = require('../../test/fixtures/users.getByUsername.jakebolam.json')
-const mockGithub = require('../mocks/mockGithub')
+const { rejectionOf } = require('../../../testUtils')
+const mockUserAPIReturn = require('../../../fixtures/users.getByUsername.jakebolam.json')
+const mockGithub = require('../../../mocks/mockGithub')
 
 describe('Get User Details', () => {
     test('gets user details when user exists', async () => {

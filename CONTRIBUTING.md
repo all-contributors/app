@@ -24,21 +24,25 @@ Ideas not as issues yet:
 
 
 ### Testing serverless locally
-`yarn add serverless-dotenv-plugin --dev`
 
-in `serverless.yml` plugins add:
-`- serverless-dotenv-plugin`
-
-
-Create file test-file.json with payload
+#### Adding tasks to the queue
+Create file test-webhook-file.json with payload
 ```
-curl -vX POST http://localhost:3000/ -d @test-payload.json \
+curl -vX POST http://localhost:3000/ -d @test-webhook-payload.json \
 --header "Content-Type: application/json" \
 --header "X-GitHub-Event: issue_comment"
 ```
 
+#### Executing tasks
+Create test-task-payload.json
+```
+yarn serverless invoke local \
+--function processIssueComment \
+--path test-task-payload.json
+```
 
-## Monitoring:
+
+## Production Monitoring:
 - [Sentry](https://sentry.io/all-contributors/github-bot/)
 - [AWS Lambda](https://console.aws.amazon.com/lambda/home?region=us-east-1#/functions/all-contributors-bot-prod-githubWebhook?tab=monitoring)
 - [Stats](https://gkioebvccg.execute-api.us-east-1.amazonaws.com/prod/stats)

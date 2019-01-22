@@ -1,12 +1,12 @@
 const nock = require('nock')
 
-const Repository = require('../../src/Repository')
+const Repository = require('../../../../src/tasks/processIssueComment/Repository')
 
-const gitGetRefdata = require('../../test/fixtures/git.getRef.json')
-const gitCreateRefdata = require('../../test/fixtures/git.createRef.json')
-const reposUpdateFiledata = require('../../test/fixtures/repos.updateFile.json')
-const pullsCreatedata = require('../../test/fixtures/pulls.create.json')
-const mockGithub = require('../mocks/mockGithub')
+const gitGetRefdata = require('../../../fixtures/git.getRef.json')
+const gitCreateRefdata = require('../../../fixtures/git.createRef.json')
+const reposUpdateFiledata = require('../../../fixtures/repos.updateFile.json')
+const pullsCreatedata = require('../../../fixtures/pulls.create.json')
+const mockGithub = require('../../../mocks/mockGithub')
 
 describe('Repository', () => {
     const repository = new Repository({

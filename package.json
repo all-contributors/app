@@ -1,11 +1,11 @@
 {
-  "name": "AllContributorsBot",
-  "version": "0.0.1",
+  "name": "all-contributors-bot",
+  "version": "1.0.0",
   "description": "A bot for automatically adding all your contributors",
-  "author": "Jake Bolam <jake.bolam@gmail.com> (https://all-contributors.js.org)",
-  "repository": "https://github.com/all-contributors/bot.git",
-  "homepage": "https://github.com/all-contributors/bot",
-  "bugs": "https://github.com/all-contributors/bot/issues",
+  "author": "Jake Bolam <jake.bolam@gmail.com> (https://jakebolam.com)",
+  "repository": "https://github.com/all-contributors/all-contributors-bot.git",
+  "homepage": "https://github.com/all-contributors/all-contributors-bot",
+  "bugs": "https://github.com/all-contributors/all-contributors-bot/issues",
   "keywords": [
     "all-contributors",
     "probot",
@@ -14,7 +14,7 @@
   ],
   "scripts": {
     "start": "nodemon",
-    "start-probot": "probot run ./src/index.js",
+    "start-probot": "probot run ./src/tasks/processIssueComment/probot-processIssueComment.js",
     "start-serverless": "serverless offline start",
     "lint": "eslint .",
     "lint-fix": "eslint --fix .",
@@ -24,6 +24,7 @@
   },
   "dependencies": {
     "all-contributors-cli": "^5.10.1",
+    "aws-sdk": "^2.391.0",
     "compromise": "^11.13.0",
     "probot": "^8.0.0-octokit-16-preview"
   },
@@ -40,6 +41,7 @@
     "nodemon": "^1.17.2",
     "prettier": "^1.15.3",
     "serverless": "^1.35.1",
+    "serverless-dotenv-plugin": "^2.0.1",
     "serverless-offline": "^4.0.0",
     "shelljs": "^0.8.3",
     "smee-client": "^1.0.2"

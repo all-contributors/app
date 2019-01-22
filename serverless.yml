@@ -2,6 +2,7 @@ service: all-contributors-bot
 frameworkVersion: '=1.35.1'
 
 plugins:
+  - serverless-dotenv-plugin
   - serverless-offline # must be last
 
 custom:
@@ -24,9 +25,8 @@ provider:
   region: us-east-1
   runtime: nodejs8.10
   memorySize: 512
-  timeout: 30
+  timeout: 60
   environment:
-    BOT_NAME: ${self:custom.botName.${self:custom.stage}}
     APP_ID: ${self:custom.appId.${self:custom.stage}}
     LOG_LEVEL: ${self:custom.logLevel.${self:custom.stage}}
     SENTRY_DSN:  ${self:custom.sentryDsn.${self:custom.stage}}
@@ -34,6 +34,12 @@ provider:
     INSTALLATION_TOKEN_TTL: 3540
     WEBHOOK_SECRET: ${env:WEBHOOK_SECRET}
     PRIVATE_KEY: ${env:PRIVATE_KEY}
+    SERVICE_NAME_AND_STAGE: 'all-contributors-bot-${opt:stage, self:provider.stage}'
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - lambda:InvokeFunction
+      Resource: '*'
 
 functions:
   githubWebhook:
@@ -50,3 +56,7 @@ functions:
           path: /stats
           method: get
           cors: true
+
+   # Tasks
+  processIssueComment:
+    handler: src/tasks/processIssueComment/serverless-task.handler
