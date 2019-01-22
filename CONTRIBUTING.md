@@ -45,4 +45,4 @@ yarn serverless invoke local \
 ## Production Monitoring:
 - [Sentry](https://sentry.io/all-contributors/github-bot/)
 - [AWS Lambda](https://console.aws.amazon.com/lambda/home?region=us-east-1#/functions/all-contributors-bot-prod-githubWebhook?tab=monitoring)
-- [Stats](https://gkioebvccg.execute-api.us-east-1.amazonaws.com/prod/stats)
+- [Stats](https://gkioebvccg.execute-api.us-east-1.amazonaws.com/prod/probot/stats)
