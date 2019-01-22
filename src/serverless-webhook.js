@@ -5,6 +5,30 @@ const lambda = new AWS.Lambda()
 
 const isMessageForBot = require('./utils/isMessageForBot')
 
+function invokeLambda(payload) {
+    const processIssueCommentPayload = JSON.stringify(payload)
+
+    return new Promise(function(resolve, reject) {
+        lambda.invoke(
+            {
+                FunctionName: `${
+                    process.env.SERVICE_NAME_AND_STAGE
+                }-processIssueComment`,
+                InvocationType: 'Event',
+                LogType: 'None',
+                Payload: new Buffer(processIssueCommentPayload),
+            },
+            function(error, data) {
+                if (error) {
+                    reject(error)
+                } else {
+                    resolve(data)
+                }
+            },
+        )
+    })
+}
+
 module.exports.handler = async (event, context) => {
     context.callbackWaitsForEmptyEventLoop = false
 
@@ -43,18 +67,9 @@ module.exports.handler = async (event, context) => {
             }
         }
 
-        const processIssueCommentPayload = JSON.stringify({
+        await invokeLambda({
             name,
             payload,
-        })
-
-        lambda.invoke({
-            FunctionName: `${
-                process.env.SERVICE_NAME_AND_STAGE
-            }-processIssueComment`,
-            InvocationType: 'Event',
-            LogType: 'None',
-            Payload: new Buffer(processIssueCommentPayload),
         })
 
         return {
