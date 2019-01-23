@@ -22,12 +22,12 @@
 [![All Contributors](https://img.shields.io/badge/all_contributors-7-orange.svg)](#contributors)
 [![Chat on Slack](https://img.shields.io/badge/slack-join-ff69b4.svg)](https://join.slack.com/t/all-contributors/shared_invite/enQtNTE3ODMyMTA4NTk0LTUwZDMxZGZkMmViMzYzYzk2YTM2NjRkZGM5Yzc0ZTc5NmYzNWY3Y2Q0ZTY3ZmFhZDgyY2E3ZmIzNWQwMTUxZmE)
 
-A bot for automatically adding all-contributors.
+🤖 A GitHub bot to automate acknowledging contributors to your open source projects.
 
 ## Motivation
 Implementing the [All Contributors spec](https://github.com/all-contributors/all-contributors) by hand is a tedious processes, installing command line tools to update a README seems overkill.
 
-Enter the ``@all-contributors bot`! The bot will automatically pull a user's profile, grab the contribution type emoji, update the project README and then open a Pull Request against the project :sparkles:
+Enter the `@all-contributors bot`! The bot will automatically pull a user's profile, grab the contribution type emoji, update the project README and then open a Pull Request against the project :sparkles:
 
 <a href="https://all-contributors.js.org/docs/bot/usage">
     <img alt="Example usage screenshot" src="docs/usage.png" width="500px">
