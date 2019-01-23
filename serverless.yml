@@ -56,6 +56,17 @@ functions:
           path: /probot/stats
           method: get
           cors: true
+  healthCheck:
+    handler: src/serverless-health-check.handler
+    events:
+      - http:
+          path: /ping
+          method: get
+          cors: true
+      - http:
+          path: /health-check
+          method: get
+          cors: true
 
    # Tasks
   processIssueComment:
