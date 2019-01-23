@@ -8,36 +8,24 @@
 
 A bot for automatically adding all-contributors.
 
-<a href="#Usage"><img alt="Example usage screenshot" src="docs/usage.png" width="500px"></a>
+## Motivation
+Implement the [All Contributors spec](https://github.com/all-contributors/all-contributors) by hand is a tedious processes, installing command line tools to update a readme table seems unessasary.
 
-## Installation
-1. [Install the GitHub App](https://github.com/apps/allcontributors/installations/new) and configure your repositories
-<a href="https://github.com/apps/allcontributors/installations/new">
-    <img alt="App Install Screenshot" src="docs/app-install.png" width="500px">
+Enter the @all-contributors bot! The bot will automatically lookup the information for the user, grab the emoji, update the project README and then submit this all in a Pull Reuqest against the project:
+
+<a href="https://all-contributors.js.org/docs/bot/usage">
+    <img alt="Example usage screenshot" src="docs/usage.png" width="500px">
 </a>
 
-## Usage
+## Using the @all-contributors bot 🤖
+If you're looking to use the bot, head over to the [bot docs on all-contributors.js.org](https://all-contributors.js.org/docs/bot/overview). The all-contributors website contains all the information required to install, configure and use the @all-contributors bot.
 
-### Adding contributions
- Comment on Issue or Pull Request, asking @all-contributors to add a contributor:
-```
-@all-contributors please add @jakebolam for infrastructure, tests and code
-```
-
-The bot will then create a Pull Request to add the contributor, then reply with the pull request details.
-
-> Your request to the bot doesn't need to be perfect. The bot uses some basic Natural Language Parsing to determine your intent, for more information on acceptable messages [visit the @all-contributors website](https://all-contributors.js.org/docs/bot).
-
-
-### Contribution Types
-If you want to know more about the types you can recognize for, [check out the reference key](https://all-contributors.js.org/docs/reference).
-
-## Contributing to the @all-contributors bot
+## Contributing
 If you have suggestions for how the @all-contributors bot could be improved, or want to report a bug, [open an issue](https://github.com/all-contributors/all-contributors-bot/issues)!
 
 For more, check out the [Contributing Guide](CONTRIBUTING.md).
 
-## Contributors, bot builders
+## Contributors
 
 Thanks goes to these wonderful people ([emoji key](https://github.com/all-contributors/all-contributors#emoji-key)):
 
