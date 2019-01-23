@@ -9,13 +9,13 @@
 <a href="https://github.com/semantic-release/semantic-release">
     <img alt="Semantic Release" src="https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg" />
 </a> <br />
-<a href="https://david-dm.org/all-contributors/all-contributors-bot">	
-    <img alt="Deps" src="https://david-dm.org/all-contributors/all-contributors-bot/status.svg"/>	
-</a>	
-<a href="https://david-dm.org/all-contributors/all-contributors-bot">	
-    <img alt="Dev Deps" src="https://david-dm.org/all-contributors/all-contributors-bot/dev-status.svg"/>	
-</a>	
-<a href="https://greenkeeper.io">	
+<a href="https://david-dm.org/all-contributors/all-contributors-bot">
+    <img alt="Deps" src="https://david-dm.org/all-contributors/all-contributors-bot/status.svg"/>
+</a>
+<a href="https://david-dm.org/all-contributors/all-contributors-bot">
+    <img alt="Dev Deps" src="https://david-dm.org/all-contributors/all-contributors-bot/dev-status.svg"/>
+</a>
+<a href="https://greenkeeper.io">
     <img alt="Green Keeper" src="https://badges.greenkeeper.io/all-contributors/all-contributors-bot.svg"/>
 </a>
 
@@ -25,16 +25,16 @@
 A bot for automatically adding all-contributors.
 
 ## Motivation
-Implement the [All Contributors spec](https://github.com/all-contributors/all-contributors) by hand is a tedious processes, installing command line tools to update a readme table seems unessasary.
+Implementing the [All Contributors spec](https://github.com/all-contributors/all-contributors) by hand is a tedious processes, installing command line tools to update a README seems overkill.
 
-Enter the @all-contributors bot! The bot will automatically lookup the information for the user, grab the emoji, update the project README and then submit this all in a Pull Reuqest against the project:
+Enter the ``@all-contributors bot`! The bot will automatically pull a user's profile, grab the contribution type emoji, update the project README and then open a Pull Request against the project :sparkles:
 
 <a href="https://all-contributors.js.org/docs/bot/usage">
     <img alt="Example usage screenshot" src="docs/usage.png" width="500px">
 </a>
 
 ## Using the @all-contributors bot 🤖
-If you're looking to use the bot, head over to the [bot docs on all-contributors.js.org](https://all-contributors.js.org/docs/bot/overview). The all-contributors website contains all the information required to install, configure and use the @all-contributors bot.
+If you're looking to use the bot, head over to the [bot docs on all-contributors.js.org](https://all-contributors.js.org/docs/bot/overview). The all-contributors website contains all the information required to install, configure and use the bot.
 
 ## Contributing
 If you have suggestions for how the @all-contributors bot could be improved, or want to report a bug, [open an issue](https://github.com/all-contributors/all-contributors-bot/issues)!
