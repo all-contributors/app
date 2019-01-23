@@ -25,7 +25,7 @@
 🤖 A GitHub bot to automate acknowledging contributors to your open source projects.
 
 ## Motivation
-Implementing the [All Contributors spec](https://github.com/all-contributors/all-contributors) by hand is a tedious processes, installing command line tools to update a README seems overkill.
+Implementing the [All Contributors spec](https://github.com/all-contributors/all-contributors) by hand is a laborious process.
 
 Enter the `@all-contributors bot`! The bot will automatically pull a user's profile, grab the contribution type emoji, update the project README and then open a Pull Request against the project :sparkles:
 
