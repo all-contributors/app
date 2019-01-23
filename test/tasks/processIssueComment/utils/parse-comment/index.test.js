@@ -92,7 +92,7 @@ describe('parseComment', () => {
 
         expect(
             parseComment(
-                `Jane you're crushing it in documentation and infrastructure, let's add jane.doe23 for her contributions. cc @${testBotName}`,
+                `Jane you are crushing it in documentation and your infrastructure work has been great too. Let's add jane.doe23 for her contributions. cc @all-contributors-bot`,
             ),
         ).toEqual({
             action: 'add',
