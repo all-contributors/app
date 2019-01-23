@@ -40,6 +40,7 @@
     "nock": "^10.0.0",
     "nodemon": "^1.17.2",
     "prettier": "^1.15.3",
+    "semantic-release": "^15.13.3",
     "serverless": "^1.35.1",
     "serverless-dotenv-plugin": "^2.0.1",
     "serverless-offline": "^4.0.0",
