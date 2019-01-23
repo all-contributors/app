@@ -9,41 +9,35 @@
 <a href="https://github.com/semantic-release/semantic-release">
     <img alt="Semantic Release" src="https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg" />
 </a> <br />
-<a href="https://david-dm.org/all-contributors/all-contributors-bot">	
-    <img alt="Deps" src="https://david-dm.org/all-contributors/all-contributors-bot/status.svg"/>	
-</a>	
-<a href="https://david-dm.org/all-contributors/all-contributors-bot">	
-    <img alt="Dev Deps" src="https://david-dm.org/all-contributors/all-contributors-bot/dev-status.svg"/>	
-</a>	
-<a href="https://greenkeeper.io">	
+<a href="https://david-dm.org/all-contributors/all-contributors-bot">
+    <img alt="Deps" src="https://david-dm.org/all-contributors/all-contributors-bot/status.svg"/>
+</a>
+<a href="https://david-dm.org/all-contributors/all-contributors-bot">
+    <img alt="Dev Deps" src="https://david-dm.org/all-contributors/all-contributors-bot/dev-status.svg"/>
+</a>
+<a href="https://greenkeeper.io">
     <img alt="Green Keeper" src="https://badges.greenkeeper.io/all-contributors/all-contributors-bot.svg"/>
 </a>
 
 [![All Contributors](https://img.shields.io/badge/all_contributors-7-orange.svg)](#contributors)
 [![Chat on Slack](https://img.shields.io/badge/slack-join-ff69b4.svg)](https://join.slack.com/t/all-contributors/shared_invite/enQtNTE3ODMyMTA4NTk0LTUwZDMxZGZkMmViMzYzYzk2YTM2NjRkZGM5Yzc0ZTc5NmYzNWY3Y2Q0ZTY3ZmFhZDgyY2E3ZmIzNWQwMTUxZmE)
 
-A bot for automatically adding all-contributors.
+🤖 A GitHub bot to automate acknowledging contributors to your open source projects.
 
-<a href="#Usage"><img alt="Example usage screenshot" src="docs/usage.png" width="500px"></a>
+## Motivation
+Implementing the [All Contributors spec](https://github.com/all-contributors/all-contributors) by hand is a laborious process.
 
-## Installation
-[Install the GitHub App](https://github.com/apps/allcontributors) and [configure your repositories](https://github.com/apps/allcontributors/installations/new)
+Enter the `@all-contributors bot`! The bot will automatically pull a user's profile, grab the contribution type emoji, update the project README and then open a Pull Request against the project :sparkles:
 
-## Usage
+<a href="https://all-contributors.js.org/docs/bot/usage">
+    <img alt="Example usage screenshot" src="docs/usage.png" width="500px">
+</a>
 
-### Adding contributions
-Comment on Issue or Pull Request with text:
-```
-@all-contributors please add @jakebolam for infrastructure, tests and code
-```
-
-The bot will then create a Pull Request to add the contributor, then reply with the pull request details.
-
-> If this is your first time adding a contributor, you will need to ensure you have a `README.md` file in the root of the project (it can be empty).
-
+## Using the @all-contributors bot 🤖
+If you're looking to use the bot, head over to the [bot docs on all-contributors.js.org](https://all-contributors.js.org/docs/bot/overview). The all-contributors website contains all the information required to install, configure and use the bot.
 
 ## Contributing
-If you have suggestions for how the AllContributorsBot could be improved, or want to report a bug, [open an issue](https://github.com/all-contributors/all-contributors-bot/issues)!
+If you have suggestions for how the @all-contributors bot could be improved, or want to report a bug, [open an issue](https://github.com/all-contributors/all-contributors-bot/issues)!
 
 For more, check out the [Contributing Guide](CONTRIBUTING.md).
 
