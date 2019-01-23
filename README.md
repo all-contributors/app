@@ -2,8 +2,17 @@
 
 [![Build](https://img.shields.io/circleci/project/github/all-contributors/all-contributors-bot/master.svg)](https://circleci.com/gh/all-contributors/all-contributors-bot)
 [![Coverage](https://img.shields.io/codecov/c/github/all-contributors/all-contributors-bot.svg)](https://codecov.io/github/all-contributors/all-contributors-bot)
-[![Greenkeeper badge](https://badges.greenkeeper.io/all-contributors/all-contributors-bot.svg)](https://greenkeeper.io/)
 [![Semantic Release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
+
+<a href="https://david-dm.org/all-contributors/all-contributors-bot">
+    <img alt="Deps" src="https://david-dm.org/all-contributors/all-contributors-bot/status.svg"/>
+</a>
+<a href="https://david-dm.org/all-contributors/all-contributors-bot">
+    <img alt="Dev Deps" src="https://david-dm.org/all-contributors/all-contributors-bot/dev-status.svg"/>
+</a>
+<a href="https://greenkeeper.io">
+    <img alt="Green Keeper" src="https://badges.greenkeeper.io/all-contributors/all-contributors-bot.svg"/>
+</a>
 
 [![All Contributors](https://img.shields.io/badge/all_contributors-7-orange.svg?style=flat-square)](#contributors)
 [![Chat on Slack](https://img.shields.io/badge/slack-join-ff69b4.svg)](https://join.slack.com/t/all-contributors/shared_invite/enQtNTE3ODMyMTA4NTk0LTUwZDMxZGZkMmViMzYzYzk2YTM2NjRkZGM5Yzc0ZTc5NmYzNWY3Y2Q0ZTY3ZmFhZDgyY2E3ZmIzNWQwMTUxZmE)
