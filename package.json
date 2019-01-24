@@ -21,7 +21,7 @@
     "test": "jest",
     "test-watch": "jest --watch --notify --notifyMode=change",
     "test-ci": "jest --reporters ./node_modules/jest-junit --collectCoverage",
-    "commit": "npx git-cz"
+    "commit": "git-cz"
   },
   "dependencies": {
     "@probot/serverless-lambda": "^0.2.0",
