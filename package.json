@@ -20,7 +20,8 @@
     "lint-fix": "eslint --fix .",
     "test": "jest",
     "test-watch": "jest --watch --notify --notifyMode=change",
-    "test-ci": "jest --reporters ./node_modules/jest-junit --collectCoverage"
+    "test-ci": "jest --reporters ./node_modules/jest-junit --collectCoverage",
+    "commit": "git-cz"
   },
   "dependencies": {
     "all-contributors-cli": "^5.10.1",
@@ -31,10 +32,12 @@
   "devDependencies": {
     "@tophat/eslint-config": "^0.1.4",
     "codecov": "^3.1.0",
+    "cz-conventional-changelog": "^2.1.0",
     "eslint": "^5.12.0",
     "eslint-config-prettier": "^3.3.0",
     "eslint-plugin-jest": "^22.1.2",
     "eslint-plugin-prettier": "^3.0.1",
+    "git-cz": "^1.8.0",
     "jest": "^23.6.0",
     "jest-junit": "^6.0.1",
     "nock": "^10.0.0",
@@ -69,5 +72,10 @@
   "jest-junit": {
     "suiteName": "All Contributor Bot tests",
     "outputDirectory": "artifacts/test-results"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
   }
 }
