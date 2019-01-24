@@ -5,4 +5,5 @@ package-lock.json # We use yarn ;)
 
 .env
 *.pem
-test-payload.json
+test-*-payload.json
+yarn-error.log
