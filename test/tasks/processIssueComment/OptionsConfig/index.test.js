@@ -5,12 +5,10 @@ describe('ContentFiles', () => {
         repo: 'all-contributors-bot-test',
         owner: 'all-contributors',
     }
-    const mockCommentReply = {}
 
     test(`Add's new contributor`, async () => {
         const optionsConfig = new OptionsConfig({
             repository: mockRepository,
-            commentReply: mockCommentReply,
         })
 
         optionsConfig.options = {
@@ -40,7 +38,6 @@ describe('ContentFiles', () => {
     test(`Add's new contributions for contributor`, async () => {
         const optionsConfig = new OptionsConfig({
             repository: mockRepository,
-            commentReply: mockCommentReply,
         })
 
         optionsConfig.options = {
@@ -81,7 +78,6 @@ describe('ContentFiles', () => {
     test(`If profile URL is missing protocol, add it for them`, async () => {
         const optionsConfig = new OptionsConfig({
             repository: mockRepository,
-            commentReply: mockCommentReply,
         })
         optionsConfig.init()
 
@@ -108,7 +104,6 @@ describe('ContentFiles', () => {
     test(`Inits the contributor file`, () => {
         const optionsConfig = new OptionsConfig({
             repository: mockRepository,
-            commentReply: mockCommentReply,
         })
 
         expect(optionsConfig.options).toBeUndefined()

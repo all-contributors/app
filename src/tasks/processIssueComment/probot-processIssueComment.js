@@ -21,6 +21,7 @@ async function processAddContributor({
     optionsConfig,
     who,
     contributions,
+    branchName,
 }) {
     const { name, avatar_url, profile } = await getUserDetails({
         github: context.github,
@@ -34,24 +35,6 @@ async function processAddContributor({
         avatar_url,
         profile,
     })
-
-    const safeWho = getSafeRef(who)
-    const branchName = `all-contributors/add-${safeWho}`
-    try {
-        await repository.getRef(branchName)
-        context.log.info(
-            `Branch: ${branchName} EXISTS, will work from this branch`,
-        )
-        repository.setBaseBranch(branchName)
-    } catch (error) {
-        if (error instanceof BranchNotFoundError) {
-            context.log.info(
-                `Branch: ${branchName} DOES NOT EXIST, will work from default branch`,
-            )
-        } else {
-            throw error
-        }
-    }
 
     const contentFiles = new ContentFiles({
         repository,
@@ -81,9 +64,7 @@ async function processAddContributor({
     )
 }
 
-async function probotProcessIssueComment({ context, commentReply }) {
-    const commentBody = context.payload.comment.body
-    const { who, action, contributions } = parseComment(commentBody)
+async function setupRepository({ context, branchName }) {
     const defaultBranch = context.payload.repository.default_branch
     const repository = new Repository({
         ...context.repo(),
@@ -91,9 +72,30 @@ async function probotProcessIssueComment({ context, commentReply }) {
         defaultBranch,
     })
 
+    try {
+        await repository.getRef(branchName)
+        context.log.info(
+            `Branch: ${branchName} EXISTS, will work from this branch`,
+        )
+        repository.setBaseBranch(branchName)
+    } catch (error) {
+        if (error instanceof BranchNotFoundError) {
+            context.log.info(
+                `Branch: ${branchName} DOES NOT EXIST, will work from default branch`,
+            )
+        } else {
+            throw error
+        }
+    }
+
+    return repository
+}
+
+async function setupOptionsConfig({
+    repository
+}) {
     const optionsConfig = new OptionsConfig({
         repository,
-        commentReply,
     })
 
     try {
@@ -106,7 +108,23 @@ async function probotProcessIssueComment({ context, commentReply }) {
         }
     }
 
+    return optionsConfig
+}
+
+async function probotProcessIssueComment({ context, commentReply }) {
+    const commentBody = context.payload.comment.body
+    const { who, action, contributions } = parseComment(commentBody)
+
     if (action === 'add') {
+        const safeWho = getSafeRef(who)
+        const branchName = `all-contributors/add-${safeWho}`
+
+        const repository = await setupRepository({
+            context,
+            branchName,
+        })
+        const optionsConfig = await setupOptionsConfig({ repository })
+
         await processAddContributor({
             context,
             commentReply,
@@ -114,6 +132,7 @@ async function probotProcessIssueComment({ context, commentReply }) {
             optionsConfig,
             who,
             contributions,
+            branchName,
         })
         return
     }
@@ -123,7 +142,7 @@ async function probotProcessIssueComment({ context, commentReply }) {
         `Basic usage: @all-contributors please add @jakebolam for code, doc and infra`,
     )
     commentReply.reply(
-        `For other usage see the [documentation](https://github.com/all-contributors/all-contributors-bot#usage)`,
+        `For other usages see the [documentation](https://github.com/all-contributors/all-contributors-bot#usage)`,
     )
     return
 }
@@ -133,9 +152,7 @@ async function probotProcessIssueCommentSafe({ context }) {
     try {
         await probotProcessIssueComment({ context, commentReply })
     } catch (error) {
-        if (error.handled) {
-            context.log.debug(error)
-        } else if (error instanceof AllContributorBotError) {
+        if (error instanceof AllContributorBotError) {
             context.log.info(error)
             commentReply.reply(error.message)
         } else {

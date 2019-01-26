@@ -1,7 +1,6 @@
 const {
     BranchNotFoundError,
     ResourceNotFoundError,
-    AllContributorBotError,
 } = require('../utils/errors')
 
 class Repository {
@@ -168,11 +167,12 @@ class Repository {
             })
             return result.data.html_url
         } catch (error) {
-            if (error.status === 422)
-                // TODO: link to pull request
-                throw new AllContributorBotError('Pull request is already open')
-
-            throw error
+            if (error.status === 422) {
+                console.log('Pull request already open') // eslint-disable-line no-console
+                return error.data.html_url
+            } else {
+                throw error
+            }
         }
     }
 

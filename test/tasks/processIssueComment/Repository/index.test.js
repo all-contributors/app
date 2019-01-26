@@ -37,11 +37,9 @@ describe('Repository', () => {
     })
 
     test('createPullRequest with files', async () => {
-        const basedBranch = 'master'
-        repository.setBasedBranch(basedBranch)
         nock('https://api.github.com')
             .get(
-                `/repos/all-contributors/all-contributors-bot/git/refs/heads/${basedBranch}`,
+                `/repos/all-contributors/all-contributors-bot/git/refs/heads/master`,
             )
             .reply(200, gitGetRefdata)
 
