@@ -91,9 +91,7 @@ async function setupRepository({ context, branchName }) {
     return repository
 }
 
-async function setupOptionsConfig({
-    repository
-}) {
+async function setupOptionsConfig({ repository }) {
     const optionsConfig = new OptionsConfig({
         repository,
     })
