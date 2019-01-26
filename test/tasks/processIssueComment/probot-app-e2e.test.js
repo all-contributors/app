@@ -30,16 +30,21 @@ describe('All Contributors app - End to end', () => {
         app.app = () => 'test'
     })
 
-    test('Happy path, add correct new contributor', async () => {
+    test('1:Happy path, add correct new contributor', async () => {
         jest.setTimeout(10000)
-
         nock('https://api.github.com')
             .post('/app/installations/11111/access_tokens')
             .reply(200, { token: 'test' })
 
         nock('https://api.github.com')
             .get(
-                '/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc',
+                `/repos/all-contributors/all-contributors-bot/git/refs/heads/all-contributors/add-jakebolam`,
+            )
+            .reply(404)
+
+        nock('https://api.github.com')
+            .get(
+                '/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc?ref=master',
             )
             .reply(200, reposGetContentsAllContributorsRCdata)
 
@@ -49,7 +54,7 @@ describe('All Contributors app - End to end', () => {
 
         nock('https://api.github.com')
             .get(
-                '/repos/all-contributors/all-contributors-bot/contents/README.md',
+                '/repos/all-contributors/all-contributors-bot/contents/README.md?ref=master',
             )
             .reply(200, reposGetContentsREADMEMDdata)
 
@@ -107,7 +112,7 @@ describe('All Contributors app - End to end', () => {
         })
     })
 
-    test('Happy path, add correct new contributor, no allcontributors file (repo needs init first)', async () => {
+    test('2:Happy path, add correct new contributor, no allcontributors file (repo needs init first)', async () => {
         jest.setTimeout(10000)
 
         nock('https://api.github.com')
@@ -116,7 +121,13 @@ describe('All Contributors app - End to end', () => {
 
         nock('https://api.github.com')
             .get(
-                '/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc',
+                `/repos/all-contributors/all-contributors-bot/git/refs/heads/all-contributors/add-jakebolam`,
+            )
+            .reply(404)
+
+        nock('https://api.github.com')
+            .get(
+                '/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc?ref=master',
             )
             .reply(404)
 
@@ -126,7 +137,7 @@ describe('All Contributors app - End to end', () => {
 
         nock('https://api.github.com')
             .get(
-                '/repos/all-contributors/all-contributors-bot/contents/README.md',
+                '/repos/all-contributors/all-contributors-bot/contents/README.md?ref=master',
             )
             .reply(200, reposGetContentsREADMEMDdata)
 
@@ -184,14 +195,22 @@ describe('All Contributors app - End to end', () => {
         })
     })
 
-    test('Fail path, no readme file (configuration error)', async () => {
+    test('3:Fail path, no readme file (configuration error)', async () => {
+        jest.setTimeout(10000)
+
         nock('https://api.github.com')
             .post('/app/installations/11111/access_tokens')
             .reply(200, { token: 'test' })
 
         nock('https://api.github.com')
             .get(
-                '/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc',
+                `/repos/all-contributors/all-contributors-bot/git/refs/heads/all-contributors/add-jakebolam`,
+            )
+            .reply(404)
+
+        nock('https://api.github.com')
+            .get(
+                '/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc?ref=master',
             )
             .reply(200, reposGetContentsAllContributorsRCdata)
 
@@ -201,7 +220,7 @@ describe('All Contributors app - End to end', () => {
 
         nock('https://api.github.com')
             .get(
-                '/repos/all-contributors/all-contributors-bot/contents/README.md',
+                '/repos/all-contributors/all-contributors-bot/contents/README.md?ref=master',
             )
             .reply(404)
 
@@ -218,14 +237,20 @@ describe('All Contributors app - End to end', () => {
         })
     })
 
-    test('Fail path, no such user', async () => {
+    test('4:Fail path, no such user', async () => {
         nock('https://api.github.com')
             .post('/app/installations/11111/access_tokens')
             .reply(200, { token: 'test' })
 
         nock('https://api.github.com')
             .get(
-                '/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc',
+                `/repos/all-contributors/all-contributors-bot/git/refs/heads/all-contributors/add-jakebolam`,
+            )
+            .reply(404)
+
+        nock('https://api.github.com')
+            .get(
+                '/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc?ref=master',
             )
             .reply(200, reposGetContentsAllContributorsRCdata)
 
@@ -246,14 +271,14 @@ describe('All Contributors app - End to end', () => {
         })
     })
 
-    test('Fail path, unknown intention', async () => {
+    test('5: Fail path, Unknown user intention', async () => {
         nock('https://api.github.com')
             .post('/app/installations/11111/access_tokens')
             .reply(200, { token: 'test' })
 
         nock('https://api.github.com')
             .get(
-                '/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc',
+                '/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc?ref=master',
             )
             .reply(200, reposGetContentsAllContributorsRCdata)
 
@@ -270,7 +295,7 @@ describe('All Contributors app - End to end', () => {
         })
     })
 
-    test('Fail path, Unknown error (e.g. Network is dead, service down etc, our code is bad) crashes and sends error message', async () => {
+    test('6:Fail path, Unknown error (e.g. Network is dead, service down etc, our code is bad) crashes and sends error message', async () => {
         jest.setTimeout(20000)
 
         nock('https://api.github.com')
@@ -279,7 +304,13 @@ describe('All Contributors app - End to end', () => {
 
         nock('https://api.github.com')
             .get(
-                '/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc',
+                `/repos/all-contributors/all-contributors-bot/git/refs/heads/all-contributors/add-jakebolam`,
+            )
+            .reply(404)
+
+        nock('https://api.github.com')
+            .get(
+                '/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc?ref=master',
             )
             .reply(500)
 
@@ -297,5 +328,149 @@ describe('All Contributors app - End to end', () => {
             }),
         )
         expect(error instanceof Error).toBeTruthy()
+    })
+
+    test('7: Happy path, add correct new contributor, but branch exists', async () => {
+        jest.setTimeout(20000)
+        nock('https://api.github.com')
+            .post('/app/installations/11111/access_tokens')
+            .reply(200, { token: 'test' })
+
+        nock('https://api.github.com')
+            .get(
+                `/repos/all-contributors/all-contributors-bot/git/refs/heads/all-contributors/add-jakebolam`,
+            )
+            .reply(200, gitGetRefdata)
+
+        nock('https://api.github.com')
+            .get(
+                '/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc',
+            )
+            .query({ ref: 'all-contributors/add-jakebolam' })
+            .reply(200, reposGetContentsAllContributorsRCdata)
+
+        nock('https://api.github.com')
+            .get('/users/jakebolam')
+            .reply(200, usersGetByUsernameJakeBolamdata)
+
+        nock('https://api.github.com')
+            .get(
+                '/repos/all-contributors/all-contributors-bot/contents/README.md',
+            )
+            .query({ ref: 'all-contributors/add-jakebolam' })
+            .reply(200, reposGetContentsREADMEMDdata)
+
+        nock('https://api.github.com')
+            .put(
+                `/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc`,
+                verifyBody,
+            )
+            .reply(200, reposUpdateFiledata)
+
+        nock('https://api.github.com')
+            .put(
+                `/repos/all-contributors/all-contributors-bot/contents/README.md`,
+                verifyBody,
+            )
+            .reply(200, reposUpdateFiledata)
+
+        nock('https://api.github.com')
+            .put(
+                `/repos/all-contributors/all-contributors-bot/contents//nested-folder/SOME-DOC.md`,
+                verifyBody,
+            )
+            .reply(200, reposUpdateFiledata)
+
+        nock('https://api.github.com')
+            .post(
+                `/repos/all-contributors/all-contributors-bot/pulls`,
+                verifyBody,
+            )
+            .reply(201, pullsCreatedata)
+
+        nock('https://api.github.com')
+            .post(
+                '/repos/all-contributors/all-contributors-bot/issues/1/comments',
+                verifyBody,
+            )
+            .reply(200)
+
+        await probot.receive({
+            name: 'issue_comment',
+            payload: issue_commentCreatedPayload,
+        })
+    })
+
+    test('8: Happy path, add correct new contributor, but branch exists and PR is open', async () => {
+        jest.setTimeout(10000)
+
+        nock('https://api.github.com')
+            .post('/app/installations/11111/access_tokens')
+            .reply(200, { token: 'test' })
+
+        nock('https://api.github.com')
+            .get(
+                `/repos/all-contributors/all-contributors-bot/git/refs/heads/all-contributors/add-jakebolam`,
+            )
+            .reply(200, gitGetRefdata)
+
+        nock('https://api.github.com')
+            .get(
+                '/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc',
+            )
+            .query({ ref: 'all-contributors/add-jakebolam' })
+            .reply(200, reposGetContentsAllContributorsRCdata)
+
+        nock('https://api.github.com')
+            .get('/users/jakebolam')
+            .reply(200, usersGetByUsernameJakeBolamdata)
+
+        nock('https://api.github.com')
+            .get(
+                '/repos/all-contributors/all-contributors-bot/contents/README.md',
+            )
+            .query({ ref: 'all-contributors/add-jakebolam' })
+            .reply(200, reposGetContentsREADMEMDdata)
+
+        nock('https://api.github.com')
+            .put(
+                `/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc`,
+                verifyBody,
+            )
+            .reply(200, reposUpdateFiledata)
+
+        nock('https://api.github.com')
+            .put(
+                `/repos/all-contributors/all-contributors-bot/contents/README.md`,
+                verifyBody,
+            )
+            .reply(200, reposUpdateFiledata)
+
+        nock('https://api.github.com')
+            .put(
+                `/repos/all-contributors/all-contributors-bot/contents//nested-folder/SOME-DOC.md`,
+                verifyBody,
+            )
+            .reply(200, reposUpdateFiledata)
+
+        nock('https://api.github.com')
+            .persist()
+            .post(
+                `/repos/all-contributors/all-contributors-bot/pulls`,
+                verifyBody,
+            )
+            .reply(422)
+
+        nock('https://api.github.com')
+            .post(
+                '/repos/all-contributors/all-contributors-bot/issues/1/comments',
+                verifyBody,
+            )
+            .reply(200)
+
+        probot.receive({
+            name: 'issue_comment',
+            payload: issue_commentCreatedPayload,
+        })
     })
 })
