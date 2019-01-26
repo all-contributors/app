@@ -45,7 +45,13 @@ jobs:
     steps:
       - prep_env
       - run: yarn lint
-  deploy:
+  deploy_sandbox:
+    <<: *docker_defaults
+    working_directory: ~/repo
+    steps:
+      - prep_env
+      - run: STAGE=sandbox ./.circleci/deploy.sh
+  deploy_production:
     <<: *docker_defaults
     working_directory: ~/repo
     steps:
@@ -63,10 +69,23 @@ workflows:
       - lint:
           requires:
             - node_modules
-      - deploy:
+      - deploy_sandbox:
           requires:
             - test
             - lint
+          filters:
+            branches:
+              only: master
+      - verify_sandbox:
+          type: approval
+          requires:
+            - deploy_sandbox
+          filters:
+            branches:
+              only: master
+      - deploy_production:
+          requires:
+            - verify_sandbox
           filters:
             branches:
               only: master
