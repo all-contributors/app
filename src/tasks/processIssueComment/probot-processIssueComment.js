@@ -8,6 +8,7 @@ const parseComment = require('./utils/parse-comment')
 
 const {
     AllContributorBotError,
+    BranchNotFoundError,
     ResourceNotFoundError,
 } = require('./utils/errors')
 
@@ -34,6 +35,24 @@ async function processAddContributor({
         profile,
     })
 
+    const safeWho = getSafeRef(who)
+    const branchName = `all-contributors/add-${safeWho}`
+    try {
+        await repository.getRef(branchName)
+        context.log.info(
+            `Branch: ${branchName} EXISTS, will work from this branch`,
+        )
+        repository.setBaseBranch(branchName)
+    } catch (error) {
+        if (error instanceof BranchNotFoundError) {
+            context.log.info(
+                `Branch: ${branchName} DOES NOT EXIST, will work from default branch`,
+            )
+        } else {
+            throw error
+        }
+    }
+
     const contentFiles = new ContentFiles({
         repository,
     })
@@ -48,14 +67,13 @@ async function processAddContributor({
         originalSha: optionsConfig.getOriginalSha(),
     }
 
-    const safeWho = getSafeRef(who)
     const pullRequestURL = await repository.createPullRequestFromFiles({
         title: `docs: add ${who} as a contributor`,
         body: `Adds @${who} as a contributor for ${contributions.join(
             ', ',
         )}.\n\nThis was requested by ${commentReply.replyingToWho()} [in this comment](${commentReply.replyingToWhere()})`,
         filesByPath: filesByPathToUpdate,
-        branchName: `all-contributors/add-${safeWho}`,
+        branchName,
     })
 
     commentReply.reply(
@@ -66,21 +84,12 @@ async function processAddContributor({
 async function probotProcessIssueComment({ context, commentReply }) {
     const commentBody = context.payload.comment.body
     const { who, action, contributions } = parseComment(commentBody)
-    const branchName = `all-contributors/add-${getSafeRef(who)}`
     const defaultBranch = context.payload.repository.default_branch
     const repository = new Repository({
         ...context.repo(),
         github: context.github,
         defaultBranch,
     })
-
-    try {
-        await repository.getRef(branchName)
-        repository.setBasedBranch(branchName)
-    } catch (error) {
-        if (error.status !== 404) throw error
-        repository.setBasedBranch(defaultBranch)
-    }
 
     const optionsConfig = new OptionsConfig({
         repository,

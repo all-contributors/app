@@ -14,6 +14,13 @@ class ResourceNotFoundError extends AllContributorBotError {
     }
 }
 
+class BranchNotFoundError extends AllContributorBotError {
+    constructor(branchName) {
+        super(`${branchName} does not exist`)
+        this.name = this.constructor.name
+    }
+}
+
 class UserNotFoundError extends AllContributorBotError {
     constructor(username) {
         super(`Could not find the user ${username} on github.`)
@@ -23,6 +30,7 @@ class UserNotFoundError extends AllContributorBotError {
 
 module.exports = {
     AllContributorBotError,
+    BranchNotFoundError,
     ResourceNotFoundError,
     UserNotFoundError,
 }

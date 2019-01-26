@@ -1,4 +1,5 @@
 const {
+    BranchNotFoundError,
     ResourceNotFoundError,
     AllContributorBotError,
 } = require('../utils/errors')
@@ -9,41 +10,39 @@ class Repository {
         this.repo = repo
         this.owner = owner
         this.defaultBranch = defaultBranch
-        this.basedBranch
+        this.baseBranch = defaultBranch
     }
 
     getFullname() {
         return `${this.owner}/${this.repo}`
     }
 
-    setBasedBranch(branchName) {
-        this.basedBranch = branchName
+    setBaseBranch(branchName) {
+        this.baseBranch = branchName
     }
 
     async getFile(filePath) {
-        // https://octokit.github.io/rest.js/#api-Repos-getContents
-        let file
         try {
-            file = await this.github.repos.getContents({
+            // https://octokit.github.io/rest.js/#api-Repos-getContents
+            const file = await this.github.repos.getContents({
                 owner: this.owner,
                 repo: this.repo,
                 path: filePath,
-                ref: this.basedBranch,
+                ref: this.baseBranch,
             })
+            // Contents can be an array if its a directory, should be an edge case, and we can just crash
+            const contentBinary = file.data.content
+            const content = Buffer.from(contentBinary, 'base64').toString()
+            return {
+                content,
+                sha: file.data.sha,
+            }
         } catch (error) {
             if (error.status === 404) {
                 throw new ResourceNotFoundError(filePath, this.full_name)
             } else {
                 throw error
             }
-        }
-
-        // Contents can be an array if its a directory, should be an edge case, and we can just crash
-        const contentBinary = file.data.content
-        const content = Buffer.from(contentBinary, 'base64').toString()
-        return {
-            content,
-            sha: file.data.sha,
         }
     }
 
@@ -72,12 +71,18 @@ class Repository {
     }
 
     async getRef(branchName) {
-        const result = await this.github.git.getRef({
-            owner: this.owner,
-            repo: this.repo,
-            ref: `heads/${branchName}`,
-        })
-        return result.data.object.sha
+        try {
+            const result = await this.github.git.getRef({
+                owner: this.owner,
+                repo: this.repo,
+                ref: `heads/${branchName}`,
+            })
+            return result.data.object.sha
+        } catch (error) {
+            if (error.status === 404) {
+                throw new BranchNotFoundError(branchName)
+            }
+        }
     }
 
     async createBranch(branchName) {
@@ -151,40 +156,43 @@ class Repository {
     }
 
     async createPullRequest({ title, body, branchName }) {
-        const result = await this.github.pulls.create({
-            owner: this.owner,
-            repo: this.repo,
-            title,
-            body,
-            head: branchName,
-            base: this.defaultBranch,
-            maintainer_can_modify: true,
-        })
-        return result.data.html_url
+        try {
+            const result = await this.github.pulls.create({
+                owner: this.owner,
+                repo: this.repo,
+                title,
+                body,
+                head: branchName,
+                base: this.defaultBranch,
+                maintainer_can_modify: true,
+            })
+            return result.data.html_url
+        } catch (error) {
+            if (error.status === 422)
+                // TODO: link to pull request
+                throw new AllContributorBotError('Pull request is already open')
+
+            throw error
+        }
     }
 
     async createPullRequestFromFiles({ title, body, filesByPath, branchName }) {
-        const branchNameExists = branchName === this.basedBranch
-        if (branchNameExists) await this.createBranch(branchName)
+        const branchNameExists = branchName === this.baseBranch
+        if (!branchNameExists) {
+            await this.createBranch(branchName)
+        }
 
         await this.createOrUpdateFiles({
             filesByPath,
             branchName,
         })
 
-        try {
-            const pullRequestURL = await this.createPullRequest({
-                title,
-                body,
-                branchName,
-            })
-            return pullRequestURL
-        } catch (error) {
-            if (error.status === 422)
-                throw new AllContributorBotError('Pull request is already open')
-
-            throw error
-        }
+        const pullRequestURL = await this.createPullRequest({
+            title,
+            body,
+            branchName,
+        })
+        return pullRequestURL
     }
 }
 
