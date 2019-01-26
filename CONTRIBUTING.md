@@ -42,6 +42,11 @@ yarn serverless invoke local \
 ```
 
 
+## Deployments
+There is a sandbox environment:
+https://github.com/all-contributors-sandbox
+
+
 ## Production Monitoring:
 - [Sentry](https://sentry.io/all-contributors/github-bot/)
 - [AWS Lambda](https://console.aws.amazon.com/lambda/home?region=us-east-1#/functions/all-contributors-bot-prod-githubWebhook?tab=monitoring)

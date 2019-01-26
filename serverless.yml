@@ -9,15 +9,15 @@ custom:
   stage: ${opt:stage, self:provider.stage}
   appId:
     dev: '23544'
+    sandbox: '24310'
     prod: '23186'
-  botName:
-    dev: 'AllContributorsDevBot'
-    prod: 'all-contributors'
   logLevel:
     dev: debug
+    sandbox: info
     prod: info
   sentryDsn:
     dev: ''
+    sandbox: 'https://e950ab524cde4682a740c218c15a461d@sentry.io/1366866'
     prod: 'https://e950ab524cde4682a740c218c15a461d@sentry.io/1366866'
 
 provider:
