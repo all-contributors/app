@@ -3,13 +3,20 @@ const nodeFetch = require('node-fetch')
 const { URLSearchParams } = require('url')
 
 class Analytics {
-    constructor({ user, repo, owner, apiKey, log, funnelId }) {
+    constructor({
+        user,
+        repo,
+        owner,
+        apiKey = process.env.AMPLITUDE_API_KEY,
+        log,
+        funnelId = uuid.v4(),
+    }) {
         this.user = user
         this.repo = repo
         this.owner = owner
         this.eventPromises = []
-        this.funnel_id = funnelId || uuid.v4()
-        this.apiKey = apiKey || process.env.AMPLITUDE_API_KEY
+        this.funnelId = funnelId
+        this.apiKey = apiKey
         this.log = log
     }
 
@@ -26,7 +33,7 @@ class Analytics {
                 owner: this.owner,
             },
             event_properties: {
-                funnel_id: this.funnel_id,
+                funnel_id: this.funnelId,
                 ...metadata,
             },
         }
