@@ -18,7 +18,7 @@
     "start-serverless": "serverless offline start",
     "lint": "eslint .",
     "lint-fix": "eslint --fix .",
-    "test": "jest",
+    "test": "jest --collectCoverage",
     "test-watch": "jest --watch --notify --notifyMode=change",
     "test-ci": "jest --reporters ./node_modules/jest-junit --collectCoverage",
     "commit": "git-cz"
@@ -61,7 +61,7 @@
     "testEnvironment": "node",
     "collectCoverage": false,
     "collectCoverageFrom": [
-      "src/*.js",
+      "src/**/*.js",
       "!**/node_modules/**"
     ],
     "setupFiles": [
