@@ -11,7 +11,7 @@ class Repository {
         this.owner = owner
         this.defaultBranch = defaultBranch
         this.baseBranch = defaultBranch
-        this.log
+        this.log = log
     }
 
     getFullname() {

@@ -78,7 +78,10 @@ describe('Repository', () => {
             )
             .reply(201, pullsCreatedata)
 
-        const { pullRequestURL, pullCreated } = await repository.createPullRequestFromFiles({
+        const {
+            pullRequestURL,
+            pullCreated,
+        } = await repository.createPullRequestFromFiles({
             title: 'Pull request title',
             body: 'Pull request body',
             filesByPath: {
