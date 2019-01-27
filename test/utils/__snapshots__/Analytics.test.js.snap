@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Analytics Analytics 1`] = `
+Object {
+  "api_key": "mock api key",
+  "event": Array [
+    Object {
+      "event_properties": Object {
+        "funnel_id": "mockFunnelId",
+      },
+      "event_type": "my-event",
+      "user_id": "mockusername",
+      "user_properties": Object {
+        "owner": "all-contributors",
+        "repo": "all-contributors-bot",
+      },
+    },
+  ],
+}
+`;

@@ -1,3 +1,4 @@
+const Analytics = require('../../utils/Analytics')
 const CommentReply = require('./CommentReply')
 const Repository = require('./Repository')
 const OptionsConfig = require('./OptionsConfig')
@@ -120,11 +121,18 @@ async function setupOptionsConfig({ repository }) {
     return optionsConfig
 }
 
-async function probotProcessIssueComment({ context, commentReply }) {
+async function probotProcessIssueComment({ context, commentReply, analytics }) {
     const commentBody = context.payload.comment.body
+    analytics.track('processComment', {
+        commentBody: commentBody,
+    })
     const { who, action, contributions } = parseComment(commentBody)
 
     if (action === 'add') {
+        analytics.track('addContributor', {
+            who: commentBody,
+            contributions: contributions,
+        })
         const safeWho = getSafeRef(who)
         const branchName = `all-contributors/add-${safeWho}`
 
@@ -146,6 +154,10 @@ async function probotProcessIssueComment({ context, commentReply }) {
         return
     }
 
+    analytics.track('unknownIntent', {
+        action,
+    })
+
     commentReply.reply(`I could not determine your intention.`)
     commentReply.reply(
         `Basic usage: @all-contributors please add @jakebolam for code, doc and infra`,
@@ -157,22 +169,34 @@ async function probotProcessIssueComment({ context, commentReply }) {
 }
 
 async function probotProcessIssueCommentSafe({ context }) {
+    const analytics = new Analytics({
+        ...context.repo(),
+        user: context.payload.sender.login,
+        log: context.log,
+    })
     const commentReply = new CommentReply({ context })
     try {
-        await probotProcessIssueComment({ context, commentReply })
+        await probotProcessIssueComment({ context, commentReply, analytics })
     } catch (error) {
         if (error instanceof AllContributorBotError) {
             context.log.info(error)
             commentReply.reply(error.message)
+            analytics.track('errorKnown', {
+                errorMessage: error.message,
+            })
         } else {
             context.log.error(error)
             commentReply.reply(
                 `We had trouble processing your request. Please try again later.`,
             )
+            analytics.track('errorUnKnown', {
+                errorMessage: error.message,
+            })
             throw error
         }
     } finally {
         await commentReply.send()
+        await analytics.finishQueue()
     }
 }
 

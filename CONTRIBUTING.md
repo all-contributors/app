@@ -50,4 +50,6 @@ https://github.com/all-contributors-sandbox
 ## Production Monitoring:
 - [Sentry](https://sentry.io/all-contributors/github-bot/)
 - [AWS Lambda](https://console.aws.amazon.com/lambda/home?region=us-east-1#/functions/all-contributors-bot-prod-githubWebhook?tab=monitoring)
-- [Stats](https://gkioebvccg.execute-api.us-east-1.amazonaws.com/prod/probot/stats)
+- [Bot Stats](https://gkioebvccg.execute-api.us-east-1.amazonaws.com/prod/probot/stats)
+- [Analytics](https://analytics.amplitude.com/all-contributors)
+- Coming Soon [All Contributors Usage Stats](d)

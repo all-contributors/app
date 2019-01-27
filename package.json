@@ -27,7 +27,9 @@
     "all-contributors-cli": "^5.10.1",
     "aws-sdk": "^2.391.0",
     "compromise": "^11.13.0",
-    "probot": "^8.0.0-beta.1"
+    "node-fetch": "^2.3.0",
+    "probot": "^8.0.0-beta.1",
+    "uuid": "^3.3.2"
   },
   "devDependencies": {
     "@tophat/eslint-config": "^0.1.4",
