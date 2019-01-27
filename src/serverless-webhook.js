@@ -8,6 +8,17 @@ const isMessageForBot = require('./utils/isMessageForBot')
 function invokeLambda(payload) {
     const processIssueCommentPayload = JSON.stringify(payload)
 
+    if (process.env.IS_OFFLINE) {
+        const { exec } = require('shelljs')
+        const result = exec(
+            `./node_modules/.bin/serverless invoke local --function processIssueComment --data '${processIssueCommentPayload}'`,
+        )
+        if (result.code !== 0) {
+            return Promise.reject('Invoking function failed')
+        }
+        return Promise.resolve()
+    }
+
     return new Promise(function(resolve, reject) {
         lambda.invoke(
             {
