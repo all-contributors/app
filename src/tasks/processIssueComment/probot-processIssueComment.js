@@ -151,6 +151,7 @@ async function probotProcessIssueComment({ context, commentReply, analytics }) {
             contributions,
             branchName,
         })
+        analytics.track('processCommentSuccess')
         return
     }
 
