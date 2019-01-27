@@ -1,7 +1,9 @@
 function isMessageForBot(message) {
+    const lowerCaseMessage = message.toLowerCase()
     const isMessageForBot =
-        message.includes(`@all-contributors`) ||
-        message.includes(`@allcontributors[bot]`)
+        lowerCaseMessage.includes(`@all-contributors`) ||
+        lowerCaseMessage.includes(`@allcontributors`) ||
+        lowerCaseMessage.includes(`@allcontributors[bot]`)
     return isMessageForBot
 }
 
