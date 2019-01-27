@@ -8,6 +8,14 @@ We had trouble processing your request. Please try again later.",
 }
 `;
 
+exports[`All Contributors app - End to end Fail path, Unknown error (e.g. Network is dead, service down etc, our code is bad) crashes and sends error message 2`] = `
+Object {
+  "body": "@jakebolam 
+
+We had trouble processing your request. Please try again later.",
+}
+`;
+
 exports[`All Contributors app - End to end Fail path, no readme file (configuration error) 1`] = `
 Object {
   "body": "@jakebolam 

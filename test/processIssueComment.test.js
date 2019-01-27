@@ -1,4 +1,4 @@
-const processIssueComment = require('../src/processIssueComment')
+const processIssueComment = require('../src/probot-processIssueComment')
 // const { GIHUB_BOT_NAME } = require('../src/utils/settings')
 
 describe('Process Issue Comment', () => {
