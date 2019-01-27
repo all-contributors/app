@@ -52,7 +52,7 @@ class Analytics {
             .then(response => {
                 if (!response.ok) {
                     log.error(response)
-                    log.error(response.body.text())
+                    log.error(response.text())
                 }
                 return response
             })
