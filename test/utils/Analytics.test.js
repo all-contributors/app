@@ -17,7 +17,7 @@ describe('Analytics', () => {
         })
 
         nock('https://api.amplitude.com')
-            .post(`/batch`, body => {
+            .post(`/httpapi`, body => {
                 expect(body).toMatchSnapshot()
                 return true
             })

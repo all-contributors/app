@@ -1,5 +1,6 @@
 const uuid = require('uuid')
 const nodeFetch = require('node-fetch')
+const { URLSearchParams } = require('url')
 
 class Analytics {
     constructor({
@@ -41,22 +42,19 @@ class Analytics {
             },
         }
 
-        const inputBody = {
-            api_key: this.apiKey,
-            events: [
-                // TODO batch up to 10 events at a time
-                event,
-            ],
-        }
+        const events = [
+            // TODO batch up to 10 events at a time
+            event,
+        ]
+
+        const params = new URLSearchParams()
+        params.append('api_key', this.apiKey)
+        params.append('event', JSON.stringify(events))
 
         const log = this.log
-        const newEventPromise = nodeFetch('https://api.amplitude.com/batch', {
+        const newEventPromise = nodeFetch('https://api.amplitude.com/httpapi', {
             method: 'POST',
-            body: inputBody,
-            headers: {
-                'Content-Type': 'application/json',
-                Accept: '*/*',
-            },
+            body: params,
             timeout: 5000,
             redirect: 'error',
             follow: 0,
@@ -64,7 +62,7 @@ class Analytics {
             .then(response => {
                 if (!response.ok) {
                     log.error(response)
-                    log.error(response.json())
+                    log.error(response.text())
                 }
                 return response
             })

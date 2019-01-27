@@ -1,3 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Analytics Analytics 1`] = `"[object Object]"`;
+exports[`Analytics Analytics 1`] = `
+Object {
+  "api_key": "mock api key",
+  "event": "[{\\"user_id\\":\\"mockusername\\",\\"event_type\\":\\"my-event\\",\\"user_properties\\":{\\"repo\\":\\"all-contributors-bot\\",\\"owner\\":\\"all-contributors\\"},\\"event_properties\\":{\\"funnel_id\\":\\"mockFunnelId\\"}}]",
+}
+`;
