@@ -8,4 +8,4 @@ Object {
 }
 `;
 
-exports[`Get User Details throws error when user does not exists 1`] = `"Could not find the user no-such-user on github."`;
+exports[`Get User Details throws error when user does not exists 1`] = `"Could not find the user \`no-such-user\` on github."`;

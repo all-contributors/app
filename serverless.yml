@@ -8,7 +8,7 @@ plugins:
 custom:
   stage: ${opt:stage, self:provider.stage}
   appId:
-    dev: '23544'
+    dev: ${env:APP_ID}
     sandbox: '24310'
     prod: '23186'
   logLevel:

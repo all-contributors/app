@@ -50,7 +50,10 @@ async function processAddContributor({
         originalSha: optionsConfig.getOriginalSha(),
     }
 
-    const pullRequestURL = await repository.createPullRequestFromFiles({
+    const {
+        pullRequestURL,
+        pullCreated,
+    } = await repository.createPullRequestFromFiles({
         title: `docs: add ${who} as a contributor`,
         body: `Adds @${who} as a contributor for ${contributions.join(
             ', ',
@@ -59,8 +62,15 @@ async function processAddContributor({
         branchName,
     })
 
+    if (pullCreated) {
+        commentReply.reply(
+            `I've put up [a pull request](${pullRequestURL}) to add @${who}! :tada:`,
+        )
+        return
+    }
+    // Updated
     commentReply.reply(
-        `I've put up [a pull request](${pullRequestURL}) to add @${who}! :tada:`,
+        `I've updated [the pull request](${pullRequestURL}) to add @${who}! :tada:`,
     )
 }
 
@@ -70,6 +80,7 @@ async function setupRepository({ context, branchName }) {
         ...context.repo(),
         github: context.github,
         defaultBranch,
+        log: context.log,
     })
 
     try {

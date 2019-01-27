@@ -23,7 +23,7 @@ class BranchNotFoundError extends AllContributorBotError {
 
 class UserNotFoundError extends AllContributorBotError {
     constructor(username) {
-        super(`Could not find the user ${username} on github.`)
+        super(`Could not find the user \`${username}\` on github.`)
         this.name = this.constructor.name
     }
 }
