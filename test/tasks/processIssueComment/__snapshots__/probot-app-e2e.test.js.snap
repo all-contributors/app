@@ -101,7 +101,7 @@ exports[`All Contributors app - End to end 4:Fail path, no such user 1`] = `
 Object {
   "body": "@jakebolam 
 
-Could not find the user jakebolam on github.",
+Could not find the user \`jakebolam\` on github.",
 }
 `;
 

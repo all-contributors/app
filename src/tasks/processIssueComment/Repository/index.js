@@ -1,15 +1,17 @@
 const {
+    AllContributorBotError,
     BranchNotFoundError,
     ResourceNotFoundError,
 } = require('../utils/errors')
 
 class Repository {
-    constructor({ repo, owner, github, defaultBranch }) {
+    constructor({ repo, owner, github, defaultBranch, log }) {
         this.github = github
         this.repo = repo
         this.owner = owner
         this.defaultBranch = defaultBranch
         this.baseBranch = defaultBranch
+        this.log = log
     }
 
     getFullname() {
@@ -154,6 +156,24 @@ class Repository {
         await Promise.all(createOrUpdateFilesMultiple)
     }
 
+    async getPullRequestURL({ branchName }) {
+        try {
+            const results = await this.github.pulls.list({
+                owner: this.owner,
+                repo: this.repo,
+                state: 'open',
+                head: branchName,
+            })
+            return results.data[0].html_url
+        } catch (error) {
+            // Hard fail, but recoverable (not ideal for UX)
+            this.log.error(error)
+            throw new AllContributorBotError(
+                `A pull request is already open for the branch \`${branchName}\`.`,
+            )
+        }
+    }
+
     async createPullRequest({ title, body, branchName }) {
         try {
             const result = await this.github.pulls.create({
@@ -165,11 +185,23 @@ class Repository {
                 base: this.defaultBranch,
                 maintainer_can_modify: true,
             })
-            return result.data.html_url
+            return {
+                pullRequestURL: result.data.html_url,
+                pullCreated: true,
+            }
         } catch (error) {
             if (error.status === 422) {
-                console.log('Pull request already open') // eslint-disable-line no-console
-                return error.data.html_url
+                this.log.debug(error)
+                this.log.info(
+                    'Pull request is already open, finding pull request...',
+                )
+                const pullRequestURL = await this.getPullRequestURL({
+                    branchName,
+                })
+                return {
+                    pullRequestURL,
+                    pullCreated: false,
+                }
             } else {
                 throw error
             }
@@ -187,12 +219,11 @@ class Repository {
             branchName,
         })
 
-        const pullRequestURL = await this.createPullRequest({
+        return await this.createPullRequest({
             title,
             body,
             branchName,
         })
-        return pullRequestURL
     }
 }
 

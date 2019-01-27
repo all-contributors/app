@@ -78,7 +78,10 @@ describe('Repository', () => {
             )
             .reply(201, pullsCreatedata)
 
-        const pullRequestNumber = await repository.createPullRequestFromFiles({
+        const {
+            pullRequestURL,
+            pullCreated,
+        } = await repository.createPullRequestFromFiles({
             title: 'Pull request title',
             body: 'Pull request body',
             filesByPath: {
@@ -97,8 +100,9 @@ describe('Repository', () => {
             },
             branchName: 'all-contributors/add-jakebolam',
         })
-        expect(pullRequestNumber).toEqual(
+        expect(pullRequestURL).toEqual(
             'https://github.com/all-contributors/all-contributors-bot/pull/1347',
         )
+        expect(pullCreated).toBe(true)
     })
 })
