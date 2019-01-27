@@ -1,12 +1,15 @@
+const uuid = require('uuid')
 const fetch = require('node-fetch')
 
 class Analytics {
-    constructor({ user, repo, owner, apiKey }) {
+    constructor({ user, repo, owner, apiKey, log }) {
         this.user = user
         this.repo = repo
         this.owner = owner
         this.eventPromises = []
+        this.funnel_id = uuid.v4()
         this.apiKey = apiKey || process.env.AMPLITUDE_API_KEY
+        this.log = log
     }
 
     track(eventName, metadata = {}) {
@@ -18,6 +21,7 @@ class Analytics {
                 owner: this.owner,
             },
             event_properties: {
+                funnel_id: this.funnel_id,
                 ...metadata,
             },
         }
@@ -30,6 +34,8 @@ class Analytics {
             ],
         }
 
+        const log = this.log
+
         const newEventPromise = fetch('https://api.amplitude.com/httpapi', {
             method: 'post',
             body: JSON.stringify(payload),
@@ -37,11 +43,17 @@ class Analytics {
             timeout: 5000,
             redirect: 'error',
             follow: 0,
-        }).then(response => {
-            if (!response.ok) {
-                // TODO: error handling
-            }
         })
+            .then(response => {
+                if (!response.ok) {
+                    // TODO: error handling
+                    log.error(response)
+                }
+                return response
+            })
+            .catch(error => {
+                log.error(error)
+            })
 
         this.eventPromises.push(newEventPromise)
     }

@@ -1,10 +1,10 @@
 const nock = require('nock')
 
-const Analytcs = require('../../src/utils/Analytcs')
+const Analytics = require('../../src/utils/Analytics')
 
-describe('Analytcs', () => {
-    test('Analytcs', async () => {
-        const analytics = new Analytcs({
+describe('Analytics', () => {
+    test('Analytics', async () => {
+        const analytics = new Analytics({
             repo: 'all-contributors-bot',
             owner: 'all-contributors',
             user: 'mockusername',
