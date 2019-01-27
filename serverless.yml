@@ -5,19 +5,24 @@ plugins:
   - serverless-dotenv-plugin
   - serverless-offline # must be last
 
+# https://serverless.com/framework/docs/providers/aws/guide/packaging/
+package:
+  include:
+    - 'node_modules/node-fetch/**'
+
 custom:
   stage: ${opt:stage, self:provider.stage}
   appId:
-    dev: '23544'
+    dev: ${env:APP_ID}
+    sandbox: '24310'
     prod: '23186'
-  botName:
-    dev: 'AllContributorsDevBot'
-    prod: 'all-contributors'
   logLevel:
     dev: debug
+    sandbox: info
     prod: info
   sentryDsn:
     dev: ''
+    sandbox: 'https://e950ab524cde4682a740c218c15a461d@sentry.io/1366866'
     prod: 'https://e950ab524cde4682a740c218c15a461d@sentry.io/1366866'
 
 provider:
@@ -34,6 +39,7 @@ provider:
     INSTALLATION_TOKEN_TTL: 3540
     WEBHOOK_SECRET: ${env:WEBHOOK_SECRET}
     PRIVATE_KEY: ${env:PRIVATE_KEY}
+    AMPLITUDE_API_KEY: ${env:AMPLITUDE_API_KEY}
     SERVICE_NAME_AND_STAGE: 'all-contributors-bot-${opt:stage, self:provider.stage}'
   iamRoleStatements:
     - Effect: Allow

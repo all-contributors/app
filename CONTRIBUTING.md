@@ -25,7 +25,10 @@ Ideas not as issues yet:
 
 ### Testing serverless locally
 
-#### Adding tasks to the queue
+TODO: make smee plugin for serverless
+
+`yarn start-serverless`
+
 Create file test-webhook-file.json with payload
 ```
 curl -vX POST http://localhost:3000/ -d @test-webhook-payload.json \
@@ -33,16 +36,15 @@ curl -vX POST http://localhost:3000/ -d @test-webhook-payload.json \
 --header "X-GitHub-Event: issue_comment"
 ```
 
-#### Executing tasks
-Create test-task-payload.json
-```
-yarn serverless invoke local \
---function processIssueComment \
---path test-task-payload.json
-```
+
+## Deployments
+There is a sandbox environment:
+https://github.com/all-contributors-sandbox
 
 
 ## Production Monitoring:
 - [Sentry](https://sentry.io/all-contributors/github-bot/)
 - [AWS Lambda](https://console.aws.amazon.com/lambda/home?region=us-east-1#/functions/all-contributors-bot-prod-githubWebhook?tab=monitoring)
-- [Stats](https://gkioebvccg.execute-api.us-east-1.amazonaws.com/prod/probot/stats)
+- [Bot Stats](https://gkioebvccg.execute-api.us-east-1.amazonaws.com/prod/probot/stats)
+- [Analytics](https://analytics.amplitude.com/all-contributors)
+- Coming Soon [All Contributors Usage Stats](d)

@@ -12,13 +12,13 @@ commands:
           path: ~/repo
       - restore_cache:
           name: Restore node_modules cache
-          key: all-contributors-bot-{{ checksum "yarn.lock" }}-{{ .Branch }}
+          key: all-contributors-bot-{{ checksum "package.json"  }}-{{ checksum "yarn.lock" }}-{{ .Branch }}
   save_env_cache:
     description: Saves environment cache
     steps:
       - save_cache:
           name: Save node_modules cache
-          key: all-contributors-bot-{{ checksum "yarn.lock" }}-{{ .Branch }}
+          key: all-contributors-bot-{{ checksum "package.json"  }}-{{ checksum "yarn.lock" }}-{{ .Branch }}
           paths:
             - node_modules/
 
@@ -45,7 +45,19 @@ jobs:
     steps:
       - prep_env
       - run: yarn lint
-  deploy:
+  build:
+    <<: *docker_defaults
+    working_directory: ~/repo
+    steps:
+      - prep_env
+      - run: yarn build
+  deploy_sandbox:
+    <<: *docker_defaults
+    working_directory: ~/repo
+    steps:
+      - prep_env
+      - run: STAGE=sandbox ./.circleci/deploy.sh
+  deploy_production:
     <<: *docker_defaults
     working_directory: ~/repo
     steps:
@@ -63,10 +75,27 @@ workflows:
       - lint:
           requires:
             - node_modules
-      - deploy:
+      - build:
+          requires:
+            - node_modules
+      - deploy_sandbox:
           requires:
             - test
             - lint
+            - build
+          filters:
+            branches:
+              only: master
+      - verify_sandbox:
+          type: approval
+          requires:
+            - deploy_sandbox
+          filters:
+            branches:
+              only: master
+      - deploy_production:
+          requires:
+            - verify_sandbox
           filters:
             branches:
               only: master

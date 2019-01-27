@@ -2,10 +2,11 @@ const ALL_CONTRIBUTORS_RC = '.all-contributorsrc'
 
 const { addContributorWithDetails } = require('all-contributors-cli')
 
+const { AllContributorBotError } = require('../utils/errors')
+
 class OptionsConfig {
-    constructor({ repository, commentReply }) {
+    constructor({ repository }) {
         this.repository = repository
-        this.commentReply = commentReply
         this.options
         this.originalOptionsSha
     }
@@ -22,12 +23,11 @@ class OptionsConfig {
             return optionsConfig
         } catch (error) {
             if (error instanceof SyntaxError) {
-                this.commentReply.reply(
+                throw new AllContributorBotError(
                     `This project's configuration file has malformed JSON: ${ALL_CONTRIBUTORS_RC}. Error:: ${
                         error.message
                     }`,
                 )
-                error.handled = true
             }
             throw error
         }

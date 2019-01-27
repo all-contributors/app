@@ -7,3 +7,4 @@ package-lock.json # We use yarn ;)
 *.pem
 test-*-payload.json
 yarn-error.log
+.serverless
