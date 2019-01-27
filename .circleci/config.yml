@@ -12,13 +12,13 @@ commands:
           path: ~/repo
       - restore_cache:
           name: Restore node_modules cache
-          key: all-contributors-bot-{{ checksum "yarn.lock" }}-{{ .Branch }}
+          key: all-contributors-bot-{{ checksum "package.json"  }}-{{ checksum "yarn.lock" }}-{{ .Branch }}
   save_env_cache:
     description: Saves environment cache
     steps:
       - save_cache:
           name: Save node_modules cache
-          key: all-contributors-bot-{{ checksum "yarn.lock" }}-{{ .Branch }}
+          key: all-contributors-bot-{{ checksum "package.json"  }}-{{ checksum "yarn.lock" }}-{{ .Branch }}
           paths:
             - node_modules/
 
