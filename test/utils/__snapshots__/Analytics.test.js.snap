@@ -3,18 +3,6 @@
 exports[`Analytics Analytics 1`] = `
 Object {
   "api_key": "mock api key",
-  "event": Array [
-    Object {
-      "event_properties": Object {
-        "funnel_id": "mockFunnelId",
-      },
-      "event_type": "my-event",
-      "user_id": "mockusername",
-      "user_properties": Object {
-        "owner": "all-contributors",
-        "repo": "all-contributors-bot",
-      },
-    },
-  ],
+  "event": "[{\\"user_id\\":\\"mockusername\\",\\"event_type\\":\\"my-event\\",\\"user_properties\\":{\\"repo\\":\\"all-contributors-bot\\",\\"owner\\":\\"all-contributors\\"},\\"event_properties\\":{\\"funnel_id\\":\\"mockFunnelId\\"}}]",
 }
 `;
