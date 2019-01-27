@@ -5,6 +5,11 @@ plugins:
   - serverless-dotenv-plugin
   - serverless-offline # must be last
 
+# https://serverless.com/framework/docs/providers/aws/guide/packaging/
+package:
+  include:
+    - 'node_modules/node-fetch/**'
+
 custom:
   stage: ${opt:stage, self:provider.stage}
   appId:

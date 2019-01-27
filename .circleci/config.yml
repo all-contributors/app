@@ -45,6 +45,12 @@ jobs:
     steps:
       - prep_env
       - run: yarn lint
+  build:
+    <<: *docker_defaults
+    working_directory: ~/repo
+    steps:
+      - prep_env
+      - run: yarn build
   deploy_sandbox:
     <<: *docker_defaults
     working_directory: ~/repo
@@ -69,10 +75,14 @@ workflows:
       - lint:
           requires:
             - node_modules
+      - build:
+          requires:
+            - node_modules
       - deploy_sandbox:
           requires:
             - test
             - lint
+            - build
           filters:
             branches:
               only: master

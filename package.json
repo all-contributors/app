@@ -16,6 +16,7 @@
     "start": "nodemon",
     "start-probot": "probot run ./src/tasks/processIssueComment/probot-processIssueComment.js",
     "start-serverless": "serverless offline start",
+    "build": "serverless package",
     "lint": "eslint .",
     "lint-fix": "eslint --fix .",
     "test": "jest --collectCoverage",
