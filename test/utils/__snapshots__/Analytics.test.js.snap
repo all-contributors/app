@@ -5,7 +5,9 @@ Object {
   "api_key": "mock api key",
   "event": Array [
     Object {
-      "event_properties": Object {},
+      "event_properties": Object {
+        "funnel_id": "mockFunnelId",
+      },
       "event_type": "my-event",
       "user_id": "mockusername",
       "user_properties": Object {

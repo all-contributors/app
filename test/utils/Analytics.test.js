@@ -9,6 +9,7 @@ describe('Analytics', () => {
             owner: 'all-contributors',
             user: 'mockusername',
             apiKey: 'mock api key',
+            funnelId: 'mockFunnelId',
         })
 
         nock('https://api.amplitude.com')

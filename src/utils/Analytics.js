@@ -2,12 +2,12 @@ const uuid = require('uuid')
 const fetch = require('node-fetch')
 
 class Analytics {
-    constructor({ user, repo, owner, apiKey, log }) {
+    constructor({ user, repo, owner, apiKey, log, funnelId }) {
         this.user = user
         this.repo = repo
         this.owner = owner
         this.eventPromises = []
-        this.funnel_id = uuid.v4()
+        this.funnel_id = funnelId || uuid.v4()
         this.apiKey = apiKey || process.env.AMPLITUDE_API_KEY
         this.log = log
     }
