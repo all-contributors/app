@@ -22,6 +22,13 @@ async function processAddContributor({
     contributions,
     defaultBranch,
 }) {
+    if (!contributions.length) {
+        context.log.debug('No contributions')
+        return commentReply.reply(
+            `I couldn't determine any contributions to add, did you specify any contributions?
+            Please make sure to use [valid contribution names](https://github.com/all-contributors/all-contributors#emoji-key-).`,
+        )
+    }
     const { name, avatar_url, profile } = await getUserDetails({
         github: context.github,
         username: who,
