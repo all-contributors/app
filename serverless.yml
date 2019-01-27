@@ -39,6 +39,7 @@ provider:
     INSTALLATION_TOKEN_TTL: 3540
     WEBHOOK_SECRET: ${env:WEBHOOK_SECRET}
     PRIVATE_KEY: ${env:PRIVATE_KEY}
+    AMPLITUDE_API_KEY: ${env:AMPLITUDE_API_KEY}
     SERVICE_NAME_AND_STAGE: 'all-contributors-bot-${opt:stage, self:provider.stage}'
   iamRoleStatements:
     - Effect: Allow
