@@ -14,6 +14,10 @@ class Analytics {
     }
 
     track(eventName, metadata = {}) {
+        if (!eventName) {
+            throw new Error('Analytics missing event name')
+        }
+
         const event = {
             user_id: this.user,
             event_type: eventName,
