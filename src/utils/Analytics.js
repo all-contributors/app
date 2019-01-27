@@ -24,6 +24,10 @@ class Analytics {
             throw new Error('Analytics missing event name')
         }
 
+        if (!this.apiKey) {
+            throw new Error('Analytics API KEY is missing')
+        }
+
         const event = {
             user_id: this.user,
             event_type: eventName,
