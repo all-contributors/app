@@ -1,6 +1,6 @@
 const fetch = require('node-fetch')
 
-class Amplitude {
+class Analytics {
     constructor({ user, repo, owner, apiKey }) {
         this.user = user
         this.repo = repo
@@ -54,4 +54,4 @@ class Amplitude {
     }
 }
 
-module.exports = Amplitude
+module.exports = Analytics

@@ -1,10 +1,10 @@
 const nock = require('nock')
 
-const Amplitude = require('../../src/utils/Amplitude')
+const Analytcs = require('../../src/utils/Analytcs')
 
-describe('Amplitude', () => {
-    test('Amplitude', async () => {
-        const amplitude = new Amplitude({
+describe('Analytcs', () => {
+    test('Analytcs', async () => {
+        const analytics = new Analytcs({
             repo: 'all-contributors-bot',
             owner: 'all-contributors',
             user: 'mockusername',
@@ -18,8 +18,8 @@ describe('Amplitude', () => {
             })
             .reply(200)
 
-        amplitude.track('my-event')
+        analytics.track('my-event')
 
-        await amplitude.finishQueue()
+        await analytics.finishQueue()
     })
 })

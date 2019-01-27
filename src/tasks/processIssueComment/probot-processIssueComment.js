@@ -1,3 +1,4 @@
+const Analytics = require('./Analytics')
 const CommentReply = require('./CommentReply')
 const Repository = require('./Repository')
 const OptionsConfig = require('./OptionsConfig')
@@ -157,6 +158,10 @@ async function probotProcessIssueComment({ context, commentReply }) {
 }
 
 async function probotProcessIssueCommentSafe({ context }) {
+    const analytics = new Analytics({
+        ...context.repo(),
+        user: context.payload.sender.login,
+    })
     const commentReply = new CommentReply({ context })
     try {
         await probotProcessIssueComment({ context, commentReply })
@@ -173,6 +178,7 @@ async function probotProcessIssueCommentSafe({ context }) {
         }
     } finally {
         await commentReply.send()
+        await analytics.finishQueue()
     }
 }
 
