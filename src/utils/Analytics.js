@@ -1,5 +1,5 @@
 const uuid = require('uuid')
-const fetch = require('node-fetch')
+const nodeFetch = require('node-fetch')
 
 class Analytics {
     constructor({ user, repo, owner, apiKey, log, funnelId }) {
@@ -36,7 +36,7 @@ class Analytics {
 
         const log = this.log
 
-        const newEventPromise = fetch('https://api.amplitude.com/httpapi', {
+        const newEventPromise = nodeFetch('https://api.amplitude.com/httpapi', {
             method: 'post',
             body: JSON.stringify(payload),
             headers: { 'Content-Type': 'application/json' },
