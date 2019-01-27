@@ -4,16 +4,20 @@ const Analytics = require('../../src/utils/Analytics')
 
 describe('Analytics', () => {
     test('Analytics', async () => {
+        const mockFn = jest.fn()
         const analytics = new Analytics({
             repo: 'all-contributors-bot',
             owner: 'all-contributors',
             user: 'mockusername',
             apiKey: 'mock api key',
             funnelId: 'mockFunnelId',
+            log: {
+                error: mockFn,
+            },
         })
 
         nock('https://api.amplitude.com')
-            .post(`/httpapi`, body => {
+            .post(`/batch`, body => {
                 expect(body).toMatchSnapshot()
                 return true
             })
@@ -22,5 +26,7 @@ describe('Analytics', () => {
         analytics.track('my-event')
 
         await analytics.finishQueue()
+
+        expect(mockFn).not.toBeCalled()
     })
 })
