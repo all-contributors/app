@@ -4,7 +4,9 @@ const nlp = require('compromise')
 const validContributionTypes = [
     'blog',
     'bug',
+    'business',
     'code',
+    'content',
     'design',
     'doc',
     'eventorganizing',
@@ -77,6 +79,7 @@ const contributionTypeMultiWordMapping = {
     'fund finding': 'fundingFinding',
     'funding finding': 'fundingFinding',
     'user testing': 'userTesting',
+    'business development': 'business'
 }
 
 const Contributions = {}
