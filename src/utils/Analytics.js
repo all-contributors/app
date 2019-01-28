@@ -21,6 +21,13 @@ class Analytics {
     }
 
     track(eventName, metadata = {}) {
+        if (process.env.NODE_ENV === 'local' || process.env.NODE_ENV === 'test') {
+            this.log.info(
+                    'Turn off Analytics in a local or test environment.',
+                )
+            return
+        }
+
         if (!eventName) {
             throw new Error('Analytics missing event name')
         }
