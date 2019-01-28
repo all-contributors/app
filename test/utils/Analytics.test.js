@@ -11,8 +11,10 @@ describe('Analytics', () => {
             user: 'mockusername',
             apiKey: 'mock api key',
             funnelId: 'mockFunnelId',
+            isMock: true,
             log: {
                 error: mockFn,
+                info: mockFn,
             },
         })
 
@@ -27,6 +29,6 @@ describe('Analytics', () => {
 
         await analytics.finishQueue()
 
-        expect(mockFn).not.toBeCalled()
+        expect(mockFn).not.toHaveBeenCalled()
     })
 })
