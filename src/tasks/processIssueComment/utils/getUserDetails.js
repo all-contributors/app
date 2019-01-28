@@ -1,6 +1,6 @@
 const { UserNotFoundError } = require('./errors')
 
-async function getUserDetials({ github, username }) {
+async function getUserDetails({ github, username }) {
     // TODO: optimzation, if commenting user is the user we're adding we can avoid an api call
     // const commentUser = context.payload.comment.user.login
     // if (user === commentUser) {
@@ -31,4 +31,4 @@ async function getUserDetials({ github, username }) {
     }
 }
 
-module.exports = getUserDetials
+module.exports = getUserDetails
