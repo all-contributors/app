@@ -79,7 +79,7 @@ const contributionTypeMultiWordMapping = {
     'fund finding': 'fundingFinding',
     'funding finding': 'fundingFinding',
     'user testing': 'userTesting',
-    'business development': 'business'
+    'business development': 'business',
 }
 
 const Contributions = {}
