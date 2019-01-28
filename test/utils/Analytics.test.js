@@ -11,7 +11,7 @@ describe('Analytics', () => {
             user: 'mockusername',
             apiKey: 'mock api key',
             funnelId: 'mockFunnelId',
-            mock: true,
+            isMock: true,
             log: {
                 error: mockFn,
                 info: mockFn,

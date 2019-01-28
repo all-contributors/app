@@ -10,7 +10,7 @@ class Analytics {
         apiKey = process.env.AMPLITUDE_API_KEY,
         log,
         funnelId = uuid.v4(),
-        mock,
+        isMock,
     }) {
         this.user = user
         this.repo = repo
@@ -19,7 +19,7 @@ class Analytics {
         this.funnelId = funnelId
         this.apiKey = apiKey
         this.log = log
-        this.mock = mock
+        this.isMock = isMock
     }
 
     track(eventName, metadata = {}) {
@@ -27,7 +27,7 @@ class Analytics {
 
         if (
             process.env.NODE_ENV === 'local' ||
-            (process.env.NODE_ENV === 'test' && !this.mock)
+            (process.env.NODE_ENV === 'test' && !this.isMock)
         ) {
             log.info('Turn off Analytics in a local or test environment.')
             return
