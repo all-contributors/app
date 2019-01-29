@@ -1,39 +1,49 @@
-const { ResourceNotFoundError } = require('../utils/errors')
+const {
+    AllContributorBotError,
+    BranchNotFoundError,
+    ResourceNotFoundError,
+} = require('../utils/errors')
 
 class Repository {
-    constructor({ repo, owner, github }) {
+    constructor({ repo, owner, github, defaultBranch, log }) {
         this.github = github
         this.repo = repo
         this.owner = owner
+        this.defaultBranch = defaultBranch
+        this.baseBranch = defaultBranch
+        this.log = log
     }
 
     getFullname() {
         return `${this.owner}/${this.repo}`
     }
 
+    setBaseBranch(branchName) {
+        this.baseBranch = branchName
+    }
+
     async getFile(filePath) {
-        // https://octokit.github.io/rest.js/#api-Repos-getContents
-        let file
         try {
-            file = await this.github.repos.getContents({
+            // https://octokit.github.io/rest.js/#api-Repos-getContents
+            const file = await this.github.repos.getContents({
                 owner: this.owner,
                 repo: this.repo,
                 path: filePath,
+                ref: this.baseBranch,
             })
+            // Contents can be an array if its a directory, should be an edge case, and we can just crash
+            const contentBinary = file.data.content
+            const content = Buffer.from(contentBinary, 'base64').toString()
+            return {
+                content,
+                sha: file.data.sha,
+            }
         } catch (error) {
             if (error.status === 404) {
                 throw new ResourceNotFoundError(filePath, this.full_name)
             } else {
                 throw error
             }
-        }
-
-        // Contents can be an array if its a directory, should be an edge case, and we can just crash
-        const contentBinary = file.data.content
-        const content = Buffer.from(contentBinary, 'base64').toString()
-        return {
-            content,
-            sha: file.data.sha,
         }
     }
 
@@ -61,17 +71,23 @@ class Repository {
         return multipleFilesByPath
     }
 
-    async getHeadRef(defaultBranch) {
-        const result = await this.github.git.getRef({
-            owner: this.owner,
-            repo: this.repo,
-            ref: `heads/${defaultBranch}`,
-        })
-        return result.data.object.sha
+    async getRef(branchName) {
+        try {
+            const result = await this.github.git.getRef({
+                owner: this.owner,
+                repo: this.repo,
+                ref: `heads/${branchName}`,
+            })
+            return result.data.object.sha
+        } catch (error) {
+            if (error.status === 404) {
+                throw new BranchNotFoundError(branchName)
+            }
+        }
     }
 
-    async createBranch({ branchName, defaultBranch }) {
-        const fromSha = await this.getHeadRef(defaultBranch)
+    async createBranch(branchName) {
+        const fromSha = await this.getRef(this.defaultBranch)
 
         // https://octokit.github.io/rest.js/#api-Git-createRef
         await this.github.git.createRef({
@@ -140,41 +156,74 @@ class Repository {
         await Promise.all(createOrUpdateFilesMultiple)
     }
 
-    async createPullRequest({ title, body, branchName, defaultBranch }) {
-        const result = await this.github.pulls.create({
-            owner: this.owner,
-            repo: this.repo,
-            title,
-            body,
-            head: branchName,
-            base: defaultBranch,
-            maintainer_can_modify: true,
-        })
-        return result.data.html_url
+    async getPullRequestURL({ branchName }) {
+        try {
+            const results = await this.github.pulls.list({
+                owner: this.owner,
+                repo: this.repo,
+                state: 'open',
+                head: branchName,
+            })
+            return results.data[0].html_url
+        } catch (error) {
+            // Hard fail, but recoverable (not ideal for UX)
+            this.log.error(error)
+            throw new AllContributorBotError(
+                `A pull request is already open for the branch \`${branchName}\`.`,
+            )
+        }
     }
 
-    async createPullRequestFromFiles({
-        title,
-        body,
-        filesByPath,
-        branchName,
-        defaultBranch,
-    }) {
-        await this.createBranch({ branchName, defaultBranch })
+    async createPullRequest({ title, body, branchName }) {
+        try {
+            const result = await this.github.pulls.create({
+                owner: this.owner,
+                repo: this.repo,
+                title,
+                body,
+                head: branchName,
+                base: this.defaultBranch,
+                maintainer_can_modify: true,
+            })
+            return {
+                pullRequestURL: result.data.html_url,
+                pullCreated: true,
+            }
+        } catch (error) {
+            if (error.status === 422) {
+                this.log.debug(error)
+                this.log.info(
+                    'Pull request is already open, finding pull request...',
+                )
+                const pullRequestURL = await this.getPullRequestURL({
+                    branchName,
+                })
+                return {
+                    pullRequestURL,
+                    pullCreated: false,
+                }
+            } else {
+                throw error
+            }
+        }
+    }
+
+    async createPullRequestFromFiles({ title, body, filesByPath, branchName }) {
+        const branchNameExists = branchName === this.baseBranch
+        if (!branchNameExists) {
+            await this.createBranch(branchName)
+        }
 
         await this.createOrUpdateFiles({
             filesByPath,
             branchName,
         })
 
-        const pullRequestURL = await this.createPullRequest({
+        return await this.createPullRequest({
             title,
             body,
             branchName,
-            defaultBranch,
         })
-
-        return pullRequestURL
     }
 }
 

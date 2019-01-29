@@ -1,3 +1,4 @@
+const Analytics = require('../../utils/Analytics')
 const CommentReply = require('./CommentReply')
 const Repository = require('./Repository')
 const OptionsConfig = require('./OptionsConfig')
@@ -8,6 +9,7 @@ const parseComment = require('./utils/parse-comment')
 
 const {
     AllContributorBotError,
+    BranchNotFoundError,
     ResourceNotFoundError,
 } = require('./utils/errors')
 
@@ -20,7 +22,7 @@ async function processAddContributor({
     optionsConfig,
     who,
     contributions,
-    defaultBranch,
+    branchName,
 }) {
     const { name, avatar_url, profile } = await getUserDetails({
         github: context.github,
@@ -49,31 +51,63 @@ async function processAddContributor({
         originalSha: optionsConfig.getOriginalSha(),
     }
 
-    const safeWho = getSafeRef(who)
-    const pullRequestURL = await repository.createPullRequestFromFiles({
+    const {
+        pullRequestURL,
+        pullCreated,
+    } = await repository.createPullRequestFromFiles({
         title: `docs: add ${who} as a contributor`,
         body: `Adds @${who} as a contributor for ${contributions.join(
             ', ',
         )}.\n\nThis was requested by ${commentReply.replyingToWho()} [in this comment](${commentReply.replyingToWhere()})`,
         filesByPath: filesByPathToUpdate,
-        branchName: `all-contributors/add-${safeWho}`,
-        defaultBranch,
+        branchName,
     })
 
+    if (pullCreated) {
+        commentReply.reply(
+            `I've put up [a pull request](${pullRequestURL}) to add @${who}! :tada:`,
+        )
+        return
+    }
+    // Updated
     commentReply.reply(
-        `I've put up [a pull request](${pullRequestURL}) to add @${who}! :tada:`,
+        `I've updated [the pull request](${pullRequestURL}) to add @${who}! :tada:`,
     )
 }
 
-async function probotProcessIssueComment({ context, commentReply }) {
+async function setupRepository({ context, branchName }) {
+    const defaultBranch = context.payload.repository.default_branch
     const repository = new Repository({
         ...context.repo(),
         github: context.github,
+        defaultBranch,
+        log: context.log,
     })
+
+    try {
+        await repository.getRef(branchName)
+        context.log.info(
+            `Branch: ${branchName} EXISTS, will work from this branch`,
+        )
+        repository.setBaseBranch(branchName)
+    } catch (error) {
+        if (error instanceof BranchNotFoundError) {
+            context.log.info(
+                `Branch: ${branchName} DOES NOT EXIST, will work from default branch`,
+            )
+        } else {
+            throw error
+        }
+    }
+
+    return repository
+}
+
+async function setupOptionsConfig({ repository }) {
     const optionsConfig = new OptionsConfig({
         repository,
-        commentReply,
     })
+
     try {
         await optionsConfig.fetch()
     } catch (error) {
@@ -84,51 +118,86 @@ async function probotProcessIssueComment({ context, commentReply }) {
         }
     }
 
-    const commentBody = context.payload.comment.body
-    const parsedComment = parseComment(commentBody)
+    return optionsConfig
+}
 
-    if (parsedComment.action === 'add') {
+async function probotProcessIssueComment({ context, commentReply, analytics }) {
+    const commentBody = context.payload.comment.body
+    analytics.track('processComment', {
+        commentBody: commentBody,
+    })
+    const { who, action, contributions } = parseComment(commentBody)
+
+    if (action === 'add') {
+        analytics.track('addContributor', {
+            who: commentBody,
+            contributions: contributions,
+        })
+        const safeWho = getSafeRef(who)
+        const branchName = `all-contributors/add-${safeWho}`
+
+        const repository = await setupRepository({
+            context,
+            branchName,
+        })
+        const optionsConfig = await setupOptionsConfig({ repository })
+
         await processAddContributor({
             context,
             commentReply,
             repository,
             optionsConfig,
-            who: parsedComment.who,
-            contributions: parsedComment.contributions,
-            defaultBranch: context.payload.repository.default_branch,
+            who,
+            contributions,
+            branchName,
         })
+        analytics.track('processCommentSuccess')
         return
     }
+
+    analytics.track('unknownIntent', {
+        action,
+    })
 
     commentReply.reply(`I could not determine your intention.`)
     commentReply.reply(
         `Basic usage: @all-contributors please add @jakebolam for code, doc and infra`,
     )
     commentReply.reply(
-        `For other usage see the [documentation](https://github.com/all-contributors/all-contributors-bot#usage)`,
+        `For other usages see the [documentation](https://github.com/all-contributors/all-contributors-bot#usage)`,
     )
     return
 }
 
 async function probotProcessIssueCommentSafe({ context }) {
+    const analytics = new Analytics({
+        ...context.repo(),
+        user: context.payload.sender.login,
+        log: context.log,
+    })
     const commentReply = new CommentReply({ context })
     try {
-        await probotProcessIssueComment({ context, commentReply })
+        await probotProcessIssueComment({ context, commentReply, analytics })
     } catch (error) {
-        if (error.handled) {
-            context.log.debug(error)
-        } else if (error instanceof AllContributorBotError) {
+        if (error instanceof AllContributorBotError) {
             context.log.info(error)
             commentReply.reply(error.message)
+            analytics.track('errorKnown', {
+                errorMessage: error.message,
+            })
         } else {
             context.log.error(error)
             commentReply.reply(
                 `We had trouble processing your request. Please try again later.`,
             )
+            analytics.track('errorUnKnown', {
+                errorMessage: error.message,
+            })
             throw error
         }
     } finally {
         await commentReply.send()
+        await analytics.finishQueue()
     }
 }
 
