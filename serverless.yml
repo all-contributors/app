@@ -1,5 +1,5 @@
 service: all-contributors-bot
-frameworkVersion: '=1.35.1'
+frameworkVersion: '=1.36.3'
 
 plugins:
   - serverless-dotenv-plugin
