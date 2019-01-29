@@ -10,8 +10,9 @@ describe('parseComment', () => {
             ),
         ).toEqual({
             action: 'add',
-            who: 'jakebolam',
-            contributions: ['doc', 'infra', 'code'],
+            contributors: {
+                jakebolam: ['doc', 'infra', 'code'],
+            },
         })
     })
 
@@ -22,8 +23,9 @@ describe('parseComment', () => {
             ),
         ).toEqual({
             action: 'add',
-            who: 'jakeBolam',
-            contributions: ['doc', 'infra', 'code'],
+            contributors: {
+                jakeBolam: ['doc', 'infra', 'code'],
+            },
         })
     })
 
@@ -32,8 +34,9 @@ describe('parseComment', () => {
             parseComment(`@${testBotName} please add tbenning for design`),
         ).toEqual({
             action: 'add',
-            who: 'tbenning',
-            contributions: ['design'],
+            contributors: {
+                tbenning: ['design'],
+            },
         })
     })
 
@@ -42,8 +45,9 @@ describe('parseComment', () => {
             parseComment(`@${testBotName} please add Rbot25_RULES for tool`),
         ).toEqual({
             action: 'add',
-            who: 'Rbot25_RULES',
-            contributions: ['tool'],
+            contributors: {
+                Rbot25_RULES: ['tool'],
+            },
         })
     })
 
@@ -52,8 +56,9 @@ describe('parseComment', () => {
             parseComment(`@${testBotName} please add dat2 for docs`),
         ).toEqual({
             action: 'add',
-            who: 'dat2',
-            contributions: ['doc'],
+            contributors: {
+                dat2: ['doc'],
+            },
         })
     })
 
@@ -64,8 +69,9 @@ describe('parseComment', () => {
             ),
         ).toEqual({
             action: 'add',
-            who: 'jakebolam',
-            contributions: ['infra', 'doc'],
+            contributors: {
+                jakebolam: ['infra', 'doc'],
+            },
         })
     })
 
@@ -76,8 +82,9 @@ describe('parseComment', () => {
             ),
         ).toEqual({
             action: 'add',
-            who: 'sinchang',
-            contributions: ['infra'],
+            contributors: {
+                sinchang: ['infra'],
+            },
         })
     })
 
@@ -86,8 +93,9 @@ describe('parseComment', () => {
             parseComment(`@${testBotName} add @sinchang for infrastructure`),
         ).toEqual({
             action: 'add',
-            who: 'sinchang',
-            contributions: ['infra'],
+            contributors: {
+                sinchang: ['infra'],
+            },
         })
 
         expect(
@@ -96,8 +104,9 @@ describe('parseComment', () => {
             ),
         ).toEqual({
             action: 'add',
-            who: 'jane.doe23',
-            contributions: ['doc', 'infra'],
+            contributors: {
+                'jane.doe23': ['doc', 'infra'],
+            },
         })
     })
 
@@ -108,8 +117,9 @@ describe('parseComment', () => {
             ),
         ).toEqual({
             action: 'add',
-            who: 'jakebolam',
-            contributions: ['infra', 'fundingFinding'],
+            contributors: {
+                jakebolam: ['infra', 'fundingFinding'],
+            },
         })
 
         expect(
@@ -118,8 +128,9 @@ describe('parseComment', () => {
             ),
         ).toEqual({
             action: 'add',
-            who: 'jakebolam',
-            contributions: ['infra', 'userTesting', 'test'],
+            contributors: {
+                jakebolam: ['infra', 'userTesting', 'test'],
+            },
         })
     })
 
@@ -130,8 +141,9 @@ describe('parseComment', () => {
             ),
         ).toEqual({
             action: 'add',
-            who: 'jakebolam',
-            contributions: ['infra', 'fundingFinding'],
+            contributors: {
+                jakebolam: ['infra', 'fundingFinding'],
+            },
         })
     })
 

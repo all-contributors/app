@@ -98,25 +98,50 @@ const plugin = {
 
 nlp.plugin(plugin)
 
-function parseAddComment(message, action) {
-    const whoMatched = nlp(message)
+function findWho(message, action) {
+    const whoNormalizeSettings = {
+        whitespace: true, // remove hyphens, newlines, and force one space between words
+        case: false, // keep only first-word, and 'entity' titlecasing
+        numbers: false, // turn 'seven' to '7'
+        punctuation: true, // remove commas, semicolons - but keep sentence-ending punctuation
+        unicode: false, // visually romanize/anglicize 'Björk' into 'Bjork'.
+        contractions: false, // turn "isn't" to "is not"
+        acronyms: false, //remove periods from acronyms, like 'F.B.I.'
+        parentheses: false, //remove words inside brackets (like these)
+        possessives: false, // turn "Google's tax return" to "Google tax return"
+        plurals: false, // turn "batmobiles" into "batmobile"
+        verbs: false, // turn all verbs into Infinitive form - "I walked" → "I walk"
+        honorifics: false, //turn 'Vice Admiral John Smith' to 'John Smith'
+    }
+
+    const whoMatchedMention = nlp(message)
+        .match(`@[.]`)
+        .normalize(whoNormalizeSettings)
+        .data()[0].text
+    if (whoMatchedMention) {
+        return whoMatchedMention
+    }
+
+    const whoMatchedByAction = nlp(message)
         .match(`${action} [.]`)
-        .normalize({
-            whitespace: true, // remove hyphens, newlines, and force one space between words
-            case: false, // keep only first-word, and 'entity' titlecasing
-            numbers: false, // turn 'seven' to '7'
-            punctuation: true, // remove commas, semicolons - but keep sentence-ending punctuation
-            unicode: false, // visually romanize/anglicize 'Björk' into 'Bjork'.
-            contractions: false, // turn "isn't" to "is not"
-            acronyms: false, //remove periods from acronyms, like 'F.B.I.'
-            parentheses: false, //remove words inside brackets (like these)
-            possessives: false, // turn "Google's tax return" to "Google tax return"
-            plurals: false, // turn "batmobiles" into "batmobile"
-            verbs: false, // turn all verbs into Infinitive form - "I walked" → "I walk"
-            honorifics: false, //turn 'Vice Admiral John Smith' to 'John Smith'
-        })
+        .normalize(whoNormalizeSettings)
+        .data()[0].text
+    if (whoMatchedByAction) {
+        return whoMatchedByAction
+    }
+
+    const whoMatchedByFor = nlp(message)
+        .match(`[.] for`)
+        .normalize(whoNormalizeSettings)
         .data()[0].text
 
+    if (whoMatchedByFor) {
+        return whoMatchedByFor
+    }
+}
+
+function parseAddSentence(message, action) {
+    const whoMatched = findWho(message, action)
     const who = whoMatched.startsWith('@') ? whoMatched.substr(1) : whoMatched
 
     // Contributions
@@ -147,9 +172,23 @@ function parseAddComment(message, action) {
         })
 
     return {
-        action: 'add',
         who,
         contributions,
+    }
+}
+
+function parseAddComment(message, action) {
+    const contributors = {}
+
+    const sentences = nlp(message).sentences()
+    sentences.forEach(function(sentence) {
+        const { who, contributions } = parseAddSentence(sentence, action)
+        contributors[who] = contributions
+    })
+
+    return {
+        action: 'add',
+        contributors,
     }
 }
 
