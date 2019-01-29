@@ -121,6 +121,17 @@ async function setupOptionsConfig({ repository }) {
     return optionsConfig
 }
 
+function findOldContributions(optionsConfig, username) {
+    const contributors = optionsConfig.options.contributors
+    for (let i = 0; i < contributors.length; i++) {
+        if (contributors[i].login === username) {
+            return contributors[i].contributions
+        }
+    }
+
+    return []
+}
+
 async function probotProcessIssueComment({ context, commentReply, analytics }) {
     const commentBody = context.payload.comment.body
     analytics.track('processComment', {
@@ -131,7 +142,7 @@ async function probotProcessIssueComment({ context, commentReply, analytics }) {
     if (action === 'add') {
         analytics.track('addContributor', {
             who: commentBody,
-            contributions: contributions,
+            contributions,
         })
         const safeWho = getSafeRef(who)
         const branchName = `all-contributors/add-${safeWho}`
@@ -141,6 +152,8 @@ async function probotProcessIssueComment({ context, commentReply, analytics }) {
             branchName,
         })
         const optionsConfig = await setupOptionsConfig({ repository })
+        const oldContributions = findOldContributions(optionsConfig, safeWho)
+        const newContributions = contributions.concat(oldContributions)
 
         await processAddContributor({
             context,
@@ -148,7 +161,7 @@ async function probotProcessIssueComment({ context, commentReply, analytics }) {
             repository,
             optionsConfig,
             who,
-            contributions,
+            contributions: newContributions,
             branchName,
         })
         analytics.track('processCommentSuccess')
