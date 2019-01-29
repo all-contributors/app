@@ -24,7 +24,7 @@ async function processAddContributor({
     contributions,
     branchName,
 }) {
-    if (!contributions.length) {
+    if (contributions.length === 0) {
         context.log.debug('No contributions')
         return commentReply.reply(
             `I couldn't determine any contributions to add, did you specify any contributions?
