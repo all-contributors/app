@@ -153,7 +153,9 @@ async function probotProcessIssueComment({ context, commentReply, analytics }) {
         })
         const optionsConfig = await setupOptionsConfig({ repository })
         const oldContributions = findOldContributions(optionsConfig, safeWho)
-        const newContributions = contributions.concat(oldContributions)
+        const newContributions = [
+            ...new Set([...oldContributions, ...contributions]),
+        ]
 
         await processAddContributor({
             context,
