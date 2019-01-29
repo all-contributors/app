@@ -6,6 +6,7 @@ const ContentFiles = require('./ContentFiles')
 
 const getUserDetails = require('./utils/getUserDetails')
 const parseComment = require('./utils/parse-comment')
+const isMessageForBot = require('../../utils/isMessageForBot')
 
 const {
     AllContributorBotError,
@@ -170,6 +171,12 @@ async function probotProcessIssueComment({ context, commentReply, analytics }) {
 }
 
 async function probotProcessIssueCommentSafe({ context }) {
+    const commentBody = context.payload.comment.body
+
+    if (!isMessageForBot(commentBody)) {
+        return
+    }
+
     const analytics = new Analytics({
         ...context.repo(),
         user: context.payload.sender.login,
