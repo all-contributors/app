@@ -26,7 +26,7 @@
   },
   "dependencies": {
     "all-contributors-cli": "^5.10.1",
-    "aws-sdk": "^2.391.0",
+    "aws-sdk": "^2.395.0",
     "compromise": "^11.13.0",
     "node-fetch": "^2.3.0",
     "probot": "^8.0.0-beta.1",
@@ -36,20 +36,20 @@
     "@tophat/eslint-config": "^0.1.4",
     "codecov": "^3.1.0",
     "cz-conventional-changelog": "^2.1.0",
-    "eslint": "^5.12.0",
-    "eslint-config-prettier": "^3.3.0",
-    "eslint-plugin-jest": "^22.1.2",
+    "eslint": "^5.12.1",
+    "eslint-config-prettier": "^4.0.0",
+    "eslint-plugin-jest": "^22.1.3",
     "eslint-plugin-prettier": "^3.0.1",
     "git-cz": "^1.8.0",
-    "jest": "^23.6.0",
-    "jest-junit": "^6.0.1",
+    "jest": "^24.0.0",
+    "jest-junit": "^6.2.1",
     "nock": "^10.0.0",
     "nodemon": "^1.17.2",
-    "prettier": "^1.15.3",
+    "prettier": "^1.16.1",
     "semantic-release": "^15.13.3",
-    "serverless": "^1.35.1",
+    "serverless": "^1.36.3",
     "serverless-dotenv-plugin": "^2.0.1",
-    "serverless-offline": "^4.0.0",
+    "serverless-offline": "^4.2.0",
     "shelljs": "^0.8.3",
     "smee-client": "^1.0.2"
   },
@@ -70,7 +70,9 @@
     "setupFiles": [
       "<rootDir>/test/setup.js"
     ],
-    "setupTestFrameworkScriptFile": "<rootDir>/test/setupPerTest.js"
+    "setupFilesAfterEnv": [
+      "<rootDir>/test/setupPerTest.js"
+    ]
   },
   "jest-junit": {
     "suiteName": "All Contributor Bot tests",

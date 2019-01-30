@@ -75,6 +75,46 @@ describe('ContentFiles', () => {
         })
     })
 
+    test(`Add's duplicate contributions for contributor`, async () => {
+        const optionsConfig = new OptionsConfig({
+            repository: mockRepository,
+        })
+
+        optionsConfig.options = {
+            contributors: [
+                {
+                    login: 'jakebolam',
+                    name: 'Jake Bolam',
+                    avatar_url:
+                        'https://avatars2.githubusercontent.com/u/3534236?v=4',
+                    profile: 'https://jakebolam.com',
+                    contributions: ['code', 'ideas', 'infra', 'test'],
+                },
+            ],
+        }
+
+        await optionsConfig.addContributor({
+            login: 'jakebolam',
+            contributions: ['doc', 'code', 'ideas'],
+            name: 'Jake Bolam',
+            avatar_url: 'https://avatars2.githubusercontent.com/u/3534236?v=4',
+            profile: 'https://jakebolam.com',
+        })
+
+        expect(optionsConfig.options).toEqual({
+            contributors: [
+                {
+                    login: 'jakebolam',
+                    name: 'Jake Bolam',
+                    avatar_url:
+                        'https://avatars2.githubusercontent.com/u/3534236?v=4',
+                    profile: 'https://jakebolam.com',
+                    contributions: ['code', 'ideas', 'infra', 'test', 'doc'],
+                },
+            ],
+        })
+    })
+
     test(`If profile URL is missing protocol, add it for them`, async () => {
         const optionsConfig = new OptionsConfig({
             repository: mockRepository,
