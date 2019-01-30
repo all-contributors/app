@@ -1,6 +1,6 @@
 # Hello, @all-contributors bot 🤖
 
-<a href="https://circleci.com/gh/all-contributors/all-contributors-bot">
+<a href="https://circleci.com/gh/all-contributors/workflows/all-contributors-bot/tree/master">
     <img alt="Build" src="https://img.shields.io/circleci/project/github/all-contributors/all-contributors-bot/master.svg"/>
 </a>
 <a href="https://codecov.io/github/all-contributors/all-contributors-bot">
