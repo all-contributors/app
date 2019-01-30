@@ -131,7 +131,7 @@ async function probotProcessIssueComment({ context, commentReply, analytics }) {
     if (action === 'add') {
         analytics.track('addContributor', {
             who: commentBody,
-            contributions: contributions,
+            contributions,
         })
         const safeWho = getSafeRef(who)
         const branchName = `all-contributors/add-${safeWho}`
