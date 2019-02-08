@@ -171,7 +171,7 @@ async function probotProcessIssueComment({ context, commentReply, analytics }) {
         `Basic usage: @all-contributors please add @jakebolam for code, doc and infra`,
     )
     commentReply.reply(
-        `For other usages see the [documentation](https://github.com/all-contributors/all-contributors-bot#usage)`,
+        `For other usages see the [documentation](https://allcontributors.org/docs/en/bot/usage)`,
     )
     return
 }
