@@ -62,6 +62,32 @@ describe('parseComment', () => {
         })
     })
 
+    // TODO:
+    // test('Add multiple when not spaced (just split via commas)', () => {
+    //     expect(
+    //         parseComment(
+    //             `@${testBotName} please add @stevoo24 for code,content`,
+    //         ),
+    //     ).toEqual({
+    //         action: 'add',
+    //         contributors: {
+    //             stevoo24: ['code', 'content'],
+    //         },
+    //     })
+    // })
+
+    // TODO:
+    // test(`Interpret users who's names are contributions`, () => {
+    //     expect(
+    //         parseComment(`@${testBotName} please add @ideas for ideas`),
+    //     ).toEqual({
+    //         action: 'add',
+    //         contributors: {
+    //             ideas: ['ideas'],
+    //         },
+    //     })
+    // })
+
     test('Support full words (like infrastructure)', () => {
         expect(
             parseComment(
@@ -100,7 +126,7 @@ describe('parseComment', () => {
 
         expect(
             parseComment(
-                `Jane you are crushing it in documentation and your infrastructure work has been great too. Let's add jane.doe23 for her contributions. cc @all-contributors-bot`,
+                `Jane you are crushing it in documentation and your infrastructure work has been great too, let's add jane.doe23 for her contributions. cc @${testBotName}`,
             ),
         ).toEqual({
             action: 'add',
@@ -146,6 +172,64 @@ describe('parseComment', () => {
             },
         })
     })
+    // test('Add multiple users in 1 hit - for some contributions', () => {
+    //     expect(
+    //         parseComment(
+    //             `@${testBotName} please add @jakebolam and @tbenning for doc and review`,
+    //         ),
+    //     ).toEqual({
+    //         action: 'add',
+    //         contributors: {
+    //             jakebolam: ['doc', 'review'],
+    //             tbenning: ['doc', 'review'],
+    //         },
+    //     })
+    // })
+    //
+    // test('Add multiple users in 1 hit - seperate sentences', () => {
+    //     expect(
+    //         parseComment(
+    //             `@${testBotName} add @kazydek for doc, review, maintenance. Please add akucharska for code, maintenance. Please add derberg for doc, examples, ideas`,
+    //         ),
+    //     ).toEqual({
+    //         action: 'add',
+    //         contributors: {
+    //             kazydek: ['doc', 'review', 'maintenance'],
+    //             akucharska: ['code', 'maintenance'],
+    //             derberg: ['examples', 'ideas'],
+    //         },
+    //     })
+    // })
+
+    //
+    // test('Add multiple users in 1 hit - sentences seperated by commas :think:', () => {
+    //     expect(
+    //         parseComment(
+    //             `@${testBotName} please add kazydek for doc, review, maintenance, please add akucharska for code, maintenance and please add derberg for doc, examples, ideas`,
+    //         ),
+    //     ).toEqual({
+    //         action: 'add',
+    //         contributors: {
+    //             jakebolam: ['infra', 'fundingFinding'],
+    //         },
+    //     })
+    // })
+    //
+    // test('Add multiple users in 1 hit - from seperate lines', () => {
+    //     expect(
+    //         parseComment(
+    //             `
+    // @all-contributors please add @mikeattara for ideas
+    // @all-contributors please add @The24thDS for code`
+    // please add @tbenning for code`
+    //         ),
+    //     ).toEqual({
+    //         action: 'add',
+    //         contributors: {
+    //             jakebolam: ['infra', 'fundingFinding'],
+    //         },
+    //     })
+    // })
 
     test('Intent unknown', () => {
         expect(

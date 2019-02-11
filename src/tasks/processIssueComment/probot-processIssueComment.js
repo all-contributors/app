@@ -15,34 +15,52 @@ const {
 
 const getSafeRef = require('./utils/git/getSafeRef')
 
-async function processAddContributor({
+async function processAddContributors({
     context,
     commentReply,
     repository,
     optionsConfig,
-    who,
-    contributions,
+    contributors,
     branchName,
 }) {
-    if (contributions.length === 0) {
-        context.log.debug('No contributions')
-        return commentReply.reply(
-            `I couldn't determine any contributions to add, did you specify any contributions?
-            Please make sure to use [valid contribution names](https://allcontributors.org/docs/en/emoji-key).`,
-        )
+
+    const usersAdded = []
+    const usersMissed = []
+
+    async function addContributor(who, contributions) {
+        if (contributions.length === 0) {
+            context.log.debug(`No contributions for ${who}`)
+            usersMissed.push(who)
+            return
+        }
+        const { name, avatar_url, profile } = await getUserDetails({
+            github: context.github,
+            username: who,
+        })
+
+        await optionsConfig.addContributor({
+            login: who,
+            contributions,
+            name,
+            avatar_url,
+            profile,
+        })
+
+        usersAdded.push(who)
     }
-    const { name, avatar_url, profile } = await getUserDetails({
-        github: context.github,
-        username: who,
+
+    // TODO: throttle max paralle requests
+    const addContributorPromises = contributors.map(function(contributor) {
+        return addContributor((contributor.who, contributor.contributions))
     })
 
-    await optionsConfig.addContributor({
-        login: who,
-        contributions,
-        name,
-        avatar_url,
-        profile,
-    })
+    await Promise.all(addContributorPromises)
+
+    if (usersAdded === 0) {
+        return commentReply.reply(
+        `I couldn't determine any contributions for ${usersAdded.join(', ')}.
+        Did you specify any contributions? Please make sure to use [valid contribution names](https://allcontributors.org/docs/en/emoji-key).`,
+    )
 
     const contentFiles = new ContentFiles({
         repository,
@@ -58,27 +76,36 @@ async function processAddContributor({
         originalSha: optionsConfig.getOriginalSha(),
     }
 
+    const pullRequestBodyAdds = `Adds the following contributors:
+- ${usersAdded.join('\n- ')}\n\n`
+
+    const pullRequestBodyMissed = `Unable to determine contributions for the following contributors, these were excluded from this PR:
+- ${usersMissed.join('\\n- ')}\n\n`
+
+    const pullRequestBodyRequester = `This was requested by ${commentReply.replyingToWho()} [in this comment](${commentReply.replyingToWhere()})`
+
     const {
         pullRequestURL,
         pullCreated,
     } = await repository.createPullRequestFromFiles({
-        title: `docs: add ${who} as a contributor`,
-        body: `Adds @${who} as a contributor for ${contributions.join(
-            ', ',
-        )}.\n\nThis was requested by ${commentReply.replyingToWho()} [in this comment](${commentReply.replyingToWhere()})`,
+        title: `docs: add new contributors`,
+        body: `${pullRequestBodyAdds}.\n\n
+${usersMissed > 0 ? pullRequestBodyMissed : ''}
+${pullRequestBodyRequester}
+`,
         filesByPath: filesByPathToUpdate,
         branchName,
     })
 
     if (pullCreated) {
         commentReply.reply(
-            `I've put up [a pull request](${pullRequestURL}) to add @${who}! :tada:`,
+            `I've put up [a pull request](${pullRequestURL}) to add new contributors! :tada:`,
         )
         return
     }
     // Updated
     commentReply.reply(
-        `I've updated [the pull request](${pullRequestURL}) to add @${who}! :tada:`,
+        `I've updated [the pull request](${pullRequestURL}) to add contributors! :tada:`,
     )
 }
 
@@ -133,14 +160,18 @@ async function probotProcessIssueComment({ context, commentReply, analytics }) {
     analytics.track('processComment', {
         commentBody: commentBody,
     })
-    const { who, action, contributions } = parseComment(commentBody)
+    const { action, contributors } = parseComment(commentBody)
 
     if (action === 'add') {
-        analytics.track('addContributor', {
+        analytics.track('addContributors', {
             who: commentBody,
-            contributions,
+            contributors,
         })
-        const safeWho = getSafeRef(who)
+
+        const whos = contributors.map(({ who }) => who).join('--')
+        const safeWho = getSafeRef(whos)
+        // TODO: max length on branch name?
+        // TODO: should this be the branch name
         const branchName = `all-contributors/add-${safeWho}`
 
         const repository = await setupRepository({
@@ -149,13 +180,12 @@ async function probotProcessIssueComment({ context, commentReply, analytics }) {
         })
         const optionsConfig = await setupOptionsConfig({ repository })
 
-        await processAddContributor({
+        await processAddContributors({
             context,
             commentReply,
             repository,
             optionsConfig,
-            who,
-            contributions,
+            contributors,
             branchName,
         })
         analytics.track('processCommentSuccess')
@@ -171,7 +201,7 @@ async function probotProcessIssueComment({ context, commentReply, analytics }) {
         `Basic usage: @all-contributors please add @jakebolam for code, doc and infra`,
     )
     commentReply.reply(
-        `For other usages see the [documentation](https://github.com/all-contributors/all-contributors-bot#usage)`,
+        `For other usages see the [documentation](https://allcontributors.org/en/docs/bot/usage)`,
     )
     return
 }

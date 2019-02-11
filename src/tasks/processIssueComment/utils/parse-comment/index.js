@@ -103,42 +103,42 @@ const plugin = {
 nlp.plugin(plugin)
 
 function findWho(message, action) {
-    const whoNormalizeSettings = {
-        whitespace: true, // remove hyphens, newlines, and force one space between words
-        case: false, // keep only first-word, and 'entity' titlecasing
-        numbers: false, // turn 'seven' to '7'
-        punctuation: true, // remove commas, semicolons - but keep sentence-ending punctuation
-        unicode: false, // visually romanize/anglicize 'Björk' into 'Bjork'.
-        contractions: false, // turn "isn't" to "is not"
-        acronyms: false, //remove periods from acronyms, like 'F.B.I.'
-        parentheses: false, //remove words inside brackets (like these)
-        possessives: false, // turn "Google's tax return" to "Google tax return"
-        plurals: false, // turn "batmobiles" into "batmobile"
-        verbs: false, // turn all verbs into Infinitive form - "I walked" → "I walk"
-        honorifics: false, //turn 'Vice Admiral John Smith' to 'John Smith'
+    function findWhoSafe(match) {
+        const whoNormalizeSettings = {
+            whitespace: true, // remove hyphens, newlines, and force one space between words
+            case: false, // keep only first-word, and 'entity' titlecasing
+            numbers: false, // turn 'seven' to '7'
+            punctuation: true, // remove commas, semicolons - but keep sentence-ending punctuation
+            unicode: false, // visually romanize/anglicize 'Björk' into 'Bjork'.
+            contractions: false, // turn "isn't" to "is not"
+            acronyms: false, //remove periods from acronyms, like 'F.B.I.'
+            parentheses: false, //remove words inside brackets (like these)
+            possessives: false, // turn "Google's tax return" to "Google tax return"
+            plurals: false, // turn "batmobiles" into "batmobile"
+            verbs: false, // turn all verbs into Infinitive form - "I walked" → "I walk"
+            honorifics: false, //turn 'Vice Admiral John Smith' to 'John Smith'
+        }
+        const matchedSet = nlp(message)
+            .match(match)
+            .normalize(whoNormalizeSettings)
+            .data()
+
+        if (matchedSet.length > 0) {
+            return matchedSet[0].text
+        }
     }
 
-    const whoMatchedMention = nlp(message)
-        .match(`@[.]`)
-        .normalize(whoNormalizeSettings)
-        .data()[0].text
+    const whoMatchedMention = findWhoSafe(`@[.]`)
     if (whoMatchedMention) {
         return whoMatchedMention
     }
 
-    const whoMatchedByAction = nlp(message)
-        .match(`${action} [.]`)
-        .normalize(whoNormalizeSettings)
-        .data()[0].text
+    const whoMatchedByAction = findWhoSafe(`${action} [.]`)
     if (whoMatchedByAction) {
         return whoMatchedByAction
     }
 
-    const whoMatchedByFor = nlp(message)
-        .match(`[.] for`)
-        .normalize(whoNormalizeSettings)
-        .data()[0].text
-
+    const whoMatchedByFor = findWhoSafe(`[.] for`)
     if (whoMatchedByFor) {
         return whoMatchedByFor
     }
@@ -146,6 +146,12 @@ function findWho(message, action) {
 
 function parseAddSentence(message, action) {
     const whoMatched = findWho(message, action)
+    if (!whoMatched) {
+        return {
+            who: undefined,
+        }
+    }
+
     const who = whoMatched.startsWith('@') ? whoMatched.substr(1) : whoMatched
 
     // Contributions
@@ -186,8 +192,12 @@ function parseAddComment(message, action) {
 
     const sentences = nlp(message).sentences()
     sentences.forEach(function(sentence) {
-        const { who, contributions } = parseAddSentence(sentence, action)
-        contributors[who] = contributions
+        const sentenceRaw = sentence.data()[0].text
+        const { who, contributions } = parseAddSentence(sentenceRaw, action)
+
+        if (who) {
+            contributors[who] = contributions
+        }
     })
 
     return {
