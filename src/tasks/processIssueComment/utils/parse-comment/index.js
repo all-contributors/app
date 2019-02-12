@@ -68,6 +68,7 @@ const contributionTypeMappings = {
     testing: 'test',
     tools: 'tool',
     tooling: 'tool',
+    translator: 'translation',
     translating: 'translation',
     translations: 'translation',
     tutorials: 'tutorial',
