@@ -31,7 +31,7 @@ Implementing the [All Contributors spec](https://github.com/all-contributors/all
 Enter the `@all-contributors bot`! The bot will automatically pull a user's profile, grab the contribution type emoji, update the project README and then open a Pull Request against the project :sparkles:
 
 <a href="https://allcontributors.org/docs/en/bot/usage">
-    <img alt="Example usage screenshot" src="docs/usage.png" width="500px">
+    <img alt="Example usage screenshot" src="https://raw.githubusercontent.com/all-contributors/all-contributors/master/docs/assets/bot-usage.png" width="500px">
 </a>
 
 ## Using the @all-contributors bot 🤖
