@@ -3,6 +3,7 @@
 const AWS = require('aws-sdk')
 const lambda = new AWS.Lambda()
 
+const trackInstall = require('./tasks/trackInstall')
 const isMessageForBot = require('./utils/isMessageForBot')
 
 function invokeLambda(payload) {
@@ -48,6 +49,15 @@ module.exports.handler = async (event, context) => {
             event.headers['x-github-event'] || event.headers['X-GitHub-Event']
         const payload =
             typeof event.body === 'string' ? JSON.parse(event.body) : event.body
+
+        if (name === 'installation') {
+            await trackInstall(payload)
+
+            return {
+                statusCode: 200,
+                body: 'Tracked install count',
+            }
+        }
 
         if (name !== 'issue_comment') {
             return {

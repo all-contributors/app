@@ -5,6 +5,27 @@ const {
 describe('Serverless Webhook', () => {
     const mockContext = {}
 
+    test('If installation track the install state', async () => {
+        const mockEvent = {
+            headers: {
+                'x-github-event': 'installation',
+            },
+            body: {
+                installation: {
+                    account: {
+                        login: 'testaccount',
+                    },
+                },
+                sender: {
+                    login: 'jakebolam',
+                },
+            },
+        }
+        const response = await serverlessWebhookHandler(mockEvent, mockContext)
+        expect(response.body).toEqual('Tracked install count')
+        // TODO: expect lambda.invoke TO NOT BE CALLED
+    })
+
     test('If not an issue comment, exit', async () => {
         const mockEvent = {
             headers: {
