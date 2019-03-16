@@ -13,13 +13,13 @@ describe('Serverless Webhook', () => {
             body: {
                 installation: {
                     account: {
-                        login: 'testaccount'
-                    }
+                        login: 'testaccount',
+                    },
                 },
                 sender: {
-                    login: 'jakebolam'
-                }
-            }
+                    login: 'jakebolam',
+                },
+            },
         }
         const response = await serverlessWebhookHandler(mockEvent, mockContext)
         expect(response.body).toEqual('Tracked install count')
