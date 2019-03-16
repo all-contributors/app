@@ -8,10 +8,7 @@ describe('Analytics', () => {
         const analytics = new Analytics({
             repo: 'all-contributors-bot',
             owner: 'all-contributors',
-            user: {
-                login: 'mockusername',
-                id: 1234,
-            },
+            user: 'mockusername',
             apiKey: 'mock api key',
             funnelId: 'mockFunnelId',
             isMock: true,

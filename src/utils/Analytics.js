@@ -42,12 +42,11 @@ class Analytics {
         }
 
         const event = {
-            user_id: this.user.id,
+            user_id: this.user,
             event_type: eventName,
             user_properties: {
                 repo: this.repo,
                 owner: this.owner,
-                login: this.user.login,
             },
             event_properties: {
                 funnel_id: this.funnelId,
