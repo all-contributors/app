@@ -37,7 +37,54 @@
       "profile": "https://sinchang.me",
       "contributions": [
         "test",
+        "code",
+        "ideas"
+      ]
+    },
+    {
+      "login": "allcontributors[bot]",
+      "name": "allcontributors[bot]",
+      "avatar_url": "https://avatars0.githubusercontent.com/in/23186?v=4",
+      "profile": "https://github.com/apps/allcontributors",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "Berkmann18",
+      "name": "Maximilian Berkmann",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/8260834?v=4",
+      "profile": "http://maxcubing.wordpress.com",
+      "contributions": [
         "code"
+      ]
+    },
+    {
+      "login": "hiimbex",
+      "name": "Bex Warner",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/13410355?v=4",
+      "profile": "http://hiimbex.com",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "gr2m",
+      "name": "Gregor Martynus",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/39992?v=4",
+      "profile": "http://hood.ie",
+      "contributions": [
+        "question",
+        "tool"
+      ]
+    },
+    {
+      "login": "jerodsanto",
+      "name": "Jerod Santo",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/8212?v=4",
+      "profile": "https://jerodsanto.net",
+      "contributions": [
+        "blog"
       ]
     }
   ],

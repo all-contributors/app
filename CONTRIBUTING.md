@@ -24,20 +24,36 @@ Ideas not as issues yet:
 
 
 ### Testing serverless locally
-`yarn add serverless-dotenv-plugin`
 
-in `serverless.yml` plugins add:
-`- serverless-dotenv-plugin`
+TODO: make smee plugin for serverless
 
+`yarn start-serverless`
 
-Create file test-file.json with payload
+Create file test-webhook-file.json with payload
 ```
-curl -vX POST http://localhost:3000/ -d @test-payload.json \
+curl -vX POST http://localhost:3000/ -d @test-webhook-payload.json \
 --header "Content-Type: application/json" \
 --header "X-GitHub-Event: issue_comment"
 ```
 
+## Working with forks:
+### Syncing a fork
+1. `git remote add parent git@github.com:all-contributors/all-contributors-bot.git`
+2. `git fetch parent`
+3. `git checkout master` or `git checkout empty-contribs` (this branch on your fork)
+4. `git merge parent/master`
 
-## Monitoring:
+See https://help.github.com/articles/syncing-a-fork/
+
+
+## Deployments
+There is a sandbox environment:
+https://github.com/all-contributors-sandbox
+
+
+## Production Monitoring:
 - [Sentry](https://sentry.io/all-contributors/github-bot/)
 - [AWS Lambda](https://console.aws.amazon.com/lambda/home?region=us-east-1#/functions/all-contributors-bot-prod-githubWebhook?tab=monitoring)
+- [Bot Stats](https://gkioebvccg.execute-api.us-east-1.amazonaws.com/prod/probot/stats)
+- [Analytics](https://analytics.amplitude.com/all-contributors)
+- Coming Soon [All Contributors Usage Stats](d)
