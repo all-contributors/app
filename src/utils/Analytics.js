@@ -10,6 +10,7 @@ class Analytics {
         apiKey = process.env.AMPLITUDE_API_KEY,
         log,
         funnelId = uuid.v4(),
+        isMock,
     }) {
         this.user = user
         this.repo = repo
@@ -18,9 +19,20 @@ class Analytics {
         this.funnelId = funnelId
         this.apiKey = apiKey
         this.log = log
+        this.isMock = isMock
     }
 
     track(eventName, metadata = {}) {
+        const log = this.log
+
+        if (
+            process.env.NODE_ENV === 'local' ||
+            (process.env.NODE_ENV === 'test' && !this.isMock)
+        ) {
+            log.info('Turn off Analytics in a local or test environment.')
+            return
+        }
+
         if (!eventName) {
             throw new Error('Analytics missing event name')
         }
@@ -51,7 +63,6 @@ class Analytics {
         params.append('api_key', this.apiKey)
         params.append('event', JSON.stringify(events))
 
-        const log = this.log
         const newEventPromise = nodeFetch('https://api.amplitude.com/httpapi', {
             method: 'POST',
             body: params,

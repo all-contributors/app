@@ -24,6 +24,13 @@ async function processAddContributor({
     contributions,
     branchName,
 }) {
+    if (contributions.length === 0) {
+        context.log.debug('No contributions')
+        return commentReply.reply(
+            `I couldn't determine any contributions to add, did you specify any contributions?
+            Please make sure to use [valid contribution names](https://allcontributors.org/docs/en/emoji-key).`,
+        )
+    }
     const { name, avatar_url, profile } = await getUserDetails({
         github: context.github,
         username: who,
@@ -131,7 +138,7 @@ async function probotProcessIssueComment({ context, commentReply, analytics }) {
     if (action === 'add') {
         analytics.track('addContributor', {
             who: commentBody,
-            contributions: contributions,
+            contributions,
         })
         const safeWho = getSafeRef(who)
         const branchName = `all-contributors/add-${safeWho}`
@@ -164,7 +171,7 @@ async function probotProcessIssueComment({ context, commentReply, analytics }) {
         `Basic usage: @all-contributors please add @jakebolam for code, doc and infra`,
     )
     commentReply.reply(
-        `For other usages see the [documentation](https://github.com/all-contributors/all-contributors-bot#usage)`,
+        `For other usages see the [documentation](https://allcontributors.org/docs/en/bot/usage)`,
     )
     return
 }

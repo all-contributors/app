@@ -77,6 +77,15 @@
         "question",
         "tool"
       ]
+    },
+    {
+      "login": "jerodsanto",
+      "name": "Jerod Santo",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/8212?v=4",
+      "profile": "https://jerodsanto.net",
+      "contributions": [
+        "blog"
+      ]
     }
   ],
   "contributorsPerLine": 7
