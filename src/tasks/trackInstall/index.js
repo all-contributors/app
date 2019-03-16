@@ -13,7 +13,7 @@ function getTrackName(action) {
 async function trackInstall(payload) {
     const analytics = new Analytics({
         owner: payload.installation.account.login,
-        user: payload.sender.login,
+        user: payload.sender,
         log: {
             info: console.log, // eslint-disable-line no-console
             error: console.error, // eslint-disable-line no-console
