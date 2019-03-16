@@ -25,7 +25,7 @@
     "commit": "git-cz"
   },
   "dependencies": {
-    "all-contributors-cli": "^5.11.0",
+    "all-contributors-cli": "^6.1.2",
     "aws-sdk": "^2.395.0",
     "compromise": "^11.13.0",
     "node-fetch": "^2.3.0",
