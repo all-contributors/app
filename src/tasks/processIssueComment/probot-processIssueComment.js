@@ -179,7 +179,7 @@ async function probotProcessIssueComment({ context, commentReply, analytics }) {
 async function probotProcessIssueCommentSafe({ context }) {
     const analytics = new Analytics({
         ...context.repo(),
-        user: context.payload.sender.login,
+        user: context.payload.sender,
         log: context.log,
     })
     const commentReply = new CommentReply({ context })
