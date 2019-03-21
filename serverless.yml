@@ -62,7 +62,7 @@ functions:
           path: /probot/stats
           method: get
           cors: true
-      - schedule: cron(0/5 22-23 * * * *) # Ping stats handler every 5 minutes to stay warm, every day, between 22-23 PM
+      - schedule: cron(1/5 22-23 * * * *) # Ping stats handler every 5 minutes to stay warm, every day, between 22-23 PM
     memorySize: 512
     timeout: 30
   healthCheck:
