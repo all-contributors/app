@@ -44,11 +44,9 @@ class Analytics {
         const event = {
             user_id: this.user,
             event_type: eventName,
-            user_properties: {
+            event_properties: {
                 repo: this.repo,
                 owner: this.owner,
-            },
-            event_properties: {
                 funnel_id: this.funnelId,
                 ...metadata,
             },
