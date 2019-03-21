@@ -16,9 +16,15 @@ async function getInstallations(app) {
     )
 }
 
+const accountsCache = {}
+
 async function popularInstallations({ app, installations }) {
     let popular = await Promise.all(
         installations.map(async installation => {
+            if (accountsCache[installation.id]) {
+                return accountsCache[installation.id]
+            }
+
             const { account } = installation
 
             const github = await app.auth(installation.id)
@@ -42,6 +48,8 @@ async function popularInstallations({ app, installations }) {
                 return stars + repository.stargazers_count
             }, 0)
 
+            accountsCache[installation.id] = account
+
             return account
         }),
     )
@@ -49,6 +57,8 @@ async function popularInstallations({ app, installations }) {
     popular = popular.filter(installation => installation.stars > 0)
     return popular.sort((a, b) => b.stars - a.stars).slice(0, 10)
 }
+
+let installationCache
 
 async function getStats(probot) {
     const app = probot.apps[0]
@@ -59,10 +69,17 @@ async function getStats(probot) {
         )
     }
 
-    const installations = await getInstallations(app)
-    const popular = await popularInstallations({ app, installations })
+    if (!installationCache) {
+        const installationsNew = await getInstallations(app)
+        installationCache = installationsNew
+    }
+
+    const popular = await popularInstallations({
+        app,
+        installations: installationCache,
+    })
     return {
-        installations: installations.length,
+        installations: installationCache.length,
         popular,
     }
 }
