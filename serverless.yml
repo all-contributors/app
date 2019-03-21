@@ -29,8 +29,8 @@ provider:
   name: aws
   region: us-east-1
   runtime: nodejs8.10
-  memorySize: 512
-  timeout: 60
+  memorySize: 128
+  timeout: 6
   environment:
     APP_ID: ${self:custom.appId.${self:custom.stage}}
     LOG_LEVEL: ${self:custom.logLevel.${self:custom.stage}}
@@ -62,6 +62,8 @@ functions:
           path: /probot/stats
           method: get
           cors: true
+    memorySize: 512
+    timeout: 30
   healthCheck:
     handler: src/serverless-health-check.handler
     events:
@@ -77,3 +79,5 @@ functions:
    # Tasks
   processIssueComment:
     handler: src/tasks/processIssueComment/serverless-task.handler
+    memorySize: 512
+    timeout: 60
