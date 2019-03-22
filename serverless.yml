@@ -81,7 +81,6 @@ functions:
     handler: src/tasks/processIssueComment/serverless-task.handler
     memorySize: 512
     timeout: 60
-
   statsWorker:
     handler: src/tasks/stats/serverless-stats-worker.handler
     events:
