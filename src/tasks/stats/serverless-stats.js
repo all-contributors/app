@@ -11,8 +11,11 @@ module.exports.handler = async (event, context) => {
         })
         .promise()
 
+    const results = JSON.parse(data.Body.toString('utf-8'))
+    results.lastUpdated = data.LastModified
+
     return {
         statusCode: 200,
-        body: data.Body.toString('utf-8'),
+        body: JSON.stringify(response),
     }
 }
