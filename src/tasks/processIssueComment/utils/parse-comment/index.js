@@ -36,7 +36,7 @@ const validMultiContributionTypesMapping = {
     eventorganizing: 'eventOrganizing',
     fundingfinding: 'fundingFinding',
     usertesting: 'userTesting',
-    projectmanagement: 'projectManagement'
+    projectmanagement: 'projectManagement',
 }
 
 // Additional terms to match to types (plurals, aliases etc)
@@ -88,7 +88,7 @@ const contributionTypeMultiWordMapping = {
     'funding finding': 'fundingFinding',
     'user testing': 'userTesting',
     'business development': 'business',
-    'project management': 'projectManagement'
+    'project management': 'projectManagement',
 }
 
 const Contributions = {}
