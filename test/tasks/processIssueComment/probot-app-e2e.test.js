@@ -182,12 +182,12 @@ describe('All Contributors app - End to end', () => {
             )
             .reply(201, pullsCreatedata)
 
-        // nock('https://api.github.com')
-        //     .post(
-        //         '/repos/all-contributors/all-contributors-bot/comments/29186860',
-        //         verifyBody,
-        //     )
-        //     .reply(200)
+        nock('https://api.github.com')
+            .post(
+                '/repos/all-contributors/all-contributors-bot/commits/a10867b14bb761a232cd80139fbd4c0d33264240/comments',
+                verifyBody,
+            )
+            .reply(200)
 
         await probot.receive({
             name: 'commit_comment',

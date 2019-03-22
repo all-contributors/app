@@ -82,6 +82,14 @@ This was requested by jakebolam [in this comment](https://github.com/all-contrib
 }
 `;
 
+exports[`All Contributors app - End to end 1:Happy path-2, add correct new contributor 5`] = `
+Object {
+  "body": "@jakebolam 
+
+I've put up [a pull request](https://github.com/all-contributors/all-contributors-bot/pull/1347) to add @jakebolam! :tada:",
+}
+`;
+
 exports[`All Contributors app - End to end 2:Happy path, add correct new contributor, no allcontributors file (repo needs init first) 1`] = `
 Object {
   "ref": "refs/heads/all-contributors/add-jakebolam",

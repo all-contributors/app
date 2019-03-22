@@ -82,7 +82,7 @@ describe('Serverless Webhook', () => {
         // TODO: expect lambda.invoke TO NOT BE CALLED
     })
 
-    test('If not for us, exit', async () => {
+    test('Issue Comment, If not for us, exit', async () => {
         const mockEvent = {
             headers: {
                 'x-github-event': 'issue_comment',
@@ -102,8 +102,7 @@ describe('Serverless Webhook', () => {
         // TODO: expect lambda.invoke TO NOT BE CALLED
     })
 
-
-    test('If not for us, exit', async () => {
+    test('Commit Comment, If not for us, exit', async () => {
         const mockEvent = {
             headers: {
                 'x-github-event': 'commit_comment',
