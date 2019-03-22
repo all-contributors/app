@@ -33,11 +33,13 @@ async function processAddContributors({
             usersMissed.push(who)
             return
         }
+
+        // TODO: wrap this blog in a try catch, if one user fails, don't fail the whole pull request
         const { name, avatar_url, profile } = await getUserDetails({
             github: context.github,
             username: who,
         })
-
+        
         await optionsConfig.addContributor({
             login: who,
             contributions,
