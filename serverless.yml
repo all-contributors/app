@@ -64,6 +64,8 @@ functions:
           path: /
           method: post
           cors: true
+    layers:
+      - ${self:custom.thundraLayer}
   stats:
     handler: src/tasks/stats/serverless-stats.handler
     events:

@@ -1,4 +1,7 @@
 /* eslint-disable no-comment */
+const thundra = require('@thundra/core')({
+    apiKey: process.env.LAMBDA_THUNDRA_API_KEY,
+})
 
 const AWS = require('aws-sdk')
 const lambda = new AWS.Lambda()
@@ -41,7 +44,7 @@ function invokeLambda(payload) {
     })
 }
 
-module.exports.handler = async (event, context) => {
+module.exports.handler = thundra(async (event, context) => {
     context.callbackWaitsForEmptyEventLoop = false
 
     const name =
@@ -96,4 +99,4 @@ module.exports.handler = async (event, context) => {
         statusCode: 200,
         body: 'Accepted and processing comment',
     }
-}
+})
