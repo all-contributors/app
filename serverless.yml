@@ -44,7 +44,7 @@ provider:
     AMPLITUDE_API_KEY: ${env:AMPLITUDE_API_KEY}
     SERVICE_NAME_AND_STAGE: 'all-contributors-bot-${opt:stage, self:provider.stage}'
     STATS_BUCKET: ${self:custom.statsBucket}
-    THUNDRA_API_KEY: ${env:THUNDRA_API_KEY}
+    LAMBDA_THUNDRA_API_KEY: ${env:THUNDRA_API_KEY}
   iamRoleStatements:
     - Effect: Allow
       Action:

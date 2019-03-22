@@ -1,5 +1,5 @@
 const thundra = require('@thundra/core')({
-    apiKey: process.env.THUNDRA_API_KEY,
+    apiKey: process.env.LAMBDA_THUNDRA_API_KEY,
 })
 
 const getProbot = require('../../utils/getProbot')
