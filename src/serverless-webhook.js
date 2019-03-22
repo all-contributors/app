@@ -61,10 +61,11 @@ module.exports.handler = thundra(async (event, context) => {
         }
     }
 
-    if (name !== 'issue_comment') {
+    const isComment = name === 'issue_comment' || name === 'commit_comment'
+    if (!isComment) {
         return {
             statusCode: 201,
-            body: 'Not an issue comment, exiting',
+            body: 'Not a comment, exiting',
         }
     }
 
