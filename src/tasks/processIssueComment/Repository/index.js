@@ -162,7 +162,7 @@ class Repository {
                 owner: this.owner,
                 repo: this.repo,
                 state: 'open',
-                head: branchName,
+                head: `${this.owner}:${branchName}`,
             })
             return results.data[0].html_url
         } catch (error) {

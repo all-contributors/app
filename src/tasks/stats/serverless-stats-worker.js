@@ -1,4 +1,11 @@
-const getProbot = require('./utils/getProbot')
+const thundra = require('@thundra/core')({
+    apiKey: process.env.LAMBDA_THUNDRA_API_KEY,
+})
+
+const AWS = require('aws-sdk')
+const s3 = new AWS.S3({ apiVersion: '2006-03-01' })
+
+const getProbot = require('../../utils/getProbot')
 
 async function getInstallations(app) {
     const github = await app.auth()
@@ -16,9 +23,15 @@ async function getInstallations(app) {
     )
 }
 
+const accountsCache = {}
+
 async function popularInstallations({ app, installations }) {
     let popular = await Promise.all(
         installations.map(async installation => {
+            if (accountsCache[installation.id]) {
+                return accountsCache[installation.id]
+            }
+
             const { account } = installation
 
             const github = await app.auth(installation.id)
@@ -42,6 +55,8 @@ async function popularInstallations({ app, installations }) {
                 return stars + repository.stargazers_count
             }, 0)
 
+            accountsCache[installation.id] = account
+
             return account
         }),
     )
@@ -49,6 +64,8 @@ async function popularInstallations({ app, installations }) {
     popular = popular.filter(installation => installation.stars > 0)
     return popular.sort((a, b) => b.stars - a.stars).slice(0, 10)
 }
+
+let installationCache
 
 async function getStats(probot) {
     const app = probot.apps[0]
@@ -59,28 +76,38 @@ async function getStats(probot) {
         )
     }
 
-    const installations = await getInstallations(app)
-    const popular = await popularInstallations({ app, installations })
+    if (!installationCache) {
+        const installationsNew = await getInstallations(app)
+        installationCache = installationsNew
+    }
+
+    const popular = await popularInstallations({
+        app,
+        installations: installationCache,
+    })
     return {
-        installations: installations.length,
+        installations: installationCache.length,
         popular,
     }
 }
 
-module.exports.handler = async (event, context) => {
+module.exports.handler = thundra(async (event, context) => {
     context.callbackWaitsForEmptyEventLoop = false
 
-    try {
-        const probot = getProbot()
-        const stats = await getStats(probot)
-        return {
-            statusCode: 200,
-            body: JSON.stringify(stats),
-        }
-    } catch (error) {
-        return {
-            statusCode: 500,
-            body: JSON.stringify(error.message),
-        }
+    const probot = getProbot()
+    const stats = await getStats(probot)
+    console.log(stats) // eslint-disable-line no-console
+
+    await s3
+        .putObject({
+            Bucket: process.env.STATS_BUCKET,
+            Key: 'stats.json',
+            Body: JSON.stringify(stats),
+        })
+        .promise()
+
+    return {
+        statusCode: 200,
+        body: JSON.stringify(stats),
     }
-}
+})

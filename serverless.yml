@@ -12,6 +12,8 @@ package:
 
 custom:
   stage: ${opt:stage, self:provider.stage}
+  statsBucket: '${self:service}-stats-bucket-${self:custom.stage}'
+  thundraLayer: 'arn:aws:lambda:us-east-1:269863060030:layer:thundra-lambda-node-layer:9'
   appId:
     dev: ${env:APP_ID}
     sandbox: '24310'
@@ -29,8 +31,8 @@ provider:
   name: aws
   region: us-east-1
   runtime: nodejs8.10
-  memorySize: 512
-  timeout: 60
+  memorySize: 128
+  timeout: 6
   environment:
     APP_ID: ${self:custom.appId.${self:custom.stage}}
     LOG_LEVEL: ${self:custom.logLevel.${self:custom.stage}}
@@ -41,10 +43,17 @@ provider:
     PRIVATE_KEY: ${env:PRIVATE_KEY}
     AMPLITUDE_API_KEY: ${env:AMPLITUDE_API_KEY}
     SERVICE_NAME_AND_STAGE: 'all-contributors-bot-${opt:stage, self:provider.stage}'
+    STATS_BUCKET: ${self:custom.statsBucket}
+    LAMBDA_THUNDRA_API_KEY: ${env:THUNDRA_API_KEY}
   iamRoleStatements:
     - Effect: Allow
       Action:
         - lambda:InvokeFunction
+      Resource: '*'
+    - Effect: Allow
+      Action:
+        - s3:PutObject
+        - s3:GetObject
       Resource: '*'
 
 functions:
@@ -55,8 +64,10 @@ functions:
           path: /
           method: post
           cors: true
+    layers:
+      - ${self:custom.thundraLayer}
   stats:
-    handler: src/serverless-stats.handler
+    handler: src/tasks/stats/serverless-stats.handler
     events:
       - http:
           path: /probot/stats
@@ -77,3 +88,35 @@ functions:
    # Tasks
   processIssueComment:
     handler: src/tasks/processIssueComment/serverless-task.handler
+    memorySize: 512
+    timeout: 60
+    layers:
+      - ${self:custom.thundraLayer}
+  statsWorker:
+    handler: src/tasks/stats/serverless-stats-worker.handler
+    events:
+      - schedule: cron(0 21 * * ? *)
+    memorySize: 512
+    timeout: 900
+    layers:
+      - ${self:custom.thundraLayer}
+
+resources:
+  Resources:
+    StatsBucket:
+      Type: AWS::S3::Bucket
+      Properties:
+        BucketName: ${self:custom.statsBucket}
+    # StatsBucket:
+    #   Type: AWS::S3::BucketPolicy
+    #   Properties:
+    #     BucketName: ${self:custom.statsBucket}
+    #     PolicyDocument:
+    #       - Effect: Allow
+    #         Action:
+    #           - s3:PutObject
+    #           - s3:GetObject
+    #         Resource: '*'
+
+
+        

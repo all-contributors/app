@@ -1,6 +1,8 @@
 # Contributing
 (Work in-progress)
-If you're interested in helping out, come join us on [Slack](https://join.slack.com/t/all-contributors/shared_invite/enQtNTE3ODMyMTA4NTk0LTUwZDMxZGZkMmViMzYzYzk2YTM2NjRkZGM5Yzc0ZTc5NmYzNWY3Y2Q0ZTY3ZmFhZDgyY2E3ZmIzNWQwMTUxZmE) for help getting-started
+
+
+If you're interested in helping out, come join us on [Slack](https://join.slack.com/t/all-contributors/shared_invite/enQtNTE3ODMyMTA4NTk0LTUwZDMxZGZkMmViMzYzYzk2YTM2NjRkZGM5Yzc0ZTc5NmYzNWY3Y2Q0ZTY3ZmFhZDgyY2E3ZmIzNWQwMTUxZmE) for help getting-started [![Chat on Slack](https://img.shields.io/badge/slack-join-ff69b4.svg)](https://join.slack.com/t/all-contributors/shared_invite/enQtNTE3ODMyMTA4NTk0LTUwZDMxZGZkMmViMzYzYzk2YTM2NjRkZGM5Yzc0ZTc5NmYzNWY3Y2Q0ZTY3ZmFhZDgyY2E3ZmIzNWQwMTUxZmE)
 
 
 >Built with [Probot](https://github.com/probot/probot)
@@ -36,6 +38,15 @@ curl -vX POST http://localhost:3000/ -d @test-webhook-payload.json \
 --header "X-GitHub-Event: issue_comment"
 ```
 
+## Working with forks:
+### Syncing a fork
+1. `git remote add parent git@github.com:all-contributors/all-contributors-bot.git`
+2. `git fetch parent`
+3. `git checkout master` or `git checkout empty-contribs` (this branch on your fork)
+4. `git merge parent/master`
+
+See https://help.github.com/articles/syncing-a-fork/
+
 
 ## Deployments
 There is a sandbox environment:
@@ -43,7 +54,9 @@ https://github.com/all-contributors-sandbox
 
 
 ## Production Monitoring:
+- [Thundra](https://console.thundra.io/functions/)
 - [Sentry](https://sentry.io/all-contributors/github-bot/)
+- [AWS Dashboard](https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#dashboards:name=All-Contributors-Bot)
 - [AWS Lambda](https://console.aws.amazon.com/lambda/home?region=us-east-1#/functions/all-contributors-bot-prod-githubWebhook?tab=monitoring)
 - [Bot Stats](https://gkioebvccg.execute-api.us-east-1.amazonaws.com/prod/probot/stats)
 - [Analytics](https://analytics.amplitude.com/all-contributors)
