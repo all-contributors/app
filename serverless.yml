@@ -12,7 +12,7 @@ package:
 
 custom:
   stage: ${opt:stage, self:provider.stage}
-  statusBucket: '${self:service}-stats-bucket-${self:custom.stage}'
+  statsBucket: '${self:service}-stats-bucket-${self:custom.stage}'
   appId:
     dev: ${env:APP_ID}
     sandbox: '24310'
