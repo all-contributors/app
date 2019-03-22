@@ -54,6 +54,7 @@ https://github.com/all-contributors-sandbox
 
 
 ## Production Monitoring:
+- [Thundra](https://console.thundra.io/functions/)
 - [Sentry](https://sentry.io/all-contributors/github-bot/)
 - [AWS Dashboard](https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#dashboards:name=All-Contributors-Bot)
 - [AWS Lambda](https://console.aws.amazon.com/lambda/home?region=us-east-1#/functions/all-contributors-bot-prod-githubWebhook?tab=monitoring)
