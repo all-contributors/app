@@ -1,7 +1,11 @@
+const thundra = require('@thundra/core')({
+    apiKey: process.env.THUNDRA_API_KEY,
+})
+
 const getProbot = require('../../utils/getProbot')
 const processIssueCommentApp = require('./probot-processIssueComment')
 
-module.exports.handler = async (event, context) => {
+module.exports.handler = thundra(async (event, context) => {
     context.callbackWaitsForEmptyEventLoop = false
 
     try {
@@ -22,4 +26,4 @@ module.exports.handler = async (event, context) => {
             body: error.message,
         }
     }
-}
+})

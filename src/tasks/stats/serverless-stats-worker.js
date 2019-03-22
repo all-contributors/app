@@ -1,3 +1,7 @@
+const thundra = require('@thundra/core')({
+    apiKey: process.env.THUNDRA_API_KEY,
+})
+
 const AWS = require('aws-sdk')
 const s3 = new AWS.S3({ apiVersion: '2006-03-01' })
 
@@ -87,7 +91,7 @@ async function getStats(probot) {
     }
 }
 
-module.exports.handler = async (event, context) => {
+module.exports.handler = thundra(async (event, context) => {
     context.callbackWaitsForEmptyEventLoop = false
 
     const probot = getProbot()
@@ -106,4 +110,4 @@ module.exports.handler = async (event, context) => {
         statusCode: 200,
         body: JSON.stringify(stats),
     }
-}
+})

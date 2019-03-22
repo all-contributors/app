@@ -11,11 +11,11 @@ module.exports.handler = async (event, context) => {
         })
         .promise()
 
-    const results = JSON.parse(data.Body.toString('utf-8'))
-    results.lastUpdated = data.LastModified
+    const stats = JSON.parse(data.Body.toString('utf-8'))
+    stats.lastUpdated = data.LastModified
 
     return {
         statusCode: 200,
-        body: JSON.stringify(response),
+        body: JSON.stringify(stats),
     }
 }

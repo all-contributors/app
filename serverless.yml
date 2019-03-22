@@ -13,6 +13,7 @@ package:
 custom:
   stage: ${opt:stage, self:provider.stage}
   statsBucket: '${self:service}-stats-bucket-${self:custom.stage}'
+  thundraLayer: 'arn:aws:lambda:us-east-1:269863060030:layer:thundra-lambda-node-layer:9'
   appId:
     dev: ${env:APP_ID}
     sandbox: '24310'
@@ -43,6 +44,7 @@ provider:
     AMPLITUDE_API_KEY: ${env:AMPLITUDE_API_KEY}
     SERVICE_NAME_AND_STAGE: 'all-contributors-bot-${opt:stage, self:provider.stage}'
     STATS_BUCKET: ${self:custom.statsBucket}
+    THUNDRA_API_KEY: ${env:THUNDRA_API_KEY}
   iamRoleStatements:
     - Effect: Allow
       Action:
@@ -86,12 +88,16 @@ functions:
     handler: src/tasks/processIssueComment/serverless-task.handler
     memorySize: 512
     timeout: 60
+    layers:
+      - ${self:custom.thundraLayer}
   statsWorker:
     handler: src/tasks/stats/serverless-stats-worker.handler
     events:
       - schedule: cron(0 21 * * ? *)
     memorySize: 512
     timeout: 900
+    layers:
+      - ${self:custom.thundraLayer}
 
 resources:
   Resources:
