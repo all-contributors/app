@@ -5,7 +5,6 @@ const processIssueCommentApp = require('../../../src/tasks/processIssueComment/p
 const { rejectionOf } = require('../../testUtils')
 
 const issue_commentCreatedPayload = require('../../fixtures/issue_comment.created.json')
-const commit_commentCreatedPayload = require('../../fixtures/commit_comment.created.json')
 const issue_commentCreatedPayloadUnknownIntention = require('../../fixtures/issue_commented.created.unknown-intention.json')
 const reposGetContentsAllContributorsRCdata = require('../../fixtures/repos.getContents.all-contributorsrc.json')
 const usersGetByUsernameJakeBolamdata = require('../../fixtures/users.getByUsername.jakebolam.json')
@@ -110,88 +109,6 @@ describe('All Contributors app - End to end', () => {
         await probot.receive({
             name: 'issue_comment',
             payload: issue_commentCreatedPayload,
-        })
-    })
-
-    test('1:Happy path-2, add correct new contributor', async () => {
-        jest.setTimeout(10000)
-        nock('https://api.github.com')
-            .post('/app/installations/11111/access_tokens')
-            .reply(200, { token: 'test' })
-
-        nock('https://api.github.com')
-            .get(
-                `/repos/all-contributors/all-contributors-bot/git/refs/heads/all-contributors/add-jakebolam`,
-            )
-            .reply(404)
-
-        nock('https://api.github.com')
-            .get(
-                '/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc?ref=master',
-            )
-            .reply(200, reposGetContentsAllContributorsRCdata)
-
-        nock('https://api.github.com')
-            .get('/users/jakebolam')
-            .reply(200, usersGetByUsernameJakeBolamdata)
-
-        nock('https://api.github.com')
-            .get(
-                '/repos/all-contributors/all-contributors-bot/contents/README.md?ref=master',
-            )
-            .reply(200, reposGetContentsREADMEMDdata)
-
-        nock('https://api.github.com')
-            .get(
-                `/repos/all-contributors/all-contributors-bot/git/refs/heads/master`,
-            )
-            .reply(200, gitGetRefdata)
-
-        nock('https://api.github.com')
-            .post(
-                `/repos/all-contributors/all-contributors-bot/git/refs`,
-                verifyBody,
-            )
-            .reply(201, gitCreateRefdata)
-
-        nock('https://api.github.com')
-            .put(
-                `/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc`,
-                verifyBody,
-            )
-            .reply(200, reposUpdateFiledata)
-
-        nock('https://api.github.com')
-            .put(
-                `/repos/all-contributors/all-contributors-bot/contents/README.md`,
-                verifyBody,
-            )
-            .reply(200, reposUpdateFiledata)
-
-        nock('https://api.github.com')
-            .put(
-                `/repos/all-contributors/all-contributors-bot/contents//nested-folder/SOME-DOC.md`,
-                verifyBody,
-            )
-            .reply(200, reposUpdateFiledata)
-
-        nock('https://api.github.com')
-            .post(
-                `/repos/all-contributors/all-contributors-bot/pulls`,
-                verifyBody,
-            )
-            .reply(201, pullsCreatedata)
-
-        nock('https://api.github.com')
-            .post(
-                '/repos/all-contributors/all-contributors-bot/commits/a10867b14bb761a232cd80139fbd4c0d33264240/comments',
-                verifyBody,
-            )
-            .reply(200)
-
-        await probot.receive({
-            name: 'commit_comment',
-            payload: commit_commentCreatedPayload,
         })
     })
 
