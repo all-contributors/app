@@ -26,18 +26,32 @@ describe('Serverless Webhook', () => {
         // TODO: expect lambda.invoke TO NOT BE CALLED
     })
 
-    test('If not an issue comment, exit', async () => {
+    test('If not a comment (or commit_comment), exit', async () => {
         const mockEvent = {
             headers: {
                 'x-github-event': 'lol',
             },
         }
         const response = await serverlessWebhookHandler(mockEvent, mockContext)
-        expect(response.body).toEqual('Not an issue comment, exiting')
+        expect(response.body).toEqual('Not a comment, exiting')
         // TODO: expect lambda.invoke TO NOT BE CALLED
     })
 
-    test('If an issue comment, but not created, exit', async () => {
+    test('If a comment, but not created, exit', async () => {
+        const mockEvent = {
+            headers: {
+                'x-github-event': 'issue_comment',
+            },
+            body: {
+                action: 'edited',
+            },
+        }
+        const response = await serverlessWebhookHandler(mockEvent, mockContext)
+        expect(response.body).toEqual('Not a comment creation, exiting')
+        // TODO: expect lambda.invoke TO NOT BE CALLED
+    })
+
+    test('If a commit comment, but not created, exit', async () => {
         const mockEvent = {
             headers: {
                 'x-github-event': 'issue_comment',
@@ -72,6 +86,27 @@ describe('Serverless Webhook', () => {
         const mockEvent = {
             headers: {
                 'x-github-event': 'issue_comment',
+            },
+            body: {
+                action: 'created',
+                sender: {
+                    type: 'User',
+                },
+                comment: {
+                    body: 'Message not for us, exiting',
+                },
+            },
+        }
+        const response = await serverlessWebhookHandler(mockEvent, mockContext)
+        expect(response.body).toEqual('Message not for us, exiting')
+        // TODO: expect lambda.invoke TO NOT BE CALLED
+    })
+
+
+    test('If not for us, exit', async () => {
+        const mockEvent = {
+            headers: {
+                'x-github-event': 'commit_comment',
             },
             body: {
                 action: 'created',

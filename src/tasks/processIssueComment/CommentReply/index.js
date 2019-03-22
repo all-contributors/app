@@ -28,6 +28,12 @@ class CommentReply {
         const fromUser = this.replyingToWho()
         const body = `@${fromUser} ${this.message}`
         this.context.log.info(`Sending comment: ${body}`)
+
+        // TODO: if a commit comment, do something else
+        // if (this.context.payload.comment.commit) {
+            
+        // }
+
         const issueComment = this.context.issue({ body })
         return this.context.github.issues.createComment(issueComment)
     }
