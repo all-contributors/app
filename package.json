@@ -48,7 +48,7 @@
     "nodemon": "^1.17.2",
     "prettier": "^1.16.1",
     "semantic-release": "^15.13.3",
-    "serverless": "^1.36.3",
+    "serverless": "^1.39.1",
     "serverless-dotenv-plugin": "^2.0.1",
     "serverless-offline": "^4.2.0",
     "shelljs": "^0.8.3",
