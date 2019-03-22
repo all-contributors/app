@@ -90,27 +90,20 @@ async function getStats(probot) {
 module.exports.handler = async (event, context) => {
     context.callbackWaitsForEmptyEventLoop = false
 
-    try {
-        const probot = getProbot()
-        const stats = await getStats(probot)
-        console.log(stats) // eslint-disable-line no-console
+    const probot = getProbot()
+    const stats = await getStats(probot)
+    console.log(stats) // eslint-disable-line no-console
 
-        await s3
-            .putObject({
-                Bucket: process.env.STATS_BUCKET,
-                Key: 'stats.json',
-                Body: JSON.stringify(stats),
-            })
-            .promise()
+    await s3
+        .putObject({
+            Bucket: process.env.STATS_BUCKET,
+            Key: 'stats.json',
+            Body: JSON.stringify(stats),
+        })
+        .promise()
 
-        return {
-            statusCode: 200,
-            body: JSON.stringify(stats),
-        }
-    } catch (error) {
-        return {
-            statusCode: 500,
-            body: JSON.stringify(error.message),
-        }
+    return {
+        statusCode: 200,
+        body: JSON.stringify(stats),
     }
 }
