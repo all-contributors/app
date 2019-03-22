@@ -48,6 +48,11 @@ provider:
       Action:
         - lambda:InvokeFunction
       Resource: '*'
+    - Effect: Allow
+      Action:
+        - s3:PutObject
+        - s3:GetObject
+      Resource: '*'
 
 functions:
   githubWebhook:
