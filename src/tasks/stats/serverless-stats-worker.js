@@ -1,4 +1,7 @@
-const getProbot = require('./utils/getProbot')
+const AWS = require('aws-sdk')
+const s3 = new AWS.s3({ apiVersion: '2006-03-01' })
+
+const getProbot = require('../../utils/getProbot')
 
 async function getInstallations(app) {
     const github = await app.auth()
@@ -90,6 +93,16 @@ module.exports.handler = async (event, context) => {
     try {
         const probot = getProbot()
         const stats = await getStats(probot)
+        console.log(stats) // eslint-disable-line no-console
+
+        await s3
+            .putObject({
+                Bucket: process.env.STATS_BUCKET,
+                Key: 'stats.json',
+                Body: JSON.stringify(stats),
+            })
+            .promise()
+
         return {
             statusCode: 200,
             body: JSON.stringify(stats),
