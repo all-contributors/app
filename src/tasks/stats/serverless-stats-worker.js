@@ -1,5 +1,5 @@
 const AWS = require('aws-sdk')
-const s3 = new AWS.s3({ apiVersion: '2006-03-01' })
+const s3 = new AWS.S3({ apiVersion: '2006-03-01' })
 
 const getProbot = require('../../utils/getProbot')
 
