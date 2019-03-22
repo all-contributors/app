@@ -18,6 +18,7 @@ const validContributionTypes = [
     'maintenance',
     'platform',
     'plugin',
+    'projectManagement',
     'question',
     'review',
     'security',
@@ -35,6 +36,7 @@ const validMultiContributionTypesMapping = {
     eventorganizing: 'eventOrganizing',
     fundingfinding: 'fundingFinding',
     usertesting: 'userTesting',
+    projectmanagement: 'projectManagement',
 }
 
 // Additional terms to match to types (plurals, aliases etc)
@@ -58,8 +60,12 @@ const contributionTypeMappings = {
     infras: 'infra',
     infrastructure: 'infra',
     maintaining: 'maintenance',
+    management: 'projectManagement',
+    managing: 'projectManagement',
     platforms: 'platform',
     plugins: 'plugin',
+    project: 'projectManagement',
+    projectManaging: 'projectManagement',
     questions: 'question',
     reviews: 'review',
     securing: 'security',
@@ -82,6 +88,7 @@ const contributionTypeMultiWordMapping = {
     'funding finding': 'fundingFinding',
     'user testing': 'userTesting',
     'business development': 'business',
+    'project management': 'projectManagement',
 }
 
 const Contributions = {}
