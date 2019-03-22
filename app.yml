@@ -15,7 +15,7 @@
 default_events:
 # - check_run
 # - check_suite
-- commit_comment
+# - commit_comment
 # - create
 # - delete
 # - deployment

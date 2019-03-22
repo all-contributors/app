@@ -215,11 +215,6 @@ function processIssueCommentApp(app) {
         app.log.trace(context)
         await probotProcessIssueCommentSafe({ context })
     })
-
-    app.on('commit_comment.created', async context => {
-        app.log.trace(context)
-        await probotProcessIssueCommentSafe({ context })
-    })
 }
 
 module.exports = processIssueCommentApp
