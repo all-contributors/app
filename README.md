@@ -1,27 +1,29 @@
 # Hello, @all-contributors bot 🤖
 
-<a href="https://circleci.com/gh/all-contributors/workflows/all-contributors-bot/tree/master">
-    <img alt="Build" src="https://img.shields.io/circleci/project/github/all-contributors/all-contributors-bot/master.svg"/>
-</a>
-<a href="https://codecov.io/github/all-contributors/all-contributors-bot">
-    <img alt="Coverage" src="https://img.shields.io/codecov/c/github/all-contributors/all-contributors-bot.svg"/>
-</a>
-<a href="https://github.com/semantic-release/semantic-release">
-    <img alt="Semantic Release" src="https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg" />
-</a> <br />
-<a href="https://david-dm.org/all-contributors/all-contributors-bot">
-    <img alt="Deps" src="https://david-dm.org/all-contributors/all-contributors-bot/status.svg"/>
-</a>
-<a href="https://david-dm.org/all-contributors/all-contributors-bot">
-    <img alt="Dev Deps" src="https://david-dm.org/all-contributors/all-contributors-bot/dev-status.svg"/>
-</a>
-<a href="https://greenkeeper.io">
-    <img alt="Green Keeper" src="https://badges.greenkeeper.io/all-contributors/all-contributors-bot.svg"/>
-</a>
+<table>
+    <caption>Read these documentation in the following languages</caption>
+    <tbody>
+        <tr>
+            <td><a href="https://allcontributors.org/docs/ko/bot/overview">한국어</a></td>
+            <td><a href="https://allcontributors.org/docs/zh-CN/bot/overview">中文</a></td>
+            <td><a href="https://allcontributors.org/docs/id/bot/overview">Bahasa Indonesia</a></td>
+            <td><a href="https://allcontributors.org/docs/de/bot/overview">Deutsch</a></td>
+            <td><a href="https://allcontributors.org/docs/pl/bot/overview">Polskie</a></td>
+        </tr>
+        <tr>
+            <td><a href="https://allcontributors.org/docs/en/bot/overview">English</a></td>
+            <td><a href="https://allcontributors.org/docs/pt-BR/bot/overview">Português</a></td>
+            <td><a href="https://allcontributors.org/docs/es-ES/bot/overview">Español</a></td>
+            <td><a href="https://allcontributors.org/docs/fr/bot/overview">Français</a></td>
+        </tr>
+    </tbody>
+</table>
 
+[![Build](https://img.shields.io/circleci/project/github/all-contributors/all-contributors-bot/master.svg)](https://circleci.com/gh/all-contributors/workflows/all-contributors-bot/tree/master)
+[![Coverage](https://img.shields.io/codecov/c/github/all-contributors/all-contributors-bot.svg)](https://codecov.io/github/all-contributors/all-contributors-bot)
+[![GitHub release](https://img.shields.io/github/release/all-contributors/all-contributors-bot.svg)](https://github.com/all-contributors/all-contributors-bot/releases)
 [![All Contributors](https://img.shields.io/badge/all_contributors-9-orange.svg?style=flat-square)](#contributors)
-[![Chat on Slack](https://img.shields.io/badge/slack-join-ff69b4.svg)](https://join.slack.com/t/all-contributors/shared_invite/enQtNTE3ODMyMTA4NTk0LTUwZDMxZGZkMmViMzYzYzk2YTM2NjRkZGM5Yzc0ZTc5NmYzNWY3Y2Q0ZTY3ZmFhZDgyY2E3ZmIzNWQwMTUxZmE)
-[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
+[![Star on Github](https://img.shields.io/github/stars/all-contributors/all-contributors-bot.svg?style=social)](https://github.com/all-contributors/all-contributors-bot/stargazers)
 
 🤖 A GitHub bot to automate acknowledging contributors to your open source projects.
 
