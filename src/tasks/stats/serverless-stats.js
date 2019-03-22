@@ -14,7 +14,7 @@ module.exports.handler = async (event, context) => {
 
         return {
             statusCode: 200,
-            body: JSON.parse(data.Body.toString('utf-8')),
+            body: data.Body.toString('utf-8'),
         }
     } catch (error) {
         return {

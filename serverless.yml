@@ -99,6 +99,16 @@ resources:
       Type: AWS::S3::Bucket
       Properties:
         BucketName: ${self:custom.statsBucket}
+    # StatsBucket:
+    #   Type: AWS::S3::BucketPolicy
+    #   Properties:
+    #     BucketName: ${self:custom.statsBucket}
+    #     PolicyDocument:
+    #       - Effect: Allow
+    #         Action:
+    #           - s3:PutObject
+    #           - s3:GetObject
+    #         Resource: '*'
 
 
         
