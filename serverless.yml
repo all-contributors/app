@@ -12,6 +12,7 @@ package:
 
 custom:
   stage: ${opt:stage, self:provider.stage}
+  statusBucket: '${self:service}-stats-bucket-${self:custom.stage}'
   appId:
     dev: ${env:APP_ID}
     sandbox: '24310'
@@ -41,6 +42,7 @@ provider:
     PRIVATE_KEY: ${env:PRIVATE_KEY}
     AMPLITUDE_API_KEY: ${env:AMPLITUDE_API_KEY}
     SERVICE_NAME_AND_STAGE: 'all-contributors-bot-${opt:stage, self:provider.stage}'
+    STATS_BUCKET: ${self:custom.statsBucket}
   iamRoleStatements:
     - Effect: Allow
       Action:
@@ -56,15 +58,12 @@ functions:
           method: post
           cors: true
   stats:
-    handler: src/serverless-stats.handler
+    handler: src/tasks/stats/serverless-stats.handler
     events:
       - http:
           path: /probot/stats
           method: get
           cors: true
-      - schedule: cron(0/5 22-23 * * ? *) # Ping stats handler every 5 minutes to stay warm, every day, between 22-23 PM
-    memorySize: 512
-    timeout: 30
   healthCheck:
     handler: src/serverless-health-check.handler
     events:
@@ -82,3 +81,19 @@ functions:
     handler: src/tasks/processIssueComment/serverless-task.handler
     memorySize: 512
     timeout: 60
+  statsWorker:
+    handler: src/tasks/stats/serverless-stats-worker.handler
+    events:
+      - schedule: cron(0 21 * * ? *)
+    memorySize: 512
+    timeout: 900
+
+resources:
+  Resources:
+    StatsBucket:
+      Type: AWS::S3::Bucket
+      Properties:
+        BucketName: ${self:custom.statsBucket}
+
+
+        
