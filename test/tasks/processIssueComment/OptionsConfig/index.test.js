@@ -162,4 +162,34 @@ describe('ContentFiles', () => {
             contributorsPerLine: 7,
         })
     })
+
+    test(`Fetches the contributor file`, async () => {
+        const expetectedOptions = {
+            projectName: 'my-owner',
+            projectOwner: 'my-repo',
+            repoType: 'github',
+            repoHost: 'https://github.com',
+            files: ['README.md'],
+            imageSize: 100,
+            commit: false,
+            contributors: [],
+            contributorsPerLine: 7,
+        }
+
+        const optionsConfig = new OptionsConfig({
+            repository: {
+                getFile: async function() {
+                    return {
+                        content: JSON.stringify(expetectedOptions),
+                    }
+                },
+            },
+        })
+
+        expect(optionsConfig.options).toBeUndefined()
+
+        await optionsConfig.fetch()
+
+        expect(optionsConfig.options).toEqual(expetectedOptions)
+    })
 })

@@ -44,13 +44,19 @@ function invokeLambda(payload) {
     })
 }
 
+function getPayload(body) {
+    if (typeof body === 'string') {
+        return JSON.parse(body)
+    }
+    return body
+}
+
 module.exports.handler = thundra(async (event, context) => {
     context.callbackWaitsForEmptyEventLoop = false
 
     const name =
         event.headers['x-github-event'] || event.headers['X-GitHub-Event']
-    const payload =
-        typeof event.body === 'string' ? JSON.parse(event.body) : event.body
+    const payload = getPayload(event.body)
 
     if (name === 'installation') {
         await trackInstall(payload)
