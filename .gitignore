@@ -8,3 +8,4 @@ package-lock.json # We use yarn ;)
 test-*-payload.json
 yarn-error.log
 .serverless
+npm-debug.log
