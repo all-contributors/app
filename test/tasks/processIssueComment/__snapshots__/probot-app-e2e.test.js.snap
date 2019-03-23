@@ -117,14 +117,6 @@ For other usages see the [documentation](https://allcontributors.org/docs/en/bot
 }
 `;
 
-exports[`All Contributors app - End to end 6:Fail path, Unknown error (e.g. Network is dead, service down etc, our code is bad) crashes and sends error message 1`] = `
-Object {
-  "body": "@jakebolam 
-
-We had trouble processing your request. Please try again later.",
-}
-`;
-
 exports[`All Contributors app - End to end 7: Happy path, add correct new contributor, but branch exists 1`] = `
 Object {
   "branch": "all-contributors/add-jakebolam",
