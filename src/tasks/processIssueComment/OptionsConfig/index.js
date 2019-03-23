@@ -11,6 +11,15 @@ class OptionsConfig {
         this.originalOptionsSha
     }
 
+    ensureValid() {
+        const { repo, owner } = this.repository
+
+        this.options.projectName = repo
+        this.options.projectOwner = owner
+        this.options.repoType = 'github'
+        this.options.repoHost = 'https://github.com'
+    }
+
     async fetch() {
         const {
             content: rawOptionsFileContent,
@@ -18,9 +27,11 @@ class OptionsConfig {
         } = await this.repository.getFile(ALL_CONTRIBUTORS_RC)
         this.originalOptionsSha = sha
         try {
-            const optionsConfig = JSON.parse(rawOptionsFileContent)
-            this.options = optionsConfig
-            return optionsConfig
+            this.options = JSON.parse(rawOptionsFileContent)
+
+            this.ensureValid()
+
+            return this.options
         } catch (error) {
             if (error instanceof SyntaxError) {
                 throw new AllContributorBotError(
@@ -34,18 +45,15 @@ class OptionsConfig {
     }
 
     init() {
-        const { repo, owner } = this.repository
         this.options = {
-            projectName: repo,
-            projectOwner: owner,
-            repoType: 'github',
-            repoHost: 'https://github.com',
             files: ['README.md'],
             imageSize: 100,
             commit: false,
             contributors: [],
             contributorsPerLine: 7,
         }
+
+        this.ensureValid()
     }
 
     get() {

@@ -165,8 +165,8 @@ describe('ContentFiles', () => {
 
     test(`Fetches the contributor file`, async () => {
         const expetectedOptions = {
-            projectName: 'my-owner',
-            projectOwner: 'my-repo',
+            projectName: 'my-repo',
+            projectOwner: 'my-owner',
             repoType: 'github',
             repoHost: 'https://github.com',
             files: ['README.md'],
@@ -178,9 +178,55 @@ describe('ContentFiles', () => {
 
         const optionsConfig = new OptionsConfig({
             repository: {
+                owner: 'my-owner',
+                repo: 'my-repo',
                 getFile: async function() {
                     return {
                         content: JSON.stringify(expetectedOptions),
+                    }
+                },
+            },
+        })
+
+        expect(optionsConfig.options).toBeUndefined()
+
+        await optionsConfig.fetch()
+
+        expect(optionsConfig.options).toEqual(expetectedOptions)
+    })
+
+    test(`Fetches a incorrect contributor file`, async () => {
+        const wrongOptions = {
+            projectName: 'sdfkjgn',
+            projectOwner: 'asdlkjfn',
+            repoType: 'sdlkjfn',
+            repoHost: 'lkjdghfkjdsfh',
+            files: ['README.md'],
+            imageSize: 100,
+            commit: false,
+            contributors: [],
+            contributorsPerLine: 7,
+        }
+
+        const expetectedOptions = {
+            projectName: 'my-repo',
+            projectOwner: 'my-owner',
+            repoType: 'github',
+            repoHost: 'https://github.com',
+            files: ['README.md'],
+            imageSize: 100,
+            commit: false,
+            contributors: [],
+            contributorsPerLine: 7,
+        }
+
+        const optionsConfig = new OptionsConfig({
+            repository: {
+                owner: 'my-owner',
+                repo: 'my-repo',
+                getFile: async function() {
+                    return {
+                        content: JSON.stringify(wrongOptions),
                     }
                 },
             },
