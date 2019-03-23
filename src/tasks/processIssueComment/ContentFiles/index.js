@@ -28,7 +28,7 @@ class ContentFiles {
 
     async fetch(optionsConfig) {
         const options = optionsConfig.get()
-        if (options.files.length > 5) {
+        if (options.files.length > 15) {
             throw new AllContributorBotError(
                 `Your .all-contributorsrc cannot contain more than 5 files.`,
             )
