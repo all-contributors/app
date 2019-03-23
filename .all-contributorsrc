@@ -1,6 +1,6 @@
 {
-  "projectName": "bot",
-  "projectOwner": "all-contribtuors",
+  "projectName": "all-contributors-bot",
+  "projectOwner": "all-contributors",
   "repoType": "github",
   "repoHost": "https://github.com",
   "files": [
