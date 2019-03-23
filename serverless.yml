@@ -85,7 +85,7 @@ functions:
           method: get
           cors: true
 
-   # Tasks
+  # Tasks
   processIssueComment:
     handler: src/tasks/processIssueComment/serverless-task.handler
     memorySize: 512
