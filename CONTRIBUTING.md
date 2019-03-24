@@ -3,8 +3,8 @@ If you're interested in helping out, come join us on [Slack](https://join.slack.
 
 For issues to work on, [see the issues tab](https://github.com/all-contributors/all-contributors-bot/issues)
 
-Docs:
+## Resources:
 - [Bot Architecture](contributing/bot-architecture.md)
 - [Run bot locally](contributing/run-bot-locally.md)
 - [Working with forks](contributing/working-with-forks.md)
-- [Production: Deployments & Monitoring](contributing/deployment-and-monitoring.md)
+- [Production: Deployments & Monitoring](contributing/deployments-and-monitoring.md)
