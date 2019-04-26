@@ -9,3 +9,6 @@ test-*-payload.json
 yarn-error.log
 .serverless
 npm-debug.log
+
+.idea
+.vscode
