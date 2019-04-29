@@ -49,6 +49,7 @@ class OptionsConfig {
             files: ['README.md'],
             imageSize: 100,
             commit: false,
+            commitConvention: 'none',
             contributors: [],
             contributorsPerLine: 7,
         }
@@ -63,6 +64,9 @@ class OptionsConfig {
         }
         if (!Number.isInteger(options.contributorsPerLine)) {
             options.contributorsPerLine = 7
+        }
+        if (!('commitConvention' in options)) {
+            options.commitConvention = 'none'
         }
         return options
     }

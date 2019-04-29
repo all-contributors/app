@@ -3,6 +3,7 @@ const {
     BranchNotFoundError,
     ResourceNotFoundError,
 } = require('../utils/errors')
+const convertMessage = require('./convertMessage')
 
 class Repository {
     constructor({ repo, owner, github, defaultBranch, log }) {
@@ -106,7 +107,7 @@ class Repository {
             owner: this.owner,
             repo: this.repo,
             path: filePath,
-            message: `docs: update ${filePath}`,
+            message: convertMessage({ tag: 'docs', msg: `update ${filePath}` }),
             content: contentBinary,
             sha: originalSha,
             branch: branchName,
@@ -121,7 +122,7 @@ class Repository {
             owner: this.owner,
             repo: this.repo,
             path: filePath,
-            message: `docs: create ${filePath}`,
+            message: convertMessage({ tag: 'docs', msg: `create ${filePath}` }),
             content: contentBinary,
             branch: branchName,
         })

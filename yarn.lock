@@ -1317,6 +1317,11 @@ commander@~2.8.1:
   dependencies:
     graceful-readlink ">= 1.0.0"
 
+commit-conv@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/commit-conv/-/commit-conv-0.1.0.tgz#62ffe1700994720505e5570172af3f5ed3ea36b4"
+  integrity sha512-U4E3xZ7+hWw4XSPyyl/RRQGhputlH5iFQYByoYVTXiN9Kg50ZkwWGRxJumE2TaAT3H7HOMujNcpJqGoLZogyhQ==
+
 compare-func@^1.3.1:
   version "1.3.2"
   resolved "https://registry.yarnpkg.com/compare-func/-/compare-func-1.3.2.tgz#99dd0ba457e1f9bc722b12c08ec33eeab31fa648"

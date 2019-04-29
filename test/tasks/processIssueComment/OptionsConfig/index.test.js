@@ -158,6 +158,7 @@ describe('ContentFiles', () => {
             files: ['README.md'],
             imageSize: 100,
             commit: false,
+            commitConvention: 'none',
             contributors: [],
             contributorsPerLine: 7,
         })
