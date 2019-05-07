@@ -8,13 +8,15 @@
             <td><a href="https://allcontributors.org/docs/zh-CN/bot/overview">中文</a></td>
             <td><a href="https://allcontributors.org/docs/id/bot/overview">Bahasa Indonesia</a></td>
             <td><a href="https://allcontributors.org/docs/de/bot/overview">Deutsch</a></td>
-            <td><a href="https://allcontributors.org/docs/pl/bot/overview">Polskie</a></td>
+            <td><a href="https://allcontributors.org/docs/pl/bot/overview">Polski</a></td>
         </tr>
         <tr>
             <td><a href="https://allcontributors.org/docs/en/bot/overview">English</a></td>
             <td><a href="https://allcontributors.org/docs/pt-BR/bot/overview">Português</a></td>
             <td><a href="https://allcontributors.org/docs/es-ES/bot/overview">Español</a></td>
             <td><a href="https://allcontributors.org/docs/fr/bot/overview">Français</a></td>
+            <td><a href="https://allcontributors.org/docs/ru/bot/overview">Русский</a></td>
+            <td><a href="https://allcontributors.org/docs/ja/bot/overview">日本語</a></td>
         </tr>
     </tbody>
 </table>
