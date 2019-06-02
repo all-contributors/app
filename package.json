@@ -47,7 +47,7 @@
     "semantic-release": "^15.13.3",
     "serverless": "^1.39.1",
     "serverless-dotenv-plugin": "^2.0.1",
-    "serverless-offline": "^4.2.0",
+    "serverless-offline": "^5.0.0",
     "shelljs": "^0.8.3"
   },
   "jest": {
