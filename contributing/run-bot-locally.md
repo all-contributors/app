@@ -14,8 +14,8 @@ Required fields are:
 
 Important fields are:
 - `webhook secret`, set this to `development`
-- `Permissions` which should we set [as defined in the app.yml](https://github.com/all-contributors/all-contributors-bot/blob/master/app.yml#L54), e.g. set read & write for `Repository contents`, `Issues` and `Pull Requests`, and read for `Repository Metadata`
-- `Subscrive to Events` which should we set [as defined in the app.yml](https://github.com/all-contributors/all-contributors-bot/blob/master/app.yml#L15), e.g. check the checkbox for `Issue comment`
+- `Permissions` which should be set [as defined in the app.yml](https://github.com/all-contributors/all-contributors-bot/blob/master/app.yml#L54), e.g. set read & write for `Repository contents`, `Issues` and `Pull Requests`, and read for `Repository Metadata`
+- `Subscribe to Events` which should be set [as defined in the app.yml](https://github.com/all-contributors/all-contributors-bot/blob/master/app.yml#L15), e.g. check the checkbox for `Issue comment`
 - Ensure `Where can this GitHub App be installed?` is set to `only this account`
 ![where can this app be installed](where-can-this-app-be-installed.png)
 
