@@ -106,7 +106,7 @@ class Repository {
             owner: this.owner,
             repo: this.repo,
             path: filePath,
-            message: `docs: update ${filePath}`,
+            message: `docs: update ${filePath} ${this.skipCi}`,
             content: contentBinary,
             sha: originalSha,
             branch: branchName,

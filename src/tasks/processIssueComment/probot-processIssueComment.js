@@ -148,6 +148,7 @@ async function probotProcessIssueComment({ context, commentReply, analytics }) {
             branchName,
         })
         const optionsConfig = await setupOptionsConfig({ repository })
+        repository.skipCi = optionsConfig.options.skipCi
 
         await processAddContributor({
             context,
