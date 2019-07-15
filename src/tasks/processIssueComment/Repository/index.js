@@ -100,7 +100,6 @@ class Repository {
 
     async updateFile({ filePath, content, branchName, originalSha }) {
         const contentBinary = Buffer.from(content).toString('base64')
-
         //octokit.github.io/rest.js/#api-Repos-updateFile
         await this.github.repos.updateFile({
             owner: this.owner,
@@ -121,7 +120,7 @@ class Repository {
             owner: this.owner,
             repo: this.repo,
             path: filePath,
-            message: `docs: create ${filePath}`,
+            message: `docs: create ${filePath} ${this.skipCi}`,
             content: contentBinary,
             branch: branchName,
         })
