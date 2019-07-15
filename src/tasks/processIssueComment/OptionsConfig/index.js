@@ -20,8 +20,9 @@ class OptionsConfig {
         this.options.repoHost = 'https://github.com'
 
         if (typeof this.options.skipCi !== 'string') {
-            optionsConfig.options.skipCi = '[skip ci]'
+            this.options.skipCi = '[skip ci]'
         }
+    }
 
     async fetch() {
         const {
