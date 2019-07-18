@@ -1,4 +1,3 @@
-/* eslint-disable no-comment */
 const thundra = require('@thundra/core')({
     apiKey: process.env.LAMBDA_THUNDRA_API_KEY,
 })

@@ -1,3 +1,4 @@
+/* eslint-disable require-atomic-updates */
 const thundra = require('@thundra/core')({
     apiKey: process.env.LAMBDA_THUNDRA_API_KEY,
 })
