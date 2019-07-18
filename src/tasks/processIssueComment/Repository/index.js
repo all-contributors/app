@@ -12,6 +12,7 @@ class Repository {
         this.defaultBranch = defaultBranch
         this.baseBranch = defaultBranch
         this.log = log
+        this.skipCi = '[skip ci]'
     }
 
     getFullname() {
