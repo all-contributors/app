@@ -12,7 +12,7 @@ class Repository {
         this.defaultBranch = defaultBranch
         this.baseBranch = defaultBranch
         this.log = log
-        this.skipCi = '[skip ci]'
+        this.skipCiString = '[skip ci]'
     }
 
     getFullname() {
@@ -106,7 +106,7 @@ class Repository {
             owner: this.owner,
             repo: this.repo,
             path: filePath,
-            message: `docs: update ${filePath} ${this.skipCi}`,
+            message: `docs: update ${filePath} ${this.skipCiString}`,
             content: contentBinary,
             sha: originalSha,
             branch: branchName,
@@ -121,7 +121,7 @@ class Repository {
             owner: this.owner,
             repo: this.repo,
             path: filePath,
-            message: `docs: create ${filePath} ${this.skipCi}`,
+            message: `docs: create ${filePath} ${this.skipCiString}`,
             content: contentBinary,
             branch: branchName,
         })
