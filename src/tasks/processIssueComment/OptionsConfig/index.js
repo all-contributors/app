@@ -19,8 +19,8 @@ class OptionsConfig {
         this.options.repoType = 'github'
         this.options.repoHost = 'https://github.com'
 
-        if (typeof this.options.skipCi !== 'string') {
-            this.options.skipCi = '[skip ci]'
+        if (typeof this.options.skipCi !== 'boolean') {
+            this.options.skipCi = true
         }
     }
 
