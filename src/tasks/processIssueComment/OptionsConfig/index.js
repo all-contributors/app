@@ -18,6 +18,10 @@ class OptionsConfig {
         this.options.projectOwner = owner
         this.options.repoType = 'github'
         this.options.repoHost = 'https://github.com'
+
+        if (typeof this.options.skipCi !== 'boolean') {
+            this.options.skipCi = true
+        }
     }
 
     async fetch() {
