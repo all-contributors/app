@@ -21,10 +21,7 @@ describe('Serverless Webhook', () => {
         }
         const spy = jest.spyOn(serverlessWebhook, 'invokeLambda')
 
-        const response = await serverlessWebhook.handler(
-            mockEvent,
-            mockContext,
-        )
+        const response = await serverlessWebhook.handler(mockEvent, mockContext)
         expect(spy).toHaveBeenCalledTimes(0)
         expect(response.body).toEqual('Tracked install count')
     })
@@ -36,10 +33,7 @@ describe('Serverless Webhook', () => {
             },
         }
         const spy = jest.spyOn(serverlessWebhook, 'invokeLambda')
-        const response = await serverlessWebhook.handler(
-            mockEvent,
-            mockContext,
-        )
+        const response = await serverlessWebhook.handler(mockEvent, mockContext)
         expect(spy).toHaveBeenCalledTimes(0)
         expect(response.body).toEqual('Not an issue comment, exiting')
     })
@@ -54,10 +48,7 @@ describe('Serverless Webhook', () => {
             },
         }
         const spy = jest.spyOn(serverlessWebhook, 'invokeLambda')
-        const response = await serverlessWebhook.handler(
-            mockEvent,
-            mockContext,
-        )
+        const response = await serverlessWebhook.handler(mockEvent, mockContext)
         expect(spy).toHaveBeenCalledTimes(0)
         expect(response.body).toEqual('Not a comment creation, exiting')
     })
@@ -75,10 +66,7 @@ describe('Serverless Webhook', () => {
             },
         }
         const spy = jest.spyOn(serverlessWebhook, 'invokeLambda')
-        const response = await serverlessWebhook.handler(
-            mockEvent,
-            mockContext,
-        )
+        const response = await serverlessWebhook.handler(mockEvent, mockContext)
         expect(spy).toHaveBeenCalledTimes(0)
         expect(response.body).toEqual('Not from a user, exiting')
     })
@@ -99,10 +87,7 @@ describe('Serverless Webhook', () => {
             },
         }
         const spy = jest.spyOn(serverlessWebhook, 'invokeLambda')
-        const response = await serverlessWebhook.handler(
-            mockEvent,
-            mockContext,
-        )
+        const response = await serverlessWebhook.handler(mockEvent, mockContext)
         expect(spy).toHaveBeenCalledTimes(0)
         expect(response.body).toEqual('Message not for us, exiting')
     })
