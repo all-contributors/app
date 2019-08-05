@@ -8,7 +8,7 @@ const lambda = new AWS.Lambda()
 const trackInstall = require('./tasks/trackInstall')
 const isMessageForBot = require('./utils/isMessageForBot')
 
-function invokeLambda(payload) {
+const invokeLambda = payload => {
     const processIssueCommentPayload = JSON.stringify(payload)
 
     if (process.env.IS_OFFLINE) {
@@ -43,14 +43,14 @@ function invokeLambda(payload) {
     })
 }
 
-function getPayload(body) {
+const getPayload = body => {
     if (typeof body === 'string') {
         return JSON.parse(body)
     }
     return body
 }
 
-module.exports.handler = thundra(async (event, context) => {
+const handler = thundra(async (event, context) => {
     context.callbackWaitsForEmptyEventLoop = false
 
     const name =
@@ -105,3 +105,9 @@ module.exports.handler = thundra(async (event, context) => {
         body: 'Accepted and processing comment',
     }
 })
+
+module.exports = {
+    handler,
+    getPayload,
+    invokeLambda,
+}

@@ -1,6 +1,4 @@
-const {
-    handler: serverlessWebhookHandler,
-} = require('../src/serverless-webhook')
+const serverlessWebhook = require('../src/serverless-webhook')
 
 describe('Serverless Webhook', () => {
     const mockContext = {}
@@ -21,9 +19,11 @@ describe('Serverless Webhook', () => {
                 },
             },
         }
-        const response = await serverlessWebhookHandler(mockEvent, mockContext)
+        const spy = jest.spyOn(serverlessWebhook, 'invokeLambda')
+
+        const response = await serverlessWebhook.handler(mockEvent, mockContext)
+        expect(spy).toHaveBeenCalledTimes(0)
         expect(response.body).toEqual('Tracked install count')
-        // TODO: expect lambda.invoke TO NOT BE CALLED
     })
 
     test('If not an issue comment, exit', async () => {
@@ -32,9 +32,10 @@ describe('Serverless Webhook', () => {
                 'x-github-event': 'lol',
             },
         }
-        const response = await serverlessWebhookHandler(mockEvent, mockContext)
+        const spy = jest.spyOn(serverlessWebhook, 'invokeLambda')
+        const response = await serverlessWebhook.handler(mockEvent, mockContext)
+        expect(spy).toHaveBeenCalledTimes(0)
         expect(response.body).toEqual('Not an issue comment, exiting')
-        // TODO: expect lambda.invoke TO NOT BE CALLED
     })
 
     test('If an issue comment, but not created, exit', async () => {
@@ -46,9 +47,10 @@ describe('Serverless Webhook', () => {
                 action: 'edited',
             },
         }
-        const response = await serverlessWebhookHandler(mockEvent, mockContext)
+        const spy = jest.spyOn(serverlessWebhook, 'invokeLambda')
+        const response = await serverlessWebhook.handler(mockEvent, mockContext)
+        expect(spy).toHaveBeenCalledTimes(0)
         expect(response.body).toEqual('Not a comment creation, exiting')
-        // TODO: expect lambda.invoke TO NOT BE CALLED
     })
 
     test('If bot, exit', async () => {
@@ -63,9 +65,10 @@ describe('Serverless Webhook', () => {
                 },
             },
         }
-        const response = await serverlessWebhookHandler(mockEvent, mockContext)
+        const spy = jest.spyOn(serverlessWebhook, 'invokeLambda')
+        const response = await serverlessWebhook.handler(mockEvent, mockContext)
+        expect(spy).toHaveBeenCalledTimes(0)
         expect(response.body).toEqual('Not from a user, exiting')
-        // TODO: expect lambda.invoke TO NOT BE CALLED
     })
 
     test('If not for us, exit', async () => {
@@ -83,11 +86,13 @@ describe('Serverless Webhook', () => {
                 },
             },
         }
-        const response = await serverlessWebhookHandler(mockEvent, mockContext)
+        const spy = jest.spyOn(serverlessWebhook, 'invokeLambda')
+        const response = await serverlessWebhook.handler(mockEvent, mockContext)
+        expect(spy).toHaveBeenCalledTimes(0)
         expect(response.body).toEqual('Message not for us, exiting')
-        // TODO: expect lambda.invoke TO NOT BE CALLED
     })
 
+    test.todo('If User and for us, take it')
     // test('If User and for us, take it', async () => {
     //     const mockEvent = {
     //         headers: {
