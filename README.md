@@ -24,7 +24,7 @@
 [![Build](https://img.shields.io/circleci/project/github/all-contributors/all-contributors-bot/master.svg)](https://circleci.com/gh/all-contributors/workflows/all-contributors-bot/tree/master)
 [![Coverage](https://img.shields.io/codecov/c/github/all-contributors/all-contributors-bot.svg)](https://codecov.io/github/all-contributors/all-contributors-bot)
 [![GitHub release](https://img.shields.io/github/release/all-contributors/all-contributors-bot.svg)](https://github.com/all-contributors/all-contributors-bot/releases)
-[![All Contributors](https://img.shields.io/badge/all_contributors-12-orange.svg?style=flat-square)](#contributors)
+[![All Contributors](https://img.shields.io/badge/all_contributors-13-orange.svg?style=flat-square)](#contributors)
 [![Star on Github](https://img.shields.io/github/stars/all-contributors/all-contributors-bot.svg?style=social)](https://github.com/all-contributors/all-contributors-bot/stargazers)
 
 🤖 A GitHub bot to automate acknowledging contributors to your open source projects.
@@ -68,6 +68,7 @@ Thanks goes to these wonderful people ([emoji key](https://github.com/all-contri
     <td align="center"><a href="https://github.com/JayDosunmu"><img src="https://avatars2.githubusercontent.com/u/12818598?v=4" width="100px;" alt="Taslim Dosunmu"/><br /><sub><b>Taslim Dosunmu</b></sub></a><br /><a href="https://github.com/all-contributors/all-contributors-bot/commits?author=JayDosunmu" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/nschonni"><img src="https://avatars2.githubusercontent.com/u/1297909?v=4" width="100px;" alt="Nick Schonning"/><br /><sub><b>Nick Schonning</b></sub></a><br /><a href="https://github.com/all-contributors/all-contributors-bot/commits?author=nschonni" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/fennecdjay"><img src="https://avatars0.githubusercontent.com/u/4943921?v=4" width="100px;" alt="Jérémie Astor"/><br /><sub><b>Jérémie Astor</b></sub></a><br /><a href="https://github.com/all-contributors/all-contributors-bot/commits?author=fennecdjay" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/js-kyle"><img src="https://avatars3.githubusercontent.com/u/23022619?v=4" width="100px;" alt="Kyle Martin"/><br /><sub><b>Kyle Martin</b></sub></a><br /><a href="https://github.com/all-contributors/all-contributors-bot/commits?author=js-kyle" title="Tests">⚠️</a></td>
   </tr>
 </table>
 

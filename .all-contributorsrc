@@ -122,6 +122,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "js-kyle",
+      "name": "Kyle Martin",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/23022619?v=4",
+      "profile": "https://github.com/js-kyle",
+      "contributions": [
+        "test"
+      ]
     }
   ],
   "contributorsPerLine": 7
