@@ -3,7 +3,7 @@
 exports[`ContentFiles Add's new contributor 1`] = `
 "# TestContentFIles
 
-[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors)
+[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
 
 A test for content files generation
 
@@ -17,7 +17,8 @@ A test for content files generation
 Thanks goes to these wonderful people ([emoji key](https://github.com/all-contributors/all-contributors#emoji-key)):
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-<!-- prettier-ignore -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
 <table>
   <tr>
     <td align=\\"center\\"><a href=\\"https://jakebolam.com\\"><img src=\\"https://avatars2.githubusercontent.com/u/3534236?v=4\\" width=\\"100px;\\" alt=\\"Jake Bolam\\"/><br /><sub><b>Jake Bolam</b></sub></a><br /><a href=\\"#code-jakebolam\\" title=\\"Code\\">💻</a> <a href=\\"#ideas-jakebolam\\" title=\\"Ideas, Planning, & Feedback\\">🤔</a> <a href=\\"#infra-jakebolam\\" title=\\"Infrastructure (Hosting, Build-Tools, etc)\\">🚇</a> <a href=\\"#test-jakebolam\\" title=\\"Tests\\">⚠️</a></td>
@@ -25,6 +26,8 @@ Thanks goes to these wonderful people ([emoji key](https://github.com/all-contri
   </tr>
 </table>
 
+<!-- markdownlint-enable -->
+<!-- prettier-ignore-end -->
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome
@@ -37,7 +40,7 @@ This project follows the [all-contributors](https://github.com/all-contributors/
 
 exports[`ContentFiles Init content 1`] = `
 "# TestContentFIles
-[![All Contributors](https://img.shields.io/badge/all_contributors-0-orange.svg?style=flat-square)](#contributors)
+[![All Contributors](https://img.shields.io/badge/all_contributors-0-orange.svg?style=flat-square)](#contributors-)
 
 A test for content files generation
 
@@ -54,7 +57,10 @@ A test for content files generation
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-<!-- prettier-ignore -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<!-- markdownlint-enable -->
+<!-- prettier-ignore-end -->
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!"
@@ -62,7 +68,7 @@ This project follows the [all-contributors](https://github.com/all-contributors/
 
 exports[`ContentFiles Init content 2`] = `
 "# TestContentFIles
-[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors)
+[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
 
 A test for content files generation
 
@@ -79,7 +85,8 @@ A test for content files generation
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-<!-- prettier-ignore -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
 <table>
   <tr>
     <td align=\\"center\\"><a href=\\"https://jakebolam.com\\"><img src=\\"https://avatars2.githubusercontent.com/u/3534236?v=4\\" width=\\"100px;\\" alt=\\"Jake Bolam\\"/><br /><sub><b>Jake Bolam</b></sub></a><br /><a href=\\"#code-jakebolam\\" title=\\"Code\\">💻</a> <a href=\\"#ideas-jakebolam\\" title=\\"Ideas, Planning, & Feedback\\">🤔</a> <a href=\\"#infra-jakebolam\\" title=\\"Infrastructure (Hosting, Build-Tools, etc)\\">🚇</a> <a href=\\"#test-jakebolam\\" title=\\"Tests\\">⚠️</a></td>
@@ -87,6 +94,8 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   </tr>
 </table>
 
+<!-- markdownlint-enable -->
+<!-- prettier-ignore-end -->
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!"
