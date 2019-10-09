@@ -80,7 +80,7 @@ const handler = thundra(async (event, context) => {
         }
     }
 
-    if (payload.sender.type !== 'User') {
+    if (payload.sender.type !== 'User' && payload.sender.type !== 'Bot') {
         return {
             statusCode: 201,
             body: 'Not from a user, exiting',
