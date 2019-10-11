@@ -95,7 +95,7 @@ const handler = thundra(async (event, context) => {
         }
     }
 
-    await invokeLambda({
+    await module.exports.invokeLambda({
         name,
         payload,
     })

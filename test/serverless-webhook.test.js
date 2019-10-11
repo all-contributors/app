@@ -74,25 +74,33 @@ describe('Serverless Webhook', () => {
         expect(response.body).toEqual('Message not for us, exiting')
     })
 
-    test.todo('If User and for us, take it')
-    test.todo('If Bot and for us, take it')
-    // test('If User and for us, take it', async () => {
-    //     const mockEvent = {
-    //         headers: {
-    //             'x-github-event': 'issue_comment',
-    //         },
-    //         body: {
-    //             action: 'created',
-    //             sender: {
-    //                 type: 'User',
-    //             },
-    //             comment: {
-    //                 body: '@all-contributors please do blah',
-    //             },
-    //         },
-    //     }
-    //     const response = await serverlessWebhookHandler(mockEvent, mockContext)
-    //     expect(response.body).toEqual('Accepted and processing comment')
-    //     // TODO: expect lambda.invoke TO BE CALLED
-    // })
+    test.each(['User', 'Bot'])('If %s and for us, take it', async type => {
+        const mockEvent = {
+            headers: {
+                'x-github-event': 'issue_comment',
+            },
+            body: {
+                action: 'created',
+                sender: {
+                    type,
+                },
+                comment: {
+                    body: '@all-contributors please do blah',
+                },
+            },
+        }
+        const spy = jest
+            .spyOn(serverlessWebhook, 'invokeLambda')
+            .mockImplementation(() => {})
+        const response = await serverlessWebhook.handler(mockEvent, mockContext)
+        expect(response.body).toEqual('Accepted and processing comment')
+        expect(spy).toHaveBeenCalledWith({
+            name: 'issue_comment',
+            payload: {
+                action: 'created',
+                comment: { body: '@all-contributors please do blah' },
+                sender: { type },
+            },
+        })
+    })
 })
