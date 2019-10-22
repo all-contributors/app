@@ -31,7 +31,7 @@ const validContributionTypes = [
     'video',
 ]
 
-// Types that are valid multi words, that we need to re map back to there camelCase parts
+// Types that are valid multi words, that we need to re map back to their camelCase parts
 const validMultiContributionTypesMapping = {
     eventorganizing: 'eventOrganizing',
     fundingfinding: 'fundingFinding',
