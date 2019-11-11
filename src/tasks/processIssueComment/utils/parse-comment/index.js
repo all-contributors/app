@@ -2,6 +2,7 @@ const nlp = require('compromise')
 
 // Types that are valid (multi words must all be lower case)
 const validContributionTypes = [
+    'a11y',
     'blog',
     'bug',
     'business',
@@ -41,6 +42,7 @@ const validMultiContributionTypesMapping = {
 
 // Additional terms to match to types (plurals, aliases etc)
 const contributionTypeMappings = {
+    accessibility: 'a11y',
     blogs: 'blog',
     blogging: 'blog',
     bugs: 'bug',
