@@ -1568,12 +1568,12 @@ compress-commons@^1.2.0:
     normalize-path "^2.0.0"
     readable-stream "^2.0.0"
 
-compromise@^11.13.0:
-  version "11.13.0"
-  resolved "https://registry.yarnpkg.com/compromise/-/compromise-11.13.0.tgz#f39ea17ae82a87a9eafd3d6c11ee651641470aec"
+compromise@^12.0.0:
+  version "12.0.0"
+  resolved "https://registry.yarnpkg.com/compromise/-/compromise-12.0.0.tgz#e2f7fabd7f913de5d5c8ca45c5a23b8812e745d9"
+  integrity sha512-OkvbLo9Q8UPR1NEhQ6BZLFj9OiZKqAuw+qChR0+f4FP7y3uX/QxXMYYgt9fitg+EnUdbp3LzwtAqipJaXghu3w==
   dependencies:
-    efrt-unpack "2.0.3"
-    terser "^3.14.1"
+    efrt-unpack "2.2.0"
 
 concat-map@0.0.1:
   version "0.0.1"
@@ -2108,9 +2108,10 @@ ee-first@1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/ee-first/-/ee-first-1.1.1.tgz#590c61156b0ae2f4f0255732a158b266bc56b21d"
 
-efrt-unpack@2.0.3:
-  version "2.0.3"
-  resolved "https://registry.yarnpkg.com/efrt-unpack/-/efrt-unpack-2.0.3.tgz#6ada57793e3dda16d182f6a371fbe3d135af9dc2"
+efrt-unpack@2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/efrt-unpack/-/efrt-unpack-2.2.0.tgz#b05dbec0fb8cb346a27840e00c969df9c72fee52"
+  integrity sha512-9xUSSj7qcUxz+0r4X3+bwUNttEfGfK5AH+LVa1aTpqdAfrN5VhROYCfcF+up4hp5OL7IUKcZJJrzAGipQRDoiQ==
 
 emoji-regex@^7.0.1:
   version "7.0.3"
@@ -6731,7 +6732,7 @@ source-map-resolve@^0.5.0:
     source-map-url "^0.4.0"
     urix "^0.1.0"
 
-source-map-support@^0.5.6, source-map-support@~0.5.6:
+source-map-support@^0.5.6:
   version "0.5.10"
   resolved "https://registry.yarnpkg.com/source-map-support/-/source-map-support-0.5.10.tgz#2214080bc9d51832511ee2bab96e3c2f9353120c"
   dependencies:
@@ -7103,14 +7104,6 @@ term-size@^1.2.0:
   resolved "https://registry.yarnpkg.com/term-size/-/term-size-1.2.0.tgz#458b83887f288fc56d6fffbfad262e26638efa69"
   dependencies:
     execa "^0.7.0"
-
-terser@^3.14.1:
-  version "3.14.1"
-  resolved "https://registry.yarnpkg.com/terser/-/terser-3.14.1.tgz#cc4764014af570bc79c79742358bd46926018a32"
-  dependencies:
-    commander "~2.17.1"
-    source-map "~0.6.1"
-    source-map-support "~0.5.6"
 
 test-exclude@^5.0.0:
   version "5.0.0"
