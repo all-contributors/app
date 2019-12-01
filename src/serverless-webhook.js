@@ -22,7 +22,7 @@ const invokeLambda = payload => {
         return Promise.resolve()
     }
 
-    return new Promise(function(resolve, reject) {
+    return new Promise(function(resolve) {
         lambda.invoke(
             {
                 FunctionName: `${
@@ -36,7 +36,6 @@ const invokeLambda = payload => {
                 if (error) {
                     console.error(error)
                     // Invoke lambda failed, or execution failed, we are returning 200 for the webhook (to prevent spaming users)
-                    // reject(error)
                     resolve()
                 } else {
                     resolve(data)
