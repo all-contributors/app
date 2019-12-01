@@ -34,7 +34,10 @@ const invokeLambda = payload => {
             },
             function(error, data) {
                 if (error) {
-                    reject(error)
+                    console.error(error)
+                    // Invoke lambda failed, or execution failed, we are returning 200 for the webhook (to prevent spaming users)
+                    // reject(error)
+                    resolve()
                 } else {
                     resolve(data)
                 }
