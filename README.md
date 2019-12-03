@@ -51,7 +51,8 @@ For more, check out the [Contributing Guide](CONTRIBUTING.md).
 Thanks goes to these wonderful people ([emoji key](https://github.com/all-contributors/all-contributors#emoji-key)):
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-<!-- prettier-ignore -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
 <table>
   <tr>
     <td align="center"><a href="https://jakebolam.com"><img src="https://avatars2.githubusercontent.com/u/3534236?v=4" width="100px;" alt="Jake Bolam"/><br /><sub><b>Jake Bolam</b></sub></a><br /><a href="https://github.com/all-contributors/all-contributors-bot/commits?author=jakebolam" title="Code">💻</a> <a href="#ideas-jakebolam" title="Ideas, Planning, & Feedback">🤔</a> <a href="#infra-jakebolam" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="https://github.com/all-contributors/all-contributors-bot/commits?author=jakebolam" title="Tests">⚠️</a></td>
@@ -69,9 +70,12 @@ Thanks goes to these wonderful people ([emoji key](https://github.com/all-contri
     <td align="center"><a href="https://github.com/nschonni"><img src="https://avatars2.githubusercontent.com/u/1297909?v=4" width="100px;" alt="Nick Schonning"/><br /><sub><b>Nick Schonning</b></sub></a><br /><a href="https://github.com/all-contributors/all-contributors-bot/commits?author=nschonni" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/fennecdjay"><img src="https://avatars0.githubusercontent.com/u/4943921?v=4" width="100px;" alt="Jérémie Astor"/><br /><sub><b>Jérémie Astor</b></sub></a><br /><a href="https://github.com/all-contributors/all-contributors-bot/commits?author=fennecdjay" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/js-kyle"><img src="https://avatars3.githubusercontent.com/u/23022619?v=4" width="100px;" alt="Kyle Martin"/><br /><sub><b>Kyle Martin</b></sub></a><br /><a href="https://github.com/all-contributors/all-contributors-bot/commits?author=js-kyle" title="Tests">⚠️</a></td>
+    <td align="center"><a href="https://allcontributors.org"><img src="https://avatars1.githubusercontent.com/u/46410174?v=4" width="100px;" alt="All Contributors"/><br /><sub><b>All Contributors</b></sub></a><br /><a href="https://github.com/all-contributors/all-contributors-bot/commits?author=all-contributors" title="Documentation">📖</a></td>
   </tr>
 </table>
 
+<!-- markdownlint-enable -->
+<!-- prettier-ignore-end -->
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome
