@@ -84,7 +84,7 @@ describe('Serverless Webhook', () => {
                 action: 'created',
                 sender: {
                     type: 'Bot',
-                    login: 'allcontributors',
+                    login: 'allcontributors[bot]',
                 },
                 comment: {
                     body: '@allcontributors please do something',
