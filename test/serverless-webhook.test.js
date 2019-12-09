@@ -62,9 +62,10 @@ describe('Serverless Webhook', () => {
                 action: 'created',
                 sender: {
                     type: 'User',
+                    login: 'robdawg',
                 },
                 comment: {
-                    body: 'Message not for us, exiting',
+                    body: '@random person do something',
                 },
             },
         }
@@ -72,6 +73,28 @@ describe('Serverless Webhook', () => {
         const response = await serverlessWebhook.handler(mockEvent, mockContext)
         expect(spy).toHaveBeenCalledTimes(0)
         expect(response.body).toEqual('Message not for us, exiting')
+    })
+
+    test('If from us, exit', async () => {
+        const mockEvent = {
+            headers: {
+                'x-github-event': 'issue_comment',
+            },
+            body: {
+                action: 'created',
+                sender: {
+                    type: 'Bot',
+                    login: 'allcontributors',
+                },
+                comment: {
+                    body: '@allcontributors please do something',
+                },
+            },
+        }
+        const spy = jest.spyOn(serverlessWebhook, 'invokeLambda')
+        const response = await serverlessWebhook.handler(mockEvent, mockContext)
+        expect(spy).toHaveBeenCalledTimes(0)
+        expect(response.body).toEqual('From us, exiting')
     })
 
     test.each(['User', 'Bot'])('If %s and for us, take it', async type => {

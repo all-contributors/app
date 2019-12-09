@@ -89,6 +89,16 @@ const handler = thundra(async (event, context) => {
         }
     }
 
+    if (
+        payload.sender.type === 'Bot' &&
+        payload.sender.login === 'allcontributors'
+    ) {
+        return {
+            statusCode: 201,
+            body: 'From us, exiting',
+        }
+    }
+
     const commentBody = payload.comment.body
     if (!isMessageForBot(commentBody)) {
         return {
