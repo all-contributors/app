@@ -138,7 +138,9 @@
       "avatar_url": "https://avatars1.githubusercontent.com/u/46410174?v=4",
       "profile": "https://allcontributors.org",
       "contributions": [
-        "doc"
+        "doc",
+        "code",
+        "infra"
       ]
     }
   ],
