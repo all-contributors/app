@@ -91,7 +91,7 @@ const handler = thundra(async (event, context) => {
 
     if (
         payload.sender.type === 'Bot' &&
-        payload.sender.login === 'allcontributors'
+        payload.sender.login === 'allcontributors[bot]'
     ) {
         return {
             statusCode: 201,
