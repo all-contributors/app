@@ -91,7 +91,7 @@ const contributionTypeMultiWordMapping = {
     'data collection': 'data',
     'data collections': 'data',
     'data set': 'data',
-    'data sets'; 'data',
+    'data sets': 'data',
     'event organizing': 'eventOrganizing',
     'fund finding': 'fundingFinding',
     'funding finding': 'fundingFinding',
