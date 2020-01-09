@@ -44,7 +44,7 @@
     "jest-junit": "^6.2.1",
     "nock": "^10.0.0",
     "prettier": "^1.16.1",
-    "semantic-release": "^15.13.3",
+    "semantic-release": "^16.0.0",
     "serverless": "^1.39.1",
     "serverless-dotenv-plugin": "^2.0.1",
     "serverless-offline": "^5.0.0",
