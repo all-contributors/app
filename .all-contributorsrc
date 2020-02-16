@@ -131,7 +131,17 @@
       "contributions": [
         "test"
       ]
+    },
+    {
+      "login": "ACFaul",
+      "name": "Anita Faul",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/54664318?v=4",
+      "profile": "https://www.bas.ac.uk/profile/anfaul/",
+      "contributions": [
+        "eventOrganizing"
+      ]
     }
   ],
-  "contributorsPerLine": 7
+  "contributorsPerLine": 7,
+  "skipCi": true
 }
