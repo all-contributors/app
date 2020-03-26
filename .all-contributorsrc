@@ -131,7 +131,17 @@
       "contributions": [
         "test"
       ]
+    },
+    {
+      "login": "Wei-1",
+      "name": "Wei Chen",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/10698262?v=4",
+      "profile": "https://wei-1.github.io/CV.pdf",
+      "contributions": [
+        "maintenance"
+      ]
     }
   ],
-  "contributorsPerLine": 7
+  "contributorsPerLine": 7,
+  "skipCi": true
 }
