@@ -116,7 +116,8 @@ function parseAddComment(message, action) {
     const whoMatched = nlp(message)
         .match(`${action} [.]`)
         .normalize({
-            whitespace: true, // remove hyphens, newlines, and force one space between words
+            // We cannot use whitespace: true, because that gets rid of trailing hyphens.
+            whitespace: false, // remove hyphens, newlines, and force one space between words
             case: false, // keep only first-word, and 'entity' titlecasing
             numbers: false, // turn 'seven' to '7'
             punctuation: true, // remove commas, semicolons - but keep sentence-ending punctuation
@@ -129,7 +130,8 @@ function parseAddComment(message, action) {
             verbs: false, // turn all verbs into Infinitive form - "I walked" → "I walk"
             honorifics: false, //turn 'Vice Admiral John Smith' to 'John Smith'
         })
-        .data()[0].text
+        .data()[0]
+        .text.replace(/\s/g, '')
 
     const who = whoMatched.startsWith('@') ? whoMatched.substr(1) : whoMatched
 
