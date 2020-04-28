@@ -30,7 +30,7 @@ custom:
 provider:
   name: aws
   region: us-east-1
-  runtime: nodejs8.10
+  runtime: nodejs11.15
   memorySize: 128
   timeout: 6
   environment:
