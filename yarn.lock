@@ -613,7 +613,7 @@ align-text@^0.1.1, align-text@^0.1.3:
     longest "^1.0.1"
     repeat-string "^1.5.2"
 
-all-contributors-cli@^6.11.2:
+all-contributors-cli@^6.12.0:
   version "6.14.2"
   resolved "https://registry.yarnpkg.com/all-contributors-cli/-/all-contributors-cli-6.14.2.tgz#4d7652f700a827b9a2f749720f13605ee1c2f8bd"
   dependencies:
