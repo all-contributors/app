@@ -8,6 +8,7 @@ const validContributionTypes = [
     'business',
     'code',
     'content',
+    'data',
     'design',
     'doc',
     'eventorganizing',
@@ -48,6 +49,8 @@ const contributionTypeMappings = {
     bugs: 'bug',
     codes: 'code',
     coding: 'code',
+    dataset: 'data',
+    datasets: 'data',
     designing: 'design',
     desigs: 'design',
     doc: 'doc',
@@ -85,6 +88,10 @@ const contributionTypeMappings = {
 
 // Additional terms to match to types (plurals, aliases etc) that are multi word
 const contributionTypeMultiWordMapping = {
+    'data collection': 'data',
+    'data collections': 'data',
+    'data set': 'data',
+    'data sets': 'data',
     'event organizing': 'eventOrganizing',
     'fund finding': 'fundingFinding',
     'funding finding': 'fundingFinding',
