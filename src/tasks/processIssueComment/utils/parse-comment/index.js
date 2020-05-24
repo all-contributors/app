@@ -3,6 +3,7 @@ const nlp = require('compromise')
 // Types that are valid (multi words must all be lower case)
 const validContributionTypes = [
     'a11y',
+    'audio',
     'blog',
     'bug',
     'business',
@@ -52,6 +53,7 @@ const contributionTypeMappings = {
     dataset: 'data',
     datasets: 'data',
     designing: 'design',
+    // TODO Fix this
     desigs: 'design',
     doc: 'doc',
     docs: 'doc',
@@ -67,6 +69,7 @@ const contributionTypeMappings = {
     maintaining: 'maintenance',
     management: 'projectManagement',
     managing: 'projectManagement',
+    music: 'audio',
     platforms: 'platform',
     plugins: 'plugin',
     project: 'projectManagement',
@@ -74,6 +77,7 @@ const contributionTypeMappings = {
     questions: 'question',
     reviews: 'review',
     securing: 'security',
+    sound: 'audio',
     talks: 'talk',
     tests: 'test',
     testing: 'test',
@@ -88,6 +92,9 @@ const contributionTypeMappings = {
 
 // Additional terms to match to types (plurals, aliases etc) that are multi word
 const contributionTypeMultiWordMapping = {
+    'audio production': 'audio',
+    'audio recording': 'audio',
+    'music production': 'audio',
     'data collection': 'data',
     'data collections': 'data',
     'data set': 'data',
