@@ -1,3 +1,5 @@
+[![Gitpod ready-to-code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/all-contributors/all-contributors-bot)
+
 # Hello, @all-contributors bot 🤖
 
 <table>
