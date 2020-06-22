@@ -41,7 +41,7 @@ class Repository {
             }
         } catch (error) {
             if (error.status === 404) {
-                throw new ResourceNotFoundError(filePath, this.full_name)
+                throw new ResourceNotFoundError(filePath, this.getFullname())
             } else {
                 throw error
             }
