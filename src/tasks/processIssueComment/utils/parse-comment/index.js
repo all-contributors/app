@@ -144,7 +144,7 @@ function parseAddComment(message, action) {
 
     // Contributions
     const doc = nlp(message).toLowerCase()
-    // This is to support multi word 'matches' (altho the compromise docs say it supports this *confused*)
+    // This is to support multi word 'matches' (although the compromise docs say it supports this *confused*)
     Object.entries(contributionTypeMultiWordMapping).forEach(
         ([multiWordType, singleWordType]) => {
             doc.replace(multiWordType, singleWordType)
