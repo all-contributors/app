@@ -22,7 +22,7 @@ const invokeLambda = payload => {
         return Promise.resolve()
     }
 
-    return new Promise(function(resolve, reject) {
+    return new Promise(function(resolve) {
         lambda.invoke(
             {
                 FunctionName: `${
@@ -34,7 +34,9 @@ const invokeLambda = payload => {
             },
             function(error, data) {
                 if (error) {
-                    reject(error)
+                    console.error(error)
+                    // Invoke lambda failed, or execution failed, we are returning 200 for the webhook (to prevent spaming users)
+                    resolve()
                 } else {
                     resolve(data)
                 }
@@ -80,10 +82,20 @@ const handler = thundra(async (event, context) => {
         }
     }
 
-    if (payload.sender.type !== 'User') {
+    if (payload.sender.type !== 'User' && payload.sender.type !== 'Bot') {
         return {
             statusCode: 201,
             body: 'Not from a user, exiting',
+        }
+    }
+
+    if (
+        payload.sender.type === 'Bot' &&
+        payload.sender.login === 'allcontributors[bot]'
+    ) {
+        return {
+            statusCode: 201,
+            body: 'From us, exiting',
         }
     }
 
@@ -95,7 +107,7 @@ const handler = thundra(async (event, context) => {
         }
     }
 
-    await invokeLambda({
+    await module.exports.invokeLambda({
         name,
         payload,
     })

@@ -10,6 +10,12 @@ describe('isMessageForBot', () => {
 
         expect(
             isMessageForBot(
+                `@all-contributors\nplease add jakebolam for doc, infra and code`,
+            ),
+        ).toBe(true)
+
+        expect(
+            isMessageForBot(
                 `@allcontributors[bot] please add jakebolam for doc, infra and code`,
             ),
         ).toBe(true)
@@ -33,6 +39,13 @@ describe('isMessageForBot', () => {
         expect(
             isMessageForBot(
                 `all-contributors please add jakebolam for doc, infra and code`,
+            ),
+        ).toBe(false)
+
+        // No space
+        expect(
+            isMessageForBot(
+                `@all-contributors/please add jakebolam for doc, infra and code`,
             ),
         ).toBe(false)
 
