@@ -142,4 +142,24 @@ describe('parseComment', () => {
             action: false,
         })
     })
+
+    test('Ensure (trailing) hyphens are not discarded', () => {
+        expect(
+            parseComment(`@${testBotName} please add @jakebolam- for testing`),
+        ).toEqual({
+            action: 'add',
+            who: 'jakebolam-',
+            contributions: ['test'],
+        })
+
+        expect(
+            parseComment(
+                `@${testBotName} please add @jakebolam-jakebolam for bugs, ideas`,
+            ),
+        ).toEqual({
+            action: 'add',
+            who: 'jakebolam-jakebolam',
+            contributions: ['bug', 'ideas'],
+        })
+    })
 })

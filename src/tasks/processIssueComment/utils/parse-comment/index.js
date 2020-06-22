@@ -2,11 +2,13 @@ const nlp = require('compromise')
 
 // Types that are valid (multi words must all be lower case)
 const validContributionTypes = [
+    'a11y',
     'blog',
     'bug',
     'business',
     'code',
     'content',
+    'data',
     'design',
     'doc',
     'eventorganizing',
@@ -31,7 +33,7 @@ const validContributionTypes = [
     'video',
 ]
 
-// Types that are valid multi words, that we need to re map back to there camelCase parts
+// Types that are valid multi words, that we need to re map back to their camelCase parts
 const validMultiContributionTypesMapping = {
     eventorganizing: 'eventOrganizing',
     fundingfinding: 'fundingFinding',
@@ -41,11 +43,14 @@ const validMultiContributionTypesMapping = {
 
 // Additional terms to match to types (plurals, aliases etc)
 const contributionTypeMappings = {
+    accessibility: 'a11y',
     blogs: 'blog',
     blogging: 'blog',
     bugs: 'bug',
     codes: 'code',
     coding: 'code',
+    dataset: 'data',
+    datasets: 'data',
     designing: 'design',
     desigs: 'design',
     doc: 'doc',
@@ -83,6 +88,10 @@ const contributionTypeMappings = {
 
 // Additional terms to match to types (plurals, aliases etc) that are multi word
 const contributionTypeMultiWordMapping = {
+    'data collection': 'data',
+    'data collections': 'data',
+    'data set': 'data',
+    'data sets': 'data',
     'event organizing': 'eventOrganizing',
     'fund finding': 'fundingFinding',
     'funding finding': 'fundingFinding',
@@ -114,7 +123,8 @@ function parseAddComment(message, action) {
     const whoMatched = nlp(message)
         .match(`${action} [.]`)
         .normalize({
-            whitespace: true, // remove hyphens, newlines, and force one space between words
+            // We cannot use whitespace: true, because that gets rid of trailing hyphens.
+            whitespace: false, // remove hyphens, newlines, and force one space between words
             case: false, // keep only first-word, and 'entity' titlecasing
             numbers: false, // turn 'seven' to '7'
             punctuation: true, // remove commas, semicolons - but keep sentence-ending punctuation
@@ -127,13 +137,14 @@ function parseAddComment(message, action) {
             verbs: false, // turn all verbs into Infinitive form - "I walked" → "I walk"
             honorifics: false, //turn 'Vice Admiral John Smith' to 'John Smith'
         })
-        .data()[0].text
+        .data()[0]
+        .text.replace(/\s/g, '')
 
     const who = whoMatched.startsWith('@') ? whoMatched.substr(1) : whoMatched
 
     // Contributions
     const doc = nlp(message).toLowerCase()
-    // This is to support multi word 'matches' (altho the compromise docs say it supports this *confused*)
+    // This is to support multi word 'matches' (although the compromise docs say it supports this *confused*)
     Object.entries(contributionTypeMultiWordMapping).forEach(
         ([multiWordType, singleWordType]) => {
             doc.replace(multiWordType, singleWordType)
