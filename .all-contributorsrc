@@ -113,7 +113,35 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "fennecdjay",
+      "name": "Jérémie Astor",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/4943921?v=4",
+      "profile": "https://github.com/fennecdjay",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "js-kyle",
+      "name": "Kyle Martin",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/23022619?v=4",
+      "profile": "https://github.com/js-kyle",
+      "contributions": [
+        "test"
+      ]
+    },
+    {
+      "login": "baikho",
+      "name": "Sang Lostrie",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/4610533?v=4",
+      "profile": "https://www.weareaccess.co.uk/",
+      "contributions": [
+        "maintenance"
+      ]
     }
   ],
-  "contributorsPerLine": 7
+  "contributorsPerLine": 7,
+  "skipCi": true
 }

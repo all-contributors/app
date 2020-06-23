@@ -4,7 +4,7 @@ exports[`Repository create new file 1`] = `
 Object {
   "branch": "all-contributors/add-jakebolam",
   "content": "SGVsbG8gV29ybGQ=",
-  "message": "docs: create notes/hello.txt",
+  "message": "docs: create notes/hello.txt [skip ci]",
 }
 `;
 
@@ -19,7 +19,7 @@ exports[`Repository createPullRequest with files 2`] = `
 Object {
   "branch": "all-contributors/add-jakebolam",
   "content": "eyJ0ZXN0IjoidGVzdCBjb250ZW50In0=",
-  "message": "docs: update .all-contributorsrc",
+  "message": "docs: update .all-contributorsrc [skip ci]",
   "sha": "aa218f56b14c9653891f9e74264a383fa43fefbe",
 }
 `;
@@ -28,7 +28,7 @@ exports[`Repository createPullRequest with files 3`] = `
 Object {
   "branch": "all-contributors/add-jakebolam",
   "content": "VXBkYXRlZCBsaXN0",
-  "message": "docs: update README.md",
+  "message": "docs: update README.md [skip ci]",
   "sha": "aa218f56b14c9653891f9e74264a383fa43fefbl",
 }
 `;
@@ -37,7 +37,7 @@ exports[`Repository createPullRequest with files 4`] = `
 Object {
   "branch": "all-contributors/add-jakebolam",
   "content": "VXBkYXRlZCBsaXN0IGluIG5lc3RlZCBmb2xkZXI=",
-  "message": "docs: update /nested-folder/SOME-DOC.md",
+  "message": "docs: update /nested-folder/SOME-DOC.md [skip ci]",
   "sha": "aa218f56b14de653891f9e74264a383fa43fefbd",
 }
 `;

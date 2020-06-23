@@ -12,6 +12,7 @@ class Repository {
         this.defaultBranch = defaultBranch
         this.baseBranch = defaultBranch
         this.log = log
+        this.skipCiString = '[skip ci]'
     }
 
     getFullname() {
@@ -40,7 +41,7 @@ class Repository {
             }
         } catch (error) {
             if (error.status === 404) {
-                throw new ResourceNotFoundError(filePath, this.full_name)
+                throw new ResourceNotFoundError(filePath, this.getFullname())
             } else {
                 throw error
             }
@@ -100,13 +101,12 @@ class Repository {
 
     async updateFile({ filePath, content, branchName, originalSha }) {
         const contentBinary = Buffer.from(content).toString('base64')
-
         //octokit.github.io/rest.js/#api-Repos-updateFile
         await this.github.repos.updateFile({
             owner: this.owner,
             repo: this.repo,
             path: filePath,
-            message: `docs: update ${filePath}`,
+            message: `docs: update ${filePath} ${this.skipCiString}`,
             content: contentBinary,
             sha: originalSha,
             branch: branchName,
@@ -121,7 +121,7 @@ class Repository {
             owner: this.owner,
             repo: this.repo,
             path: filePath,
-            message: `docs: create ${filePath}`,
+            message: `docs: create ${filePath} ${this.skipCiString}`,
             content: contentBinary,
             branch: branchName,
         })

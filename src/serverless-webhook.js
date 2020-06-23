@@ -8,7 +8,7 @@ const lambda = new AWS.Lambda()
 const trackInstall = require('./tasks/trackInstall')
 const isMessageForBot = require('./utils/isMessageForBot')
 
-function invokeLambda(payload) {
+const invokeLambda = payload => {
     const processIssueCommentPayload = JSON.stringify(payload)
 
     if (process.env.IS_OFFLINE) {
@@ -22,7 +22,7 @@ function invokeLambda(payload) {
         return Promise.resolve()
     }
 
-    return new Promise(function(resolve, reject) {
+    return new Promise(function(resolve) {
         lambda.invoke(
             {
                 FunctionName: `${
@@ -34,7 +34,9 @@ function invokeLambda(payload) {
             },
             function(error, data) {
                 if (error) {
-                    reject(error)
+                    console.error(error)
+                    // Invoke lambda failed, or execution failed, we are returning 200 for the webhook (to prevent spaming users)
+                    resolve()
                 } else {
                     resolve(data)
                 }
@@ -43,14 +45,14 @@ function invokeLambda(payload) {
     })
 }
 
-function getPayload(body) {
+const getPayload = body => {
     if (typeof body === 'string') {
         return JSON.parse(body)
     }
     return body
 }
 
-module.exports.handler = thundra(async (event, context) => {
+const handler = thundra(async (event, context) => {
     context.callbackWaitsForEmptyEventLoop = false
 
     const name =
@@ -80,10 +82,20 @@ module.exports.handler = thundra(async (event, context) => {
         }
     }
 
-    if (payload.sender.type !== 'User') {
+    if (payload.sender.type !== 'User' && payload.sender.type !== 'Bot') {
         return {
             statusCode: 201,
             body: 'Not from a user, exiting',
+        }
+    }
+
+    if (
+        payload.sender.type === 'Bot' &&
+        payload.sender.login === 'allcontributors[bot]'
+    ) {
+        return {
+            statusCode: 201,
+            body: 'From us, exiting',
         }
     }
 
@@ -95,7 +107,7 @@ module.exports.handler = thundra(async (event, context) => {
         }
     }
 
-    await invokeLambda({
+    await module.exports.invokeLambda({
         name,
         payload,
     })
@@ -105,3 +117,9 @@ module.exports.handler = thundra(async (event, context) => {
         body: 'Accepted and processing comment',
     }
 })
+
+module.exports = {
+    handler,
+    getPayload,
+    invokeLambda,
+}

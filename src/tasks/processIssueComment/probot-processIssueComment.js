@@ -149,6 +149,10 @@ async function probotProcessIssueComment({ context, commentReply, analytics }) {
         })
         const optionsConfig = await setupOptionsConfig({ repository })
 
+        repository.skipCiString = optionsConfig.options.skipCi
+            ? '[skip ci]'
+            : ''
+
         await processAddContributor({
             context,
             commentReply,
@@ -168,7 +172,7 @@ async function probotProcessIssueComment({ context, commentReply, analytics }) {
 
     commentReply.reply(`I could not determine your intention.`)
     commentReply.reply(
-        `Basic usage: @all-contributors please add @jakebolam for code, doc and infra`,
+        `Basic usage: @all-contributors please add @someone for code, doc and infra`,
     )
     commentReply.reply(
         `For other usages see the [documentation](https://allcontributors.org/docs/en/bot/usage)`,

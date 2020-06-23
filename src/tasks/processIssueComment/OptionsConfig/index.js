@@ -18,6 +18,18 @@ class OptionsConfig {
         this.options.projectOwner = owner
         this.options.repoType = 'github'
         this.options.repoHost = 'https://github.com'
+
+        if (typeof this.options.skipCi !== 'boolean') {
+            this.options.skipCi = true
+        }
+
+        if (!this.options.contributors) {
+            this.options.contributors = []
+        }
+
+        if (!Array.isArray(this.options.contributors)) {
+            this.options.contributors = []
+        }
     }
 
     async fetch() {
@@ -79,29 +91,31 @@ class OptionsConfig {
         return this.originalOptionsSha
     }
 
-    findOldContributions(username) {
-        const contributors = this.options.contributors
-        for (let i = 0; i < contributors.length; i++) {
-            if (contributors[i].login === username) {
-                return contributors[i].contributions
+    async addContributor({ login, contributions, name, avatar_url, profile }) {
+        const options = this.options
+
+        function findOldContributions(username) {
+            const contributors = options.contributors
+            for (let i = 0; i < contributors.length; i++) {
+                if (contributors[i].login === username) {
+                    return contributors[i].contributions
+                }
             }
+
+            return []
         }
 
-        return []
-    }
-
-    async addContributor({ login, contributions, name, avatar_url, profile }) {
         const profileWithProtocol = profile.startsWith('http')
             ? profile
             : `http://${profile}`
 
-        const oldContributions = this.findOldContributions(login)
+        const oldContributions = findOldContributions(login)
         const newContributions = [
             ...new Set([...oldContributions, ...contributions]),
         ]
 
         const newContributorsList = await addContributorWithDetails({
-            options: this.options,
+            options,
             login,
             contributions: newContributions,
             name,
@@ -109,7 +123,7 @@ class OptionsConfig {
             profile: profileWithProtocol,
         })
         const newOptions = {
-            ...this.options,
+            ...options,
             contributors: newContributorsList,
         }
         this.options = newOptions
