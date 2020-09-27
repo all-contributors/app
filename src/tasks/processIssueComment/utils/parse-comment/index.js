@@ -19,6 +19,7 @@ const validContributionTypes = [
     'ideas',
     'infra',
     'maintenance',
+    'mentoring',
     'platform',
     'plugin',
     'projectManagement',
