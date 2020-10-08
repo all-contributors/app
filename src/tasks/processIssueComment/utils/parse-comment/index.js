@@ -23,6 +23,7 @@ const validContributionTypes = [
     'plugin',
     'projectManagement',
     'question',
+    'research'
     'review',
     'security',
     'talk',
@@ -75,6 +76,7 @@ const contributionTypeMappings = {
     project: 'projectManagement',
     projectManaging: 'projectManagement',
     questions: 'question',
+    researcher: 'research',
     reviews: 'review',
     securing: 'security',
     sound: 'audio',
@@ -105,6 +107,7 @@ const contributionTypeMultiWordMapping = {
     'user testing': 'userTesting',
     'business development': 'business',
     'project management': 'projectManagement',
+    'literature review': 'research'
 }
 
 const Contributions = {}
