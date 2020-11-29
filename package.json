@@ -27,7 +27,7 @@
     "all-contributors-cli": "^6.12.0",
     "aws-sdk": "^2.395.0",
     "compromise": "^11.13.0",
-    "node-fetch": "^2.3.0",
+    "node-fetch": "^2.6.1",
     "probot": "^8.0.0-beta.1",
     "uuid": "^7.0.0"
   },
