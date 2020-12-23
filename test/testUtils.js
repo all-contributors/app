@@ -1,13 +1,13 @@
-const rejectionOf = promise =>
+const rejectionOf = (promise) =>
     promise.then(
-        value => {
-            throw value
+        (value) => {
+            throw value;
         },
-        reason => {
-            return reason
-        },
-    )
+        (reason) => {
+            return reason;
+        }
+    );
 
 module.exports = {
     rejectionOf,
-}
+};

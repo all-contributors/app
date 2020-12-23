@@ -1,34 +1,34 @@
-const nock = require('nock')
+const nock = require("nock");
 
-const Analytics = require('../../src/utils/Analytics')
+const Analytics = require("../../src/utils/Analytics");
 
-describe('Analytics', () => {
-    test('Analytics', async () => {
-        const mockFn = jest.fn()
+describe("Analytics", () => {
+    test("Analytics", async () => {
+        const mockFn = jest.fn();
         const analytics = new Analytics({
-            repo: 'all-contributors-bot',
-            owner: 'all-contributors',
-            user: 'mockusername',
-            apiKey: 'mock api key',
-            funnelId: 'mockFunnelId',
+            repo: "all-contributors-bot",
+            owner: "all-contributors",
+            user: "mockusername",
+            apiKey: "mock api key",
+            funnelId: "mockFunnelId",
             isMock: true,
             log: {
                 error: mockFn,
                 info: mockFn,
             },
-        })
+        });
 
-        nock('https://api.amplitude.com')
-            .post(`/httpapi`, body => {
-                expect(body).toMatchSnapshot()
-                return true
+        nock("https://api.amplitude.com")
+            .post(`/httpapi`, (body) => {
+                expect(body).toMatchSnapshot();
+                return true;
             })
-            .reply(200)
+            .reply(200);
 
-        analytics.track('my-event')
+        analytics.track("my-event");
 
-        await analytics.finishQueue()
+        await analytics.finishQueue();
 
-        expect(mockFn).not.toHaveBeenCalled()
-    })
-})
+        expect(mockFn).not.toHaveBeenCalled();
+    });
+});

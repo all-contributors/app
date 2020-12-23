@@ -6,8 +6,8 @@ function getSafeRef(ref) {
     // /
     // remove @ sybmobls
     // remove backslash
-    const safeRef = ref.replace(/[\.\[\~\^\:\?\*\@\/\\]/gi, '-')
-    return safeRef
+    const safeRef = ref.replace(/[\.\[\~\^\:\?\*\@\/\\]/gi, "-");
+    return safeRef;
 }
 
-module.exports = getSafeRef
+module.exports = getSafeRef;

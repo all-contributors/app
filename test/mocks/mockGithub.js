@@ -1,4 +1,4 @@
-const Octokit = require('@octokit/rest')
-const mockGithub = new Octokit({})
+const Octokit = require("@octokit/rest");
+const mockGithub = new Octokit({});
 
-module.exports = mockGithub
+module.exports = mockGithub;

@@ -1,245 +1,245 @@
-const OptionsConfig = require('../../../../src/tasks/processIssueComment/OptionsConfig')
+const OptionsConfig = require("../../../../src/tasks/processIssueComment/OptionsConfig");
 
-describe('ContentFiles', () => {
+describe("ContentFiles", () => {
     const mockRepository = {
-        repo: 'all-contributors-bot-test',
-        owner: 'all-contributors',
-    }
+        repo: "all-contributors-bot-test",
+        owner: "all-contributors",
+    };
 
     test(`Add's new contributor`, async () => {
         const optionsConfig = new OptionsConfig({
             repository: mockRepository,
-        })
+        });
 
         optionsConfig.options = {
             contributors: [
                 {
-                    login: 'jakebolam',
-                    name: 'Jake Bolam',
+                    login: "jakebolam",
+                    name: "Jake Bolam",
                     avatar_url:
-                        'https://avatars2.githubusercontent.com/u/3534236?v=4',
-                    profile: 'https://jakebolam.com',
-                    contributions: ['code', 'ideas', 'infra', 'test'],
+                        "https://avatars2.githubusercontent.com/u/3534236?v=4",
+                    profile: "https://jakebolam.com",
+                    contributions: ["code", "ideas", "infra", "test"],
                 },
             ],
-        }
+        };
 
         await optionsConfig.addContributor({
-            login: 'tbenning',
-            contributions: ['design'],
-            name: 'Tyler Benning',
-            avatar_url: 'https://tylerbenning.com/profile.png',
-            profile: 'https://tylerbenning.com',
-        })
+            login: "tbenning",
+            contributions: ["design"],
+            name: "Tyler Benning",
+            avatar_url: "https://tylerbenning.com/profile.png",
+            profile: "https://tylerbenning.com",
+        });
 
-        expect(optionsConfig.options).toMatchSnapshot()
-    })
+        expect(optionsConfig.options).toMatchSnapshot();
+    });
 
     test(`Add's new contributions for contributor`, async () => {
         const optionsConfig = new OptionsConfig({
             repository: mockRepository,
-        })
+        });
 
         optionsConfig.options = {
             contributors: [
                 {
-                    login: 'jakebolam',
-                    name: 'Jake Bolam',
+                    login: "jakebolam",
+                    name: "Jake Bolam",
                     avatar_url:
-                        'https://avatars2.githubusercontent.com/u/3534236?v=4',
-                    profile: 'https://jakebolam.com',
-                    contributions: ['code', 'ideas', 'infra', 'test'],
+                        "https://avatars2.githubusercontent.com/u/3534236?v=4",
+                    profile: "https://jakebolam.com",
+                    contributions: ["code", "ideas", "infra", "test"],
                 },
             ],
-        }
+        };
 
         await optionsConfig.addContributor({
-            login: 'jakebolam',
-            contributions: ['doc'],
-            name: 'Jake Bolam',
-            avatar_url: 'https://avatars2.githubusercontent.com/u/3534236?v=4',
-            profile: 'https://jakebolam.com',
-        })
+            login: "jakebolam",
+            contributions: ["doc"],
+            name: "Jake Bolam",
+            avatar_url: "https://avatars2.githubusercontent.com/u/3534236?v=4",
+            profile: "https://jakebolam.com",
+        });
 
         expect(optionsConfig.options).toEqual({
             contributors: [
                 {
-                    login: 'jakebolam',
-                    name: 'Jake Bolam',
+                    login: "jakebolam",
+                    name: "Jake Bolam",
                     avatar_url:
-                        'https://avatars2.githubusercontent.com/u/3534236?v=4',
-                    profile: 'https://jakebolam.com',
-                    contributions: ['code', 'ideas', 'infra', 'test', 'doc'],
+                        "https://avatars2.githubusercontent.com/u/3534236?v=4",
+                    profile: "https://jakebolam.com",
+                    contributions: ["code", "ideas", "infra", "test", "doc"],
                 },
             ],
-        })
-    })
+        });
+    });
 
     test(`Add's duplicate contributions for contributor`, async () => {
         const optionsConfig = new OptionsConfig({
             repository: mockRepository,
-        })
+        });
 
         optionsConfig.options = {
             contributors: [
                 {
-                    login: 'jakebolam',
-                    name: 'Jake Bolam',
+                    login: "jakebolam",
+                    name: "Jake Bolam",
                     avatar_url:
-                        'https://avatars2.githubusercontent.com/u/3534236?v=4',
-                    profile: 'https://jakebolam.com',
-                    contributions: ['code', 'ideas', 'infra', 'test'],
+                        "https://avatars2.githubusercontent.com/u/3534236?v=4",
+                    profile: "https://jakebolam.com",
+                    contributions: ["code", "ideas", "infra", "test"],
                 },
             ],
-        }
+        };
 
         await optionsConfig.addContributor({
-            login: 'jakebolam',
-            contributions: ['doc', 'code', 'ideas'],
-            name: 'Jake Bolam',
-            avatar_url: 'https://avatars2.githubusercontent.com/u/3534236?v=4',
-            profile: 'https://jakebolam.com',
-        })
+            login: "jakebolam",
+            contributions: ["doc", "code", "ideas"],
+            name: "Jake Bolam",
+            avatar_url: "https://avatars2.githubusercontent.com/u/3534236?v=4",
+            profile: "https://jakebolam.com",
+        });
 
         expect(optionsConfig.options).toEqual({
             contributors: [
                 {
-                    login: 'jakebolam',
-                    name: 'Jake Bolam',
+                    login: "jakebolam",
+                    name: "Jake Bolam",
                     avatar_url:
-                        'https://avatars2.githubusercontent.com/u/3534236?v=4',
-                    profile: 'https://jakebolam.com',
-                    contributions: ['code', 'ideas', 'infra', 'test', 'doc'],
+                        "https://avatars2.githubusercontent.com/u/3534236?v=4",
+                    profile: "https://jakebolam.com",
+                    contributions: ["code", "ideas", "infra", "test", "doc"],
                 },
             ],
-        })
-    })
+        });
+    });
 
     test(`If profile URL is missing protocol, add it for them`, async () => {
         const optionsConfig = new OptionsConfig({
             repository: mockRepository,
-        })
-        optionsConfig.init()
+        });
+        optionsConfig.init();
 
         await optionsConfig.addContributor({
-            login: 'jakebolam',
-            contributions: ['ideas'],
-            name: 'Jake Bolam',
-            avatar_url: 'https://avatars2.githubusercontent.com/u/3534236?v=4',
-            profile: 'jakebolam.com',
-        })
+            login: "jakebolam",
+            contributions: ["ideas"],
+            name: "Jake Bolam",
+            avatar_url: "https://avatars2.githubusercontent.com/u/3534236?v=4",
+            profile: "jakebolam.com",
+        });
 
         expect(optionsConfig.options.contributors).toEqual([
             {
-                login: 'jakebolam',
-                name: 'Jake Bolam',
+                login: "jakebolam",
+                name: "Jake Bolam",
                 avatar_url:
-                    'https://avatars2.githubusercontent.com/u/3534236?v=4',
-                profile: 'http://jakebolam.com',
-                contributions: ['ideas'],
+                    "https://avatars2.githubusercontent.com/u/3534236?v=4",
+                profile: "http://jakebolam.com",
+                contributions: ["ideas"],
             },
-        ])
-    })
+        ]);
+    });
 
     test(`Inits the contributor file`, () => {
         const optionsConfig = new OptionsConfig({
             repository: mockRepository,
-        })
+        });
 
-        expect(optionsConfig.options).toBeUndefined()
+        expect(optionsConfig.options).toBeUndefined();
 
-        optionsConfig.init()
+        optionsConfig.init();
 
         expect(optionsConfig.options).toEqual({
             projectName: mockRepository.repo,
             projectOwner: mockRepository.owner,
-            repoType: 'github',
+            repoType: "github",
             skipCi: true,
-            repoHost: 'https://github.com',
-            files: ['README.md'],
+            repoHost: "https://github.com",
+            files: ["README.md"],
             imageSize: 100,
             commit: false,
             contributors: [],
             contributorsPerLine: 7,
-        })
-    })
+        });
+    });
 
     test(`Fetches the contributor file`, async () => {
         const expetectedOptions = {
-            projectName: 'my-repo',
-            projectOwner: 'my-owner',
-            repoType: 'github',
+            projectName: "my-repo",
+            projectOwner: "my-owner",
+            repoType: "github",
             skipCi: true,
-            repoHost: 'https://github.com',
-            files: ['README.md'],
+            repoHost: "https://github.com",
+            files: ["README.md"],
             imageSize: 100,
             commit: false,
             contributors: [],
             contributorsPerLine: 7,
-        }
+        };
 
         const optionsConfig = new OptionsConfig({
             repository: {
-                owner: 'my-owner',
-                repo: 'my-repo',
-                getFile: async function() {
+                owner: "my-owner",
+                repo: "my-repo",
+                getFile: async function () {
                     return {
                         content: JSON.stringify(expetectedOptions),
-                    }
+                    };
                 },
             },
-        })
+        });
 
-        expect(optionsConfig.options).toBeUndefined()
+        expect(optionsConfig.options).toBeUndefined();
 
-        await optionsConfig.fetch()
+        await optionsConfig.fetch();
 
-        expect(optionsConfig.options).toEqual(expetectedOptions)
-    })
+        expect(optionsConfig.options).toEqual(expetectedOptions);
+    });
 
     test(`Fetches a incorrect contributor file`, async () => {
         const wrongOptions = {
-            projectName: 'sdfkjgn',
-            projectOwner: 'asdlkjfn',
-            repoType: 'sdlkjfn',
+            projectName: "sdfkjgn",
+            projectOwner: "asdlkjfn",
+            repoType: "sdlkjfn",
             skipCi: true,
-            repoHost: 'lkjdghfkjdsfh',
-            files: ['README.md'],
+            repoHost: "lkjdghfkjdsfh",
+            files: ["README.md"],
             imageSize: 100,
             commit: false,
             contributors: [],
             contributorsPerLine: 7,
-        }
+        };
 
         const expetectedOptions = {
-            projectName: 'my-repo',
-            projectOwner: 'my-owner',
-            repoType: 'github',
+            projectName: "my-repo",
+            projectOwner: "my-owner",
+            repoType: "github",
             skipCi: true,
-            repoHost: 'https://github.com',
-            files: ['README.md'],
+            repoHost: "https://github.com",
+            files: ["README.md"],
             imageSize: 100,
             commit: false,
             contributors: [],
             contributorsPerLine: 7,
-        }
+        };
 
         const optionsConfig = new OptionsConfig({
             repository: {
-                owner: 'my-owner',
-                repo: 'my-repo',
-                getFile: async function() {
+                owner: "my-owner",
+                repo: "my-repo",
+                getFile: async function () {
                     return {
                         content: JSON.stringify(wrongOptions),
-                    }
+                    };
                 },
             },
-        })
+        });
 
-        expect(optionsConfig.options).toBeUndefined()
+        expect(optionsConfig.options).toBeUndefined();
 
-        await optionsConfig.fetch()
+        await optionsConfig.fetch();
 
-        expect(optionsConfig.options).toEqual(expetectedOptions)
-    })
-})
+        expect(optionsConfig.options).toEqual(expetectedOptions);
+    });
+});

@@ -1,34 +1,34 @@
-const ALL_CONTRIBUTORS_RC = '.all-contributorsrc'
+const ALL_CONTRIBUTORS_RC = ".all-contributorsrc";
 
-const { addContributorWithDetails } = require('all-contributors-cli')
+const { addContributorWithDetails } = require("all-contributors-cli");
 
-const { AllContributorBotError } = require('../utils/errors')
+const { AllContributorBotError } = require("../utils/errors");
 
 class OptionsConfig {
     constructor({ repository }) {
-        this.repository = repository
-        this.options
-        this.originalOptionsSha
+        this.repository = repository;
+        this.options;
+        this.originalOptionsSha;
     }
 
     ensureValid() {
-        const { repo, owner } = this.repository
+        const { repo, owner } = this.repository;
 
-        this.options.projectName = repo
-        this.options.projectOwner = owner
-        this.options.repoType = 'github'
-        this.options.repoHost = 'https://github.com'
+        this.options.projectName = repo;
+        this.options.projectOwner = owner;
+        this.options.repoType = "github";
+        this.options.repoHost = "https://github.com";
 
-        if (typeof this.options.skipCi !== 'boolean') {
-            this.options.skipCi = true
+        if (typeof this.options.skipCi !== "boolean") {
+            this.options.skipCi = true;
         }
 
         if (!this.options.contributors) {
-            this.options.contributors = []
+            this.options.contributors = [];
         }
 
         if (!Array.isArray(this.options.contributors)) {
-            this.options.contributors = []
+            this.options.contributors = [];
         }
     }
 
@@ -36,83 +36,81 @@ class OptionsConfig {
         const {
             content: rawOptionsFileContent,
             sha,
-        } = await this.repository.getFile(ALL_CONTRIBUTORS_RC)
-        this.originalOptionsSha = sha
+        } = await this.repository.getFile(ALL_CONTRIBUTORS_RC);
+        this.originalOptionsSha = sha;
         try {
-            this.options = JSON.parse(rawOptionsFileContent)
+            this.options = JSON.parse(rawOptionsFileContent);
 
-            this.ensureValid()
+            this.ensureValid();
 
-            return this.options
+            return this.options;
         } catch (error) {
             if (error instanceof SyntaxError) {
                 throw new AllContributorBotError(
-                    `This project's configuration file has malformed JSON: ${ALL_CONTRIBUTORS_RC}. Error:: ${
-                        error.message
-                    }`,
-                )
+                    `This project's configuration file has malformed JSON: ${ALL_CONTRIBUTORS_RC}. Error:: ${error.message}`
+                );
             }
-            throw error
+            throw error;
         }
     }
 
     init() {
         this.options = {
-            files: ['README.md'],
+            files: ["README.md"],
             imageSize: 100,
             commit: false,
             contributors: [],
             contributorsPerLine: 7,
-        }
+        };
 
-        this.ensureValid()
+        this.ensureValid();
     }
 
     get() {
-        const options = this.options
+        const options = this.options;
         if (!Array.isArray(options.files)) {
-            options.files = ['README.md']
+            options.files = ["README.md"];
         }
         if (!Number.isInteger(options.contributorsPerLine)) {
-            options.contributorsPerLine = 7
+            options.contributorsPerLine = 7;
         }
-        return options
+        return options;
     }
 
     getRaw() {
-        return `${JSON.stringify(this.options, null, 2)}\n`
+        return `${JSON.stringify(this.options, null, 2)}\n`;
     }
 
     getPath() {
-        return ALL_CONTRIBUTORS_RC
+        return ALL_CONTRIBUTORS_RC;
     }
 
     getOriginalSha() {
-        return this.originalOptionsSha
+        return this.originalOptionsSha;
     }
 
     async addContributor({ login, contributions, name, avatar_url, profile }) {
-        const options = this.options
+        const options = this.options;
 
         function findOldContributions(username) {
-            const contributors = options.contributors
+            const contributors = options.contributors;
             for (let i = 0; i < contributors.length; i++) {
                 if (contributors[i].login === username) {
-                    return contributors[i].contributions
+                    return contributors[i].contributions;
                 }
             }
 
-            return []
+            return [];
         }
 
-        const profileWithProtocol = profile.startsWith('http')
+        const profileWithProtocol = profile.startsWith("http")
             ? profile
-            : `http://${profile}`
+            : `http://${profile}`;
 
-        const oldContributions = findOldContributions(login)
+        const oldContributions = findOldContributions(login);
         const newContributions = [
             ...new Set([...oldContributions, ...contributions]),
-        ]
+        ];
 
         const newContributorsList = await addContributorWithDetails({
             options,
@@ -121,14 +119,14 @@ class OptionsConfig {
             name,
             avatar_url,
             profile: profileWithProtocol,
-        })
+        });
         const newOptions = {
             ...options,
             contributors: newContributorsList,
-        }
-        this.options = newOptions
-        return newOptions
+        };
+        this.options = newOptions;
+        return newOptions;
     }
 }
 
-module.exports = OptionsConfig
+module.exports = OptionsConfig;

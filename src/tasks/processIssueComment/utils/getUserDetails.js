@@ -1,4 +1,4 @@
-const { UserNotFoundError } = require('./errors')
+const { UserNotFoundError } = require("./errors");
 
 async function getUserDetails({ github, username }) {
     // TODO: optimzation, if commenting user is the user we're adding we can avoid an api call
@@ -11,24 +11,24 @@ async function getUserDetails({ github, username }) {
     //     }
     // }
 
-    let result
+    let result;
     try {
-        result = await github.users.getByUsername({ username })
+        result = await github.users.getByUsername({ username });
     } catch (error) {
         if (error.status === 404) {
-            throw new UserNotFoundError(username)
+            throw new UserNotFoundError(username);
         } else {
-            throw error
+            throw error;
         }
     }
 
-    const { avatar_url, blog, html_url, name } = result.data
+    const { avatar_url, blog, html_url, name } = result.data;
 
     return {
         name: name || username,
         avatar_url,
         profile: blog || html_url,
-    }
+    };
 }
 
-module.exports = getUserDetails
+module.exports = getUserDetails;

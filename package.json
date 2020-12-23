@@ -1,80 +1,76 @@
 {
-  "name": "all-contributors-bot",
-  "version": "1.0.0",
-  "description": "A bot for automatically adding all your contributors",
-  "author": "Jake Bolam <jake.bolam@gmail.com> (https://jakebolam.com)",
-  "repository": "https://github.com/all-contributors/all-contributors-bot.git",
-  "homepage": "https://github.com/all-contributors/all-contributors-bot",
-  "bugs": "https://github.com/all-contributors/all-contributors-bot/issues",
-  "keywords": [
-    "all-contributors",
-    "probot",
-    "github",
-    "probot-app"
-  ],
-  "scripts": {
-    "start": "serverless offline start",
-    "build": "serverless package",
-    "lint": "eslint .",
-    "lint-fix": "eslint --fix .",
-    "test": "jest --collectCoverage",
-    "test-watch": "jest --watch --notify --notifyMode=change",
-    "test-ci": "jest --reporters ./node_modules/jest-junit --collectCoverage",
-    "commit": "git-cz"
-  },
-  "dependencies": {
-    "@thundra/core": "^2.2.3",
-    "all-contributors-cli": "^6.12.0",
-    "aws-sdk": "^2.395.0",
-    "compromise": "^11.13.0",
-    "node-fetch": "^2.3.0",
-    "probot": "^8.0.0-beta.1",
-    "uuid": "^7.0.0"
-  },
-  "devDependencies": {
-    "@tophat/eslint-config": "^0.1.4",
-    "codecov": "^3.1.0",
-    "cz-conventional-changelog": "^2.1.0",
-    "eslint": "^6.0.1",
-    "eslint-config-prettier": "^6.0.0",
-    "eslint-plugin-jest": "^23.0.0",
-    "eslint-plugin-prettier": "^3.0.1",
-    "git-cz": "^4.1.0",
-    "jest": "^24.0.0",
-    "jest-junit": "^6.2.1",
-    "nock": "^10.0.0",
-    "prettier": "^1.16.1",
-    "semantic-release": "^15.13.3",
-    "serverless": "^1.39.1",
-    "serverless-dotenv-plugin": "^2.0.1",
-    "serverless-offline": "^5.0.0",
-    "shelljs": "^0.8.3"
-  },
-  "jest": {
-    "testEnvironment": "node",
-    "testPathIgnorePatterns": [
-      "/node_modules/",
-      "/.c9/"
+    "name": "all-contributors-bot",
+    "version": "1.0.0",
+    "description": "A bot for automatically adding all your contributors",
+    "author": "Jake Bolam <jake.bolam@gmail.com> (https://jakebolam.com)",
+    "repository": "https://github.com/all-contributors/all-contributors-bot.git",
+    "homepage": "https://github.com/all-contributors/all-contributors-bot",
+    "bugs": "https://github.com/all-contributors/all-contributors-bot/issues",
+    "keywords": [
+        "all-contributors",
+        "probot",
+        "github",
+        "probot-app"
     ],
-    "collectCoverage": false,
-    "collectCoverageFrom": [
-      "src/**/*.js",
-      "!**/node_modules/**"
-    ],
-    "setupFiles": [
-      "<rootDir>/test/setup.js"
-    ],
-    "setupFilesAfterEnv": [
-      "<rootDir>/test/setupPerTest.js"
-    ]
-  },
-  "jest-junit": {
-    "suiteName": "All Contributor Bot tests",
-    "outputDirectory": "artifacts/test-results"
-  },
-  "config": {
-    "commitizen": {
-      "path": "cz-conventional-changelog"
+    "scripts": {
+        "start": "serverless offline start",
+        "build": "serverless package",
+        "lint": "prettier --check '{src,test}/**/*.js' '*.{md,json,js}' 'contributing/*.md' '.github/**/*.{yml,md}'",
+        "lint-fix": "prettier --write '{src,test}/**/*.js' '*.{md,json,js}' 'contributing/*.md' '.github/**/*.{yml,md}'",
+        "test": "jest --collectCoverage",
+        "test-watch": "jest --watch --notify --notifyMode=change",
+        "test-ci": "jest --reporters ./node_modules/jest-junit --collectCoverage",
+        "commit": "git-cz"
+    },
+    "dependencies": {
+        "@thundra/core": "^2.2.3",
+        "all-contributors-cli": "^6.12.0",
+        "aws-sdk": "^2.395.0",
+        "compromise": "^11.13.0",
+        "node-fetch": "^2.3.0",
+        "probot": "^8.0.0-beta.1",
+        "uuid": "^7.0.0"
+    },
+    "devDependencies": {
+        "@tophat/eslint-config": "^0.1.4",
+        "codecov": "^3.1.0",
+        "cz-conventional-changelog": "^2.1.0",
+        "git-cz": "^4.1.0",
+        "jest": "^24.0.0",
+        "jest-junit": "^6.2.1",
+        "nock": "^10.0.0",
+        "prettier": "^2.2.1",
+        "semantic-release": "^15.13.3",
+        "serverless": "^1.39.1",
+        "serverless-dotenv-plugin": "^2.0.1",
+        "serverless-offline": "^5.0.0",
+        "shelljs": "^0.8.3"
+    },
+    "jest": {
+        "testEnvironment": "node",
+        "testPathIgnorePatterns": [
+            "/node_modules/",
+            "/.c9/"
+        ],
+        "collectCoverage": false,
+        "collectCoverageFrom": [
+            "src/**/*.js",
+            "!**/node_modules/**"
+        ],
+        "setupFiles": [
+            "<rootDir>/test/setup.js"
+        ],
+        "setupFilesAfterEnv": [
+            "<rootDir>/test/setupPerTest.js"
+        ]
+    },
+    "jest-junit": {
+        "suiteName": "All Contributor Bot tests",
+        "outputDirectory": "artifacts/test-results"
+    },
+    "config": {
+        "commitizen": {
+            "path": "cz-conventional-changelog"
+        }
     }
-  }
 }

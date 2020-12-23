@@ -1,165 +1,165 @@
-const parseComment = require('../../../../../src/tasks/processIssueComment/utils/parse-comment')
+const parseComment = require("../../../../../src/tasks/processIssueComment/utils/parse-comment");
 
-describe('parseComment', () => {
-    const testBotName = 'all-contributors'
+describe("parseComment", () => {
+    const testBotName = "all-contributors";
 
-    test('Basic intent to add', () => {
+    test("Basic intent to add", () => {
         expect(
             parseComment(
-                `@${testBotName} please add jakebolam for doc, infra and code`,
-            ),
+                `@${testBotName} please add jakebolam for doc, infra and code`
+            )
         ).toEqual({
-            action: 'add',
-            who: 'jakebolam',
-            contributions: ['doc', 'infra', 'code'],
-        })
-    })
+            action: "add",
+            who: "jakebolam",
+            contributions: ["doc", "infra", "code"],
+        });
+    });
 
-    test('Basic intent to add - ignore case (for action and contributions, NOT for user)', () => {
+    test("Basic intent to add - ignore case (for action and contributions, NOT for user)", () => {
         expect(
             parseComment(
-                `@${testBotName} please Add jakeBolam for DOC, inFra and coDe`,
-            ),
+                `@${testBotName} please Add jakeBolam for DOC, inFra and coDe`
+            )
         ).toEqual({
-            action: 'add',
-            who: 'jakeBolam',
-            contributions: ['doc', 'infra', 'code'],
-        })
-    })
+            action: "add",
+            who: "jakeBolam",
+            contributions: ["doc", "infra", "code"],
+        });
+    });
 
-    test('Basic intent to add - non name username', () => {
+    test("Basic intent to add - non name username", () => {
         expect(
-            parseComment(`@${testBotName} please add tbenning for design`),
+            parseComment(`@${testBotName} please add tbenning for design`)
         ).toEqual({
-            action: 'add',
-            who: 'tbenning',
-            contributions: ['design'],
-        })
-    })
+            action: "add",
+            who: "tbenning",
+            contributions: ["design"],
+        });
+    });
 
-    test('Basic intent to add - captialized username', () => {
+    test("Basic intent to add - captialized username", () => {
         expect(
-            parseComment(`@${testBotName} please add Rbot25_RULES for tool`),
+            parseComment(`@${testBotName} please add Rbot25_RULES for tool`)
         ).toEqual({
-            action: 'add',
-            who: 'Rbot25_RULES',
-            contributions: ['tool'],
-        })
-    })
+            action: "add",
+            who: "Rbot25_RULES",
+            contributions: ["tool"],
+        });
+    });
 
-    test('Basic intent to add - with plurals', () => {
+    test("Basic intent to add - with plurals", () => {
         expect(
-            parseComment(`@${testBotName} please add dat2 for docs`),
+            parseComment(`@${testBotName} please add dat2 for docs`)
         ).toEqual({
-            action: 'add',
-            who: 'dat2',
-            contributions: ['doc'],
-        })
-    })
+            action: "add",
+            who: "dat2",
+            contributions: ["doc"],
+        });
+    });
 
-    test('Support full words (like infrastructure)', () => {
-        expect(
-            parseComment(
-                `@${testBotName} please add jakebolam for infrastructure, documentation`,
-            ),
-        ).toEqual({
-            action: 'add',
-            who: 'jakebolam',
-            contributions: ['infra', 'doc'],
-        })
-    })
-
-    test('Support adding people with mentions', () => {
+    test("Support full words (like infrastructure)", () => {
         expect(
             parseComment(
-                `@${testBotName} please add @sinchang for infrastructure`,
-            ),
+                `@${testBotName} please add jakebolam for infrastructure, documentation`
+            )
         ).toEqual({
-            action: 'add',
-            who: 'sinchang',
-            contributions: ['infra'],
-        })
-    })
+            action: "add",
+            who: "jakebolam",
+            contributions: ["infra", "doc"],
+        });
+    });
 
-    test('Support alternative sentences', () => {
-        expect(
-            parseComment(`@${testBotName} add @sinchang for infrastructure`),
-        ).toEqual({
-            action: 'add',
-            who: 'sinchang',
-            contributions: ['infra'],
-        })
-
+    test("Support adding people with mentions", () => {
         expect(
             parseComment(
-                `Jane you are crushing it in documentation and your infrastructure work has been great too. Let's add jane.doe23 for her contributions. cc @all-contributors-bot`,
-            ),
+                `@${testBotName} please add @sinchang for infrastructure`
+            )
         ).toEqual({
-            action: 'add',
-            who: 'jane.doe23',
-            contributions: ['doc', 'infra'],
-        })
-    })
+            action: "add",
+            who: "sinchang",
+            contributions: ["infra"],
+        });
+    });
 
-    test('Support split words (like user testing)', () => {
+    test("Support alternative sentences", () => {
         expect(
-            parseComment(
-                `@${testBotName} please add jakebolam for infrastructure, fund finding`,
-            ),
+            parseComment(`@${testBotName} add @sinchang for infrastructure`)
         ).toEqual({
-            action: 'add',
-            who: 'jakebolam',
-            contributions: ['infra', 'fundingFinding'],
-        })
+            action: "add",
+            who: "sinchang",
+            contributions: ["infra"],
+        });
 
         expect(
             parseComment(
-                `@${testBotName} please add jakebolam for infrastructure, user testing and testing`,
-            ),
+                `Jane you are crushing it in documentation and your infrastructure work has been great too. Let's add jane.doe23 for her contributions. cc @all-contributors-bot`
+            )
         ).toEqual({
-            action: 'add',
-            who: 'jakebolam',
-            contributions: ['infra', 'userTesting', 'test'],
-        })
-    })
+            action: "add",
+            who: "jane.doe23",
+            contributions: ["doc", "infra"],
+        });
+    });
 
-    test('Support split words types that are referenced via other terms (e.g. a plural split word)', () => {
+    test("Support split words (like user testing)", () => {
         expect(
             parseComment(
-                `@${testBotName} please add @jakebolam for infrastructure, funds`,
-            ),
+                `@${testBotName} please add jakebolam for infrastructure, fund finding`
+            )
         ).toEqual({
-            action: 'add',
-            who: 'jakebolam',
-            contributions: ['infra', 'fundingFinding'],
-        })
-    })
+            action: "add",
+            who: "jakebolam",
+            contributions: ["infra", "fundingFinding"],
+        });
 
-    test('Intent unknown', () => {
         expect(
-            parseComment(`@${testBotName} please lollmate for tool`),
+            parseComment(
+                `@${testBotName} please add jakebolam for infrastructure, user testing and testing`
+            )
+        ).toEqual({
+            action: "add",
+            who: "jakebolam",
+            contributions: ["infra", "userTesting", "test"],
+        });
+    });
+
+    test("Support split words types that are referenced via other terms (e.g. a plural split word)", () => {
+        expect(
+            parseComment(
+                `@${testBotName} please add @jakebolam for infrastructure, funds`
+            )
+        ).toEqual({
+            action: "add",
+            who: "jakebolam",
+            contributions: ["infra", "fundingFinding"],
+        });
+    });
+
+    test("Intent unknown", () => {
+        expect(
+            parseComment(`@${testBotName} please lollmate for tool`)
         ).toEqual({
             action: false,
-        })
-    })
+        });
+    });
 
-    test('Ensure (trailing) hyphens are not discarded', () => {
+    test("Ensure (trailing) hyphens are not discarded", () => {
         expect(
-            parseComment(`@${testBotName} please add @jakebolam- for testing`),
+            parseComment(`@${testBotName} please add @jakebolam- for testing`)
         ).toEqual({
-            action: 'add',
-            who: 'jakebolam-',
-            contributions: ['test'],
-        })
+            action: "add",
+            who: "jakebolam-",
+            contributions: ["test"],
+        });
 
         expect(
             parseComment(
-                `@${testBotName} please add @jakebolam-jakebolam for bugs, ideas`,
-            ),
+                `@${testBotName} please add @jakebolam-jakebolam for bugs, ideas`
+            )
         ).toEqual({
-            action: 'add',
-            who: 'jakebolam-jakebolam',
-            contributions: ['bug', 'ideas'],
-        })
-    })
-})
+            action: "add",
+            who: "jakebolam-jakebolam",
+            contributions: ["bug", "ideas"],
+        });
+    });
+});

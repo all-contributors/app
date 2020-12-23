@@ -292,12 +292,7 @@
             "size": 108,
             "default_branch": "master",
             "open_issues_count": 0,
-            "topics": [
-                "octocat",
-                "atom",
-                "electron",
-                "API"
-            ],
+            "topics": ["octocat", "atom", "electron", "API"],
             "has_issues": true,
             "has_projects": true,
             "has_wiki": true,
@@ -422,12 +417,7 @@
             "size": 108,
             "default_branch": "master",
             "open_issues_count": 0,
-            "topics": [
-                "octocat",
-                "atom",
-                "electron",
-                "API"
-            ],
+            "topics": ["octocat", "atom", "electron", "API"],
             "has_issues": true,
             "has_projects": true,
             "has_wiki": true,
