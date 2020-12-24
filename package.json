@@ -1,34 +1,35 @@
 {
-    "name": "all-contributors-bot",
-    "version": "0.0.0-development",
-    "private": true,
-    "description": "A bot for automatically adding all your contributors",
-    "author": "Jake Bolam <jake.bolam@gmail.com> (https://jakebolam.com)",
-    "repository": "https://github.com/all-contributors/all-contributors-bot",
-    "keywords": [
-        "all-contributors",
-        "probot",
-        "github-app",
-        "probot-app"
-    ],
-    "scripts": {
-        "dev": "probot run ./app.js",
-        "lint": "prettier --check '{src,test}/**/*.js' '*.{md,json,js}' 'contributing/*.md' '.github/**/*.{yml,md}'",
-        "lint:fix": "prettier --write '{src,test}/**/*.js' '*.{md,json,js}' 'contributing/*.md' '.github/**/*.{yml,md}'",
-        "test": "jest --collectCoverage"
-    },
-    "dependencies": {
-        "all-contributors-cli": "^6.12.0",
-        "compromise": "^11.13.0",
-        "probot": "^11.0.1"
-    },
-    "devDependencies": {
-        "jest": "^26.6.3",
-        "nock": "^13.0.5",
-        "prettier": "^2.2.1",
-        "semantic-release": "^17.3.0"
-    },
-    "jest": {
-        "testEnvironment": "node"
-    }
+  "name": "all-contributors-bot",
+  "version": "0.0.0-development",
+  "private": true,
+  "description": "A bot for automatically adding all your contributors",
+  "author": "Jake Bolam <jake.bolam@gmail.com> (https://jakebolam.com)",
+  "repository": "https://github.com/all-contributors/all-contributors-bot",
+  "keywords": [
+    "all-contributors",
+    "probot",
+    "github-app",
+    "probot-app"
+  ],
+  "scripts": {
+    "start": "probot run ./app.js",
+    "lint": "prettier --check '{src,test}/**/*.js' '*.{md,json,js}' 'contributing/*.md' '.github/**/*.{yml,md}'",
+    "lint:fix": "prettier --write '{src,test}/**/*.js' '*.{md,json,js}' 'contributing/*.md' '.github/**/*.{yml,md}'",
+    "test": "jest --coverage test/smoke.test.js test/app.test.js"
+  },
+  "dependencies": {
+    "all-contributors-cli": "^6.12.0",
+    "compromise": "^11.13.0",
+    "probot": "^11.0.1"
+  },
+  "devDependencies": {
+    "@types/jest": "^26.0.19",
+    "jest": "^26.6.3",
+    "nock": "^13.0.5",
+    "prettier": "^2.2.1",
+    "semantic-release": "^17.3.0"
+  },
+  "jest": {
+    "testEnvironment": "node"
+  }
 }
