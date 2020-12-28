@@ -1,5 +1,21 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`All Contributors app .all-contributorsrc has 16 files 1`] = `
+Object {
+  "body": "@jakebolam 
+
+Your .all-contributorsrc cannot contain more than 15 files.",
+}
+`;
+
+exports[`All Contributors app .all-contributorsrc has 16files 1`] = `
+Object {
+  "body": "@jakebolam 
+
+Your .all-contributorsrc cannot contain more than 15 files.",
+}
+`;
+
 exports[`All Contributors app Fail path, Unknown error (e.g. Network is dead, service down etc, our code is bad) crashes and sends error message 1`] = `
 Object {
   "body": "@jakebolam 

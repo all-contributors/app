@@ -10,6 +10,7 @@ const issueCommentCreatedNotForAppPayload = require("../fixtures/issue_comment.c
 const issueCommentCreatedPayloadUnknownIntention = require("../fixtures/issue_commented.created.unknown-intention.json");
 const issueCommentCreatedPayloadUnknownContribution = require("../fixtures/issue_comment.created-unknown-contribution.json");
 const reposGetContentsAllContributorsRCdata = require("../fixtures/repos.getContents.all-contributorsrc.json");
+const reposGetContentsAllContributorsRCdata16files = require("../fixtures/repos.getContents.all-contributorsrc-16-files.json");
 const usersGetByUsernameJakeBolamdata = require("../fixtures/users.getByUsername.jakebolam.json");
 const reposGetContentsREADMEMDdata = require("../fixtures/repos.getContents.README.md.json");
 const gitGetRefdata = require("../fixtures/git.getRef.json");
@@ -259,10 +260,6 @@ describe("All Contributors app", () => {
 
   test("Fail path, Unknown user intention", async () => {
     const mock = nock("https://api.github.com")
-      .get(
-        "/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc?ref=master"
-      )
-      .reply(200, reposGetContentsAllContributorsRCdata)
       .post(
         "/repos/all-contributors/all-contributors-bot/issues/1/comments",
         (body) => {
@@ -276,6 +273,8 @@ describe("All Contributors app", () => {
       name: "issue_comment",
       payload: issueCommentCreatedPayloadUnknownIntention,
     });
+
+    expect(mock.activeMocks()).toStrictEqual([]);
   });
 
   test("Fail path, Unknown error (e.g. Network is dead, service down etc, our code is bad) crashes and sends error message", async () => {
@@ -430,6 +429,38 @@ describe("All Contributors app", () => {
         return true;
       })
       .reply(422)
+
+      .post(
+        "/repos/all-contributors/all-contributors-bot/issues/1/comments",
+        (body) => {
+          expect(body).toMatchSnapshot();
+          return true;
+        }
+      )
+      .reply(200);
+
+    await probot.receive({
+      name: "issue_comment",
+      payload: issueCommentCreatedPayload,
+    });
+
+    expect(mock.activeMocks()).toStrictEqual([]);
+  });
+
+  test(".all-contributorsrc has 16 files", async () => {
+    const mock = nock("https://api.github.com")
+      .get(
+        `/repos/all-contributors/all-contributors-bot/git/ref/heads%2Fall-contributors%2Fadd-jakebolam`
+      )
+      .reply(404)
+
+      .get("/users/jakebolam")
+      .reply(200, usersGetByUsernameJakeBolamdata)
+
+      .get(
+        "/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc?ref=master"
+      )
+      .reply(200, reposGetContentsAllContributorsRCdata16files)
 
       .post(
         "/repos/all-contributors/all-contributors-bot/issues/1/comments",
