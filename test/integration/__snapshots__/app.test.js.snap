@@ -263,6 +263,14 @@ I've put up [a pull request](https://github.com/all-contributors/all-contributor
 }
 `;
 
+exports[`All Contributors app invalid .all-contributorsrc 1`] = `
+Object {
+  "body": "@jakebolam 
+
+This project's configuration file has malformed JSON: .all-contributorsrc. Error:: Unexpected token o in JSON at position 1",
+}
+`;
+
 exports[`All Contributors app skipCi=false 1`] = `
 Object {
   "ref": "refs/heads/all-contributors/add-jakebolam",

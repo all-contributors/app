@@ -12,6 +12,7 @@ const issueCommentCreatedPayloadUnknownContribution = require("../fixtures/issue
 const reposGetContentsAllContributorsRCdata = require("../fixtures/repos.getContents.all-contributorsrc.json");
 const reposGetContentsAllContributorsRCdata16files = require("../fixtures/repos.getContents.all-contributorsrc-16-files.json");
 const reposGetContentsAllContributorsRCdataSkipCiFalse = require("../fixtures/repos.getContents.all-contributorsrc-skip-ci-false.json");
+const reposGetContentsAllContributorsRCdataInvalidSyntax = require("../fixtures/repos.getContents.all-contributorsrc-invalid-syntax.json");
 const usersGetByUsernameJakeBolamdata = require("../fixtures/users.getByUsername.jakebolam.json");
 const usersGetByUsernameNoBlogAndNameData = require("../fixtures/users.getByUsername.without-name-and-blog.json");
 const reposGetContentsREADMEMDdata = require("../fixtures/repos.getContents.README.md.json");
@@ -463,6 +464,35 @@ describe("All Contributors app", () => {
         "/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc?ref=master"
       )
       .reply(200, reposGetContentsAllContributorsRCdata16files)
+
+      .post(
+        "/repos/all-contributors/all-contributors-bot/issues/1/comments",
+        (body) => {
+          expect(body).toMatchSnapshot();
+          return true;
+        }
+      )
+      .reply(200);
+
+    await probot.receive({
+      name: "issue_comment",
+      payload: issueCommentCreatedPayload,
+    });
+
+    expect(mock.activeMocks()).toStrictEqual([]);
+  });
+
+  test("invalid .all-contributorsrc", async () => {
+    const mock = nock("https://api.github.com")
+      .get(
+        `/repos/all-contributors/all-contributors-bot/git/ref/heads%2Fall-contributors%2Fadd-jakebolam`
+      )
+      .reply(404)
+
+      .get(
+        "/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc?ref=master"
+      )
+      .reply(200, reposGetContentsAllContributorsRCdataInvalidSyntax)
 
       .post(
         "/repos/all-contributors/all-contributors-bot/issues/1/comments",
