@@ -657,17 +657,6 @@ describe("All Contributors app", () => {
 
   test("Unknown contribution", async () => {
     const mock = nock("https://api.github.com")
-      .get(
-        `/repos/all-contributors/all-contributors-bot/git/ref/heads%2Fall-contributors%2Fadd-jakebolam`
-      )
-      .reply(200, gitGetRefdata)
-
-      .get(
-        "/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc"
-      )
-      .query({ ref: "all-contributors/add-jakebolam" })
-      .reply(200, reposGetContentsAllContributorsRCdata)
-
       .post(
         "/repos/all-contributors/all-contributors-bot/issues/1/comments",
         (body) => {
