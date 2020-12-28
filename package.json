@@ -15,7 +15,7 @@
     "start": "probot run ./app.js",
     "lint": "prettier --check '{src,test}/**/*.{js,json}' '*.{md,json,js}' 'contributing/*.md' '.github/**/*.{yml,md}'",
     "lint:fix": "prettier --write '{src,test}/**/*.{js,json}' '*.{md,json,js}' 'contributing/*.md' '.github/**/*.{yml,md}'",
-    "test": "jest --coverage test/integration test/unit"
+    "test": "jest --coverage"
   },
   "dependencies": {
     "all-contributors-cli": "^6.12.0",
