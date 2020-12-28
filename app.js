@@ -13,7 +13,7 @@ module.exports = (app) => {
     if (!isMessageForApp(context)) return;
 
     // process comment and reply
-    const commentReply = new CommentReply({ context });
+    const commentReply = new CommentReply(context);
     try {
       await processIssueComment({ context, commentReply });
     } catch (error) {
