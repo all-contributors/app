@@ -1,4 +1,5 @@
-const isMessageForBot = require("./lib/is-message-for-bot");
+const isMessageByApp = require("./lib/is-message-by-app");
+const isMessageForApp = require("./lib/is-message-for-app");
 const CommentReply = require("./lib/comment-reply");
 const processIssueComment = require("./lib/process-issue-comment");
 const { AllContributorBotError } = require("./lib/errors");
@@ -8,15 +9,8 @@ const { AllContributorBotError } = require("./lib/errors");
  */
 module.exports = (app) => {
   app.on("issue_comment.created", async (context) => {
-    if (context.payload.sender.login === "allcontributors[bot]") {
-      // Ignore own comments
-      return;
-    }
-
-    if (!isMessageForBot(context.payload.comment.body)) {
-      // Ignore comments that are not for us
-      return;
-    }
+    if (isMessageByApp(context)) return;
+    if (!isMessageForApp(context)) return;
 
     // process comment and reply
     const commentReply = new CommentReply({ context });
