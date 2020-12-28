@@ -1,8 +1,8 @@
 const isMessageByApp = require("./lib/is-message-by-app");
 const isMessageForApp = require("./lib/is-message-for-app");
-const CommentReply = require("./lib/comment-reply");
+const CommentReply = require("./lib/modules/comment-reply");
 const processIssueComment = require("./lib/process-issue-comment");
-const { AllContributorBotError } = require("./lib/errors");
+const { AllContributorBotError } = require("./lib/modules/errors");
 
 /**
  * @param {import('probot').Probot} app

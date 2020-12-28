@@ -1,4 +1,4 @@
-const CommentReply = require("../../lib/comment-reply");
+const CommentReply = require("../../lib/modules/comment-reply");
 
 describe("CommentReply", () => {
   test("Won't send comment twice", async () => {
