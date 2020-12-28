@@ -2,8 +2,12 @@ const { Probot, ProbotOctokit } = require("probot");
 const nock = require("nock");
 
 const app = require("../app");
-const issue_commentCreatedPayload = require("./fixtures/issue_comment.created.json");
-const issue_commentCreatedPayloadUnknownIntention = require("./fixtures/issue_commented.created.unknown-intention.json");
+
+// fixtures
+const issueCommentCreatedPayload = require("./fixtures/issue_comment.created.json");
+const issueCommentCreatedByAppPayload = require("./fixtures/issue_comment.created-by-app.json");
+const issueCommentCreatedNotForAppPayload = require("./fixtures/issue_comment.created-not-for-app.json");
+const issueCommentCreatedPayloadUnknownIntention = require("./fixtures/issue_commented.created.unknown-intention.json");
 const reposGetContentsAllContributorsRCdata = require("./fixtures/repos.getContents.all-contributorsrc.json");
 const usersGetByUsernameJakeBolamdata = require("./fixtures/users.getByUsername.jakebolam.json");
 const reposGetContentsREADMEMDdata = require("./fixtures/repos.getContents.README.md.json");
@@ -99,7 +103,7 @@ describe("All Contributors app", () => {
 
     await probot.receive({
       name: "issue_comment",
-      payload: issue_commentCreatedPayload,
+      payload: issueCommentCreatedPayload,
     });
 
     expect(mock.activeMocks()).toStrictEqual([]);
@@ -180,7 +184,7 @@ describe("All Contributors app", () => {
 
     await probot.receive({
       name: "issue_comment",
-      payload: issue_commentCreatedPayload,
+      payload: issueCommentCreatedPayload,
     });
   });
 
@@ -217,7 +221,7 @@ describe("All Contributors app", () => {
 
     await probot.receive({
       name: "issue_comment",
-      payload: issue_commentCreatedPayload,
+      payload: issueCommentCreatedPayload,
     });
 
     expect(mock.activeMocks()).toStrictEqual([]);
@@ -248,7 +252,7 @@ describe("All Contributors app", () => {
 
     await probot.receive({
       name: "issue_comment",
-      payload: issue_commentCreatedPayload,
+      payload: issueCommentCreatedPayload,
     });
 
     expect(mock.activeMocks()).toStrictEqual([]);
@@ -271,7 +275,7 @@ describe("All Contributors app", () => {
 
     await probot.receive({
       name: "issue_comment",
-      payload: issue_commentCreatedPayloadUnknownIntention,
+      payload: issueCommentCreatedPayloadUnknownIntention,
     });
   });
 
@@ -301,7 +305,7 @@ describe("All Contributors app", () => {
     try {
       await probot.receive({
         name: "issue_comment",
-        payload: issue_commentCreatedPayload,
+        payload: issueCommentCreatedPayload,
       });
       throw new Error("should not resolve");
     } catch (error) {
@@ -369,7 +373,7 @@ describe("All Contributors app", () => {
 
     await probot.receive({
       name: "issue_comment",
-      payload: issue_commentCreatedPayload,
+      payload: issueCommentCreatedPayload,
     });
 
     expect(mock.activeMocks()).toStrictEqual([]);
@@ -441,7 +445,21 @@ describe("All Contributors app", () => {
 
     probot.receive({
       name: "issue_comment",
-      payload: issue_commentCreatedPayload,
+      payload: issueCommentCreatedPayload,
+    });
+  });
+
+  test("Comment is by app itself", async () => {
+    await probot.receive({
+      name: "issue_comment",
+      payload: issueCommentCreatedByAppPayload,
+    });
+  });
+
+  test("Comment is not for app", async () => {
+    await probot.receive({
+      name: "issue_comment",
+      payload: issueCommentCreatedNotForAppPayload,
     });
   });
 });
