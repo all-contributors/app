@@ -12,25 +12,25 @@ To get your app running against GitHub
 
 Required fields are:
 
--   `name`, which can be whatever you like, globally unique on github
--   `homepage url`, which can be set to anything
--   `webhook url`, which can be set to anything
+- `name`, which can be whatever you like, globally unique on github
+- `homepage url`, which can be set to anything
+- `webhook url`, which can be set to anything
 
 Important fields are:
 
--   `webhook secret`, set this to `development`
--   `Permissions` which should be set [as defined in the app.yml](https://github.com/all-contributors/all-contributors-bot/blob/master/app.yml#L54), e.g. set read & write for `Repository contents`, `Issues` and `Pull Requests`, and read for `Repository Metadata`
--   `Subscribe to Events` which should be set [as defined in the app.yml](https://github.com/all-contributors/all-contributors-bot/blob/master/app.yml#L15), e.g. check the checkbox for `Issue comment`
--   Ensure `Where can this GitHub App be installed?` is set to `only this account`
-    ![where can this app be installed](where-can-this-app-be-installed.png)
+- `webhook secret`, set this to `development`
+- `Permissions` which should be set [as defined in the app.yml](https://github.com/all-contributors/all-contributors-bot/blob/master/app.yml#L54), e.g. set read & write for `Repository contents`, `Issues` and `Pull Requests`, and read for `Repository Metadata`
+- `Subscribe to Events` which should be set [as defined in the app.yml](https://github.com/all-contributors/all-contributors-bot/blob/master/app.yml#L15), e.g. check the checkbox for `Issue comment`
+- Ensure `Where can this GitHub App be installed?` is set to `only this account`
+  ![where can this app be installed](where-can-this-app-be-installed.png)
 
 ## 2. Configure Your GitHub App for testing
 
 You should now have an app created
 ![my test app](app-created.png)
 
--   On the General Tab, Click `Generate Private Key` and download it for later usage, call it something like `allcontributorsbot.pem`
--   On the Install Tab, Install the app/bot on your user
+- On the General Tab, Click `Generate Private Key` and download it for later usage, call it something like `allcontributorsbot.pem`
+- On the Install Tab, Install the app/bot on your user
 
 ## 3. Configure Your local to talk to the github app
 
@@ -42,16 +42,16 @@ WEBHOOK_SECRET=development
 PRIVATE_KEY=
 ```
 
--   `APP_ID`, you can get this from the General tab on the developer settings for your app
--   `WEBHOOK_SECRET`, leave as development (you set this on app setup)
--   `PRIVATE_KEY` when you generated the private key from your app, you should have a `allcontributorsbot.pem` file locally (or similar). run `openssl base64 < allcontributorsbot.pem | tr -d '\n' | pbcopy` on the file which will copy the base64 contents onto your clipboard, paste that into the line for `PRIVATE_KEY`
+- `APP_ID`, you can get this from the General tab on the developer settings for your app
+- `WEBHOOK_SECRET`, leave as development (you set this on app setup)
+- `PRIVATE_KEY` when you generated the private key from your app, you should have a `allcontributorsbot.pem` file locally (or similar). run `openssl base64 < allcontributorsbot.pem | tr -d '\n' | pbcopy` on the file which will copy the base64 contents onto your clipboard, paste that into the line for `PRIVATE_KEY`
 
 ## 4. Setup a test github repository/with issues PR
 
--   Setup a repostiory under your name (the name on github where the bot is installed)
--   Enable issues and pull requests
--   Create an issue
--   Comment on the issue: `@all-contributors please add @jakebolam for design` (replace @jakebolam with your username)
+- Setup a repostiory under your name (the name on github where the bot is installed)
+- Enable issues and pull requests
+- Create an issue
+- Comment on the issue: `@all-contributors please add @jakebolam for design` (replace @jakebolam with your username)
 
 To verify if the bot should have seen this goto [your app settings](https://github.com/settings/apps/). On the Advanced Tab, Click the most recent deliever to see the payload. It should look something like this:
 ![delivery comment](delivery-comment.png). Copy the payload and save it locally in a file called `test-webhook-payload.json`
