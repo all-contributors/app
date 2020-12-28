@@ -8,6 +8,7 @@ const issueCommentCreatedPayload = require("../fixtures/issue_comment.created.js
 const issueCommentCreatedByAppPayload = require("../fixtures/issue_comment.created-by-app.json");
 const issueCommentCreatedNotForAppPayload = require("../fixtures/issue_comment.created-not-for-app.json");
 const issueCommentCreatedPayloadUnknownIntention = require("../fixtures/issue_commented.created.unknown-intention.json");
+const issueCommentCreatedPayloadUnknownContribution = require("../fixtures/issue_comment.created-unknown-contribution.json");
 const reposGetContentsAllContributorsRCdata = require("../fixtures/repos.getContents.all-contributorsrc.json");
 const usersGetByUsernameJakeBolamdata = require("../fixtures/users.getByUsername.jakebolam.json");
 const reposGetContentsREADMEMDdata = require("../fixtures/repos.getContents.README.md.json");
@@ -189,8 +190,6 @@ describe("All Contributors app", () => {
   });
 
   test("Fail path, no readme file (configuration error)", async () => {
-    jest.setTimeout(10000);
-
     const mock = nock("https://api.github.com")
       .get(
         `/repos/all-contributors/all-contributors-bot/git/ref/heads%2Fall-contributors%2Fadd-jakebolam`
@@ -280,8 +279,6 @@ describe("All Contributors app", () => {
   });
 
   test("Fail path, Unknown error (e.g. Network is dead, service down etc, our code is bad) crashes and sends error message", async () => {
-    jest.setTimeout(20000);
-
     const mock = nock("https://api.github.com")
       .get(
         `/repos/all-contributors/all-contributors-bot/git/ref/heads%2Fall-contributors%2Fadd-jakebolam`
@@ -318,7 +315,6 @@ describe("All Contributors app", () => {
   });
 
   test("Happy path, add correct new contributor, but branch exists", async () => {
-    jest.setTimeout(20000);
     const mock = nock("https://api.github.com")
       .get(
         `/repos/all-contributors/all-contributors-bot/git/ref/heads%2Fall-contributors%2Fadd-jakebolam`
@@ -380,8 +376,6 @@ describe("All Contributors app", () => {
   });
 
   test("Happy path, add correct new contributor, but branch exists and PR is open", async () => {
-    jest.setTimeout(10000);
-
     const mock = nock("https://api.github.com")
       .get(
         `/repos/all-contributors/all-contributors-bot/git/ref/heads%2Fall-contributors%2Fadd-jakebolam`
@@ -401,6 +395,18 @@ describe("All Contributors app", () => {
       .query({ ref: "all-contributors/add-jakebolam" })
       .reply(200, reposGetContentsREADMEMDdata)
 
+      .get("/repos/all-contributors/all-contributors-bot/pulls")
+      .query({
+        state: "open",
+        head: "all-contributors:all-contributors/add-jakebolam",
+      })
+      .reply(200, [
+        {
+          html_url:
+            "https://github.com/all-contributors/all-contributors-bot/pull/1",
+        },
+      ])
+
       .put(
         `/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc`,
         (body) => {
@@ -412,15 +418,6 @@ describe("All Contributors app", () => {
 
       .put(
         `/repos/all-contributors/all-contributors-bot/contents/README.md`,
-        (body) => {
-          expect(body).toMatchSnapshot();
-          return true;
-        }
-      )
-      .reply(200, reposUpdateFiledata)
-
-      .put(
-        `/repos/all-contributors/all-contributors-bot/contents//nested-folder/SOME-DOC.md`,
         (body) => {
           expect(body).toMatchSnapshot();
           return true;
@@ -443,10 +440,42 @@ describe("All Contributors app", () => {
       )
       .reply(200);
 
-    probot.receive({
+    await probot.receive({
       name: "issue_comment",
       payload: issueCommentCreatedPayload,
     });
+
+    expect(mock.activeMocks()).toStrictEqual([]);
+  });
+
+  test("Unknown contribution", async () => {
+    const mock = nock("https://api.github.com")
+      .get(
+        `/repos/all-contributors/all-contributors-bot/git/ref/heads%2Fall-contributors%2Fadd-jakebolam`
+      )
+      .reply(200, gitGetRefdata)
+
+      .get(
+        "/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc"
+      )
+      .query({ ref: "all-contributors/add-jakebolam" })
+      .reply(200, reposGetContentsAllContributorsRCdata)
+
+      .post(
+        "/repos/all-contributors/all-contributors-bot/issues/1/comments",
+        (body) => {
+          expect(body).toMatchSnapshot();
+          return true;
+        }
+      )
+      .reply(200);
+
+    await probot.receive({
+      name: "issue_comment",
+      payload: issueCommentCreatedPayloadUnknownContribution,
+    });
+
+    expect(mock.activeMocks()).toStrictEqual([]);
   });
 
   test("Comment is by app itself", async () => {
