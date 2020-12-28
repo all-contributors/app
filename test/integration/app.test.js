@@ -1,20 +1,20 @@
 const { Probot, ProbotOctokit } = require("probot");
 const nock = require("nock");
 
-const app = require("../app");
+const app = require("../../app");
 
 // fixtures
-const issueCommentCreatedPayload = require("./fixtures/issue_comment.created.json");
-const issueCommentCreatedByAppPayload = require("./fixtures/issue_comment.created-by-app.json");
-const issueCommentCreatedNotForAppPayload = require("./fixtures/issue_comment.created-not-for-app.json");
-const issueCommentCreatedPayloadUnknownIntention = require("./fixtures/issue_commented.created.unknown-intention.json");
-const reposGetContentsAllContributorsRCdata = require("./fixtures/repos.getContents.all-contributorsrc.json");
-const usersGetByUsernameJakeBolamdata = require("./fixtures/users.getByUsername.jakebolam.json");
-const reposGetContentsREADMEMDdata = require("./fixtures/repos.getContents.README.md.json");
-const gitGetRefdata = require("./fixtures/git.getRef.json");
-const gitCreateRefdata = require("./fixtures/git.createRef.json");
-const reposUpdateFiledata = require("./fixtures/repos.updateFile.json");
-const pullsCreatedata = require("./fixtures/pulls.create.json");
+const issueCommentCreatedPayload = require("../fixtures/issue_comment.created.json");
+const issueCommentCreatedByAppPayload = require("../fixtures/issue_comment.created-by-app.json");
+const issueCommentCreatedNotForAppPayload = require("../fixtures/issue_comment.created-not-for-app.json");
+const issueCommentCreatedPayloadUnknownIntention = require("../fixtures/issue_commented.created.unknown-intention.json");
+const reposGetContentsAllContributorsRCdata = require("../fixtures/repos.getContents.all-contributorsrc.json");
+const usersGetByUsernameJakeBolamdata = require("../fixtures/users.getByUsername.jakebolam.json");
+const reposGetContentsREADMEMDdata = require("../fixtures/repos.getContents.README.md.json");
+const gitGetRefdata = require("../fixtures/git.getRef.json");
+const gitCreateRefdata = require("../fixtures/git.createRef.json");
+const reposUpdateFiledata = require("../fixtures/repos.updateFile.json");
+const pullsCreatedata = require("../fixtures/pulls.create.json");
 
 const Octokit = ProbotOctokit.defaults({
   // Disable throttling & retrying requests for easier testing

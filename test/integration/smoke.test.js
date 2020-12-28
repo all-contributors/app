@@ -1,7 +1,7 @@
 const nock = require("nock");
 const { Probot } = require("probot");
 
-const app = require("../app");
+const app = require("../../app");
 
 nock.disableNetConnect();
 
