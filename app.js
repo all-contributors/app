@@ -1,9 +1,7 @@
-const isMessageForBot = require("./src/utils/isMessageForBot");
-const CommentReply = require("./src/tasks/processIssueComment/CommentReply");
+const isMessageForBot = require("./lib/is-message-for-bot");
+const CommentReply = require("./lib/comment-reply");
 const processIssueComment = require("./lib/process-issue-comment");
-const {
-  AllContributorBotError,
-} = require("./src/tasks/processIssueComment/utils/errors");
+const { AllContributorBotError } = require("./lib/errors");
 
 /**
  * @param {import('probot').Probot} app
