@@ -12,6 +12,7 @@ const issueCommentCreatedPayloadUnknownContribution = require("../fixtures/issue
 const reposGetContentsAllContributorsRCdata = require("../fixtures/repos.getContents.all-contributorsrc.json");
 const reposGetContentsAllContributorsRCdata16files = require("../fixtures/repos.getContents.all-contributorsrc-16-files.json");
 const usersGetByUsernameJakeBolamdata = require("../fixtures/users.getByUsername.jakebolam.json");
+const usersGetByUsernameNoBlogAndNameData = require("../fixtures/users.getByUsername.without-name-and-blog.json");
 const reposGetContentsREADMEMDdata = require("../fixtures/repos.getContents.README.md.json");
 const gitGetRefdata = require("../fixtures/git.getRef.json");
 const gitCreateRefdata = require("../fixtures/git.createRef.json");
@@ -461,6 +462,78 @@ describe("All Contributors app", () => {
         "/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc?ref=master"
       )
       .reply(200, reposGetContentsAllContributorsRCdata16files)
+
+      .post(
+        "/repos/all-contributors/all-contributors-bot/issues/1/comments",
+        (body) => {
+          expect(body).toMatchSnapshot();
+          return true;
+        }
+      )
+      .reply(200);
+
+    await probot.receive({
+      name: "issue_comment",
+      payload: issueCommentCreatedPayload,
+    });
+
+    expect(mock.activeMocks()).toStrictEqual([]);
+  });
+
+  test("User has no name and blog", async () => {
+    const mock = nock("https://api.github.com")
+      .get(
+        `/repos/all-contributors/all-contributors-bot/git/ref/heads%2Fall-contributors%2Fadd-jakebolam`
+      )
+      .reply(404)
+
+      .get(
+        "/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc?ref=master"
+      )
+      .reply(200, reposGetContentsAllContributorsRCdata)
+
+      .get("/users/jakebolam")
+      .reply(200, usersGetByUsernameNoBlogAndNameData)
+
+      .get(
+        "/repos/all-contributors/all-contributors-bot/contents/README.md?ref=master"
+      )
+      .reply(200, reposGetContentsREADMEMDdata)
+
+      .get(
+        `/repos/all-contributors/all-contributors-bot/git/ref/heads%2Fmaster`
+      )
+      .reply(200, gitGetRefdata)
+
+      .post(`/repos/all-contributors/all-contributors-bot/git/refs`, (body) => {
+        expect(body).toMatchSnapshot();
+        return true;
+      })
+      .reply(201, gitCreateRefdata)
+
+      .put(
+        `/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc`,
+        (body) => {
+          expect(body).toMatchSnapshot();
+          return true;
+        }
+      )
+      .reply(200, reposUpdateFiledata)
+
+      .put(
+        `/repos/all-contributors/all-contributors-bot/contents/README.md`,
+        (body) => {
+          expect(body).toMatchSnapshot();
+          return true;
+        }
+      )
+      .reply(200, reposUpdateFiledata)
+
+      .post(`/repos/all-contributors/all-contributors-bot/pulls`, (body) => {
+        expect(body).toMatchSnapshot();
+        return true;
+      })
+      .reply(201, pullsCreatedata)
 
       .post(
         "/repos/all-contributors/all-contributors-bot/issues/1/comments",
