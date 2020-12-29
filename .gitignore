@@ -10,3 +10,5 @@ yarn-error.log
 .serverless
 npm-debug.log
 .idea
+
+.vercel
