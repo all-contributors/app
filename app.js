@@ -17,7 +17,8 @@ module.exports = (app) => {
     try {
       await processIssueComment({ context, commentReply });
     } catch (error) {
-      if (!(error instanceof AllContributorBotError)) {
+      const isKnownError = error instanceof AllContributorBotError;
+      if (!isKnownError) {
         commentReply.reply(
           `We had trouble processing your request. Please try again later.`
         );
@@ -25,7 +26,7 @@ module.exports = (app) => {
         throw error;
       }
 
-      context.log.info(error);
+      context.log.info({ isKnownError, error: error.name }, error.message);
       commentReply.reply(error.message);
     } finally {
       await commentReply.send();
