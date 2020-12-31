@@ -31,4 +31,38 @@ module.exports = (app) => {
       await commentReply.send();
     }
   });
+
+  app.on(
+    ["installation", "installation_repositories"],
+    async ({ name, payload, log }) => {
+      const {
+        action,
+        repositories,
+        repositories_added,
+        repositories_removed,
+        installation,
+      } = payload;
+
+      const repositoriesChange =
+        action === "created"
+          ? repositories.length
+          : action === "deleted"
+          ? -repositories.length
+          : repositories_added
+          ? repositories_added.length - repositories_removed.length
+          : 0;
+
+      const meta = {
+        event: name,
+        action,
+        account: installation.account.id,
+        accountType: installation.account.type.toLowerCase(),
+        accountName: installation.account.login,
+        installation: installation.id,
+        selection: installation.repository_selection,
+        repositoriesChange,
+      };
+      log.info(meta, `${meta.accountName}: ${name} ${action}`);
+    }
+  );
 };
