@@ -29,7 +29,7 @@ const Octokit = ProbotOctokit.defaults({
 
 nock.disableNetConnect();
 
-describe("All Contributors app", () => {
+describe("issue_comment event", () => {
   let probot;
 
   beforeEach(async () => {
