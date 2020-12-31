@@ -4,7 +4,7 @@ exports[`installation event installation.created 1`] = `
 Array [
   Object {
     "account": 2001,
-    "accountName": "octocat",
+    "accountLogin": "octocat",
     "accountType": "user",
     "action": "created",
     "event": "installation",
@@ -22,7 +22,7 @@ exports[`installation event installation.deleted 1`] = `
 Array [
   Object {
     "account": 2001,
-    "accountName": "octocat",
+    "accountLogin": "octocat",
     "accountType": "user",
     "action": "deleted",
     "event": "installation",
@@ -40,7 +40,7 @@ exports[`installation event installation.suspend 1`] = `
 Array [
   Object {
     "account": 2001,
-    "accountName": "octocat",
+    "accountLogin": "octocat",
     "accountType": "user",
     "action": "suspend",
     "event": "installation",
@@ -58,7 +58,7 @@ exports[`installation event installation_repositories.added 1`] = `
 Array [
   Object {
     "account": 2001,
-    "accountName": "octocat",
+    "accountLogin": "octocat",
     "accountType": "user",
     "action": "added",
     "event": "installation_repositories",

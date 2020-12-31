@@ -57,12 +57,12 @@ module.exports = (app) => {
         action,
         account: installation.account.id,
         accountType: installation.account.type.toLowerCase(),
-        accountName: installation.account.login,
+        accountLogin: installation.account.login,
         installation: installation.id,
         selection: installation.repository_selection,
         repositoriesChange,
       };
-      log.info(meta, `${meta.accountName}: ${name} ${action}`);
+      log.info(meta, `${meta.accountLogin}: ${name} ${action}`);
     }
   );
 };
