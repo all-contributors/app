@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`installation event installation.created 1`] = `
+Array [
+  Object {
+    "account": 2001,
+    "accountName": "octocat",
+    "accountType": "user",
+    "action": "created",
+    "event": "installation",
+    "installation": 1,
+    "level": 30,
+    "msg": "octocat: installation created",
+    "name": "event",
+    "repositoriesChange": 3,
+    "selection": "all",
+  },
+]
+`;
