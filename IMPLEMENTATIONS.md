@@ -7,6 +7,5 @@ list, please [make a pull request](CONTRIBUTING.md)!
 - [thechangelog org](https://github.com/thechangelog)
 - [netlify-cms](https://github.com/netlify/netlify-cms)
 
-
 **Note**: There are likely many projects not listed here. You'll probably be able to find more with this
 [github search](https://github.com/search?utf8=%E2%9C%93&q=.all-contributorsrc+in%3Apath&type=Code&ref=searchresults)

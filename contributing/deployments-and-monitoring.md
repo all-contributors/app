@@ -1,11 +1,12 @@
 # Production: Deployments & Monitoring
 
 ## Deployments
+
 There is a sandbox environment:
 https://github.com/all-contributors-sandbox
 
-
 ## Monitoring:
+
 - [Thundra](https://console.thundra.io/functions/)
 - [Sentry](https://sentry.io/all-contributors/github-bot/)
 - [AWS Dashboard](https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#dashboards:name=All-Contributors-Bot)

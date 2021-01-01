@@ -1,0 +1,847 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`issue_comment event .all-contributorsrc has 16 files: logs 1`] = `
+Array [
+  Object {
+    "error": "AllContributorBotError",
+    "id": "1",
+    "isKnownError": true,
+    "level": 30,
+    "msg": "Your .all-contributorsrc cannot contain more than 15 files.",
+    "name": "event",
+  },
+]
+`;
+
+exports[`issue_comment event .all-contributorsrc has 16 files: request body 1`] = `
+Object {
+  "body": "@jakebolam 
+
+Your .all-contributorsrc cannot contain more than 15 files.",
+}
+`;
+
+exports[`issue_comment event Fail path, Unknown error (e.g. Network is dead, service down etc, our code is bad) crashes and sends error message: logs 1`] = `
+Array [
+  Object {
+    "event": Object {
+      "id": "1",
+      "name": "issue_comment",
+      "payload": Object {
+        "action": "created",
+        "comment": Object {
+          "author_association": "MEMBER",
+          "body": "@all-contributors please add jakebolam for code, doc and infra",
+          "created_at": "2019-01-10T08:36:52Z",
+          "html_url": "https://github.com/all-contributors/all-contributors-bot/pull/1#issuecomment-453012966",
+          "id": 453012966,
+          "issue_url": "https://api.github.com/repos/all-contributors/all-contributors-bot/issues/1",
+          "node_id": "MDEyOklzc3VlQ29tbWVudDQ1MzAxMjk2Ng==",
+          "updated_at": "2019-01-10T08:36:52Z",
+          "url": "https://api.github.com/repos/all-contributors/all-contributors-bot/issues/comments/453012966",
+          "user": Object {
+            "avatar_url": "https://avatars2.githubusercontent.com/u/3534236?v=4",
+            "events_url": "https://api.github.com/users/jakebolam/events{/privacy}",
+            "followers_url": "https://api.github.com/users/jakebolam/followers",
+            "following_url": "https://api.github.com/users/jakebolam/following{/other_user}",
+            "gists_url": "https://api.github.com/users/jakebolam/gists{/gist_id}",
+            "gravatar_id": "",
+            "html_url": "https://github.com/jakebolam",
+            "id": 3534236,
+            "login": "jakebolam",
+            "node_id": "MDQ6VXNlcjM1MzQyMzY=",
+            "organizations_url": "https://api.github.com/users/jakebolam/orgs",
+            "received_events_url": "https://api.github.com/users/jakebolam/received_events",
+            "repos_url": "https://api.github.com/users/jakebolam/repos",
+            "site_admin": false,
+            "starred_url": "https://api.github.com/users/jakebolam/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/jakebolam/subscriptions",
+            "type": "User",
+            "url": "https://api.github.com/users/jakebolam",
+          },
+        },
+        "installation": Object {
+          "id": 11111,
+          "node_id": "MDIzOkludGVncmF0aW9uSW5zdGFsbGF0aW9uNTYyOTc1",
+        },
+        "issue": Object {
+          "assignee": null,
+          "assignees": Array [],
+          "author_association": "MEMBER",
+          "body": "",
+          "closed_at": null,
+          "comments": 60,
+          "comments_url": "https://api.github.com/repos/all-contributors/all-contributors-bot/issues/1/comments",
+          "created_at": "2019-01-07T13:12:39Z",
+          "events_url": "https://api.github.com/repos/all-contributors/all-contributors-bot/issues/1/events",
+          "html_url": "https://github.com/all-contributors/all-contributors-bot/pull/1",
+          "id": 396481824,
+          "labels": Array [],
+          "labels_url": "https://api.github.com/repos/all-contributors/all-contributors-bot/issues/1/labels{/name}",
+          "locked": false,
+          "milestone": null,
+          "node_id": "MDExOlB1bGxSZXF1ZXN0MjQyNjU0MDM0",
+          "number": 1,
+          "pull_request": Object {
+            "diff_url": "https://github.com/all-contributors/all-contributors-bot/pull/1.diff",
+            "html_url": "https://github.com/all-contributors/all-contributors-bot/pull/1",
+            "patch_url": "https://github.com/all-contributors/all-contributors-bot/pull/1.patch",
+            "url": "https://api.github.com/repos/all-contributors/all-contributors-bot/pulls/1",
+          },
+          "repository_url": "https://api.github.com/repos/all-contributors/all-contributors-bot",
+          "state": "open",
+          "title": "(wip) test: test pr for the bot",
+          "updated_at": "2019-01-10T08:36:52Z",
+          "url": "https://api.github.com/repos/all-contributors/all-contributors-bot/issues/1",
+          "user": Object {
+            "avatar_url": "https://avatars2.githubusercontent.com/u/3534236?v=4",
+            "events_url": "https://api.github.com/users/jakebolam/events{/privacy}",
+            "followers_url": "https://api.github.com/users/jakebolam/followers",
+            "following_url": "https://api.github.com/users/jakebolam/following{/other_user}",
+            "gists_url": "https://api.github.com/users/jakebolam/gists{/gist_id}",
+            "gravatar_id": "",
+            "html_url": "https://github.com/jakebolam",
+            "id": 3534236,
+            "login": "jakebolam",
+            "node_id": "MDQ6VXNlcjM1MzQyMzY=",
+            "organizations_url": "https://api.github.com/users/jakebolam/orgs",
+            "received_events_url": "https://api.github.com/users/jakebolam/received_events",
+            "repos_url": "https://api.github.com/users/jakebolam/repos",
+            "site_admin": false,
+            "starred_url": "https://api.github.com/users/jakebolam/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/jakebolam/subscriptions",
+            "type": "User",
+            "url": "https://api.github.com/users/jakebolam",
+          },
+        },
+        "organization": Object {
+          "avatar_url": "https://avatars1.githubusercontent.com/u/46410174?v=4",
+          "description": "✨ Recognize all contributors, not just the ones who push code ✨",
+          "events_url": "https://api.github.com/orgs/all-contributors/events",
+          "hooks_url": "https://api.github.com/orgs/all-contributors/hooks",
+          "id": 46410174,
+          "issues_url": "https://api.github.com/orgs/all-contributors/issues",
+          "login": "all-contributors",
+          "members_url": "https://api.github.com/orgs/all-contributors/members{/member}",
+          "node_id": "MDEyOk9yZ2FuaXphdGlvbjQ2NDEwMTc0",
+          "public_members_url": "https://api.github.com/orgs/all-contributors/public_members{/member}",
+          "repos_url": "https://api.github.com/orgs/all-contributors/repos",
+          "url": "https://api.github.com/orgs/all-contributors",
+        },
+        "repository": Object {
+          "archive_url": "https://api.github.com/repos/all-contributors/all-contributors-bot/{archive_format}{/ref}",
+          "archived": false,
+          "assignees_url": "https://api.github.com/repos/all-contributors/all-contributors-bot/assignees{/user}",
+          "blobs_url": "https://api.github.com/repos/all-contributors/all-contributors-bot/git/blobs{/sha}",
+          "branches_url": "https://api.github.com/repos/all-contributors/all-contributors-bot/branches{/branch}",
+          "clone_url": "https://github.com/all-contributors/all-contributors-bot.git",
+          "collaborators_url": "https://api.github.com/repos/all-contributors/all-contributors-bot/collaborators{/collaborator}",
+          "comments_url": "https://api.github.com/repos/all-contributors/all-contributors-bot/comments{/number}",
+          "commits_url": "https://api.github.com/repos/all-contributors/all-contributors-bot/commits{/sha}",
+          "compare_url": "https://api.github.com/repos/all-contributors/all-contributors-bot/compare/{base}...{head}",
+          "contents_url": "https://api.github.com/repos/all-contributors/all-contributors-bot/contents/{+path}",
+          "contributors_url": "https://api.github.com/repos/all-contributors/all-contributors-bot/contributors",
+          "created_at": "2019-01-06T02:33:42Z",
+          "default_branch": "master",
+          "deployments_url": "https://api.github.com/repos/all-contributors/all-contributors-bot/deployments",
+          "description": "A GitHub bot for automatically adding all-contributors",
+          "downloads_url": "https://api.github.com/repos/all-contributors/all-contributors-bot/downloads",
+          "events_url": "https://api.github.com/repos/all-contributors/all-contributors-bot/events",
+          "fork": false,
+          "forks": 0,
+          "forks_count": 0,
+          "forks_url": "https://api.github.com/repos/all-contributors/all-contributors-bot/forks",
+          "full_name": "all-contributors/all-contributors-bot",
+          "git_commits_url": "https://api.github.com/repos/all-contributors/all-contributors-bot/git/commits{/sha}",
+          "git_refs_url": "https://api.github.com/repos/all-contributors/all-contributors-bot/git/refs{/sha}",
+          "git_tags_url": "https://api.github.com/repos/all-contributors/all-contributors-bot/git/tags{/sha}",
+          "git_url": "git://github.com/all-contributors/all-contributors-bot.git",
+          "has_downloads": true,
+          "has_issues": true,
+          "has_pages": false,
+          "has_projects": true,
+          "has_wiki": false,
+          "homepage": "",
+          "hooks_url": "https://api.github.com/repos/all-contributors/all-contributors-bot/hooks",
+          "html_url": "https://github.com/all-contributors/all-contributors-bot",
+          "id": 164268911,
+          "issue_comment_url": "https://api.github.com/repos/all-contributors/all-contributors-bot/issues/comments{/number}",
+          "issue_events_url": "https://api.github.com/repos/all-contributors/all-contributors-bot/issues/events{/number}",
+          "issues_url": "https://api.github.com/repos/all-contributors/all-contributors-bot/issues{/number}",
+          "keys_url": "https://api.github.com/repos/all-contributors/all-contributors-bot/keys{/key_id}",
+          "labels_url": "https://api.github.com/repos/all-contributors/all-contributors-bot/labels{/name}",
+          "language": "JavaScript",
+          "languages_url": "https://api.github.com/repos/all-contributors/all-contributors-bot/languages",
+          "license": Object {
+            "key": "mit",
+            "name": "MIT License",
+            "node_id": "MDc6TGljZW5zZTEz",
+            "spdx_id": "MIT",
+            "url": "https://api.github.com/licenses/mit",
+          },
+          "merges_url": "https://api.github.com/repos/all-contributors/all-contributors-bot/merges",
+          "milestones_url": "https://api.github.com/repos/all-contributors/all-contributors-bot/milestones{/number}",
+          "mirror_url": null,
+          "name": "all-contributors-bot",
+          "node_id": "MDEwOlJlcG9zaXRvcnkxNjQyNjg5MTE=",
+          "notifications_url": "https://api.github.com/repos/all-contributors/all-contributors-bot/notifications{?since,all,participating}",
+          "open_issues": 4,
+          "open_issues_count": 4,
+          "owner": Object {
+            "avatar_url": "https://avatars1.githubusercontent.com/u/46410174?v=4",
+            "events_url": "https://api.github.com/users/all-contributors/events{/privacy}",
+            "followers_url": "https://api.github.com/users/all-contributors/followers",
+            "following_url": "https://api.github.com/users/all-contributors/following{/other_user}",
+            "gists_url": "https://api.github.com/users/all-contributors/gists{/gist_id}",
+            "gravatar_id": "",
+            "html_url": "https://github.com/all-contributors",
+            "id": 46410174,
+            "login": "all-contributors",
+            "node_id": "MDEyOk9yZ2FuaXphdGlvbjQ2NDEwMTc0",
+            "organizations_url": "https://api.github.com/users/all-contributors/orgs",
+            "received_events_url": "https://api.github.com/users/all-contributors/received_events",
+            "repos_url": "https://api.github.com/users/all-contributors/repos",
+            "site_admin": false,
+            "starred_url": "https://api.github.com/users/all-contributors/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/all-contributors/subscriptions",
+            "type": "Organization",
+            "url": "https://api.github.com/users/all-contributors",
+          },
+          "private": false,
+          "pulls_url": "https://api.github.com/repos/all-contributors/all-contributors-bot/pulls{/number}",
+          "pushed_at": "2019-01-10T07:07:47Z",
+          "releases_url": "https://api.github.com/repos/all-contributors/all-contributors-bot/releases{/id}",
+          "size": 292,
+          "ssh_url": "git@github.com:all-contributors/all-contributors-bot.git",
+          "stargazers_count": 1,
+          "stargazers_url": "https://api.github.com/repos/all-contributors/all-contributors-bot/stargazers",
+          "statuses_url": "https://api.github.com/repos/all-contributors/all-contributors-bot/statuses/{sha}",
+          "subscribers_url": "https://api.github.com/repos/all-contributors/all-contributors-bot/subscribers",
+          "subscription_url": "https://api.github.com/repos/all-contributors/all-contributors-bot/subscription",
+          "svn_url": "https://github.com/all-contributors/all-contributors-bot",
+          "tags_url": "https://api.github.com/repos/all-contributors/all-contributors-bot/tags",
+          "teams_url": "https://api.github.com/repos/all-contributors/all-contributors-bot/teams",
+          "trees_url": "https://api.github.com/repos/all-contributors/all-contributors-bot/git/trees{/sha}",
+          "updated_at": "2019-01-10T07:07:49Z",
+          "url": "https://api.github.com/repos/all-contributors/all-contributors-bot",
+          "watchers": 1,
+          "watchers_count": 1,
+        },
+        "sender": Object {
+          "avatar_url": "https://avatars2.githubusercontent.com/u/3534236?v=4",
+          "events_url": "https://api.github.com/users/jakebolam/events{/privacy}",
+          "followers_url": "https://api.github.com/users/jakebolam/followers",
+          "following_url": "https://api.github.com/users/jakebolam/following{/other_user}",
+          "gists_url": "https://api.github.com/users/jakebolam/gists{/gist_id}",
+          "gravatar_id": "",
+          "html_url": "https://github.com/jakebolam",
+          "id": 3534236,
+          "login": "jakebolam",
+          "node_id": "MDQ6VXNlcjM1MzQyMzY=",
+          "organizations_url": "https://api.github.com/users/jakebolam/orgs",
+          "received_events_url": "https://api.github.com/users/jakebolam/received_events",
+          "repos_url": "https://api.github.com/users/jakebolam/repos",
+          "site_admin": false,
+          "starred_url": "https://api.github.com/users/jakebolam/starred{/owner}{/repo}",
+          "subscriptions_url": "https://api.github.com/users/jakebolam/subscriptions",
+          "type": "User",
+          "url": "https://api.github.com/users/jakebolam",
+        },
+      },
+    },
+    "headers": Object {},
+    "id": "1",
+    "level": 50,
+    "msg": "",
+    "name": "HttpError",
+    "request": Object {
+      "headers": Object {
+        "accept": "application/vnd.github.v3+json",
+        "authorization": "token [REDACTED]",
+      },
+      "method": "GET",
+      "request": Object {},
+      "url": "https://api.github.com/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc?ref=master",
+    },
+    "status": 500,
+    "type": "Error",
+  },
+]
+`;
+
+exports[`issue_comment event Fail path, Unknown error (e.g. Network is dead, service down etc, our code is bad) crashes and sends error message: request body 1`] = `
+Object {
+  "body": "@jakebolam 
+
+We had trouble processing your request. Please try again later.",
+}
+`;
+
+exports[`issue_comment event Fail path, Unknown user intention: logs 1`] = `
+Array [
+  Object {
+    "account": 46410174,
+    "accountLogin": "all-contributors",
+    "accountType": "organization",
+    "action": false,
+    "createdBy": 3534236,
+    "createdByLogin": "jakebolam",
+    "createdByType": "user",
+    "id": "1",
+    "level": 30,
+    "msg": "Unknown action \\"false\\"",
+    "name": "event",
+    "private": false,
+    "repository": 164268911,
+    "success": false,
+  },
+]
+`;
+
+exports[`issue_comment event Fail path, Unknown user intention: request body 1`] = `
+Object {
+  "body": "@jakebolam 
+
+I could not determine your intention.
+
+Basic usage: @all-contributors please add @someone for code, doc and infra
+
+For other usages see the [documentation](https://allcontributors.org/docs/en/bot/usage)",
+}
+`;
+
+exports[`issue_comment event Fail path, no readme file (configuration error): logs 1`] = `
+Array [
+  Object {
+    "error": "ResourceNotFoundError",
+    "id": "1",
+    "isKnownError": true,
+    "level": 30,
+    "msg": "File README.md was not found in the repository (all-contributors/all-contributors-bot).",
+    "name": "event",
+  },
+]
+`;
+
+exports[`issue_comment event Fail path, no readme file (configuration error): request body 1`] = `
+Object {
+  "body": "@jakebolam 
+
+File README.md was not found in the repository (all-contributors/all-contributors-bot).",
+}
+`;
+
+exports[`issue_comment event Fail path, no such user: logs 1`] = `
+Array [
+  Object {
+    "error": "UserNotFoundError",
+    "id": "1",
+    "isKnownError": true,
+    "level": 30,
+    "msg": "Could not find the user \`jakebolam\` on github.",
+    "name": "event",
+  },
+]
+`;
+
+exports[`issue_comment event Fail path, no such user: request body 1`] = `
+Object {
+  "body": "@jakebolam 
+
+Could not find the user \`jakebolam\` on github.",
+}
+`;
+
+exports[`issue_comment event Happy path, add correct new contributor, but branch exists and PR is open: logs 1`] = `
+Array [
+  Object {
+    "account": 46410174,
+    "accountLogin": "all-contributors",
+    "accountType": "organization",
+    "action": "add",
+    "contributions": Array [
+      "code",
+      "doc",
+      "infra",
+    ],
+    "createdBy": 3534236,
+    "createdByLogin": "jakebolam",
+    "createdByType": "user",
+    "createdFor": 3534236,
+    "createdForLogin": "jakebolam",
+    "createdForType": "user",
+    "id": "1",
+    "level": 30,
+    "msg": "jakebolam added for code, doc, infra",
+    "name": "event",
+    "private": false,
+    "pullCreated": false,
+    "repository": 164268911,
+    "success": true,
+    "who": "jakebolam",
+  },
+]
+`;
+
+exports[`issue_comment event Happy path, add correct new contributor, but branch exists and PR is open: request body 1`] = `
+Object {
+  "branch": "all-contributors/add-jakebolam",
+  "content": "IyBBbGxDb250cmlidXRvcnNCb3QKQSBib3QgZm9yIGF1dG9tYXRpY2FsbHkgYWRkaW5nIGFsbC1jb250cmlidXRvcnMuIPCfpJYKClshW0J1aWxkXShodHRwczovL2ltZy5zaGllbGRzLmlvL2NpcmNsZWNpL3Byb2plY3QvZ2l0aHViL2FsbC1jb250cmlidXRvcnMvYWxsLWNvbnRyaWJ1dG9ycy1ib3QvbWFzdGVyLnN2ZyldKGh0dHBzOi8vY2lyY2xlY2kuY29tL2doL2FsbC1jb250cmlidXRvcnMvYWxsLWNvbnRyaWJ1dG9ycy1ib3QpClshW0NvdmVyYWdlXShodHRwczovL2ltZy5zaGllbGRzLmlvL2NvZGVjb3YvYy9naXRodWIvYWxsLWNvbnRyaWJ1dG9ycy9hbGwtY29udHJpYnV0b3JzLWJvdC5zdmcpXShodHRwczovL2NvZGVjb3YuaW8vZ2l0aHViL2FsbC1jb250cmlidXRvcnMvYWxsLWNvbnRyaWJ1dG9ycy1ib3QpClshW0FsbCBDb250cmlidXRvcnNdKGh0dHBzOi8vaW1nLnNoaWVsZHMuaW8vYmFkZ2UvYWxsX2NvbnRyaWJ1dG9ycy0xLW9yYW5nZS5zdmcpXSgjY29udHJpYnV0b3JzKQpbIVtDaGF0IG9uIFNsYWNrXShodHRwczovL2ltZy5zaGllbGRzLmlvL2JhZGdlL3NsYWNrLWpvaW4tZmY2OWI0LnN2ZyldKGh0dHBzOi8vam9pbi5zbGFjay5jb20vdC9hbGwtY29udHJpYnV0b3JzL3NoYXJlZF9pbnZpdGUvZW5RdE5URTNPRE15TVRBNE5UazBMVFV3WkRNeFpHWmtNbVZpTXpZell6azJZVE0yTmpSa1pHTTVZemMwWlRjNU5tWXpOV1kzWTJRMFpUWTNabUZoWkRneVkyRTNabUl6TldRd01UVXhabUUpCgoKIyMgSW5zdGFsbGF0aW9uCjEuIEluc3RhbGwgQXBwCjIuIFBsZWFzZSBzZXR1cCB5b3VyIGBSRUFETUUubWRgIGFuZCBgLmFsbC1jb250cmlidXRvcnNyY2AgdXNpbmcgdGhlIFthbGwtY29udHJpYnV0b3JzLWNsaSB0b29sXShodHRwczovL2dpdGh1Yi5jb20vYWxsLWNvbnRyaWJ1dG9ycy9hbGwtY29udHJpYnV0b3JzLWNsaSkKPiBJbiB0aGUgZnV0dXJlIHdlIHdhbnQgdG8gcmVtb3ZlIHRoZSBuZWVkIGZvciB0aGUgQ0xJIHRvb2wsIGlmIHlvdSB3YW50IHRvIGhlbHAgb3V0IFtzZWUgdGhlIGlzc3VlXShodHRwczovL2dpdGh1Yi5jb20vYWxsLWNvbnRyaWJ1dG9ycy9hbGwtY29udHJpYnV0b3JzLWJvdC9pc3N1ZXMvMykKCgojIyBVc2FnZQoKIyMjIEFkZGluZyBjb250cmlidXRpb25zCjEuIENvbW1lbnQgb24gSXNzdWUvUFIgZXRjIHdpdGggdGV4dDogYEBBbGxDb250cmlidXRvckJvdCBwbGVhc2UgYWRkIGpha2Vib2xhbSBmb3IgaW5mcmFzdHJ1Y3R1cmUsIHRlc3RpbmcgYW5kIGNvZGVgIChDYW4gYWxzbyB1c2UgdGhlIHNob3J0IHRlcm1zLCBmdWxsIGtleSBjb21pbmcgc29vbikKMi4gQm90IHdpbGwgbG9vayBmb3IgYC5hbGwtY29udHJpYnV0b3JzcmNgIGlmIG5vdCBmb3VuZCwgY29tbWVudHMgb24gcHIgdG8gcnVuIHNldHVwCjMuIElmIHVzZXIgZXhpc3RzLCBhZGQgbmV3IGNvbnRyaWJ1dGlvbiwgaWYgbm90IGFkZCB1c2VyIGFuZCBhZGQgY29udHJpYnV0aW9uCgoKIyMgQ29udHJpYnV0aW5nCklmIHlvdSBoYXZlIHN1Z2dlc3Rpb25zIGZvciBob3cgdGhlIEFsbENvbnRyaWJ1dG9yc0JvdCBjb3VsZCBiZSBpbXByb3ZlZCwgb3Igd2FudCB0byByZXBvcnQgYSBidWcsIFtvcGVuIGFuIGlzc3VlXShodHRwczovL2dpdGh1Yi5jb20vYWxsLWNvbnRyaWJ1dG9ycy9hbGwtY29udHJpYnV0b3JzLWJvdC9pc3N1ZXMpIQoKRm9yIG1vcmUsIGNoZWNrIG91dCB0aGUgW0NvbnRyaWJ1dGluZyBHdWlkZV0oQ09OVFJJQlVUSU5HLm1kKS4KCiMjIENvbnRyaWJ1dG9ycwoKVGhhbmtzIGdvZXMgdG8gdGhlc2Ugd29uZGVyZnVsIHBlb3BsZSAoW2Vtb2ppIGtleV0oaHR0cHM6Ly9naXRodWIuY29tL2FsbC1jb250cmlidXRvcnMvYWxsLWNvbnRyaWJ1dG9ycyNlbW9qaS1rZXkpKToKCjwhLS0gQUxMLUNPTlRSSUJVVE9SUy1MSVNUOlNUQVJUIC0gRG8gbm90IHJlbW92ZSBvciBtb2RpZnkgdGhpcyBzZWN0aW9uIC0tPgo8IS0tIHByZXR0aWVyLWlnbm9yZS1zdGFydCAtLT4KPCEtLSBtYXJrZG93bmxpbnQtZGlzYWJsZSAtLT4KPHRhYmxlPgogIDx0cj4KICAgIDx0ZCBhbGlnbj0iY2VudGVyIj48YSBocmVmPSJodHRwczovL2pha2Vib2xhbS5jb20iPjxpbWcgc3JjPSJodHRwczovL2F2YXRhcnMyLmdpdGh1YnVzZXJjb250ZW50LmNvbS91LzM1MzQyMzY/dj00P3M9MTAwIiB3aWR0aD0iMTAwcHg7IiBhbHQ9IiIvPjxiciAvPjxzdWI+PGI+SmFrZSBCb2xhbTwvYj48L3N1Yj48L2E+PGJyIC8+PGEgaHJlZj0iaHR0cHM6Ly9naXRodWIuY29tL2FsbC1jb250cmlidXRvcnMvYWxsLWNvbnRyaWJ1dG9ycy1ib3QvY29tbWl0cz9hdXRob3I9amFrZWJvbGFtIiB0aXRsZT0iQ29kZSI+8J+SuzwvYT4gPGEgaHJlZj0iI2lkZWFzLWpha2Vib2xhbSIgdGl0bGU9IklkZWFzLCBQbGFubmluZywgJiBGZWVkYmFjayI+8J+klDwvYT4gPGEgaHJlZj0iI2luZnJhLWpha2Vib2xhbSIgdGl0bGU9IkluZnJhc3RydWN0dXJlIChIb3N0aW5nLCBCdWlsZC1Ub29scywgZXRjKSI+8J+ahzwvYT4gPGEgaHJlZj0iaHR0cHM6Ly9naXRodWIuY29tL2FsbC1jb250cmlidXRvcnMvYWxsLWNvbnRyaWJ1dG9ycy1ib3QvY29tbWl0cz9hdXRob3I9amFrZWJvbGFtIiB0aXRsZT0iVGVzdHMiPuKaoO+4jzwvYT4gPGEgaHJlZj0iaHR0cHM6Ly9naXRodWIuY29tL2FsbC1jb250cmlidXRvcnMvYWxsLWNvbnRyaWJ1dG9ycy1ib3QvY29tbWl0cz9hdXRob3I9amFrZWJvbGFtIiB0aXRsZT0iRG9jdW1lbnRhdGlvbiI+8J+TljwvYT48L3RkPgogIDwvdHI+CjwvdGFibGU+Cgo8IS0tIG1hcmtkb3dubGludC1yZXN0b3JlIC0tPgo8IS0tIHByZXR0aWVyLWlnbm9yZS1lbmQgLS0+Cgo8IS0tIEFMTC1DT05UUklCVVRPUlMtTElTVDpFTkQgLS0+CgpUaGlzIHByb2plY3QgZm9sbG93cyB0aGUgW2FsbC1jb250cmlidXRvcnNdKGh0dHBzOi8vZ2l0aHViLmNvbS9hbGwtY29udHJpYnV0b3JzL2FsbC1jb250cmlidXRvcnMpIHNwZWNpZmljYXRpb24uIENvbnRyaWJ1dGlvbnMgb2YgYW55IGtpbmQgd2VsY29tZQoKIyMgTElDRU5TRQoKW01JVF0oTElDRU5TRSkK",
+  "message": "docs: update README.md",
+  "sha": "bfce087f5fbed22257de1ee5056b20de63da0a13",
+}
+`;
+
+exports[`issue_comment event Happy path, add correct new contributor, but branch exists and PR is open: request body 2`] = `
+Object {
+  "branch": "all-contributors/add-jakebolam",
+  "content": "ewogICJwcm9qZWN0TmFtZSI6ICJhbGwtY29udHJpYnV0b3JzLWJvdCIsCiAgInByb2plY3RPd25lciI6ICJhbGwtY29udHJpYnV0b3JzIiwKICAicmVwb1R5cGUiOiAiZ2l0aHViIiwKICAicmVwb0hvc3QiOiAiaHR0cHM6Ly9naXRodWIuY29tIiwKICAiZmlsZXMiOiBbCiAgICAiUkVBRE1FLm1kIgogIF0sCiAgImltYWdlU2l6ZSI6IDEwMCwKICAiY29tbWl0IjogZmFsc2UsCiAgInNraXBDaSI6IGZhbHNlLAogICJjb250cmlidXRvcnMiOiBbCiAgICB7CiAgICAgICJsb2dpbiI6ICJqYWtlYm9sYW0iLAogICAgICAibmFtZSI6ICJKYWtlIEJvbGFtIiwKICAgICAgImF2YXRhcl91cmwiOiAiaHR0cHM6Ly9hdmF0YXJzMi5naXRodWJ1c2VyY29udGVudC5jb20vdS8zNTM0MjM2P3Y9NCIsCiAgICAgICJwcm9maWxlIjogImh0dHBzOi8vamFrZWJvbGFtLmNvbSIsCiAgICAgICJjb250cmlidXRpb25zIjogWwogICAgICAgICJjb2RlIiwKICAgICAgICAiaWRlYXMiLAogICAgICAgICJpbmZyYSIsCiAgICAgICAgInRlc3QiLAogICAgICAgICJkb2MiCiAgICAgIF0KICAgIH0KICBdLAogICJjb250cmlidXRvcnNQZXJMaW5lIjogNwp9Cg==",
+  "message": "docs: update .all-contributorsrc",
+  "sha": "dff34f715bca51114c0336a49381456a926806d5",
+}
+`;
+
+exports[`issue_comment event Happy path, add correct new contributor, but branch exists and PR is open: request body 3`] = `
+Object {
+  "base": "master",
+  "body": "Adds @jakebolam as a contributor for code, doc, infra.
+
+This was requested by jakebolam [in this comment](https://github.com/all-contributors/all-contributors-bot/pull/1#issuecomment-453012966)",
+  "head": "all-contributors/add-jakebolam",
+  "maintainer_can_modify": true,
+  "title": "docs: add jakebolam as a contributor",
+}
+`;
+
+exports[`issue_comment event Happy path, add correct new contributor, but branch exists and PR is open: request body 4`] = `
+Object {
+  "body": "@jakebolam 
+
+I've updated [the pull request](https://github.com/all-contributors/all-contributors-bot/pull/1) to add @jakebolam! :tada:",
+}
+`;
+
+exports[`issue_comment event Happy path, add correct new contributor, but branch exists: logs 1`] = `
+Array [
+  Object {
+    "account": 46410174,
+    "accountLogin": "all-contributors",
+    "accountType": "organization",
+    "action": "add",
+    "contributions": Array [
+      "code",
+      "doc",
+      "infra",
+    ],
+    "createdBy": 3534236,
+    "createdByLogin": "jakebolam",
+    "createdByType": "user",
+    "createdFor": 3534236,
+    "createdForLogin": "jakebolam",
+    "createdForType": "user",
+    "id": "1",
+    "level": 30,
+    "msg": "jakebolam added for code, doc, infra",
+    "name": "event",
+    "private": false,
+    "pullCreated": true,
+    "repository": 164268911,
+    "success": true,
+    "who": "jakebolam",
+  },
+]
+`;
+
+exports[`issue_comment event Happy path, add correct new contributor, but branch exists: request body 1`] = `
+Object {
+  "branch": "all-contributors/add-jakebolam",
+  "content": "IyBBbGxDb250cmlidXRvcnNCb3QKQSBib3QgZm9yIGF1dG9tYXRpY2FsbHkgYWRkaW5nIGFsbC1jb250cmlidXRvcnMuIPCfpJYKClshW0J1aWxkXShodHRwczovL2ltZy5zaGllbGRzLmlvL2NpcmNsZWNpL3Byb2plY3QvZ2l0aHViL2FsbC1jb250cmlidXRvcnMvYWxsLWNvbnRyaWJ1dG9ycy1ib3QvbWFzdGVyLnN2ZyldKGh0dHBzOi8vY2lyY2xlY2kuY29tL2doL2FsbC1jb250cmlidXRvcnMvYWxsLWNvbnRyaWJ1dG9ycy1ib3QpClshW0NvdmVyYWdlXShodHRwczovL2ltZy5zaGllbGRzLmlvL2NvZGVjb3YvYy9naXRodWIvYWxsLWNvbnRyaWJ1dG9ycy9hbGwtY29udHJpYnV0b3JzLWJvdC5zdmcpXShodHRwczovL2NvZGVjb3YuaW8vZ2l0aHViL2FsbC1jb250cmlidXRvcnMvYWxsLWNvbnRyaWJ1dG9ycy1ib3QpClshW0FsbCBDb250cmlidXRvcnNdKGh0dHBzOi8vaW1nLnNoaWVsZHMuaW8vYmFkZ2UvYWxsX2NvbnRyaWJ1dG9ycy0xLW9yYW5nZS5zdmcpXSgjY29udHJpYnV0b3JzKQpbIVtDaGF0IG9uIFNsYWNrXShodHRwczovL2ltZy5zaGllbGRzLmlvL2JhZGdlL3NsYWNrLWpvaW4tZmY2OWI0LnN2ZyldKGh0dHBzOi8vam9pbi5zbGFjay5jb20vdC9hbGwtY29udHJpYnV0b3JzL3NoYXJlZF9pbnZpdGUvZW5RdE5URTNPRE15TVRBNE5UazBMVFV3WkRNeFpHWmtNbVZpTXpZell6azJZVE0yTmpSa1pHTTVZemMwWlRjNU5tWXpOV1kzWTJRMFpUWTNabUZoWkRneVkyRTNabUl6TldRd01UVXhabUUpCgoKIyMgSW5zdGFsbGF0aW9uCjEuIEluc3RhbGwgQXBwCjIuIFBsZWFzZSBzZXR1cCB5b3VyIGBSRUFETUUubWRgIGFuZCBgLmFsbC1jb250cmlidXRvcnNyY2AgdXNpbmcgdGhlIFthbGwtY29udHJpYnV0b3JzLWNsaSB0b29sXShodHRwczovL2dpdGh1Yi5jb20vYWxsLWNvbnRyaWJ1dG9ycy9hbGwtY29udHJpYnV0b3JzLWNsaSkKPiBJbiB0aGUgZnV0dXJlIHdlIHdhbnQgdG8gcmVtb3ZlIHRoZSBuZWVkIGZvciB0aGUgQ0xJIHRvb2wsIGlmIHlvdSB3YW50IHRvIGhlbHAgb3V0IFtzZWUgdGhlIGlzc3VlXShodHRwczovL2dpdGh1Yi5jb20vYWxsLWNvbnRyaWJ1dG9ycy9hbGwtY29udHJpYnV0b3JzLWJvdC9pc3N1ZXMvMykKCgojIyBVc2FnZQoKIyMjIEFkZGluZyBjb250cmlidXRpb25zCjEuIENvbW1lbnQgb24gSXNzdWUvUFIgZXRjIHdpdGggdGV4dDogYEBBbGxDb250cmlidXRvckJvdCBwbGVhc2UgYWRkIGpha2Vib2xhbSBmb3IgaW5mcmFzdHJ1Y3R1cmUsIHRlc3RpbmcgYW5kIGNvZGVgIChDYW4gYWxzbyB1c2UgdGhlIHNob3J0IHRlcm1zLCBmdWxsIGtleSBjb21pbmcgc29vbikKMi4gQm90IHdpbGwgbG9vayBmb3IgYC5hbGwtY29udHJpYnV0b3JzcmNgIGlmIG5vdCBmb3VuZCwgY29tbWVudHMgb24gcHIgdG8gcnVuIHNldHVwCjMuIElmIHVzZXIgZXhpc3RzLCBhZGQgbmV3IGNvbnRyaWJ1dGlvbiwgaWYgbm90IGFkZCB1c2VyIGFuZCBhZGQgY29udHJpYnV0aW9uCgoKIyMgQ29udHJpYnV0aW5nCklmIHlvdSBoYXZlIHN1Z2dlc3Rpb25zIGZvciBob3cgdGhlIEFsbENvbnRyaWJ1dG9yc0JvdCBjb3VsZCBiZSBpbXByb3ZlZCwgb3Igd2FudCB0byByZXBvcnQgYSBidWcsIFtvcGVuIGFuIGlzc3VlXShodHRwczovL2dpdGh1Yi5jb20vYWxsLWNvbnRyaWJ1dG9ycy9hbGwtY29udHJpYnV0b3JzLWJvdC9pc3N1ZXMpIQoKRm9yIG1vcmUsIGNoZWNrIG91dCB0aGUgW0NvbnRyaWJ1dGluZyBHdWlkZV0oQ09OVFJJQlVUSU5HLm1kKS4KCiMjIENvbnRyaWJ1dG9ycwoKVGhhbmtzIGdvZXMgdG8gdGhlc2Ugd29uZGVyZnVsIHBlb3BsZSAoW2Vtb2ppIGtleV0oaHR0cHM6Ly9naXRodWIuY29tL2FsbC1jb250cmlidXRvcnMvYWxsLWNvbnRyaWJ1dG9ycyNlbW9qaS1rZXkpKToKCjwhLS0gQUxMLUNPTlRSSUJVVE9SUy1MSVNUOlNUQVJUIC0gRG8gbm90IHJlbW92ZSBvciBtb2RpZnkgdGhpcyBzZWN0aW9uIC0tPgo8IS0tIHByZXR0aWVyLWlnbm9yZS1zdGFydCAtLT4KPCEtLSBtYXJrZG93bmxpbnQtZGlzYWJsZSAtLT4KPHRhYmxlPgogIDx0cj4KICAgIDx0ZCBhbGlnbj0iY2VudGVyIj48YSBocmVmPSJodHRwczovL2pha2Vib2xhbS5jb20iPjxpbWcgc3JjPSJodHRwczovL2F2YXRhcnMyLmdpdGh1YnVzZXJjb250ZW50LmNvbS91LzM1MzQyMzY/dj00P3M9MTAwIiB3aWR0aD0iMTAwcHg7IiBhbHQ9IiIvPjxiciAvPjxzdWI+PGI+SmFrZSBCb2xhbTwvYj48L3N1Yj48L2E+PGJyIC8+PGEgaHJlZj0iaHR0cHM6Ly9naXRodWIuY29tL2FsbC1jb250cmlidXRvcnMvYWxsLWNvbnRyaWJ1dG9ycy1ib3QvY29tbWl0cz9hdXRob3I9amFrZWJvbGFtIiB0aXRsZT0iQ29kZSI+8J+SuzwvYT4gPGEgaHJlZj0iI2lkZWFzLWpha2Vib2xhbSIgdGl0bGU9IklkZWFzLCBQbGFubmluZywgJiBGZWVkYmFjayI+8J+klDwvYT4gPGEgaHJlZj0iI2luZnJhLWpha2Vib2xhbSIgdGl0bGU9IkluZnJhc3RydWN0dXJlIChIb3N0aW5nLCBCdWlsZC1Ub29scywgZXRjKSI+8J+ahzwvYT4gPGEgaHJlZj0iaHR0cHM6Ly9naXRodWIuY29tL2FsbC1jb250cmlidXRvcnMvYWxsLWNvbnRyaWJ1dG9ycy1ib3QvY29tbWl0cz9hdXRob3I9amFrZWJvbGFtIiB0aXRsZT0iVGVzdHMiPuKaoO+4jzwvYT4gPGEgaHJlZj0iaHR0cHM6Ly9naXRodWIuY29tL2FsbC1jb250cmlidXRvcnMvYWxsLWNvbnRyaWJ1dG9ycy1ib3QvY29tbWl0cz9hdXRob3I9amFrZWJvbGFtIiB0aXRsZT0iRG9jdW1lbnRhdGlvbiI+8J+TljwvYT48L3RkPgogIDwvdHI+CjwvdGFibGU+Cgo8IS0tIG1hcmtkb3dubGludC1yZXN0b3JlIC0tPgo8IS0tIHByZXR0aWVyLWlnbm9yZS1lbmQgLS0+Cgo8IS0tIEFMTC1DT05UUklCVVRPUlMtTElTVDpFTkQgLS0+CgpUaGlzIHByb2plY3QgZm9sbG93cyB0aGUgW2FsbC1jb250cmlidXRvcnNdKGh0dHBzOi8vZ2l0aHViLmNvbS9hbGwtY29udHJpYnV0b3JzL2FsbC1jb250cmlidXRvcnMpIHNwZWNpZmljYXRpb24uIENvbnRyaWJ1dGlvbnMgb2YgYW55IGtpbmQgd2VsY29tZQoKIyMgTElDRU5TRQoKW01JVF0oTElDRU5TRSkK",
+  "message": "docs: update README.md",
+  "sha": "bfce087f5fbed22257de1ee5056b20de63da0a13",
+}
+`;
+
+exports[`issue_comment event Happy path, add correct new contributor, but branch exists: request body 2`] = `
+Object {
+  "branch": "all-contributors/add-jakebolam",
+  "content": "ewogICJwcm9qZWN0TmFtZSI6ICJhbGwtY29udHJpYnV0b3JzLWJvdCIsCiAgInByb2plY3RPd25lciI6ICJhbGwtY29udHJpYnV0b3JzIiwKICAicmVwb1R5cGUiOiAiZ2l0aHViIiwKICAicmVwb0hvc3QiOiAiaHR0cHM6Ly9naXRodWIuY29tIiwKICAiZmlsZXMiOiBbCiAgICAiUkVBRE1FLm1kIgogIF0sCiAgImltYWdlU2l6ZSI6IDEwMCwKICAiY29tbWl0IjogZmFsc2UsCiAgInNraXBDaSI6IGZhbHNlLAogICJjb250cmlidXRvcnMiOiBbCiAgICB7CiAgICAgICJsb2dpbiI6ICJqYWtlYm9sYW0iLAogICAgICAibmFtZSI6ICJKYWtlIEJvbGFtIiwKICAgICAgImF2YXRhcl91cmwiOiAiaHR0cHM6Ly9hdmF0YXJzMi5naXRodWJ1c2VyY29udGVudC5jb20vdS8zNTM0MjM2P3Y9NCIsCiAgICAgICJwcm9maWxlIjogImh0dHBzOi8vamFrZWJvbGFtLmNvbSIsCiAgICAgICJjb250cmlidXRpb25zIjogWwogICAgICAgICJjb2RlIiwKICAgICAgICAiaWRlYXMiLAogICAgICAgICJpbmZyYSIsCiAgICAgICAgInRlc3QiLAogICAgICAgICJkb2MiCiAgICAgIF0KICAgIH0KICBdLAogICJjb250cmlidXRvcnNQZXJMaW5lIjogNwp9Cg==",
+  "message": "docs: update .all-contributorsrc",
+  "sha": "dff34f715bca51114c0336a49381456a926806d5",
+}
+`;
+
+exports[`issue_comment event Happy path, add correct new contributor, but branch exists: request body 3`] = `
+Object {
+  "base": "master",
+  "body": "Adds @jakebolam as a contributor for code, doc, infra.
+
+This was requested by jakebolam [in this comment](https://github.com/all-contributors/all-contributors-bot/pull/1#issuecomment-453012966)",
+  "head": "all-contributors/add-jakebolam",
+  "maintainer_can_modify": true,
+  "title": "docs: add jakebolam as a contributor",
+}
+`;
+
+exports[`issue_comment event Happy path, add correct new contributor, but branch exists: request body 4`] = `
+Object {
+  "body": "@jakebolam 
+
+I've put up [a pull request](https://github.com/all-contributors/all-contributors-bot/pull/1347) to add @jakebolam! :tada:",
+}
+`;
+
+exports[`issue_comment event Happy path, add correct new contributor, no allcontributors file (repo needs init first): logs 1`] = `
+Array [
+  Object {
+    "account": 46410174,
+    "accountLogin": "all-contributors",
+    "accountType": "organization",
+    "action": "add",
+    "contributions": Array [
+      "code",
+      "doc",
+      "infra",
+    ],
+    "createdBy": 3534236,
+    "createdByLogin": "jakebolam",
+    "createdByType": "user",
+    "createdFor": 3534236,
+    "createdForLogin": "jakebolam",
+    "createdForType": "user",
+    "id": "1",
+    "level": 30,
+    "msg": "jakebolam added for code, doc, infra",
+    "name": "event",
+    "private": false,
+    "pullCreated": true,
+    "repository": 164268911,
+    "success": true,
+    "who": "jakebolam",
+  },
+]
+`;
+
+exports[`issue_comment event Happy path, add correct new contributor, no allcontributors file (repo needs init first): request body 1`] = `
+Object {
+  "ref": "refs/heads/all-contributors/add-jakebolam",
+  "sha": "aa218f56b14c9653891f9e74264a383fa43fefbd",
+}
+`;
+
+exports[`issue_comment event Happy path, add correct new contributor, no allcontributors file (repo needs init first): request body 2`] = `
+Object {
+  "branch": "all-contributors/add-jakebolam",
+  "content": "IyBBbGxDb250cmlidXRvcnNCb3QKPCEtLSBBTEwtQ09OVFJJQlVUT1JTLUJBREdFOlNUQVJUIC0gRG8gbm90IHJlbW92ZSBvciBtb2RpZnkgdGhpcyBzZWN0aW9uIC0tPgpbIVtBbGwgQ29udHJpYnV0b3JzXShodHRwczovL2ltZy5zaGllbGRzLmlvL2JhZGdlL2FsbF9jb250cmlidXRvcnMtMS1vcmFuZ2Uuc3ZnP3N0eWxlPWZsYXQtc3F1YXJlKV0oI2NvbnRyaWJ1dG9ycy0pCjwhLS0gQUxMLUNPTlRSSUJVVE9SUy1CQURHRTpFTkQgLS0+CkEgYm90IGZvciBhdXRvbWF0aWNhbGx5IGFkZGluZyBhbGwtY29udHJpYnV0b3JzLiDwn6SWCgpbIVtCdWlsZF0oaHR0cHM6Ly9pbWcuc2hpZWxkcy5pby9jaXJjbGVjaS9wcm9qZWN0L2dpdGh1Yi9hbGwtY29udHJpYnV0b3JzL2FsbC1jb250cmlidXRvcnMtYm90L21hc3Rlci5zdmcpXShodHRwczovL2NpcmNsZWNpLmNvbS9naC9hbGwtY29udHJpYnV0b3JzL2FsbC1jb250cmlidXRvcnMtYm90KQpbIVtDb3ZlcmFnZV0oaHR0cHM6Ly9pbWcuc2hpZWxkcy5pby9jb2RlY292L2MvZ2l0aHViL2FsbC1jb250cmlidXRvcnMvYWxsLWNvbnRyaWJ1dG9ycy1ib3Quc3ZnKV0oaHR0cHM6Ly9jb2RlY292LmlvL2dpdGh1Yi9hbGwtY29udHJpYnV0b3JzL2FsbC1jb250cmlidXRvcnMtYm90KQpbIVtBbGwgQ29udHJpYnV0b3JzXShodHRwczovL2ltZy5zaGllbGRzLmlvL2JhZGdlL2FsbF9jb250cmlidXRvcnMtMS1vcmFuZ2Uuc3ZnKV0oI2NvbnRyaWJ1dG9ycykKWyFbQ2hhdCBvbiBTbGFja10oaHR0cHM6Ly9pbWcuc2hpZWxkcy5pby9iYWRnZS9zbGFjay1qb2luLWZmNjliNC5zdmcpXShodHRwczovL2pvaW4uc2xhY2suY29tL3QvYWxsLWNvbnRyaWJ1dG9ycy9zaGFyZWRfaW52aXRlL2VuUXROVEUzT0RNeU1UQTROVGswTFRVd1pETXhaR1prTW1WaU16WXpZemsyWVRNMk5qUmtaR001WXpjMFpUYzVObVl6TldZM1kyUTBaVFkzWm1GaFpEZ3lZMkUzWm1Jek5XUXdNVFV4Wm1FKQoKCiMjIEluc3RhbGxhdGlvbgoxLiBJbnN0YWxsIEFwcAoyLiBQbGVhc2Ugc2V0dXAgeW91ciBgUkVBRE1FLm1kYCBhbmQgYC5hbGwtY29udHJpYnV0b3JzcmNgIHVzaW5nIHRoZSBbYWxsLWNvbnRyaWJ1dG9ycy1jbGkgdG9vbF0oaHR0cHM6Ly9naXRodWIuY29tL2FsbC1jb250cmlidXRvcnMvYWxsLWNvbnRyaWJ1dG9ycy1jbGkpCj4gSW4gdGhlIGZ1dHVyZSB3ZSB3YW50IHRvIHJlbW92ZSB0aGUgbmVlZCBmb3IgdGhlIENMSSB0b29sLCBpZiB5b3Ugd2FudCB0byBoZWxwIG91dCBbc2VlIHRoZSBpc3N1ZV0oaHR0cHM6Ly9naXRodWIuY29tL2FsbC1jb250cmlidXRvcnMvYWxsLWNvbnRyaWJ1dG9ycy1ib3QvaXNzdWVzLzMpCgoKIyMgVXNhZ2UKCiMjIyBBZGRpbmcgY29udHJpYnV0aW9ucwoxLiBDb21tZW50IG9uIElzc3VlL1BSIGV0YyB3aXRoIHRleHQ6IGBAQWxsQ29udHJpYnV0b3JCb3QgcGxlYXNlIGFkZCBqYWtlYm9sYW0gZm9yIGluZnJhc3RydWN0dXJlLCB0ZXN0aW5nIGFuZCBjb2RlYCAoQ2FuIGFsc28gdXNlIHRoZSBzaG9ydCB0ZXJtcywgZnVsbCBrZXkgY29taW5nIHNvb24pCjIuIEJvdCB3aWxsIGxvb2sgZm9yIGAuYWxsLWNvbnRyaWJ1dG9yc3JjYCBpZiBub3QgZm91bmQsIGNvbW1lbnRzIG9uIHByIHRvIHJ1biBzZXR1cAozLiBJZiB1c2VyIGV4aXN0cywgYWRkIG5ldyBjb250cmlidXRpb24sIGlmIG5vdCBhZGQgdXNlciBhbmQgYWRkIGNvbnRyaWJ1dGlvbgoKCiMjIENvbnRyaWJ1dGluZwpJZiB5b3UgaGF2ZSBzdWdnZXN0aW9ucyBmb3IgaG93IHRoZSBBbGxDb250cmlidXRvcnNCb3QgY291bGQgYmUgaW1wcm92ZWQsIG9yIHdhbnQgdG8gcmVwb3J0IGEgYnVnLCBbb3BlbiBhbiBpc3N1ZV0oaHR0cHM6Ly9naXRodWIuY29tL2FsbC1jb250cmlidXRvcnMvYWxsLWNvbnRyaWJ1dG9ycy1ib3QvaXNzdWVzKSEKCkZvciBtb3JlLCBjaGVjayBvdXQgdGhlIFtDb250cmlidXRpbmcgR3VpZGVdKENPTlRSSUJVVElORy5tZCkuCgojIyBDb250cmlidXRvcnMKClRoYW5rcyBnb2VzIHRvIHRoZXNlIHdvbmRlcmZ1bCBwZW9wbGUgKFtlbW9qaSBrZXldKGh0dHBzOi8vZ2l0aHViLmNvbS9hbGwtY29udHJpYnV0b3JzL2FsbC1jb250cmlidXRvcnMjZW1vamkta2V5KSk6CjwhLS0gQUxMLUNPTlRSSUJVVE9SUy1MSVNUOlNUQVJUIC0gRG8gbm90IHJlbW92ZSBvciBtb2RpZnkgdGhpcyBzZWN0aW9uIC0tPgo8IS0tIHByZXR0aWVyLWlnbm9yZS1zdGFydCAtLT4KPCEtLSBtYXJrZG93bmxpbnQtZGlzYWJsZSAtLT4KPHRhYmxlPgogIDx0cj4KICAgIDx0ZCBhbGlnbj0iY2VudGVyIj48YSBocmVmPSJodHRwczovL2pha2Vib2xhbS5jb20iPjxpbWcgc3JjPSJodHRwczovL2F2YXRhcnMyLmdpdGh1YnVzZXJjb250ZW50LmNvbS91LzM1MzQyMzY/dj00P3M9MTAwIiB3aWR0aD0iMTAwcHg7IiBhbHQ9IiIvPjxiciAvPjxzdWI+PGI+SmFrZSBCb2xhbTwvYj48L3N1Yj48L2E+PGJyIC8+PGEgaHJlZj0iaHR0cHM6Ly9naXRodWIuY29tL2FsbC1jb250cmlidXRvcnMvYWxsLWNvbnRyaWJ1dG9ycy1ib3QvY29tbWl0cz9hdXRob3I9amFrZWJvbGFtIiB0aXRsZT0iQ29kZSI+8J+SuzwvYT4gPGEgaHJlZj0iaHR0cHM6Ly9naXRodWIuY29tL2FsbC1jb250cmlidXRvcnMvYWxsLWNvbnRyaWJ1dG9ycy1ib3QvY29tbWl0cz9hdXRob3I9amFrZWJvbGFtIiB0aXRsZT0iRG9jdW1lbnRhdGlvbiI+8J+TljwvYT4gPGEgaHJlZj0iI2luZnJhLWpha2Vib2xhbSIgdGl0bGU9IkluZnJhc3RydWN0dXJlIChIb3N0aW5nLCBCdWlsZC1Ub29scywgZXRjKSI+8J+ahzwvYT48L3RkPgogIDwvdHI+CjwvdGFibGU+Cgo8IS0tIG1hcmtkb3dubGludC1yZXN0b3JlIC0tPgo8IS0tIHByZXR0aWVyLWlnbm9yZS1lbmQgLS0+Cgo8IS0tIEFMTC1DT05UUklCVVRPUlMtTElTVDpFTkQgLS0+Cgo8IS0tIEFMTC1DT05UUklCVVRPUlMtTElTVDpTVEFSVCAtIERvIG5vdCByZW1vdmUgb3IgbW9kaWZ5IHRoaXMgc2VjdGlvbiAtLT4KPCEtLSBwcmV0dGllci1pZ25vcmUgLS0+CnwgWzxpbWcgc3JjPSJodHRwczovL2F2YXRhcnMyLmdpdGh1YnVzZXJjb250ZW50LmNvbS91LzM1MzQyMzY/dj00IiB3aWR0aD0iMTAwcHg7Ii8+PGJyIC8+PHN1Yj48Yj5KYWtlIEJvbGFtPC9iPjwvc3ViPl0oaHR0cHM6Ly9qYWtlYm9sYW0uY29tKTxiciAvPlvwn5K7XShodHRwczovL2dpdGh1Yi5jb20vYWxsLWNvbnRyaWJ0dW9ycy9ib3QvY29tbWl0cz9hdXRob3I9amFrZWJvbGFtICJDb2RlIikgW/CfpJRdKCNpZGVhcy1qYWtlYm9sYW0gIklkZWFzLCBQbGFubmluZywgJiBGZWVkYmFjayIpIFvwn5qHXSgjaW5mcmEtamFrZWJvbGFtICJJbmZyYXN0cnVjdHVyZSAoSG9zdGluZywgQnVpbGQtVG9vbHMsIGV0YykiKSBb4pqg77iPXShodHRwczovL2dpdGh1Yi5jb20vYWxsLWNvbnRyaWJ0dW9ycy9ib3QvY29tbWl0cz9hdXRob3I9amFrZWJvbGFtICJUZXN0cyIpIHwKfCA6LS0tOiB8CjwhLS0gQUxMLUNPTlRSSUJVVE9SUy1MSVNUOkVORCAtLT4KClRoaXMgcHJvamVjdCBmb2xsb3dzIHRoZSBbYWxsLWNvbnRyaWJ1dG9yc10oaHR0cHM6Ly9naXRodWIuY29tL2FsbC1jb250cmlidXRvcnMvYWxsLWNvbnRyaWJ1dG9ycykgc3BlY2lmaWNhdGlvbi4gQ29udHJpYnV0aW9ucyBvZiBhbnkga2luZCB3ZWxjb21lCgojIyBMSUNFTlNFCgpbTUlUXShMSUNFTlNFKQo=",
+  "message": "docs: update README.md [skip ci]",
+  "sha": "bfce087f5fbed22257de1ee5056b20de63da0a13",
+}
+`;
+
+exports[`issue_comment event Happy path, add correct new contributor, no allcontributors file (repo needs init first): request body 3`] = `
+Object {
+  "branch": "all-contributors/add-jakebolam",
+  "content": "ewogICJmaWxlcyI6IFsKICAgICJSRUFETUUubWQiCiAgXSwKICAiaW1hZ2VTaXplIjogMTAwLAogICJjb21taXQiOiBmYWxzZSwKICAiY29udHJpYnV0b3JzIjogWwogICAgewogICAgICAibG9naW4iOiAiamFrZWJvbGFtIiwKICAgICAgIm5hbWUiOiAiSmFrZSBCb2xhbSIsCiAgICAgICJhdmF0YXJfdXJsIjogImh0dHBzOi8vYXZhdGFyczIuZ2l0aHVidXNlcmNvbnRlbnQuY29tL3UvMzUzNDIzNj92PTQiLAogICAgICAicHJvZmlsZSI6ICJodHRwczovL2pha2Vib2xhbS5jb20iLAogICAgICAiY29udHJpYnV0aW9ucyI6IFsKICAgICAgICAiY29kZSIsCiAgICAgICAgImRvYyIsCiAgICAgICAgImluZnJhIgogICAgICBdCiAgICB9CiAgXSwKICAiY29udHJpYnV0b3JzUGVyTGluZSI6IDcsCiAgInByb2plY3ROYW1lIjogImFsbC1jb250cmlidXRvcnMtYm90IiwKICAicHJvamVjdE93bmVyIjogImFsbC1jb250cmlidXRvcnMiLAogICJyZXBvVHlwZSI6ICJnaXRodWIiLAogICJyZXBvSG9zdCI6ICJodHRwczovL2dpdGh1Yi5jb20iLAogICJza2lwQ2kiOiB0cnVlCn0K",
+  "message": "docs: create .all-contributorsrc [skip ci]",
+}
+`;
+
+exports[`issue_comment event Happy path, add correct new contributor, no allcontributors file (repo needs init first): request body 4`] = `
+Object {
+  "base": "master",
+  "body": "Adds @jakebolam as a contributor for code, doc, infra.
+
+This was requested by jakebolam [in this comment](https://github.com/all-contributors/all-contributors-bot/pull/1#issuecomment-453012966)",
+  "head": "all-contributors/add-jakebolam",
+  "maintainer_can_modify": true,
+  "title": "docs: add jakebolam as a contributor",
+}
+`;
+
+exports[`issue_comment event Happy path, add correct new contributor, no allcontributors file (repo needs init first): request body 5`] = `
+Object {
+  "body": "@jakebolam 
+
+I've put up [a pull request](https://github.com/all-contributors/all-contributors-bot/pull/1347) to add @jakebolam! :tada:",
+}
+`;
+
+exports[`issue_comment event Happy path, add correct new contributor: logs 1`] = `
+Array [
+  Object {
+    "account": 46410174,
+    "accountLogin": "all-contributors",
+    "accountType": "organization",
+    "action": "add",
+    "contributions": Array [
+      "code",
+      "doc",
+      "infra",
+    ],
+    "createdBy": 3534236,
+    "createdByLogin": "jakebolam",
+    "createdByType": "user",
+    "createdFor": 3534236,
+    "createdForLogin": "jakebolam",
+    "createdForType": "user",
+    "id": "1",
+    "level": 30,
+    "msg": "jakebolam added for code, doc, infra",
+    "name": "event",
+    "private": false,
+    "pullCreated": true,
+    "repository": 164268911,
+    "success": true,
+    "who": "jakebolam",
+  },
+]
+`;
+
+exports[`issue_comment event Happy path, add correct new contributor: request body 1`] = `
+Object {
+  "ref": "refs/heads/all-contributors/add-jakebolam",
+  "sha": "aa218f56b14c9653891f9e74264a383fa43fefbd",
+}
+`;
+
+exports[`issue_comment event Happy path, add correct new contributor: request body 2`] = `
+Object {
+  "branch": "all-contributors/add-jakebolam",
+  "content": "IyBBbGxDb250cmlidXRvcnNCb3QKQSBib3QgZm9yIGF1dG9tYXRpY2FsbHkgYWRkaW5nIGFsbC1jb250cmlidXRvcnMuIPCfpJYKClshW0J1aWxkXShodHRwczovL2ltZy5zaGllbGRzLmlvL2NpcmNsZWNpL3Byb2plY3QvZ2l0aHViL2FsbC1jb250cmlidXRvcnMvYWxsLWNvbnRyaWJ1dG9ycy1ib3QvbWFzdGVyLnN2ZyldKGh0dHBzOi8vY2lyY2xlY2kuY29tL2doL2FsbC1jb250cmlidXRvcnMvYWxsLWNvbnRyaWJ1dG9ycy1ib3QpClshW0NvdmVyYWdlXShodHRwczovL2ltZy5zaGllbGRzLmlvL2NvZGVjb3YvYy9naXRodWIvYWxsLWNvbnRyaWJ1dG9ycy9hbGwtY29udHJpYnV0b3JzLWJvdC5zdmcpXShodHRwczovL2NvZGVjb3YuaW8vZ2l0aHViL2FsbC1jb250cmlidXRvcnMvYWxsLWNvbnRyaWJ1dG9ycy1ib3QpClshW0FsbCBDb250cmlidXRvcnNdKGh0dHBzOi8vaW1nLnNoaWVsZHMuaW8vYmFkZ2UvYWxsX2NvbnRyaWJ1dG9ycy0xLW9yYW5nZS5zdmcpXSgjY29udHJpYnV0b3JzKQpbIVtDaGF0IG9uIFNsYWNrXShodHRwczovL2ltZy5zaGllbGRzLmlvL2JhZGdlL3NsYWNrLWpvaW4tZmY2OWI0LnN2ZyldKGh0dHBzOi8vam9pbi5zbGFjay5jb20vdC9hbGwtY29udHJpYnV0b3JzL3NoYXJlZF9pbnZpdGUvZW5RdE5URTNPRE15TVRBNE5UazBMVFV3WkRNeFpHWmtNbVZpTXpZell6azJZVE0yTmpSa1pHTTVZemMwWlRjNU5tWXpOV1kzWTJRMFpUWTNabUZoWkRneVkyRTNabUl6TldRd01UVXhabUUpCgoKIyMgSW5zdGFsbGF0aW9uCjEuIEluc3RhbGwgQXBwCjIuIFBsZWFzZSBzZXR1cCB5b3VyIGBSRUFETUUubWRgIGFuZCBgLmFsbC1jb250cmlidXRvcnNyY2AgdXNpbmcgdGhlIFthbGwtY29udHJpYnV0b3JzLWNsaSB0b29sXShodHRwczovL2dpdGh1Yi5jb20vYWxsLWNvbnRyaWJ1dG9ycy9hbGwtY29udHJpYnV0b3JzLWNsaSkKPiBJbiB0aGUgZnV0dXJlIHdlIHdhbnQgdG8gcmVtb3ZlIHRoZSBuZWVkIGZvciB0aGUgQ0xJIHRvb2wsIGlmIHlvdSB3YW50IHRvIGhlbHAgb3V0IFtzZWUgdGhlIGlzc3VlXShodHRwczovL2dpdGh1Yi5jb20vYWxsLWNvbnRyaWJ1dG9ycy9hbGwtY29udHJpYnV0b3JzLWJvdC9pc3N1ZXMvMykKCgojIyBVc2FnZQoKIyMjIEFkZGluZyBjb250cmlidXRpb25zCjEuIENvbW1lbnQgb24gSXNzdWUvUFIgZXRjIHdpdGggdGV4dDogYEBBbGxDb250cmlidXRvckJvdCBwbGVhc2UgYWRkIGpha2Vib2xhbSBmb3IgaW5mcmFzdHJ1Y3R1cmUsIHRlc3RpbmcgYW5kIGNvZGVgIChDYW4gYWxzbyB1c2UgdGhlIHNob3J0IHRlcm1zLCBmdWxsIGtleSBjb21pbmcgc29vbikKMi4gQm90IHdpbGwgbG9vayBmb3IgYC5hbGwtY29udHJpYnV0b3JzcmNgIGlmIG5vdCBmb3VuZCwgY29tbWVudHMgb24gcHIgdG8gcnVuIHNldHVwCjMuIElmIHVzZXIgZXhpc3RzLCBhZGQgbmV3IGNvbnRyaWJ1dGlvbiwgaWYgbm90IGFkZCB1c2VyIGFuZCBhZGQgY29udHJpYnV0aW9uCgoKIyMgQ29udHJpYnV0aW5nCklmIHlvdSBoYXZlIHN1Z2dlc3Rpb25zIGZvciBob3cgdGhlIEFsbENvbnRyaWJ1dG9yc0JvdCBjb3VsZCBiZSBpbXByb3ZlZCwgb3Igd2FudCB0byByZXBvcnQgYSBidWcsIFtvcGVuIGFuIGlzc3VlXShodHRwczovL2dpdGh1Yi5jb20vYWxsLWNvbnRyaWJ1dG9ycy9hbGwtY29udHJpYnV0b3JzLWJvdC9pc3N1ZXMpIQoKRm9yIG1vcmUsIGNoZWNrIG91dCB0aGUgW0NvbnRyaWJ1dGluZyBHdWlkZV0oQ09OVFJJQlVUSU5HLm1kKS4KCiMjIENvbnRyaWJ1dG9ycwoKVGhhbmtzIGdvZXMgdG8gdGhlc2Ugd29uZGVyZnVsIHBlb3BsZSAoW2Vtb2ppIGtleV0oaHR0cHM6Ly9naXRodWIuY29tL2FsbC1jb250cmlidXRvcnMvYWxsLWNvbnRyaWJ1dG9ycyNlbW9qaS1rZXkpKToKCjwhLS0gQUxMLUNPTlRSSUJVVE9SUy1MSVNUOlNUQVJUIC0gRG8gbm90IHJlbW92ZSBvciBtb2RpZnkgdGhpcyBzZWN0aW9uIC0tPgo8IS0tIHByZXR0aWVyLWlnbm9yZS1zdGFydCAtLT4KPCEtLSBtYXJrZG93bmxpbnQtZGlzYWJsZSAtLT4KPHRhYmxlPgogIDx0cj4KICAgIDx0ZCBhbGlnbj0iY2VudGVyIj48YSBocmVmPSJodHRwczovL2pha2Vib2xhbS5jb20iPjxpbWcgc3JjPSJodHRwczovL2F2YXRhcnMyLmdpdGh1YnVzZXJjb250ZW50LmNvbS91LzM1MzQyMzY/dj00P3M9MTAwIiB3aWR0aD0iMTAwcHg7IiBhbHQ9IiIvPjxiciAvPjxzdWI+PGI+SmFrZSBCb2xhbTwvYj48L3N1Yj48L2E+PGJyIC8+PGEgaHJlZj0iaHR0cHM6Ly9naXRodWIuY29tL2FsbC1jb250cmlidXRvcnMvYWxsLWNvbnRyaWJ1dG9ycy1ib3QvY29tbWl0cz9hdXRob3I9amFrZWJvbGFtIiB0aXRsZT0iQ29kZSI+8J+SuzwvYT4gPGEgaHJlZj0iI2lkZWFzLWpha2Vib2xhbSIgdGl0bGU9IklkZWFzLCBQbGFubmluZywgJiBGZWVkYmFjayI+8J+klDwvYT4gPGEgaHJlZj0iI2luZnJhLWpha2Vib2xhbSIgdGl0bGU9IkluZnJhc3RydWN0dXJlIChIb3N0aW5nLCBCdWlsZC1Ub29scywgZXRjKSI+8J+ahzwvYT4gPGEgaHJlZj0iaHR0cHM6Ly9naXRodWIuY29tL2FsbC1jb250cmlidXRvcnMvYWxsLWNvbnRyaWJ1dG9ycy1ib3QvY29tbWl0cz9hdXRob3I9amFrZWJvbGFtIiB0aXRsZT0iVGVzdHMiPuKaoO+4jzwvYT4gPGEgaHJlZj0iaHR0cHM6Ly9naXRodWIuY29tL2FsbC1jb250cmlidXRvcnMvYWxsLWNvbnRyaWJ1dG9ycy1ib3QvY29tbWl0cz9hdXRob3I9amFrZWJvbGFtIiB0aXRsZT0iRG9jdW1lbnRhdGlvbiI+8J+TljwvYT48L3RkPgogIDwvdHI+CjwvdGFibGU+Cgo8IS0tIG1hcmtkb3dubGludC1yZXN0b3JlIC0tPgo8IS0tIHByZXR0aWVyLWlnbm9yZS1lbmQgLS0+Cgo8IS0tIEFMTC1DT05UUklCVVRPUlMtTElTVDpFTkQgLS0+CgpUaGlzIHByb2plY3QgZm9sbG93cyB0aGUgW2FsbC1jb250cmlidXRvcnNdKGh0dHBzOi8vZ2l0aHViLmNvbS9hbGwtY29udHJpYnV0b3JzL2FsbC1jb250cmlidXRvcnMpIHNwZWNpZmljYXRpb24uIENvbnRyaWJ1dGlvbnMgb2YgYW55IGtpbmQgd2VsY29tZQoKIyMgTElDRU5TRQoKW01JVF0oTElDRU5TRSkK",
+  "message": "docs: update README.md",
+  "sha": "bfce087f5fbed22257de1ee5056b20de63da0a13",
+}
+`;
+
+exports[`issue_comment event Happy path, add correct new contributor: request body 3`] = `
+Object {
+  "branch": "all-contributors/add-jakebolam",
+  "content": "ewogICJwcm9qZWN0TmFtZSI6ICJhbGwtY29udHJpYnV0b3JzLWJvdCIsCiAgInByb2plY3RPd25lciI6ICJhbGwtY29udHJpYnV0b3JzIiwKICAicmVwb1R5cGUiOiAiZ2l0aHViIiwKICAicmVwb0hvc3QiOiAiaHR0cHM6Ly9naXRodWIuY29tIiwKICAiZmlsZXMiOiBbCiAgICAiUkVBRE1FLm1kIgogIF0sCiAgImltYWdlU2l6ZSI6IDEwMCwKICAiY29tbWl0IjogZmFsc2UsCiAgInNraXBDaSI6IGZhbHNlLAogICJjb250cmlidXRvcnMiOiBbCiAgICB7CiAgICAgICJsb2dpbiI6ICJqYWtlYm9sYW0iLAogICAgICAibmFtZSI6ICJKYWtlIEJvbGFtIiwKICAgICAgImF2YXRhcl91cmwiOiAiaHR0cHM6Ly9hdmF0YXJzMi5naXRodWJ1c2VyY29udGVudC5jb20vdS8zNTM0MjM2P3Y9NCIsCiAgICAgICJwcm9maWxlIjogImh0dHBzOi8vamFrZWJvbGFtLmNvbSIsCiAgICAgICJjb250cmlidXRpb25zIjogWwogICAgICAgICJjb2RlIiwKICAgICAgICAiaWRlYXMiLAogICAgICAgICJpbmZyYSIsCiAgICAgICAgInRlc3QiLAogICAgICAgICJkb2MiCiAgICAgIF0KICAgIH0KICBdLAogICJjb250cmlidXRvcnNQZXJMaW5lIjogNwp9Cg==",
+  "message": "docs: update .all-contributorsrc",
+  "sha": "dff34f715bca51114c0336a49381456a926806d5",
+}
+`;
+
+exports[`issue_comment event Happy path, add correct new contributor: request body 4`] = `
+Object {
+  "base": "master",
+  "body": "Adds @jakebolam as a contributor for code, doc, infra.
+
+This was requested by jakebolam [in this comment](https://github.com/all-contributors/all-contributors-bot/pull/1#issuecomment-453012966)",
+  "head": "all-contributors/add-jakebolam",
+  "maintainer_can_modify": true,
+  "title": "docs: add jakebolam as a contributor",
+}
+`;
+
+exports[`issue_comment event Happy path, add correct new contributor: request body 5`] = `
+Object {
+  "body": "@jakebolam 
+
+I've put up [a pull request](https://github.com/all-contributors/all-contributors-bot/pull/1347) to add @jakebolam! :tada:",
+}
+`;
+
+exports[`issue_comment event Unknown contribution: logs 1`] = `
+Array [
+  Object {
+    "account": 46410174,
+    "accountLogin": "all-contributors",
+    "accountType": "organization",
+    "action": "add",
+    "contributions": Array [],
+    "createdBy": 3534236,
+    "createdByLogin": "jakebolam",
+    "createdByType": "user",
+    "id": "1",
+    "level": 30,
+    "msg": "No contributions",
+    "name": "event",
+    "private": false,
+    "repository": 164268911,
+    "success": false,
+    "who": "jakebolam",
+  },
+]
+`;
+
+exports[`issue_comment event Unknown contribution: request body 1`] = `
+Object {
+  "body": "@jakebolam 
+
+I couldn't determine any contributions to add, did you specify any contributions?
+          Please make sure to use [valid contribution names](https://allcontributors.org/docs/en/emoji-key).",
+}
+`;
+
+exports[`issue_comment event User has no name and blog: logs 1`] = `
+Array [
+  Object {
+    "account": 46410174,
+    "accountLogin": "all-contributors",
+    "accountType": "organization",
+    "action": "add",
+    "contributions": Array [
+      "code",
+      "doc",
+      "infra",
+    ],
+    "createdBy": 3534236,
+    "createdByLogin": "jakebolam",
+    "createdByType": "user",
+    "createdFor": 3534236,
+    "createdForLogin": "jakebolam",
+    "createdForType": "user",
+    "id": "1",
+    "level": 30,
+    "msg": "jakebolam added for code, doc, infra",
+    "name": "event",
+    "private": false,
+    "pullCreated": true,
+    "repository": 164268911,
+    "success": true,
+    "who": "jakebolam",
+  },
+]
+`;
+
+exports[`issue_comment event User has no name and blog: request body 1`] = `
+Object {
+  "ref": "refs/heads/all-contributors/add-jakebolam",
+  "sha": "aa218f56b14c9653891f9e74264a383fa43fefbd",
+}
+`;
+
+exports[`issue_comment event User has no name and blog: request body 2`] = `
+Object {
+  "branch": "all-contributors/add-jakebolam",
+  "content": "IyBBbGxDb250cmlidXRvcnNCb3QKQSBib3QgZm9yIGF1dG9tYXRpY2FsbHkgYWRkaW5nIGFsbC1jb250cmlidXRvcnMuIPCfpJYKClshW0J1aWxkXShodHRwczovL2ltZy5zaGllbGRzLmlvL2NpcmNsZWNpL3Byb2plY3QvZ2l0aHViL2FsbC1jb250cmlidXRvcnMvYWxsLWNvbnRyaWJ1dG9ycy1ib3QvbWFzdGVyLnN2ZyldKGh0dHBzOi8vY2lyY2xlY2kuY29tL2doL2FsbC1jb250cmlidXRvcnMvYWxsLWNvbnRyaWJ1dG9ycy1ib3QpClshW0NvdmVyYWdlXShodHRwczovL2ltZy5zaGllbGRzLmlvL2NvZGVjb3YvYy9naXRodWIvYWxsLWNvbnRyaWJ1dG9ycy9hbGwtY29udHJpYnV0b3JzLWJvdC5zdmcpXShodHRwczovL2NvZGVjb3YuaW8vZ2l0aHViL2FsbC1jb250cmlidXRvcnMvYWxsLWNvbnRyaWJ1dG9ycy1ib3QpClshW0FsbCBDb250cmlidXRvcnNdKGh0dHBzOi8vaW1nLnNoaWVsZHMuaW8vYmFkZ2UvYWxsX2NvbnRyaWJ1dG9ycy0xLW9yYW5nZS5zdmcpXSgjY29udHJpYnV0b3JzKQpbIVtDaGF0IG9uIFNsYWNrXShodHRwczovL2ltZy5zaGllbGRzLmlvL2JhZGdlL3NsYWNrLWpvaW4tZmY2OWI0LnN2ZyldKGh0dHBzOi8vam9pbi5zbGFjay5jb20vdC9hbGwtY29udHJpYnV0b3JzL3NoYXJlZF9pbnZpdGUvZW5RdE5URTNPRE15TVRBNE5UazBMVFV3WkRNeFpHWmtNbVZpTXpZell6azJZVE0yTmpSa1pHTTVZemMwWlRjNU5tWXpOV1kzWTJRMFpUWTNabUZoWkRneVkyRTNabUl6TldRd01UVXhabUUpCgoKIyMgSW5zdGFsbGF0aW9uCjEuIEluc3RhbGwgQXBwCjIuIFBsZWFzZSBzZXR1cCB5b3VyIGBSRUFETUUubWRgIGFuZCBgLmFsbC1jb250cmlidXRvcnNyY2AgdXNpbmcgdGhlIFthbGwtY29udHJpYnV0b3JzLWNsaSB0b29sXShodHRwczovL2dpdGh1Yi5jb20vYWxsLWNvbnRyaWJ1dG9ycy9hbGwtY29udHJpYnV0b3JzLWNsaSkKPiBJbiB0aGUgZnV0dXJlIHdlIHdhbnQgdG8gcmVtb3ZlIHRoZSBuZWVkIGZvciB0aGUgQ0xJIHRvb2wsIGlmIHlvdSB3YW50IHRvIGhlbHAgb3V0IFtzZWUgdGhlIGlzc3VlXShodHRwczovL2dpdGh1Yi5jb20vYWxsLWNvbnRyaWJ1dG9ycy9hbGwtY29udHJpYnV0b3JzLWJvdC9pc3N1ZXMvMykKCgojIyBVc2FnZQoKIyMjIEFkZGluZyBjb250cmlidXRpb25zCjEuIENvbW1lbnQgb24gSXNzdWUvUFIgZXRjIHdpdGggdGV4dDogYEBBbGxDb250cmlidXRvckJvdCBwbGVhc2UgYWRkIGpha2Vib2xhbSBmb3IgaW5mcmFzdHJ1Y3R1cmUsIHRlc3RpbmcgYW5kIGNvZGVgIChDYW4gYWxzbyB1c2UgdGhlIHNob3J0IHRlcm1zLCBmdWxsIGtleSBjb21pbmcgc29vbikKMi4gQm90IHdpbGwgbG9vayBmb3IgYC5hbGwtY29udHJpYnV0b3JzcmNgIGlmIG5vdCBmb3VuZCwgY29tbWVudHMgb24gcHIgdG8gcnVuIHNldHVwCjMuIElmIHVzZXIgZXhpc3RzLCBhZGQgbmV3IGNvbnRyaWJ1dGlvbiwgaWYgbm90IGFkZCB1c2VyIGFuZCBhZGQgY29udHJpYnV0aW9uCgoKIyMgQ29udHJpYnV0aW5nCklmIHlvdSBoYXZlIHN1Z2dlc3Rpb25zIGZvciBob3cgdGhlIEFsbENvbnRyaWJ1dG9yc0JvdCBjb3VsZCBiZSBpbXByb3ZlZCwgb3Igd2FudCB0byByZXBvcnQgYSBidWcsIFtvcGVuIGFuIGlzc3VlXShodHRwczovL2dpdGh1Yi5jb20vYWxsLWNvbnRyaWJ1dG9ycy9hbGwtY29udHJpYnV0b3JzLWJvdC9pc3N1ZXMpIQoKRm9yIG1vcmUsIGNoZWNrIG91dCB0aGUgW0NvbnRyaWJ1dGluZyBHdWlkZV0oQ09OVFJJQlVUSU5HLm1kKS4KCiMjIENvbnRyaWJ1dG9ycwoKVGhhbmtzIGdvZXMgdG8gdGhlc2Ugd29uZGVyZnVsIHBlb3BsZSAoW2Vtb2ppIGtleV0oaHR0cHM6Ly9naXRodWIuY29tL2FsbC1jb250cmlidXRvcnMvYWxsLWNvbnRyaWJ1dG9ycyNlbW9qaS1rZXkpKToKCjwhLS0gQUxMLUNPTlRSSUJVVE9SUy1MSVNUOlNUQVJUIC0gRG8gbm90IHJlbW92ZSBvciBtb2RpZnkgdGhpcyBzZWN0aW9uIC0tPgo8IS0tIHByZXR0aWVyLWlnbm9yZS1zdGFydCAtLT4KPCEtLSBtYXJrZG93bmxpbnQtZGlzYWJsZSAtLT4KPHRhYmxlPgogIDx0cj4KICAgIDx0ZCBhbGlnbj0iY2VudGVyIj48YSBocmVmPSJodHRwczovL2pha2Vib2xhbS5jb20iPjxpbWcgc3JjPSJodHRwczovL2F2YXRhcnMyLmdpdGh1YnVzZXJjb250ZW50LmNvbS91LzM1MzQyMzY/dj00P3M9MTAwIiB3aWR0aD0iMTAwcHg7IiBhbHQ9IiIvPjxiciAvPjxzdWI+PGI+SmFrZSBCb2xhbTwvYj48L3N1Yj48L2E+PGJyIC8+PGEgaHJlZj0iaHR0cHM6Ly9naXRodWIuY29tL2FsbC1jb250cmlidXRvcnMvYWxsLWNvbnRyaWJ1dG9ycy1ib3QvY29tbWl0cz9hdXRob3I9amFrZWJvbGFtIiB0aXRsZT0iQ29kZSI+8J+SuzwvYT4gPGEgaHJlZj0iI2lkZWFzLWpha2Vib2xhbSIgdGl0bGU9IklkZWFzLCBQbGFubmluZywgJiBGZWVkYmFjayI+8J+klDwvYT4gPGEgaHJlZj0iI2luZnJhLWpha2Vib2xhbSIgdGl0bGU9IkluZnJhc3RydWN0dXJlIChIb3N0aW5nLCBCdWlsZC1Ub29scywgZXRjKSI+8J+ahzwvYT4gPGEgaHJlZj0iaHR0cHM6Ly9naXRodWIuY29tL2FsbC1jb250cmlidXRvcnMvYWxsLWNvbnRyaWJ1dG9ycy1ib3QvY29tbWl0cz9hdXRob3I9amFrZWJvbGFtIiB0aXRsZT0iVGVzdHMiPuKaoO+4jzwvYT4gPGEgaHJlZj0iaHR0cHM6Ly9naXRodWIuY29tL2FsbC1jb250cmlidXRvcnMvYWxsLWNvbnRyaWJ1dG9ycy1ib3QvY29tbWl0cz9hdXRob3I9amFrZWJvbGFtIiB0aXRsZT0iRG9jdW1lbnRhdGlvbiI+8J+TljwvYT48L3RkPgogIDwvdHI+CjwvdGFibGU+Cgo8IS0tIG1hcmtkb3dubGludC1yZXN0b3JlIC0tPgo8IS0tIHByZXR0aWVyLWlnbm9yZS1lbmQgLS0+Cgo8IS0tIEFMTC1DT05UUklCVVRPUlMtTElTVDpFTkQgLS0+CgpUaGlzIHByb2plY3QgZm9sbG93cyB0aGUgW2FsbC1jb250cmlidXRvcnNdKGh0dHBzOi8vZ2l0aHViLmNvbS9hbGwtY29udHJpYnV0b3JzL2FsbC1jb250cmlidXRvcnMpIHNwZWNpZmljYXRpb24uIENvbnRyaWJ1dGlvbnMgb2YgYW55IGtpbmQgd2VsY29tZQoKIyMgTElDRU5TRQoKW01JVF0oTElDRU5TRSkK",
+  "message": "docs: update README.md",
+  "sha": "bfce087f5fbed22257de1ee5056b20de63da0a13",
+}
+`;
+
+exports[`issue_comment event User has no name and blog: request body 3`] = `
+Object {
+  "branch": "all-contributors/add-jakebolam",
+  "content": "ewogICJwcm9qZWN0TmFtZSI6ICJhbGwtY29udHJpYnV0b3JzLWJvdCIsCiAgInByb2plY3RPd25lciI6ICJhbGwtY29udHJpYnV0b3JzIiwKICAicmVwb1R5cGUiOiAiZ2l0aHViIiwKICAicmVwb0hvc3QiOiAiaHR0cHM6Ly9naXRodWIuY29tIiwKICAiZmlsZXMiOiBbCiAgICAiUkVBRE1FLm1kIgogIF0sCiAgImltYWdlU2l6ZSI6IDEwMCwKICAiY29tbWl0IjogZmFsc2UsCiAgInNraXBDaSI6IGZhbHNlLAogICJjb250cmlidXRvcnMiOiBbCiAgICB7CiAgICAgICJsb2dpbiI6ICJqYWtlYm9sYW0iLAogICAgICAibmFtZSI6ICJKYWtlIEJvbGFtIiwKICAgICAgImF2YXRhcl91cmwiOiAiaHR0cHM6Ly9hdmF0YXJzMi5naXRodWJ1c2VyY29udGVudC5jb20vdS8zNTM0MjM2P3Y9NCIsCiAgICAgICJwcm9maWxlIjogImh0dHBzOi8vamFrZWJvbGFtLmNvbSIsCiAgICAgICJjb250cmlidXRpb25zIjogWwogICAgICAgICJjb2RlIiwKICAgICAgICAiaWRlYXMiLAogICAgICAgICJpbmZyYSIsCiAgICAgICAgInRlc3QiLAogICAgICAgICJkb2MiCiAgICAgIF0KICAgIH0KICBdLAogICJjb250cmlidXRvcnNQZXJMaW5lIjogNwp9Cg==",
+  "message": "docs: update .all-contributorsrc",
+  "sha": "dff34f715bca51114c0336a49381456a926806d5",
+}
+`;
+
+exports[`issue_comment event User has no name and blog: request body 4`] = `
+Object {
+  "base": "master",
+  "body": "Adds @jakebolam as a contributor for code, doc, infra.
+
+This was requested by jakebolam [in this comment](https://github.com/all-contributors/all-contributors-bot/pull/1#issuecomment-453012966)",
+  "head": "all-contributors/add-jakebolam",
+  "maintainer_can_modify": true,
+  "title": "docs: add jakebolam as a contributor",
+}
+`;
+
+exports[`issue_comment event User has no name and blog: request body 5`] = `
+Object {
+  "body": "@jakebolam 
+
+I've put up [a pull request](https://github.com/all-contributors/all-contributors-bot/pull/1347) to add @jakebolam! :tada:",
+}
+`;
+
+exports[`issue_comment event invalid .all-contributorsrc: logs 1`] = `
+Array [
+  Object {
+    "error": "AllContributorBotError",
+    "id": "1",
+    "isKnownError": true,
+    "level": 30,
+    "msg": "This project's configuration file has malformed JSON: .all-contributorsrc. Error:: Unexpected token o in JSON at position 1",
+    "name": "event",
+  },
+]
+`;
+
+exports[`issue_comment event invalid .all-contributorsrc: request body 1`] = `
+Object {
+  "body": "@jakebolam 
+
+This project's configuration file has malformed JSON: .all-contributorsrc. Error:: Unexpected token o in JSON at position 1",
+}
+`;
+
+exports[`issue_comment event skipCi=false: logs 1`] = `
+Array [
+  Object {
+    "account": 46410174,
+    "accountLogin": "all-contributors",
+    "accountType": "organization",
+    "action": "add",
+    "contributions": Array [
+      "code",
+      "doc",
+      "infra",
+    ],
+    "createdBy": 3534236,
+    "createdByLogin": "jakebolam",
+    "createdByType": "user",
+    "createdFor": 3534236,
+    "createdForLogin": "jakebolam",
+    "createdForType": "user",
+    "id": "1",
+    "level": 30,
+    "msg": "jakebolam added for code, doc, infra",
+    "name": "event",
+    "private": false,
+    "pullCreated": true,
+    "repository": 164268911,
+    "success": true,
+    "who": "jakebolam",
+  },
+]
+`;
+
+exports[`issue_comment event skipCi=false: request body 1`] = `
+Object {
+  "ref": "refs/heads/all-contributors/add-jakebolam",
+  "sha": "aa218f56b14c9653891f9e74264a383fa43fefbd",
+}
+`;
+
+exports[`issue_comment event skipCi=false: request body 2`] = `
+Object {
+  "branch": "all-contributors/add-jakebolam",
+  "content": "IyBBbGxDb250cmlidXRvcnNCb3QKQSBib3QgZm9yIGF1dG9tYXRpY2FsbHkgYWRkaW5nIGFsbC1jb250cmlidXRvcnMuIPCfpJYKClshW0J1aWxkXShodHRwczovL2ltZy5zaGllbGRzLmlvL2NpcmNsZWNpL3Byb2plY3QvZ2l0aHViL2FsbC1jb250cmlidXRvcnMvYWxsLWNvbnRyaWJ1dG9ycy1ib3QvbWFzdGVyLnN2ZyldKGh0dHBzOi8vY2lyY2xlY2kuY29tL2doL2FsbC1jb250cmlidXRvcnMvYWxsLWNvbnRyaWJ1dG9ycy1ib3QpClshW0NvdmVyYWdlXShodHRwczovL2ltZy5zaGllbGRzLmlvL2NvZGVjb3YvYy9naXRodWIvYWxsLWNvbnRyaWJ1dG9ycy9hbGwtY29udHJpYnV0b3JzLWJvdC5zdmcpXShodHRwczovL2NvZGVjb3YuaW8vZ2l0aHViL2FsbC1jb250cmlidXRvcnMvYWxsLWNvbnRyaWJ1dG9ycy1ib3QpClshW0FsbCBDb250cmlidXRvcnNdKGh0dHBzOi8vaW1nLnNoaWVsZHMuaW8vYmFkZ2UvYWxsX2NvbnRyaWJ1dG9ycy0xLW9yYW5nZS5zdmcpXSgjY29udHJpYnV0b3JzKQpbIVtDaGF0IG9uIFNsYWNrXShodHRwczovL2ltZy5zaGllbGRzLmlvL2JhZGdlL3NsYWNrLWpvaW4tZmY2OWI0LnN2ZyldKGh0dHBzOi8vam9pbi5zbGFjay5jb20vdC9hbGwtY29udHJpYnV0b3JzL3NoYXJlZF9pbnZpdGUvZW5RdE5URTNPRE15TVRBNE5UazBMVFV3WkRNeFpHWmtNbVZpTXpZell6azJZVE0yTmpSa1pHTTVZemMwWlRjNU5tWXpOV1kzWTJRMFpUWTNabUZoWkRneVkyRTNabUl6TldRd01UVXhabUUpCgoKIyMgSW5zdGFsbGF0aW9uCjEuIEluc3RhbGwgQXBwCjIuIFBsZWFzZSBzZXR1cCB5b3VyIGBSRUFETUUubWRgIGFuZCBgLmFsbC1jb250cmlidXRvcnNyY2AgdXNpbmcgdGhlIFthbGwtY29udHJpYnV0b3JzLWNsaSB0b29sXShodHRwczovL2dpdGh1Yi5jb20vYWxsLWNvbnRyaWJ1dG9ycy9hbGwtY29udHJpYnV0b3JzLWNsaSkKPiBJbiB0aGUgZnV0dXJlIHdlIHdhbnQgdG8gcmVtb3ZlIHRoZSBuZWVkIGZvciB0aGUgQ0xJIHRvb2wsIGlmIHlvdSB3YW50IHRvIGhlbHAgb3V0IFtzZWUgdGhlIGlzc3VlXShodHRwczovL2dpdGh1Yi5jb20vYWxsLWNvbnRyaWJ1dG9ycy9hbGwtY29udHJpYnV0b3JzLWJvdC9pc3N1ZXMvMykKCgojIyBVc2FnZQoKIyMjIEFkZGluZyBjb250cmlidXRpb25zCjEuIENvbW1lbnQgb24gSXNzdWUvUFIgZXRjIHdpdGggdGV4dDogYEBBbGxDb250cmlidXRvckJvdCBwbGVhc2UgYWRkIGpha2Vib2xhbSBmb3IgaW5mcmFzdHJ1Y3R1cmUsIHRlc3RpbmcgYW5kIGNvZGVgIChDYW4gYWxzbyB1c2UgdGhlIHNob3J0IHRlcm1zLCBmdWxsIGtleSBjb21pbmcgc29vbikKMi4gQm90IHdpbGwgbG9vayBmb3IgYC5hbGwtY29udHJpYnV0b3JzcmNgIGlmIG5vdCBmb3VuZCwgY29tbWVudHMgb24gcHIgdG8gcnVuIHNldHVwCjMuIElmIHVzZXIgZXhpc3RzLCBhZGQgbmV3IGNvbnRyaWJ1dGlvbiwgaWYgbm90IGFkZCB1c2VyIGFuZCBhZGQgY29udHJpYnV0aW9uCgoKIyMgQ29udHJpYnV0aW5nCklmIHlvdSBoYXZlIHN1Z2dlc3Rpb25zIGZvciBob3cgdGhlIEFsbENvbnRyaWJ1dG9yc0JvdCBjb3VsZCBiZSBpbXByb3ZlZCwgb3Igd2FudCB0byByZXBvcnQgYSBidWcsIFtvcGVuIGFuIGlzc3VlXShodHRwczovL2dpdGh1Yi5jb20vYWxsLWNvbnRyaWJ1dG9ycy9hbGwtY29udHJpYnV0b3JzLWJvdC9pc3N1ZXMpIQoKRm9yIG1vcmUsIGNoZWNrIG91dCB0aGUgW0NvbnRyaWJ1dGluZyBHdWlkZV0oQ09OVFJJQlVUSU5HLm1kKS4KCiMjIENvbnRyaWJ1dG9ycwoKVGhhbmtzIGdvZXMgdG8gdGhlc2Ugd29uZGVyZnVsIHBlb3BsZSAoW2Vtb2ppIGtleV0oaHR0cHM6Ly9naXRodWIuY29tL2FsbC1jb250cmlidXRvcnMvYWxsLWNvbnRyaWJ1dG9ycyNlbW9qaS1rZXkpKToKCjwhLS0gQUxMLUNPTlRSSUJVVE9SUy1MSVNUOlNUQVJUIC0gRG8gbm90IHJlbW92ZSBvciBtb2RpZnkgdGhpcyBzZWN0aW9uIC0tPgo8IS0tIHByZXR0aWVyLWlnbm9yZS1zdGFydCAtLT4KPCEtLSBtYXJrZG93bmxpbnQtZGlzYWJsZSAtLT4KPHRhYmxlPgogIDx0cj4KICAgIDx0ZCBhbGlnbj0iY2VudGVyIj48YSBocmVmPSJodHRwczovL2pha2Vib2xhbS5jb20iPjxpbWcgc3JjPSJodHRwczovL2F2YXRhcnMyLmdpdGh1YnVzZXJjb250ZW50LmNvbS91LzM1MzQyMzY/dj00P3M9MTAwIiB3aWR0aD0iMTAwcHg7IiBhbHQ9IiIvPjxiciAvPjxzdWI+PGI+SmFrZSBCb2xhbTwvYj48L3N1Yj48L2E+PGJyIC8+PGEgaHJlZj0iaHR0cHM6Ly9naXRodWIuY29tL2FsbC1jb250cmlidXRvcnMvYWxsLWNvbnRyaWJ1dG9ycy1ib3QvY29tbWl0cz9hdXRob3I9amFrZWJvbGFtIiB0aXRsZT0iQ29kZSI+8J+SuzwvYT4gPGEgaHJlZj0iI2lkZWFzLWpha2Vib2xhbSIgdGl0bGU9IklkZWFzLCBQbGFubmluZywgJiBGZWVkYmFjayI+8J+klDwvYT4gPGEgaHJlZj0iI2luZnJhLWpha2Vib2xhbSIgdGl0bGU9IkluZnJhc3RydWN0dXJlIChIb3N0aW5nLCBCdWlsZC1Ub29scywgZXRjKSI+8J+ahzwvYT4gPGEgaHJlZj0iaHR0cHM6Ly9naXRodWIuY29tL2FsbC1jb250cmlidXRvcnMvYWxsLWNvbnRyaWJ1dG9ycy1ib3QvY29tbWl0cz9hdXRob3I9amFrZWJvbGFtIiB0aXRsZT0iVGVzdHMiPuKaoO+4jzwvYT4gPGEgaHJlZj0iaHR0cHM6Ly9naXRodWIuY29tL2FsbC1jb250cmlidXRvcnMvYWxsLWNvbnRyaWJ1dG9ycy1ib3QvY29tbWl0cz9hdXRob3I9amFrZWJvbGFtIiB0aXRsZT0iRG9jdW1lbnRhdGlvbiI+8J+TljwvYT48L3RkPgogIDwvdHI+CjwvdGFibGU+Cgo8IS0tIG1hcmtkb3dubGludC1yZXN0b3JlIC0tPgo8IS0tIHByZXR0aWVyLWlnbm9yZS1lbmQgLS0+Cgo8IS0tIEFMTC1DT05UUklCVVRPUlMtTElTVDpFTkQgLS0+CgpUaGlzIHByb2plY3QgZm9sbG93cyB0aGUgW2FsbC1jb250cmlidXRvcnNdKGh0dHBzOi8vZ2l0aHViLmNvbS9hbGwtY29udHJpYnV0b3JzL2FsbC1jb250cmlidXRvcnMpIHNwZWNpZmljYXRpb24uIENvbnRyaWJ1dGlvbnMgb2YgYW55IGtpbmQgd2VsY29tZQoKIyMgTElDRU5TRQoKW01JVF0oTElDRU5TRSkK",
+  "message": "docs: update README.md [skip ci]",
+  "sha": "bfce087f5fbed22257de1ee5056b20de63da0a13",
+}
+`;
+
+exports[`issue_comment event skipCi=false: request body 3`] = `
+Object {
+  "branch": "all-contributors/add-jakebolam",
+  "content": "ewogICJwcm9qZWN0TmFtZSI6ICJhbGwtY29udHJpYnV0b3JzLWJvdCIsCiAgInByb2plY3RPd25lciI6ICJhbGwtY29udHJpYnV0b3JzIiwKICAicmVwb1R5cGUiOiAiZ2l0aHViIiwKICAicmVwb0hvc3QiOiAiaHR0cHM6Ly9naXRodWIuY29tIiwKICAiZmlsZXMiOiBbCiAgICAiUkVBRE1FLm1kIgogIF0sCiAgImltYWdlU2l6ZSI6IDEwMCwKICAiY29tbWl0IjogZmFsc2UsCiAgImNvbnRyaWJ1dG9ycyI6IFsKICAgIHsKICAgICAgImxvZ2luIjogImpha2Vib2xhbSIsCiAgICAgICJuYW1lIjogIkpha2UgQm9sYW0iLAogICAgICAiYXZhdGFyX3VybCI6ICJodHRwczovL2F2YXRhcnMyLmdpdGh1YnVzZXJjb250ZW50LmNvbS91LzM1MzQyMzY/dj00IiwKICAgICAgInByb2ZpbGUiOiAiaHR0cHM6Ly9qYWtlYm9sYW0uY29tIiwKICAgICAgImNvbnRyaWJ1dGlvbnMiOiBbCiAgICAgICAgImNvZGUiLAogICAgICAgICJpZGVhcyIsCiAgICAgICAgImluZnJhIiwKICAgICAgICAidGVzdCIsCiAgICAgICAgImRvYyIKICAgICAgXQogICAgfQogIF0sCiAgInNraXBDaSI6IHRydWUsCiAgImNvbnRyaWJ1dG9yc1BlckxpbmUiOiA3Cn0K",
+  "message": "docs: update .all-contributorsrc [skip ci]",
+  "sha": "dff34f715bca51114c0336a49381456a926806d5",
+}
+`;
+
+exports[`issue_comment event skipCi=false: request body 4`] = `
+Object {
+  "base": "master",
+  "body": "Adds @jakebolam as a contributor for code, doc, infra.
+
+This was requested by jakebolam [in this comment](https://github.com/all-contributors/all-contributors-bot/pull/1#issuecomment-453012966)",
+  "head": "all-contributors/add-jakebolam",
+  "maintainer_can_modify": true,
+  "title": "docs: add jakebolam as a contributor",
+}
+`;
+
+exports[`issue_comment event skipCi=false: request body 5`] = `
+Object {
+  "body": "@jakebolam 
+
+I've put up [a pull request](https://github.com/all-contributors/all-contributors-bot/pull/1347) to add @jakebolam! :tada:",
+}
+`;
