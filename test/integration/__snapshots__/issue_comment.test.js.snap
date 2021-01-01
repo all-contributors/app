@@ -258,22 +258,11 @@ Array [
       "headers": Object {
         "accept": "application/vnd.github.v3+json",
         "authorization": "token [REDACTED]",
-        "user-agent": "probot/11.0.1 octokit-core.js/3.2.4 Node.js/14.15.1 (darwin; x64)",
       },
       "method": "GET",
       "request": Object {},
       "url": "https://api.github.com/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc?ref=master",
     },
-    "stack": "HttpError
-    at /Users/gregor/Projects/all-contributors/app/node_modules/@octokit/core/node_modules/@octokit/request/dist-src/fetch-wrapper.js:49:31
-    at processTicksAndRejections (internal/process/task_queues.js:93:5)
-    at Repository.getFile (/Users/gregor/Projects/all-contributors/app/lib/modules/repository.js:43:20)
-    at Config.fetch (/Users/gregor/Projects/all-contributors/app/lib/modules/config.js:37:9)
-    at getConfig (/Users/gregor/Projects/all-contributors/app/lib/get-config.js:10:5)
-    at processIssueComment (/Users/gregor/Projects/all-contributors/app/lib/process-issue-comment.js:57:18)
-    at /Users/gregor/Projects/all-contributors/app/app.js:18:7
-    at async Promise.all (index 0)
-    at Object.<anonymous> (/Users/gregor/Projects/all-contributors/app/test/integration/issue_comment.test.js:321:7)",
     "status": 500,
     "type": "Error",
   },

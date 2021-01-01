@@ -331,6 +331,11 @@ describe("issue_comment event", () => {
     // TODO: there is some race condition here. The assertion below fails,
     //       but only when all tests are run. It passes when this test is run in isolation
     // expect(mock.activeMocks()).toStrictEqual([]);
+
+    // Normalize output before comparing
+    delete output[0].stack;
+    delete output[0].request.headers["user-agent"];
+
     expect(output).toMatchSnapshot("logs");
   });
 
