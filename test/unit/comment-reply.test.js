@@ -15,7 +15,7 @@ describe("CommentReply", () => {
         issues: { createComment() {} },
       },
       log: {
-        info() {},
+        debug() {},
       },
     };
     const commentReply = new CommentReply(contextMock);

@@ -1,5 +1,8 @@
+const Stream = require("stream");
+
 const { Probot, ProbotOctokit } = require("probot");
 const nock = require("nock");
+const pino = require("pino");
 
 const app = require("../../app");
 
@@ -21,7 +24,16 @@ const gitCreateRefdata = require("../fixtures/git.createRef.json");
 const reposUpdateFiledata = require("../fixtures/repos.updateFile.json");
 const pullsCreatedata = require("../fixtures/pulls.create.json");
 
+let output = [];
+const streamLogsToOutput = new Stream.Writable({ objectMode: true });
+streamLogsToOutput._write = (object, encoding, done) => {
+  const { pid, time, hostname, ...data } = JSON.parse(object);
+  output.push(data);
+  done();
+};
+
 const Octokit = ProbotOctokit.defaults({
+  log: pino(streamLogsToOutput),
   // Disable throttling & retrying requests for easier testing
   retry: { enabled: false },
   throttle: { enabled: false },
@@ -33,10 +45,11 @@ describe("issue_comment event", () => {
   let probot;
 
   beforeEach(async () => {
+    output = [];
     probot = new Probot({
       githubToken: "test",
       Octokit,
-      logLevel: "fatal",
+      log: pino(streamLogsToOutput),
     });
 
     await probot.load(app);
@@ -68,7 +81,7 @@ describe("issue_comment event", () => {
       .reply(200, gitGetRefdata)
 
       .post(`/repos/all-contributors/all-contributors-bot/git/refs`, (body) => {
-        expect(body).toMatchSnapshot();
+        expect(body).toMatchSnapshot("request body");
         return true;
       })
       .reply(201, gitCreateRefdata)
@@ -76,7 +89,7 @@ describe("issue_comment event", () => {
       .put(
         `/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc`,
         (body) => {
-          expect(body).toMatchSnapshot();
+          expect(body).toMatchSnapshot("request body");
           return true;
         }
       )
@@ -85,14 +98,14 @@ describe("issue_comment event", () => {
       .put(
         `/repos/all-contributors/all-contributors-bot/contents/README.md`,
         (body) => {
-          expect(body).toMatchSnapshot();
+          expect(body).toMatchSnapshot("request body");
           return true;
         }
       )
       .reply(200, reposUpdateFiledata)
 
       .post(`/repos/all-contributors/all-contributors-bot/pulls`, (body) => {
-        expect(body).toMatchSnapshot();
+        expect(body).toMatchSnapshot("request body");
         return true;
       })
       .reply(201, pullsCreatedata)
@@ -100,7 +113,7 @@ describe("issue_comment event", () => {
       .post(
         "/repos/all-contributors/all-contributors-bot/issues/1/comments",
         (body) => {
-          expect(body).toMatchSnapshot();
+          expect(body).toMatchSnapshot("request body");
           return true;
         }
       )
@@ -108,10 +121,12 @@ describe("issue_comment event", () => {
 
     await probot.receive({
       name: "issue_comment",
+      id: "1",
       payload: issueCommentCreatedPayload,
     });
 
     expect(mock.activeMocks()).toStrictEqual([]);
+    expect(output).toMatchSnapshot("logs");
   });
 
   test("Happy path, add correct new contributor, no allcontributors file (repo needs init first)", async () => {
@@ -140,7 +155,7 @@ describe("issue_comment event", () => {
       .reply(200, gitGetRefdata)
 
       .post(`/repos/all-contributors/all-contributors-bot/git/refs`, (body) => {
-        expect(body).toMatchSnapshot();
+        expect(body).toMatchSnapshot("request body");
         return true;
       })
       .reply(201, gitCreateRefdata)
@@ -148,7 +163,7 @@ describe("issue_comment event", () => {
       .put(
         `/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc`,
         (body) => {
-          expect(body).toMatchSnapshot();
+          expect(body).toMatchSnapshot("request body");
           return true;
         }
       )
@@ -157,23 +172,14 @@ describe("issue_comment event", () => {
       .put(
         `/repos/all-contributors/all-contributors-bot/contents/README.md`,
         (body) => {
-          expect(body).toMatchSnapshot();
-          return true;
-        }
-      )
-      .reply(200, reposUpdateFiledata)
-
-      .put(
-        `/repos/all-contributors/all-contributors-bot/contents//nested-folder/SOME-DOC.md`,
-        (body) => {
-          expect(body).toMatchSnapshot();
+          expect(body).toMatchSnapshot("request body");
           return true;
         }
       )
       .reply(200, reposUpdateFiledata)
 
       .post(`/repos/all-contributors/all-contributors-bot/pulls`, (body) => {
-        expect(body).toMatchSnapshot();
+        expect(body).toMatchSnapshot("request body");
         return true;
       })
       .reply(201, pullsCreatedata)
@@ -181,7 +187,7 @@ describe("issue_comment event", () => {
       .post(
         "/repos/all-contributors/all-contributors-bot/issues/1/comments",
         (body) => {
-          expect(body).toMatchSnapshot();
+          expect(body).toMatchSnapshot("request body");
           return true;
         }
       )
@@ -189,8 +195,12 @@ describe("issue_comment event", () => {
 
     await probot.receive({
       name: "issue_comment",
+      id: "1",
       payload: issueCommentCreatedPayload,
     });
+
+    expect(mock.activeMocks()).toStrictEqual([]);
+    expect(output).toMatchSnapshot("logs");
   });
 
   test("Fail path, no readme file (configuration error)", async () => {
@@ -216,7 +226,7 @@ describe("issue_comment event", () => {
       .post(
         "/repos/all-contributors/all-contributors-bot/issues/1/comments",
         (body) => {
-          expect(body).toMatchSnapshot();
+          expect(body).toMatchSnapshot("request body");
           return true;
         }
       )
@@ -224,10 +234,12 @@ describe("issue_comment event", () => {
 
     await probot.receive({
       name: "issue_comment",
+      id: "1",
       payload: issueCommentCreatedPayload,
     });
 
     expect(mock.activeMocks()).toStrictEqual([]);
+    expect(output).toMatchSnapshot("logs");
   });
 
   test("Fail path, no such user", async () => {
@@ -247,7 +259,7 @@ describe("issue_comment event", () => {
       .post(
         "/repos/all-contributors/all-contributors-bot/issues/1/comments",
         (body) => {
-          expect(body).toMatchSnapshot();
+          expect(body).toMatchSnapshot("request body");
           return true;
         }
       )
@@ -255,10 +267,12 @@ describe("issue_comment event", () => {
 
     await probot.receive({
       name: "issue_comment",
+      id: "1",
       payload: issueCommentCreatedPayload,
     });
 
     expect(mock.activeMocks()).toStrictEqual([]);
+    expect(output).toMatchSnapshot("logs");
   });
 
   test("Fail path, Unknown user intention", async () => {
@@ -266,7 +280,7 @@ describe("issue_comment event", () => {
       .post(
         "/repos/all-contributors/all-contributors-bot/issues/1/comments",
         (body) => {
-          expect(body).toMatchSnapshot();
+          expect(body).toMatchSnapshot("request body");
           return true;
         }
       )
@@ -274,10 +288,12 @@ describe("issue_comment event", () => {
 
     await probot.receive({
       name: "issue_comment",
+      id: "1",
       payload: issueCommentCreatedPayloadUnknownIntention,
     });
 
     expect(mock.activeMocks()).toStrictEqual([]);
+    expect(output).toMatchSnapshot("logs");
   });
 
   test("Fail path, Unknown error (e.g. Network is dead, service down etc, our code is bad) crashes and sends error message", async () => {
@@ -295,7 +311,7 @@ describe("issue_comment event", () => {
       .post(
         "/repos/all-contributors/all-contributors-bot/issues/1/comments",
         (body) => {
-          expect(body).toMatchSnapshot();
+          expect(body).toMatchSnapshot("request body");
           return true;
         }
       )
@@ -304,6 +320,7 @@ describe("issue_comment event", () => {
     try {
       await probot.receive({
         name: "issue_comment",
+        id: "1",
         payload: issueCommentCreatedPayload,
       });
       throw new Error("should not resolve");
@@ -314,6 +331,7 @@ describe("issue_comment event", () => {
     // TODO: there is some race condition here. The assertion below fails,
     //       but only when all tests are run. It passes when this test is run in isolation
     // expect(mock.activeMocks()).toStrictEqual([]);
+    expect(output).toMatchSnapshot("logs");
   });
 
   test("Happy path, add correct new contributor, but branch exists", async () => {
@@ -339,7 +357,7 @@ describe("issue_comment event", () => {
       .put(
         `/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc`,
         (body) => {
-          expect(body).toMatchSnapshot();
+          expect(body).toMatchSnapshot("request body");
           return true;
         }
       )
@@ -348,14 +366,14 @@ describe("issue_comment event", () => {
       .put(
         `/repos/all-contributors/all-contributors-bot/contents/README.md`,
         (body) => {
-          expect(body).toMatchSnapshot();
+          expect(body).toMatchSnapshot("request body");
           return true;
         }
       )
       .reply(200, reposUpdateFiledata)
 
       .post(`/repos/all-contributors/all-contributors-bot/pulls`, (body) => {
-        expect(body).toMatchSnapshot();
+        expect(body).toMatchSnapshot("request body");
         return true;
       })
       .reply(201, pullsCreatedata)
@@ -363,7 +381,7 @@ describe("issue_comment event", () => {
       .post(
         "/repos/all-contributors/all-contributors-bot/issues/1/comments",
         (body) => {
-          expect(body).toMatchSnapshot();
+          expect(body).toMatchSnapshot("request body");
           return true;
         }
       )
@@ -371,10 +389,12 @@ describe("issue_comment event", () => {
 
     await probot.receive({
       name: "issue_comment",
+      id: "1",
       payload: issueCommentCreatedPayload,
     });
 
     expect(mock.activeMocks()).toStrictEqual([]);
+    expect(output).toMatchSnapshot("logs");
   });
 
   test("Happy path, add correct new contributor, but branch exists and PR is open", async () => {
@@ -412,7 +432,7 @@ describe("issue_comment event", () => {
       .put(
         `/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc`,
         (body) => {
-          expect(body).toMatchSnapshot();
+          expect(body).toMatchSnapshot("request body");
           return true;
         }
       )
@@ -421,14 +441,14 @@ describe("issue_comment event", () => {
       .put(
         `/repos/all-contributors/all-contributors-bot/contents/README.md`,
         (body) => {
-          expect(body).toMatchSnapshot();
+          expect(body).toMatchSnapshot("request body");
           return true;
         }
       )
       .reply(200, reposUpdateFiledata)
 
       .post(`/repos/all-contributors/all-contributors-bot/pulls`, (body) => {
-        expect(body).toMatchSnapshot();
+        expect(body).toMatchSnapshot("request body");
         return true;
       })
       .reply(422)
@@ -436,7 +456,7 @@ describe("issue_comment event", () => {
       .post(
         "/repos/all-contributors/all-contributors-bot/issues/1/comments",
         (body) => {
-          expect(body).toMatchSnapshot();
+          expect(body).toMatchSnapshot("request body");
           return true;
         }
       )
@@ -444,10 +464,12 @@ describe("issue_comment event", () => {
 
     await probot.receive({
       name: "issue_comment",
+      id: "1",
       payload: issueCommentCreatedPayload,
     });
 
     expect(mock.activeMocks()).toStrictEqual([]);
+    expect(output).toMatchSnapshot("logs");
   });
 
   test(".all-contributorsrc has 16 files", async () => {
@@ -468,7 +490,7 @@ describe("issue_comment event", () => {
       .post(
         "/repos/all-contributors/all-contributors-bot/issues/1/comments",
         (body) => {
-          expect(body).toMatchSnapshot();
+          expect(body).toMatchSnapshot("request body");
           return true;
         }
       )
@@ -476,10 +498,12 @@ describe("issue_comment event", () => {
 
     await probot.receive({
       name: "issue_comment",
+      id: "1",
       payload: issueCommentCreatedPayload,
     });
 
     expect(mock.activeMocks()).toStrictEqual([]);
+    expect(output).toMatchSnapshot("logs");
   });
 
   test("invalid .all-contributorsrc", async () => {
@@ -497,7 +521,7 @@ describe("issue_comment event", () => {
       .post(
         "/repos/all-contributors/all-contributors-bot/issues/1/comments",
         (body) => {
-          expect(body).toMatchSnapshot();
+          expect(body).toMatchSnapshot("request body");
           return true;
         }
       )
@@ -505,10 +529,12 @@ describe("issue_comment event", () => {
 
     await probot.receive({
       name: "issue_comment",
+      id: "1",
       payload: issueCommentCreatedPayload,
     });
 
     expect(mock.activeMocks()).toStrictEqual([]);
+    expect(output).toMatchSnapshot("logs");
   });
 
   test("User has no name and blog", async () => {
@@ -537,7 +563,7 @@ describe("issue_comment event", () => {
       .reply(200, gitGetRefdata)
 
       .post(`/repos/all-contributors/all-contributors-bot/git/refs`, (body) => {
-        expect(body).toMatchSnapshot();
+        expect(body).toMatchSnapshot("request body");
         return true;
       })
       .reply(201, gitCreateRefdata)
@@ -545,7 +571,7 @@ describe("issue_comment event", () => {
       .put(
         `/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc`,
         (body) => {
-          expect(body).toMatchSnapshot();
+          expect(body).toMatchSnapshot("request body");
           return true;
         }
       )
@@ -554,14 +580,14 @@ describe("issue_comment event", () => {
       .put(
         `/repos/all-contributors/all-contributors-bot/contents/README.md`,
         (body) => {
-          expect(body).toMatchSnapshot();
+          expect(body).toMatchSnapshot("request body");
           return true;
         }
       )
       .reply(200, reposUpdateFiledata)
 
       .post(`/repos/all-contributors/all-contributors-bot/pulls`, (body) => {
-        expect(body).toMatchSnapshot();
+        expect(body).toMatchSnapshot("request body");
         return true;
       })
       .reply(201, pullsCreatedata)
@@ -569,7 +595,7 @@ describe("issue_comment event", () => {
       .post(
         "/repos/all-contributors/all-contributors-bot/issues/1/comments",
         (body) => {
-          expect(body).toMatchSnapshot();
+          expect(body).toMatchSnapshot("request body");
           return true;
         }
       )
@@ -577,10 +603,12 @@ describe("issue_comment event", () => {
 
     await probot.receive({
       name: "issue_comment",
+      id: "1",
       payload: issueCommentCreatedPayload,
     });
 
     expect(mock.activeMocks()).toStrictEqual([]);
+    expect(output).toMatchSnapshot("logs");
   });
 
   test("skipCi=false", async () => {
@@ -609,7 +637,7 @@ describe("issue_comment event", () => {
       .reply(200, gitGetRefdata)
 
       .post(`/repos/all-contributors/all-contributors-bot/git/refs`, (body) => {
-        expect(body).toMatchSnapshot();
+        expect(body).toMatchSnapshot("request body");
         return true;
       })
       .reply(201, gitCreateRefdata)
@@ -617,7 +645,7 @@ describe("issue_comment event", () => {
       .put(
         `/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc`,
         (body) => {
-          expect(body).toMatchSnapshot();
+          expect(body).toMatchSnapshot("request body");
           return true;
         }
       )
@@ -626,14 +654,14 @@ describe("issue_comment event", () => {
       .put(
         `/repos/all-contributors/all-contributors-bot/contents/README.md`,
         (body) => {
-          expect(body).toMatchSnapshot();
+          expect(body).toMatchSnapshot("request body");
           return true;
         }
       )
       .reply(200, reposUpdateFiledata)
 
       .post(`/repos/all-contributors/all-contributors-bot/pulls`, (body) => {
-        expect(body).toMatchSnapshot();
+        expect(body).toMatchSnapshot("request body");
         return true;
       })
       .reply(201, pullsCreatedata)
@@ -641,7 +669,7 @@ describe("issue_comment event", () => {
       .post(
         "/repos/all-contributors/all-contributors-bot/issues/1/comments",
         (body) => {
-          expect(body).toMatchSnapshot();
+          expect(body).toMatchSnapshot("request body");
           return true;
         }
       )
@@ -649,10 +677,12 @@ describe("issue_comment event", () => {
 
     await probot.receive({
       name: "issue_comment",
+      id: "1",
       payload: issueCommentCreatedPayload,
     });
 
     expect(mock.activeMocks()).toStrictEqual([]);
+    expect(output).toMatchSnapshot("logs");
   });
 
   test("Unknown contribution", async () => {
@@ -660,7 +690,7 @@ describe("issue_comment event", () => {
       .post(
         "/repos/all-contributors/all-contributors-bot/issues/1/comments",
         (body) => {
-          expect(body).toMatchSnapshot();
+          expect(body).toMatchSnapshot("request body");
           return true;
         }
       )
@@ -668,15 +698,18 @@ describe("issue_comment event", () => {
 
     await probot.receive({
       name: "issue_comment",
+      id: "1",
       payload: issueCommentCreatedPayloadUnknownContribution,
     });
 
     expect(mock.activeMocks()).toStrictEqual([]);
+    expect(output).toMatchSnapshot("logs");
   });
 
   test("Comment is by app itself", async () => {
     await probot.receive({
       name: "issue_comment",
+      id: "1",
       payload: issueCommentCreatedByAppPayload,
     });
   });
@@ -684,6 +717,7 @@ describe("issue_comment event", () => {
   test("Comment is not for app", async () => {
     await probot.receive({
       name: "issue_comment",
+      id: "1",
       payload: issueCommentCreatedNotForAppPayload,
     });
   });

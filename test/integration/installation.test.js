@@ -41,36 +41,40 @@ describe("installation event", () => {
   test("installation.created", async () => {
     await probot.receive({
       name: "installation",
+      id: "1",
       payload: installationCreated,
     });
 
-    expect(output).toMatchSnapshot();
+    expect(output).toMatchSnapshot("logs");
   });
 
   test("installation.deleted", async () => {
     await probot.receive({
       name: "installation",
+      id: "1",
       payload: installationDeleted,
     });
 
-    expect(output).toMatchSnapshot();
+    expect(output).toMatchSnapshot("logs");
   });
 
   test("installation_repositories.added", async () => {
     await probot.receive({
       name: "installation_repositories",
+      id: "1",
       payload: installationRepositoriesAdded,
     });
 
-    expect(output).toMatchSnapshot();
+    expect(output).toMatchSnapshot("logs");
   });
 
   test("installation.suspend", async () => {
     await probot.receive({
       name: "installation",
+      id: "1",
       payload: installationSuspend,
     });
 
-    expect(output).toMatchSnapshot();
+    expect(output).toMatchSnapshot("logs");
   });
 });

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`installation event installation.created 1`] = `
+exports[`installation event installation.created: logs 1`] = `
 Array [
   Object {
     "account": 2001,
@@ -8,6 +8,7 @@ Array [
     "accountType": "user",
     "action": "created",
     "event": "installation",
+    "id": "1",
     "installation": 1,
     "level": 30,
     "msg": "octocat: installation created",
@@ -18,7 +19,7 @@ Array [
 ]
 `;
 
-exports[`installation event installation.deleted 1`] = `
+exports[`installation event installation.deleted: logs 1`] = `
 Array [
   Object {
     "account": 2001,
@@ -26,6 +27,7 @@ Array [
     "accountType": "user",
     "action": "deleted",
     "event": "installation",
+    "id": "1",
     "installation": 1,
     "level": 30,
     "msg": "octocat: installation deleted",
@@ -36,7 +38,7 @@ Array [
 ]
 `;
 
-exports[`installation event installation.suspend 1`] = `
+exports[`installation event installation.suspend: logs 1`] = `
 Array [
   Object {
     "account": 2001,
@@ -44,6 +46,7 @@ Array [
     "accountType": "user",
     "action": "suspend",
     "event": "installation",
+    "id": "1",
     "installation": 1,
     "level": 30,
     "msg": "octocat: installation suspend",
@@ -54,7 +57,7 @@ Array [
 ]
 `;
 
-exports[`installation event installation_repositories.added 1`] = `
+exports[`installation event installation_repositories.added: logs 1`] = `
 Array [
   Object {
     "account": 2001,
@@ -62,6 +65,7 @@ Array [
     "accountType": "user",
     "action": "added",
     "event": "installation_repositories",
+    "id": "1",
     "installation": 1,
     "level": 30,
     "msg": "octocat: installation_repositories added",
