@@ -1,0 +1,23 @@
+{
+  "action": "deleted",
+  "installation": {
+    "id": 1,
+    "account": {
+      "login": "octocat",
+      "id": 2001,
+      "type": "User"
+    },
+    "repository_selection": "all"
+  },
+  "repositories": [
+    {
+      "id": 3001
+    },
+    {
+      "id": 3002
+    },
+    {
+      "id": 3003
+    }
+  ]
+}

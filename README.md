@@ -30,6 +30,7 @@
 🤖 A GitHub bot to automate acknowledging contributors to your open source projects.
 
 ## Motivation
+
 Implementing the [All Contributors spec](https://github.com/all-contributors/all-contributors) by hand is a laborious process.
 
 Enter the `@all-contributors bot`! The bot will automatically pull a user's profile, grab the contribution type emoji, update the project README and then open a Pull Request against the project :sparkles:
@@ -39,9 +40,11 @@ Enter the `@all-contributors bot`! The bot will automatically pull a user's prof
 </a>
 
 ## Using the @all-contributors bot 🤖
+
 If you're looking to use the bot, head over to the [bot docs on allcontributors.org](https://allcontributors.org/docs/en/bot/overview). The all-contributors website contains all the information required to install, configure and use the bot.
 
 ## Contributing
+
 If you have suggestions for how the @all-contributors bot could be improved, or want to report a bug, [open an issue](https://github.com/all-contributors/all-contributors-bot/issues)!
 
 For more, check out the [Contributing Guide](CONTRIBUTING.md).
@@ -72,10 +75,15 @@ Thanks goes to these wonderful people ([emoji key](https://github.com/all-contri
     <td align="center"><a href="https://github.com/js-kyle"><img src="https://avatars3.githubusercontent.com/u/23022619?v=4" width="100px;" alt=""/><br /><sub><b>Kyle Martin</b></sub></a><br /><a href="https://github.com/all-contributors/all-contributors-bot/commits?author=js-kyle" title="Tests">⚠️</a></td>
     <td align="center"><a href="https://www.weareaccess.co.uk/"><img src="https://avatars0.githubusercontent.com/u/4610533?v=4" width="100px;" alt=""/><br /><sub><b>Sang Lostrie</b></sub></a><br /><a href="#maintenance-baikho" title="Maintenance">🚧</a></td>
   </tr>
+  <tr>
+    <td align="center"><a href="https://www.linkedin.com/in/mloning/"><img src="https://avatars3.githubusercontent.com/u/21020482?v=4" width="100px;" alt=""/><br /><sub><b>Markus Löning</b></sub></a><br /><a href="https://github.com/all-contributors/all-contributors-bot/commits?author=mloning" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/LaChapeliere"><img src="https://avatars2.githubusercontent.com/u/7062546?v=4" width="100px;" alt=""/><br /><sub><b>LaChapeliere</b></sub></a><br /><a href="https://github.com/all-contributors/all-contributors-bot/commits?author=LaChapeliere" title="Code">💻</a></td>
+  </tr>
 </table>
 
 <!-- markdownlint-enable -->
 <!-- prettier-ignore-end -->
+
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome

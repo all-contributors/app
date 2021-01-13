@@ -1,0 +1,77 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`installation event installation.created: logs 1`] = `
+Array [
+  Object {
+    "account": 2001,
+    "accountLogin": "octocat",
+    "accountType": "user",
+    "action": "created",
+    "event": "installation",
+    "id": "1",
+    "installation": 1,
+    "level": 30,
+    "msg": "octocat: installation created",
+    "name": "event",
+    "repositoriesChange": 3,
+    "selection": "all",
+  },
+]
+`;
+
+exports[`installation event installation.deleted: logs 1`] = `
+Array [
+  Object {
+    "account": 2001,
+    "accountLogin": "octocat",
+    "accountType": "user",
+    "action": "deleted",
+    "event": "installation",
+    "id": "1",
+    "installation": 1,
+    "level": 30,
+    "msg": "octocat: installation deleted",
+    "name": "event",
+    "repositoriesChange": -3,
+    "selection": "all",
+  },
+]
+`;
+
+exports[`installation event installation.suspend: logs 1`] = `
+Array [
+  Object {
+    "account": 2001,
+    "accountLogin": "octocat",
+    "accountType": "user",
+    "action": "suspend",
+    "event": "installation",
+    "id": "1",
+    "installation": 1,
+    "level": 30,
+    "msg": "octocat: installation suspend",
+    "name": "event",
+    "repositoriesChange": 0,
+    "selection": "all",
+  },
+]
+`;
+
+exports[`installation event installation_repositories.added: logs 1`] = `
+Array [
+  Object {
+    "account": 2001,
+    "accountLogin": "octocat",
+    "accountType": "user",
+    "action": "added",
+    "event": "installation_repositories",
+    "id": "1",
+    "installation": 1,
+    "level": 30,
+    "msg": "octocat: installation_repositories added",
+    "name": "event",
+    "repositoriesChange": 1,
+    "selection": "all",
+  },
+]
+`;
