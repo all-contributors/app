@@ -48,7 +48,7 @@ PRIVATE_KEY=
 
 ## 4. Setup a test github repository/with issues PR
 
-- Setup a repostiory under your name (the name on github where the bot is installed)
+- Setup a repository under your name (the name on github where the bot is installed)
 - Enable issues and pull requests
 - Create an issue
 - Comment on the issue: `@all-contributors please add @jakebolam for design` (replace @jakebolam with your username)
