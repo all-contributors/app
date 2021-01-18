@@ -35,7 +35,7 @@ describe("parseComment", () => {
     });
   });
 
-  test("Basic intent to add - captialized username", () => {
+  test("Basic intent to add - capitalized username", () => {
     expect(
       parseComment(`@all-contributors please add Rbot25_RULES for tool`)
     ).toEqual({
