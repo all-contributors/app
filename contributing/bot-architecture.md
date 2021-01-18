@@ -2,7 +2,7 @@
 
 Structure:
 
-- `/src/tasks/processIsssueComment` is the root for incoming comments with the following sub components:
+- `/src/tasks/processIssueComment` is the root for incoming comments with the following sub components:
 - `CommentReply`, deals with responding to a comment
 - `ContentFiles`, or readmes files that will be re-generated and updated with the table
 - `OptionsConfig`, the configuration for the bot, and the list of contributions
