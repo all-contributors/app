@@ -8,6 +8,7 @@ const app = require("../../app");
 
 // fixtures
 const issueCommentCreatedPayload = require("../fixtures/issue_comment.created.json");
+const issueCommentCreatedExistContributorPayload = require("../fixtures/issue_comment.created.exist-contributor.json");
 const issueCommentCreatedByAppPayload = require("../fixtures/issue_comment.created-by-app.json");
 const issueCommentCreatedNotForAppPayload = require("../fixtures/issue_comment.created-not-for-app.json");
 const issueCommentCreatedPayloadUnknownIntention = require("../fixtures/issue_commented.created.unknown-intention.json");
@@ -471,6 +472,40 @@ describe("issue_comment event", () => {
       name: "issue_comment",
       id: "1",
       payload: issueCommentCreatedPayload,
+    });
+
+    expect(mock.activeMocks()).toStrictEqual([]);
+    expect(output).toMatchSnapshot("logs");
+  });
+
+  test("Fail path, add existing contributor with already exist contribution type", async () => {
+    const mock = nock("https://api.github.com")
+        .get(
+            `/repos/all-contributors/all-contributors-bot/git/ref/heads%2Fall-contributors%2Fadd-jakebolam`
+        )
+        .reply(404)
+
+        .get(
+            "/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc?ref=master"
+        )
+        .reply(200, reposGetContentsAllContributorsRCdata)
+
+        .get("/users/jakebolam")
+        .reply(200, usersGetByUsernameJakeBolamdata)
+
+        .post(
+            "/repos/all-contributors/all-contributors-bot/issues/1/comments",
+            (body) => {
+              expect(body).toMatchSnapshot("request body");
+              return true;
+            }
+        )
+        .reply(200);
+
+    await probot.receive({
+      name: "issue_comment",
+      id: "1",
+      payload: issueCommentCreatedExistContributorPayload,
     });
 
     expect(mock.activeMocks()).toStrictEqual([]);

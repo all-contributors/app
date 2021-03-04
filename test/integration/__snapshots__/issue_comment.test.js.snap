@@ -310,6 +310,39 @@ For other usages see the [documentation](https://allcontributors.org/docs/en/bot
 }
 `;
 
+exports[`issue_comment event Fail path, add existing contributor with already exist contribution type: logs 1`] = `
+Array [
+  Object {
+    "account": 46410174,
+    "accountLogin": "all-contributors",
+    "accountType": "organization",
+    "action": "add",
+    "contributions": Array [
+      "code",
+    ],
+    "createdBy": 3534236,
+    "createdByLogin": "jakebolam",
+    "createdByType": "user",
+    "id": "1",
+    "level": 30,
+    "msg": "jakebolam already have code",
+    "name": "event",
+    "private": false,
+    "repository": 164268911,
+    "success": true,
+    "who": "jakebolam",
+  },
+]
+`;
+
+exports[`issue_comment event Fail path, add existing contributor with already exist contribution type: request body 1`] = `
+Object {
+  "body": "@jakebolam 
+
+@jakebolam already contributed before to code",
+}
+`;
+
 exports[`issue_comment event Fail path, no readme file (configuration error): logs 1`] = `
 Array [
   Object {
@@ -367,12 +400,9 @@ Array [
     "createdBy": 3534236,
     "createdByLogin": "jakebolam",
     "createdByType": "user",
-    "createdFor": 3534236,
-    "createdForLogin": "jakebolam",
-    "createdForType": "user",
     "id": "1",
     "level": 30,
-    "msg": "jakebolam added for code, doc, infra",
+    "msg": "jakebolam already have code, doc, infra",
     "name": "event",
     "private": false,
     "pullCreated": false,
