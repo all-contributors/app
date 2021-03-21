@@ -169,6 +169,16 @@
         "code",
         "bug"
       ]
+    },
+    {
+      "login": "yakkomajuri",
+      "name": "Yakko Majuri",
+      "avatar_url": "https://avatars.githubusercontent.com/u/38760734?v=4",
+      "profile": "http://yakko.tech",
+      "contributions": [
+        "test",
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
