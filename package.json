@@ -29,6 +29,7 @@
     "nock": "^13.0.5",
     "prettier": "^2.2.1",
     "semantic-release": "^17.3.0",
+    "smee-client": "^1.2.2",
     "vercel": "^21.0.1"
   },
   "jest": {
