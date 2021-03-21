@@ -79,3 +79,9 @@ curl -vX POST http://localhost:3000/ -d @test-webhook-payload.json \
 ```
 
 If there are no errors in the bot console, check your github test issue to see the bot respond :tada:
+
+# Using [smee.io](https://smee.io/)
+
+Alternatively, instead of having to mock the webhook payload using `curl`, you can add an additional environment variable called `WEBHOOK_PROXY_URL` and set it to a [smee.io](https://smee.io) channel URL.
+
+Once you've done that, set the Webhook URL for you app in GitHub to the same channel URL and, after a server restart, your bot will be able to directly respond to incoming webhooks. 
