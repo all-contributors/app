@@ -29,7 +29,7 @@
 
 🤖 A GitHub bot to automate acknowledging contributors to your open source projects.
 
-[![Powered by Vercel](public/powered-by-vercel.svg)](https://vercel.com?utm_source=squash-commit-app&utm_campaign=oss)
+[![Powered by Vercel](public/powered-by-vercel.svg)](https://vercel.com?utm_source=all-contributors&utm_campaign=oss)
 
 ## Motivation
 
