@@ -13,6 +13,18 @@ describe("parseComment", () => {
     });
   });
 
+  test("Basic intent to add with github profile url", () => {
+    expect(
+      parseComment(
+        `@all-contributors please add https://github.com/jakeBolam for doc`
+      )
+    ).toEqual({
+      action: "add",
+      who: "jakeBolam",
+      contributions: ["doc"],
+    });
+  });
+
   test("Basic intent to add - ignore case (for action and contributions, NOT for user)", () => {
     expect(
       parseComment(
