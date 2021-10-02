@@ -31,7 +31,7 @@
 
 [![Powered by Vercel](public/powered-by-vercel.svg)](https://vercel.com?utm_source=all-contributors&utm_campaign=oss)
 
-## Motivation
+## Motivation:
 
 Implementing the [All Contributors spec](https://github.com/all-contributors/all-contributors) by hand is a laborious process.
 
@@ -45,13 +45,13 @@ Enter the `@all-contributors bot`! The bot will automatically pull a user's prof
 
 If you're looking to use the bot, head over to the [bot docs on allcontributors.org](https://allcontributors.org/docs/en/bot/overview). The all-contributors website contains all the information required to install, configure and use the bot.
 
-## Contributing
+## Contributing:
 
 If you have suggestions for how the @all-contributors bot could be improved, or want to report a bug, [open an issue](https://github.com/all-contributors/all-contributors-bot/issues)!
 
 For more, check out the [Contributing Guide](CONTRIBUTING.md).
 
-## Contributors
+## Contributors:
 
 Thanks goes to these wonderful people ([emoji key](https://github.com/all-contributors/all-contributors#emoji-key)):
 
@@ -93,6 +93,6 @@ Thanks goes to these wonderful people ([emoji key](https://github.com/all-contri
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome
 
-## LICENSE
+## LICENSE:
 
 [MIT](LICENSE)
