@@ -29,7 +29,7 @@
     "pino": "^6.11.2",
     "prettier": "^2.4.1",
     "smee-client": "^1.2.2",
-    "vercel": "^21.3.3"
+    "vercel": "^23.1.2"
   },
   "jest": {
     "testEnvironment": "node"
