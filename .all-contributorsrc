@@ -188,6 +188,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "aaltat",
+      "name": "Tatu Aalto",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2665023?v=4",
+      "profile": "https://github.com/aaltat",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
