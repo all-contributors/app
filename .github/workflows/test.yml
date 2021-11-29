@@ -1,21 +1,20 @@
 name: Test
-
-on:
+"on":
   push:
     branches:
       - master
-
   pull_request:
     types:
       - opened
       - synchronize
-
 jobs:
   test:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
+        with:
+          cache: npm
+          node-version: 16
       - run: npm ci
       - run: npm test
