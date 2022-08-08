@@ -84,6 +84,7 @@ Thanks goes to these wonderful people ([emoji key](https://github.com/all-contri
     <td align="center"><a href="http://yakko.tech"><img src="https://avatars.githubusercontent.com/u/38760734?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Yakko Majuri</b></sub></a><br /><a href="https://github.com/all-contributors/app/commits?author=yakkomajuri" title="Tests">⚠️</a> <a href="https://github.com/all-contributors/app/commits?author=yakkomajuri" title="Documentation">📖</a></td>
     <td align="center"><a href="https://ouuan.github.io/about"><img src="https://avatars.githubusercontent.com/u/30581822?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Yufan You</b></sub></a><br /><a href="https://github.com/all-contributors/app/commits?author=ouuan" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/aaltat"><img src="https://avatars.githubusercontent.com/u/2665023?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Tatu Aalto</b></sub></a><br /><a href="https://github.com/all-contributors/app/issues?q=author%3Aaaltat" title="Bug reports">🐛</a></td>
+    <td align="center"><a href="https://github.com/MrKrishnaAgarwal"><img src="https://avatars.githubusercontent.com/u/100597998?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Krishna Agarwal</b></sub></a><br /><a href="https://github.com/all-contributors/app/issues?q=author%3AMrKrishnaAgarwal" title="Bug reports">🐛</a></td>
   </tr>
 </table>
 
