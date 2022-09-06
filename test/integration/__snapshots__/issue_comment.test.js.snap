@@ -1,23 +1,23 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`issue_comment event .all-contributorsrc has 16 files: logs 1`] = `
+exports[`issue_comment event .all-contributorsrc has 26 files: logs 1`] = `
 Array [
   Object {
     "error": "AllContributorBotError",
     "id": "1",
     "isKnownError": true,
     "level": 30,
-    "msg": "Your .all-contributorsrc cannot contain more than 15 files.",
+    "msg": "Your .all-contributorsrc cannot contain more than 25 files.",
     "name": "event",
   },
 ]
 `;
 
-exports[`issue_comment event .all-contributorsrc has 16 files: request body 1`] = `
+exports[`issue_comment event .all-contributorsrc has 26 files: request body 1`] = `
 Object {
   "body": "@jakebolam 
 
-Your .all-contributorsrc cannot contain more than 15 files.",
+Your .all-contributorsrc cannot contain more than 25 files.",
 }
 `;
 
