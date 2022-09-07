@@ -18,7 +18,7 @@
     "test": "jest --coverage"
   },
   "dependencies": {
-    "all-contributors-cli": "^6.20.0",
+    "all-contributors-cli": "^6.20.3",
     "compromise": "^11.14.3",
     "probot": "^12.1.1"
   },
