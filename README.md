@@ -21,8 +21,8 @@
     </tbody>
 </table>
 
-[![Build](https://img.shields.io/circleci/project/github/all-contributors/all-contributors-bot/master.svg?style=flat-square)](https://circleci.com/gh/all-contributors/workflows/all-contributors-bot/tree/master)
-[![Coverage](https://img.shields.io/codecov/c/github/all-contributors/all-contributors-bot.svg?style=flat-square)](https://codecov.io/github/all-contributors/all-contributors-bot)
+[![Build](https://github.com/all-contributors/app/actions/workflows/test.yml/badge.svg)](https://github.com/all-contributors/app/actions/workflows/test.yml)
+[![Coverage](https://codecov.io/gh/all-contributors/app/branch/master/graph/badge.svg?token=PduWRhZBYo)](https://codecov.io/gh/all-contributors/app)
 [![GitHub release](https://img.shields.io/github/release/all-contributors/all-contributors-bot.svg?style=flat-square)](https://github.com/all-contributors/all-contributors-bot/releases)
 [![All Contributors](https://img.shields.io/badge/all_contributors-13-orange.svg?style=flat-square)](#contributors)
 [![Star on Github](https://img.shields.io/github/stars/all-contributors/all-contributors-bot.svg?style=flat-square)](https://github.com/all-contributors/all-contributors-bot/stargazers)
