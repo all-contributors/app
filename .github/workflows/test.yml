@@ -18,3 +18,5 @@ jobs:
           node-version: 16
       - run: npm ci
       - run: npm test
+      - name: Run code coverage
+        run: ./node_modules/.bin/codecov --token=${{ secrets.CODECOV_TOKEN }} .
