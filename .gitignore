@@ -1,10 +1,14 @@
 artifacts
 coverage
 node_modules
-package-lock.json # We use yarn ;)
+yarn.lock
 
 .env
 *.pem
 test-*-payload.json
 yarn-error.log
 .serverless
+npm-debug.log
+.idea
+
+.vercel

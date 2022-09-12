@@ -12,11 +12,11 @@ When installing the the app you grant it access to the following three scopes
 
 1. **Read & write access to [pull requests](https://developer.github.com/v3/apps/permissions/#permission-on-statuses)**
 
-   The app creates pull reuqests to add new contributors for their contributions. It requires write access to create these pull reuqests.
+   The app creates pull requests to add new contributors for their contributions. It requires write access to create these pull requests.
 
 2. **Read & write access to [issues](https://developer.github.com/v3/apps/permissions/#permission-on-issues)**
 
-   The app responds to comments on issues/pull-reuqests when a user types `@all-contributors` the write perimission is required for this behaviour.
+   The app responds to comments on issues/pull-requests when a user types `@all-contributors` the write permission is required for this behaviour.
 
 3. **Read & write access to [contents](https://developer.github.com/v3/apps/permissions/#permission-on-contents)**
 
@@ -43,4 +43,5 @@ I may update this privacy policy from time to time. Thus, you are advised to rev
 If you have any questions or suggestions about my Privacy Policy, do not hesitate to contact me at `jake.bolam@gmail.com`.
 
 ### Notes to users updating this policy
+
 This is linked to from the github marketplace from the bots listing page

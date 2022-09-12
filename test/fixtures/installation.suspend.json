@@ -1,0 +1,12 @@
+{
+  "action": "suspend",
+  "installation": {
+    "id": 1,
+    "account": {
+      "login": "octocat",
+      "id": 2001,
+      "type": "User"
+    },
+    "repository_selection": "all"
+  }
+}
