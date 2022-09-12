@@ -8,12 +8,13 @@ const app = require("../../app");
 
 // fixtures
 const issueCommentCreatedPayload = require("../fixtures/issue_comment.created.json");
+const issueCommentCreatedExistContributorPayload = require("../fixtures/issue_comment.created.exist-contributor.json");
 const issueCommentCreatedByAppPayload = require("../fixtures/issue_comment.created-by-app.json");
 const issueCommentCreatedNotForAppPayload = require("../fixtures/issue_comment.created-not-for-app.json");
 const issueCommentCreatedPayloadUnknownIntention = require("../fixtures/issue_commented.created.unknown-intention.json");
 const issueCommentCreatedPayloadUnknownContribution = require("../fixtures/issue_comment.created-unknown-contribution.json");
 const reposGetContentsAllContributorsRCdata = require("../fixtures/repos.getContents.all-contributorsrc.json");
-const reposGetContentsAllContributorsRCdata16files = require("../fixtures/repos.getContents.all-contributorsrc-16-files.json");
+const reposGetContentsAllContributorsRCdata26files = require("../fixtures/repos.getContents.all-contributorsrc-26-files.json");
 const reposGetContentsAllContributorsRCdataSkipCiFalse = require("../fixtures/repos.getContents.all-contributorsrc-skip-ci-false.json");
 const reposGetContentsAllContributorsRCdataInvalidSyntax = require("../fixtures/repos.getContents.all-contributorsrc-invalid-syntax.json");
 const usersGetByUsernameJakeBolamdata = require("../fixtures/users.getByUsername.jakebolam.json");
@@ -477,7 +478,41 @@ describe("issue_comment event", () => {
     expect(output).toMatchSnapshot("logs");
   });
 
-  test(".all-contributorsrc has 16 files", async () => {
+  test("Fail path, add existing contributor with already exist contribution type", async () => {
+    const mock = nock("https://api.github.com")
+      .get(
+        `/repos/all-contributors/all-contributors-bot/git/ref/heads%2Fall-contributors%2Fadd-jakebolam`
+      )
+      .reply(404)
+
+      .get(
+        "/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc?ref=master"
+      )
+      .reply(200, reposGetContentsAllContributorsRCdata)
+
+      .get("/users/jakebolam")
+      .reply(200, usersGetByUsernameJakeBolamdata)
+
+      .post(
+        "/repos/all-contributors/all-contributors-bot/issues/1/comments",
+        (body) => {
+          expect(body).toMatchSnapshot("request body");
+          return true;
+        }
+      )
+      .reply(200);
+
+    await probot.receive({
+      name: "issue_comment",
+      id: "1",
+      payload: issueCommentCreatedExistContributorPayload,
+    });
+
+    expect(mock.activeMocks()).toStrictEqual([]);
+    expect(output).toMatchSnapshot("logs");
+  });
+
+  test(".all-contributorsrc has 26 files", async () => {
     const mock = nock("https://api.github.com")
       .get(
         `/repos/all-contributors/all-contributors-bot/git/ref/heads%2Fall-contributors%2Fadd-jakebolam`
@@ -490,7 +525,7 @@ describe("issue_comment event", () => {
       .get(
         "/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc?ref=master"
       )
-      .reply(200, reposGetContentsAllContributorsRCdata16files)
+      .reply(200, reposGetContentsAllContributorsRCdata26files)
 
       .post(
         "/repos/all-contributors/all-contributors-bot/issues/1/comments",

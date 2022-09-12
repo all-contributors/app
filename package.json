@@ -18,18 +18,19 @@
     "test": "jest --coverage"
   },
   "dependencies": {
-    "all-contributors-cli": "^6.19.0",
-    "compromise": "^11.13.0",
-    "pino": "^6.9.0",
-    "probot": "^11.0.1"
+    "all-contributors-cli": "^6.20.4",
+    "compromise": "^11.14.3",
+    "probot": "^12.1.1"
   },
   "devDependencies": {
-    "@types/jest": "^26.0.19",
-    "jest": "^26.6.3",
-    "nock": "^13.0.5",
-    "prettier": "^2.2.1",
-    "semantic-release": "^17.3.0",
-    "vercel": "^21.0.1"
+    "@types/jest": "^27.0.2",
+    "codecov": "^3.8.3",
+    "jest": "^27.3.1",
+    "nock": "^13.1.4",
+    "pino": "^6.11.2",
+    "prettier": "^2.4.1",
+    "smee-client": "^1.2.3",
+    "vercel": "^23.1.2"
   },
   "jest": {
     "testEnvironment": "node"
