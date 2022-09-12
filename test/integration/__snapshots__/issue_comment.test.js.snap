@@ -430,7 +430,7 @@ Object {
 exports[`issue_comment event Happy path, add correct new contributor, but branch exists and PR is open: request body 2`] = `
 Object {
   "branch": "all-contributors/add-jakebolam",
-  "content": "ewogICJwcm9qZWN0TmFtZSI6ICJhbGwtY29udHJpYnV0b3JzLWJvdCIsCiAgInByb2plY3RPd25lciI6ICJhbGwtY29udHJpYnV0b3JzIiwKICAicmVwb1R5cGUiOiAiZ2l0aHViIiwKICAicmVwb0hvc3QiOiAiaHR0cHM6Ly9naXRodWIuY29tIiwKICAiZmlsZXMiOiBbCiAgICAiUkVBRE1FLm1kIgogIF0sCiAgImltYWdlU2l6ZSI6IDEwMCwKICAiY29tbWl0IjogZmFsc2UsCiAgInNraXBDaSI6IGZhbHNlLAogICJjb250cmlidXRvcnMiOiBbCiAgICB7CiAgICAgICJsb2dpbiI6ICJqYWtlYm9sYW0iLAogICAgICAibmFtZSI6ICJKYWtlIEJvbGFtIiwKICAgICAgImF2YXRhcl91cmwiOiAiaHR0cHM6Ly9hdmF0YXJzMi5naXRodWJ1c2VyY29udGVudC5jb20vdS8zNTM0MjM2P3Y9NCIsCiAgICAgICJwcm9maWxlIjogImh0dHBzOi8vamFrZWJvbGFtLmNvbSIsCiAgICAgICJjb250cmlidXRpb25zIjogWwogICAgICAgICJjb2RlIiwKICAgICAgICAiaWRlYXMiLAogICAgICAgICJpbmZyYSIsCiAgICAgICAgInRlc3QiLAogICAgICAgICJkb2MiCiAgICAgIF0KICAgIH0KICBdLAogICJjb250cmlidXRvcnNQZXJMaW5lIjogNwp9Cg==",
+  "content": "ewogICJwcm9qZWN0TmFtZSI6ICJhbGwtY29udHJpYnV0b3JzLWJvdCIsCiAgInByb2plY3RPd25lciI6ICJhbGwtY29udHJpYnV0b3JzIiwKICAicmVwb1R5cGUiOiAiZ2l0aHViIiwKICAicmVwb0hvc3QiOiAiaHR0cHM6Ly9naXRodWIuY29tIiwKICAiZmlsZXMiOiBbCiAgICAiUkVBRE1FLm1kIgogIF0sCiAgImltYWdlU2l6ZSI6IDEwMCwKICAiY29tbWl0IjogZmFsc2UsCiAgInNraXBDaSI6IGZhbHNlLAogICJjb250cmlidXRvcnMiOiBbCiAgICB7CiAgICAgICJsb2dpbiI6ICJqYWtlYm9sYW0iLAogICAgICAibmFtZSI6ICJKYWtlIEJvbGFtIiwKICAgICAgImF2YXRhcl91cmwiOiAiaHR0cHM6Ly9hdmF0YXJzMi5naXRodWJ1c2VyY29udGVudC5jb20vdS8zNTM0MjM2P3Y9NCIsCiAgICAgICJwcm9maWxlIjogImh0dHBzOi8vamFrZWJvbGFtLmNvbSIsCiAgICAgICJjb250cmlidXRpb25zIjogWwogICAgICAgICJjb2RlIiwKICAgICAgICAiaWRlYXMiLAogICAgICAgICJpbmZyYSIsCiAgICAgICAgInRlc3QiLAogICAgICAgICJkb2MiCiAgICAgIF0KICAgIH0KICBdLAogICJjb250cmlidXRvcnNQZXJMaW5lIjogNywKICAiY29tbWl0Q29udmVudGlvbiI6ICJhbmd1bGFyIgp9Cg==",
   "message": "docs: update .all-contributorsrc",
   "sha": "dff34f715bca51114c0336a49381456a926806d5",
 }
@@ -439,12 +439,12 @@ Object {
 exports[`issue_comment event Happy path, add correct new contributor, but branch exists and PR is open: request body 3`] = `
 Object {
   "base": "master",
-  "body": "Add @jakebolam as a contributor for code, doc, infra.
+  "body": "Adds @jakebolam as a contributor for code, doc, infra.
 
 This was requested by jakebolam [in this comment](https://github.com/all-contributors/all-contributors-bot/pull/1#issuecomment-453012966)",
   "head": "all-contributors/add-jakebolam",
   "maintainer_can_modify": true,
-  "title": "docs: add jakebolam as a contributor for code, doc, infra",
+  "title": "docs: add jakebolam as a contributor",
 }
 `;
 
@@ -499,7 +499,7 @@ Object {
 exports[`issue_comment event Happy path, add correct new contributor, but branch exists: request body 2`] = `
 Object {
   "branch": "all-contributors/add-jakebolam",
-  "content": "ewogICJwcm9qZWN0TmFtZSI6ICJhbGwtY29udHJpYnV0b3JzLWJvdCIsCiAgInByb2plY3RPd25lciI6ICJhbGwtY29udHJpYnV0b3JzIiwKICAicmVwb1R5cGUiOiAiZ2l0aHViIiwKICAicmVwb0hvc3QiOiAiaHR0cHM6Ly9naXRodWIuY29tIiwKICAiZmlsZXMiOiBbCiAgICAiUkVBRE1FLm1kIgogIF0sCiAgImltYWdlU2l6ZSI6IDEwMCwKICAiY29tbWl0IjogZmFsc2UsCiAgInNraXBDaSI6IGZhbHNlLAogICJjb250cmlidXRvcnMiOiBbCiAgICB7CiAgICAgICJsb2dpbiI6ICJqYWtlYm9sYW0iLAogICAgICAibmFtZSI6ICJKYWtlIEJvbGFtIiwKICAgICAgImF2YXRhcl91cmwiOiAiaHR0cHM6Ly9hdmF0YXJzMi5naXRodWJ1c2VyY29udGVudC5jb20vdS8zNTM0MjM2P3Y9NCIsCiAgICAgICJwcm9maWxlIjogImh0dHBzOi8vamFrZWJvbGFtLmNvbSIsCiAgICAgICJjb250cmlidXRpb25zIjogWwogICAgICAgICJjb2RlIiwKICAgICAgICAiaWRlYXMiLAogICAgICAgICJpbmZyYSIsCiAgICAgICAgInRlc3QiLAogICAgICAgICJkb2MiCiAgICAgIF0KICAgIH0KICBdLAogICJjb250cmlidXRvcnNQZXJMaW5lIjogNwp9Cg==",
+  "content": "ewogICJwcm9qZWN0TmFtZSI6ICJhbGwtY29udHJpYnV0b3JzLWJvdCIsCiAgInByb2plY3RPd25lciI6ICJhbGwtY29udHJpYnV0b3JzIiwKICAicmVwb1R5cGUiOiAiZ2l0aHViIiwKICAicmVwb0hvc3QiOiAiaHR0cHM6Ly9naXRodWIuY29tIiwKICAiZmlsZXMiOiBbCiAgICAiUkVBRE1FLm1kIgogIF0sCiAgImltYWdlU2l6ZSI6IDEwMCwKICAiY29tbWl0IjogZmFsc2UsCiAgInNraXBDaSI6IGZhbHNlLAogICJjb250cmlidXRvcnMiOiBbCiAgICB7CiAgICAgICJsb2dpbiI6ICJqYWtlYm9sYW0iLAogICAgICAibmFtZSI6ICJKYWtlIEJvbGFtIiwKICAgICAgImF2YXRhcl91cmwiOiAiaHR0cHM6Ly9hdmF0YXJzMi5naXRodWJ1c2VyY29udGVudC5jb20vdS8zNTM0MjM2P3Y9NCIsCiAgICAgICJwcm9maWxlIjogImh0dHBzOi8vamFrZWJvbGFtLmNvbSIsCiAgICAgICJjb250cmlidXRpb25zIjogWwogICAgICAgICJjb2RlIiwKICAgICAgICAiaWRlYXMiLAogICAgICAgICJpbmZyYSIsCiAgICAgICAgInRlc3QiLAogICAgICAgICJkb2MiCiAgICAgIF0KICAgIH0KICBdLAogICJjb250cmlidXRvcnNQZXJMaW5lIjogNywKICAiY29tbWl0Q29udmVudGlvbiI6ICJhbmd1bGFyIgp9Cg==",
   "message": "docs: update .all-contributorsrc",
   "sha": "dff34f715bca51114c0336a49381456a926806d5",
 }
@@ -508,12 +508,12 @@ Object {
 exports[`issue_comment event Happy path, add correct new contributor, but branch exists: request body 3`] = `
 Object {
   "base": "master",
-  "body": "Add @jakebolam as a contributor for code, doc, infra.
+  "body": "Adds @jakebolam as a contributor for code, doc, infra.
 
 This was requested by jakebolam [in this comment](https://github.com/all-contributors/all-contributors-bot/pull/1#issuecomment-453012966)",
   "head": "all-contributors/add-jakebolam",
   "maintainer_can_modify": true,
-  "title": "docs: add jakebolam as a contributor for code, doc, infra",
+  "title": "docs: add jakebolam as a contributor",
 }
 `;
 
@@ -575,7 +575,7 @@ Object {
 exports[`issue_comment event Happy path, add correct new contributor, no allcontributors file (repo needs init first): request body 3`] = `
 Object {
   "branch": "all-contributors/add-jakebolam",
-  "content": "ewogICJmaWxlcyI6IFsKICAgICJSRUFETUUubWQiCiAgXSwKICAiaW1hZ2VTaXplIjogMTAwLAogICJjb21taXQiOiBmYWxzZSwKICAiY29udHJpYnV0b3JzIjogWwogICAgewogICAgICAibG9naW4iOiAiamFrZWJvbGFtIiwKICAgICAgIm5hbWUiOiAiSmFrZSBCb2xhbSIsCiAgICAgICJhdmF0YXJfdXJsIjogImh0dHBzOi8vYXZhdGFyczIuZ2l0aHVidXNlcmNvbnRlbnQuY29tL3UvMzUzNDIzNj92PTQiLAogICAgICAicHJvZmlsZSI6ICJodHRwczovL2pha2Vib2xhbS5jb20iLAogICAgICAiY29udHJpYnV0aW9ucyI6IFsKICAgICAgICAiY29kZSIsCiAgICAgICAgImRvYyIsCiAgICAgICAgImluZnJhIgogICAgICBdCiAgICB9CiAgXSwKICAiY29udHJpYnV0b3JzUGVyTGluZSI6IDcsCiAgInByb2plY3ROYW1lIjogImFsbC1jb250cmlidXRvcnMtYm90IiwKICAicHJvamVjdE93bmVyIjogImFsbC1jb250cmlidXRvcnMiLAogICJyZXBvVHlwZSI6ICJnaXRodWIiLAogICJyZXBvSG9zdCI6ICJodHRwczovL2dpdGh1Yi5jb20iLAogICJza2lwQ2kiOiB0cnVlCn0K",
+  "content": "ewogICJmaWxlcyI6IFsKICAgICJSRUFETUUubWQiCiAgXSwKICAiaW1hZ2VTaXplIjogMTAwLAogICJjb21taXQiOiBmYWxzZSwKICAiY29tbWl0Q29udmVudGlvbiI6ICJhbmd1bGFyIiwKICAiY29udHJpYnV0b3JzIjogWwogICAgewogICAgICAibG9naW4iOiAiamFrZWJvbGFtIiwKICAgICAgIm5hbWUiOiAiSmFrZSBCb2xhbSIsCiAgICAgICJhdmF0YXJfdXJsIjogImh0dHBzOi8vYXZhdGFyczIuZ2l0aHVidXNlcmNvbnRlbnQuY29tL3UvMzUzNDIzNj92PTQiLAogICAgICAicHJvZmlsZSI6ICJodHRwczovL2pha2Vib2xhbS5jb20iLAogICAgICAiY29udHJpYnV0aW9ucyI6IFsKICAgICAgICAiY29kZSIsCiAgICAgICAgImRvYyIsCiAgICAgICAgImluZnJhIgogICAgICBdCiAgICB9CiAgXSwKICAiY29udHJpYnV0b3JzUGVyTGluZSI6IDcsCiAgInByb2plY3ROYW1lIjogImFsbC1jb250cmlidXRvcnMtYm90IiwKICAicHJvamVjdE93bmVyIjogImFsbC1jb250cmlidXRvcnMiLAogICJyZXBvVHlwZSI6ICJnaXRodWIiLAogICJyZXBvSG9zdCI6ICJodHRwczovL2dpdGh1Yi5jb20iLAogICJza2lwQ2kiOiB0cnVlCn0K",
   "message": "docs: create .all-contributorsrc [skip ci]",
 }
 `;
@@ -583,12 +583,12 @@ Object {
 exports[`issue_comment event Happy path, add correct new contributor, no allcontributors file (repo needs init first): request body 4`] = `
 Object {
   "base": "master",
-  "body": "Add @jakebolam as a contributor for code, doc, infra.
+  "body": "Adds @jakebolam as a contributor for code, doc, infra.
 
 This was requested by jakebolam [in this comment](https://github.com/all-contributors/all-contributors-bot/pull/1#issuecomment-453012966)",
   "head": "all-contributors/add-jakebolam",
   "maintainer_can_modify": true,
-  "title": "docs: add jakebolam as a contributor for code, doc, infra",
+  "title": "docs: add jakebolam as a contributor",
 }
 `;
 
@@ -650,7 +650,7 @@ Object {
 exports[`issue_comment event Happy path, add correct new contributor: request body 3`] = `
 Object {
   "branch": "all-contributors/add-jakebolam",
-  "content": "ewogICJwcm9qZWN0TmFtZSI6ICJhbGwtY29udHJpYnV0b3JzLWJvdCIsCiAgInByb2plY3RPd25lciI6ICJhbGwtY29udHJpYnV0b3JzIiwKICAicmVwb1R5cGUiOiAiZ2l0aHViIiwKICAicmVwb0hvc3QiOiAiaHR0cHM6Ly9naXRodWIuY29tIiwKICAiZmlsZXMiOiBbCiAgICAiUkVBRE1FLm1kIgogIF0sCiAgImltYWdlU2l6ZSI6IDEwMCwKICAiY29tbWl0IjogZmFsc2UsCiAgInNraXBDaSI6IGZhbHNlLAogICJjb250cmlidXRvcnMiOiBbCiAgICB7CiAgICAgICJsb2dpbiI6ICJqYWtlYm9sYW0iLAogICAgICAibmFtZSI6ICJKYWtlIEJvbGFtIiwKICAgICAgImF2YXRhcl91cmwiOiAiaHR0cHM6Ly9hdmF0YXJzMi5naXRodWJ1c2VyY29udGVudC5jb20vdS8zNTM0MjM2P3Y9NCIsCiAgICAgICJwcm9maWxlIjogImh0dHBzOi8vamFrZWJvbGFtLmNvbSIsCiAgICAgICJjb250cmlidXRpb25zIjogWwogICAgICAgICJjb2RlIiwKICAgICAgICAiaWRlYXMiLAogICAgICAgICJpbmZyYSIsCiAgICAgICAgInRlc3QiLAogICAgICAgICJkb2MiCiAgICAgIF0KICAgIH0KICBdLAogICJjb250cmlidXRvcnNQZXJMaW5lIjogNwp9Cg==",
+  "content": "ewogICJwcm9qZWN0TmFtZSI6ICJhbGwtY29udHJpYnV0b3JzLWJvdCIsCiAgInByb2plY3RPd25lciI6ICJhbGwtY29udHJpYnV0b3JzIiwKICAicmVwb1R5cGUiOiAiZ2l0aHViIiwKICAicmVwb0hvc3QiOiAiaHR0cHM6Ly9naXRodWIuY29tIiwKICAiZmlsZXMiOiBbCiAgICAiUkVBRE1FLm1kIgogIF0sCiAgImltYWdlU2l6ZSI6IDEwMCwKICAiY29tbWl0IjogZmFsc2UsCiAgInNraXBDaSI6IGZhbHNlLAogICJjb250cmlidXRvcnMiOiBbCiAgICB7CiAgICAgICJsb2dpbiI6ICJqYWtlYm9sYW0iLAogICAgICAibmFtZSI6ICJKYWtlIEJvbGFtIiwKICAgICAgImF2YXRhcl91cmwiOiAiaHR0cHM6Ly9hdmF0YXJzMi5naXRodWJ1c2VyY29udGVudC5jb20vdS8zNTM0MjM2P3Y9NCIsCiAgICAgICJwcm9maWxlIjogImh0dHBzOi8vamFrZWJvbGFtLmNvbSIsCiAgICAgICJjb250cmlidXRpb25zIjogWwogICAgICAgICJjb2RlIiwKICAgICAgICAiaWRlYXMiLAogICAgICAgICJpbmZyYSIsCiAgICAgICAgInRlc3QiLAogICAgICAgICJkb2MiCiAgICAgIF0KICAgIH0KICBdLAogICJjb250cmlidXRvcnNQZXJMaW5lIjogNywKICAiY29tbWl0Q29udmVudGlvbiI6ICJhbmd1bGFyIgp9Cg==",
   "message": "docs: update .all-contributorsrc",
   "sha": "dff34f715bca51114c0336a49381456a926806d5",
 }
@@ -659,12 +659,12 @@ Object {
 exports[`issue_comment event Happy path, add correct new contributor: request body 4`] = `
 Object {
   "base": "master",
-  "body": "Add @jakebolam as a contributor for code, doc, infra.
+  "body": "Adds @jakebolam as a contributor for code, doc, infra.
 
 This was requested by jakebolam [in this comment](https://github.com/all-contributors/all-contributors-bot/pull/1#issuecomment-453012966)",
   "head": "all-contributors/add-jakebolam",
   "maintainer_can_modify": true,
-  "title": "docs: add jakebolam as a contributor for code, doc, infra",
+  "title": "docs: add jakebolam as a contributor",
 }
 `;
 
@@ -758,7 +758,7 @@ Object {
 exports[`issue_comment event User has no name and blog: request body 3`] = `
 Object {
   "branch": "all-contributors/add-jakebolam",
-  "content": "ewogICJwcm9qZWN0TmFtZSI6ICJhbGwtY29udHJpYnV0b3JzLWJvdCIsCiAgInByb2plY3RPd25lciI6ICJhbGwtY29udHJpYnV0b3JzIiwKICAicmVwb1R5cGUiOiAiZ2l0aHViIiwKICAicmVwb0hvc3QiOiAiaHR0cHM6Ly9naXRodWIuY29tIiwKICAiZmlsZXMiOiBbCiAgICAiUkVBRE1FLm1kIgogIF0sCiAgImltYWdlU2l6ZSI6IDEwMCwKICAiY29tbWl0IjogZmFsc2UsCiAgInNraXBDaSI6IGZhbHNlLAogICJjb250cmlidXRvcnMiOiBbCiAgICB7CiAgICAgICJsb2dpbiI6ICJqYWtlYm9sYW0iLAogICAgICAibmFtZSI6ICJKYWtlIEJvbGFtIiwKICAgICAgImF2YXRhcl91cmwiOiAiaHR0cHM6Ly9hdmF0YXJzMi5naXRodWJ1c2VyY29udGVudC5jb20vdS8zNTM0MjM2P3Y9NCIsCiAgICAgICJwcm9maWxlIjogImh0dHBzOi8vamFrZWJvbGFtLmNvbSIsCiAgICAgICJjb250cmlidXRpb25zIjogWwogICAgICAgICJjb2RlIiwKICAgICAgICAiaWRlYXMiLAogICAgICAgICJpbmZyYSIsCiAgICAgICAgInRlc3QiLAogICAgICAgICJkb2MiCiAgICAgIF0KICAgIH0KICBdLAogICJjb250cmlidXRvcnNQZXJMaW5lIjogNwp9Cg==",
+  "content": "ewogICJwcm9qZWN0TmFtZSI6ICJhbGwtY29udHJpYnV0b3JzLWJvdCIsCiAgInByb2plY3RPd25lciI6ICJhbGwtY29udHJpYnV0b3JzIiwKICAicmVwb1R5cGUiOiAiZ2l0aHViIiwKICAicmVwb0hvc3QiOiAiaHR0cHM6Ly9naXRodWIuY29tIiwKICAiZmlsZXMiOiBbCiAgICAiUkVBRE1FLm1kIgogIF0sCiAgImltYWdlU2l6ZSI6IDEwMCwKICAiY29tbWl0IjogZmFsc2UsCiAgInNraXBDaSI6IGZhbHNlLAogICJjb250cmlidXRvcnMiOiBbCiAgICB7CiAgICAgICJsb2dpbiI6ICJqYWtlYm9sYW0iLAogICAgICAibmFtZSI6ICJKYWtlIEJvbGFtIiwKICAgICAgImF2YXRhcl91cmwiOiAiaHR0cHM6Ly9hdmF0YXJzMi5naXRodWJ1c2VyY29udGVudC5jb20vdS8zNTM0MjM2P3Y9NCIsCiAgICAgICJwcm9maWxlIjogImh0dHBzOi8vamFrZWJvbGFtLmNvbSIsCiAgICAgICJjb250cmlidXRpb25zIjogWwogICAgICAgICJjb2RlIiwKICAgICAgICAiaWRlYXMiLAogICAgICAgICJpbmZyYSIsCiAgICAgICAgInRlc3QiLAogICAgICAgICJkb2MiCiAgICAgIF0KICAgIH0KICBdLAogICJjb250cmlidXRvcnNQZXJMaW5lIjogNywKICAiY29tbWl0Q29udmVudGlvbiI6ICJhbmd1bGFyIgp9Cg==",
   "message": "docs: update .all-contributorsrc",
   "sha": "dff34f715bca51114c0336a49381456a926806d5",
 }
@@ -767,12 +767,12 @@ Object {
 exports[`issue_comment event User has no name and blog: request body 4`] = `
 Object {
   "base": "master",
-  "body": "Add @jakebolam as a contributor for code, doc, infra.
+  "body": "Adds @jakebolam as a contributor for code, doc, infra.
 
 This was requested by jakebolam [in this comment](https://github.com/all-contributors/all-contributors-bot/pull/1#issuecomment-453012966)",
   "head": "all-contributors/add-jakebolam",
   "maintainer_can_modify": true,
-  "title": "docs: add jakebolam as a contributor for code, doc, infra",
+  "title": "docs: add jakebolam as a contributor",
 }
 `;
 
@@ -855,7 +855,7 @@ Object {
 exports[`issue_comment event skipCi=false: request body 3`] = `
 Object {
   "branch": "all-contributors/add-jakebolam",
-  "content": "ewogICJwcm9qZWN0TmFtZSI6ICJhbGwtY29udHJpYnV0b3JzLWJvdCIsCiAgInByb2plY3RPd25lciI6ICJhbGwtY29udHJpYnV0b3JzIiwKICAicmVwb1R5cGUiOiAiZ2l0aHViIiwKICAicmVwb0hvc3QiOiAiaHR0cHM6Ly9naXRodWIuY29tIiwKICAiZmlsZXMiOiBbCiAgICAiUkVBRE1FLm1kIgogIF0sCiAgImltYWdlU2l6ZSI6IDEwMCwKICAiY29tbWl0IjogZmFsc2UsCiAgImNvbnRyaWJ1dG9ycyI6IFsKICAgIHsKICAgICAgImxvZ2luIjogImpha2Vib2xhbSIsCiAgICAgICJuYW1lIjogIkpha2UgQm9sYW0iLAogICAgICAiYXZhdGFyX3VybCI6ICJodHRwczovL2F2YXRhcnMyLmdpdGh1YnVzZXJjb250ZW50LmNvbS91LzM1MzQyMzY/dj00IiwKICAgICAgInByb2ZpbGUiOiAiaHR0cHM6Ly9qYWtlYm9sYW0uY29tIiwKICAgICAgImNvbnRyaWJ1dGlvbnMiOiBbCiAgICAgICAgImNvZGUiLAogICAgICAgICJpZGVhcyIsCiAgICAgICAgImluZnJhIiwKICAgICAgICAidGVzdCIsCiAgICAgICAgImRvYyIKICAgICAgXQogICAgfQogIF0sCiAgInNraXBDaSI6IHRydWUsCiAgImNvbnRyaWJ1dG9yc1BlckxpbmUiOiA3Cn0K",
+  "content": "ewogICJwcm9qZWN0TmFtZSI6ICJhbGwtY29udHJpYnV0b3JzLWJvdCIsCiAgInByb2plY3RPd25lciI6ICJhbGwtY29udHJpYnV0b3JzIiwKICAicmVwb1R5cGUiOiAiZ2l0aHViIiwKICAicmVwb0hvc3QiOiAiaHR0cHM6Ly9naXRodWIuY29tIiwKICAiZmlsZXMiOiBbCiAgICAiUkVBRE1FLm1kIgogIF0sCiAgImltYWdlU2l6ZSI6IDEwMCwKICAiY29tbWl0IjogZmFsc2UsCiAgImNvbnRyaWJ1dG9ycyI6IFsKICAgIHsKICAgICAgImxvZ2luIjogImpha2Vib2xhbSIsCiAgICAgICJuYW1lIjogIkpha2UgQm9sYW0iLAogICAgICAiYXZhdGFyX3VybCI6ICJodHRwczovL2F2YXRhcnMyLmdpdGh1YnVzZXJjb250ZW50LmNvbS91LzM1MzQyMzY/dj00IiwKICAgICAgInByb2ZpbGUiOiAiaHR0cHM6Ly9qYWtlYm9sYW0uY29tIiwKICAgICAgImNvbnRyaWJ1dGlvbnMiOiBbCiAgICAgICAgImNvZGUiLAogICAgICAgICJpZGVhcyIsCiAgICAgICAgImluZnJhIiwKICAgICAgICAidGVzdCIsCiAgICAgICAgImRvYyIKICAgICAgXQogICAgfQogIF0sCiAgInNraXBDaSI6IHRydWUsCiAgImNvbnRyaWJ1dG9yc1BlckxpbmUiOiA3LAogICJjb21taXRDb252ZW50aW9uIjogImFuZ3VsYXIiCn0K",
   "message": "docs: update .all-contributorsrc [skip ci]",
   "sha": "dff34f715bca51114c0336a49381456a926806d5",
 }
@@ -864,12 +864,12 @@ Object {
 exports[`issue_comment event skipCi=false: request body 4`] = `
 Object {
   "base": "master",
-  "body": "Add @jakebolam as a contributor for code, doc, infra.
+  "body": "Adds @jakebolam as a contributor for code, doc, infra.
 
 This was requested by jakebolam [in this comment](https://github.com/all-contributors/all-contributors-bot/pull/1#issuecomment-453012966)",
   "head": "all-contributors/add-jakebolam",
   "maintainer_can_modify": true,
-  "title": "docs: add jakebolam as a contributor for code, doc, infra",
+  "title": "docs: add jakebolam as a contributor",
 }
 `;
 
