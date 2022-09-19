@@ -141,9 +141,10 @@ function findWho(message, action) {
     }
 
     const whoMatchedMention = findWhoSafe(`@[.]`)
-    if (whoMatchedMention) {
-        return whoMatchedMention
-    }
+    // TODO: Unused
+    // if (whoMatchedMention) {
+    //     return whoMatchedMention
+    // }
 
     const whoMatchedByAction = findWhoSafe(`${action} [.]`)
     if (whoMatchedByAction) {
@@ -151,9 +152,10 @@ function findWho(message, action) {
     }
 
     const whoMatchedByFor = findWhoSafe(`[.] for`)
-    if (whoMatchedByFor) {
-        return whoMatchedByFor
-    }
+    // TODO: Unused
+    // if (whoMatchedByFor) {
+    //     return whoMatchedByFor
+    // }
 }
 
 function parseAddSentence(message, action) {
@@ -176,14 +178,25 @@ function parseAddSentence(message, action) {
             doc.replace(multiWordType, singleWordType)
         },
     )
-    const contributions = doc
+
+    const rawContributions = doc
         .match('#Contribution')
         .data()
         .map(data => {
             // This removes whitespace, commas etc
             return data.normal
         })
-        .map(type => {
+
+    const contributions = 
+        doc
+        .match('#Contribution')
+        .data()
+        .map(data => {
+            // This removes whitespace, commas etc
+            return data.normal
+        }).filter((element, index) => {
+            return rawContributions.indexOf(element) === index;
+        }).map(type => {
             if (contributionTypeMappings[type])
                 return contributionTypeMappings[type]
             return type
@@ -194,7 +207,7 @@ function parseAddSentence(message, action) {
                 return validMultiContributionTypesMapping[type]
             return type
         })
-
+    
     return {
         who,
         contributions,

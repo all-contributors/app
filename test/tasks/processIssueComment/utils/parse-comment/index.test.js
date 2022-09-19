@@ -86,17 +86,16 @@ describe('parseComment', () => {
         })
     })
 
-    // TODO:
-    // test(`Interpret users who's names are contributions`, () => {
-    //     expect(
-    //         parseComment(`@${testBotName} please add @ideas for ideas`),
-    //     ).toEqual({
-    //         action: 'add',
-    //         contributors: {
-    //             ideas: ['ideas'],
-    //         },
-    //     })
-    // })
+    test(`Interpret users who's names are contributions`, () => {
+        expect(
+            parseComment(`@${testBotName} please add @ideas for ideas`),
+        ).toEqual({
+            action: 'add',
+            contributors: {
+                ideas: ['ideas'],
+            },
+        })
+    })
 
     test('Support full words (like infrastructure)', () => {
         expect(
