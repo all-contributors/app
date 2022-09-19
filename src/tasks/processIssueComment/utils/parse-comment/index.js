@@ -167,7 +167,6 @@ function parseAddSentence(message, action) {
     }
 
     const who = whoMatched.startsWith('@') ? whoMatched.substr(1) : whoMatched
-    console.log(who)
 
     // Contributions
     const doc = nlp(message).toLowerCase()
