@@ -112,6 +112,7 @@ nlp.plugin(plugin)
 
 function findWho(message, action) {
     function findWhoSafe(match) {
+        message = message.replace('-', '#/#') // workaround (https://github.com/spencermountain/compromise/issues/726)
         const whoNormalizeSettings = {
             whitespace: true, // remove hyphens, newlines, and force one space between words
             case: false, // keep only first-word, and 'entity' titlecasing
@@ -132,7 +133,10 @@ function findWho(message, action) {
             .data()
 
         if (matchedSet.length > 0) {
-            return matchedSet[0].text
+            matchedText = matchedSet[0].text
+            matchedText = matchedText.replace('#/#', '-') 
+
+            return matchedText 
         }
     }
 

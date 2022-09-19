@@ -51,6 +51,17 @@ describe('parseComment', () => {
         })
     })
 
+    test('Basic intent to add - username with dash', () => {
+        expect(
+            parseComment(`@${testBotName} please add tenshi-AMD for tool`),
+        ).toEqual({
+            action: 'add',
+            contributors: {
+                "tenshi-AMD": ['tool'],
+            },
+        })
+    })
+
     test('Basic intent to add - with plurals', () => {
         expect(
             parseComment(`@${testBotName} please add dat2 for docs`),
