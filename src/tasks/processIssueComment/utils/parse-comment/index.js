@@ -157,6 +157,8 @@ function findWho(message, action) {
 }
 
 function parseAddSentence(message, action) {
+    message = message.split(',').map(e => e.trim()).join(', ')
+
     const whoMatched = findWho(message, action)
     if (!whoMatched) {
         return {
@@ -165,6 +167,7 @@ function parseAddSentence(message, action) {
     }
 
     const who = whoMatched.startsWith('@') ? whoMatched.substr(1) : whoMatched
+    console.log(who)
 
     // Contributions
     const doc = nlp(message).toLowerCase()

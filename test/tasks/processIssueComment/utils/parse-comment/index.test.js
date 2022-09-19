@@ -73,19 +73,18 @@ describe('parseComment', () => {
         })
     })
 
-    // TODO:
-    // test('Add multiple when not spaced (just split via commas)', () => {
-    //     expect(
-    //         parseComment(
-    //             `@${testBotName} please add @stevoo24 for code,content`,
-    //         ),
-    //     ).toEqual({
-    //         action: 'add',
-    //         contributors: {
-    //             stevoo24: ['code', 'content'],
-    //         },
-    //     })
-    // })
+    test('Add multiple when not spaced (just split via commas)', () => {
+        expect(
+            parseComment(
+                `@${testBotName} please add @stevoo24 for code,content`,
+            ),
+        ).toEqual({
+            action: 'add',
+            contributors: {
+                stevoo24: ['code', 'content'],
+            },
+        })
+    })
 
     // TODO:
     // test(`Interpret users who's names are contributions`, () => {
