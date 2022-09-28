@@ -181,6 +181,7 @@ describe('parseComment', () => {
             },
         })
     })
+
     // test('Add multiple users in 1 hit - for some contributions', () => {
     //     expect(
     //         parseComment(
@@ -194,51 +195,57 @@ describe('parseComment', () => {
     //         },
     //     })
     // })
-    //
-    // test('Add multiple users in 1 hit - seperate sentences', () => {
+
+    test('Add multiple users in 1 hit - seperate sentences', () => {
+        expect(
+            parseComment(
+                `@${testBotName} add @kazydek for doc, review, maintenance. Please add akucharska for code, design. Please add derberg for infra and ideas`,
+            ),
+        ).toEqual({
+            action: 'add',
+            contributors: {
+                kazydek: ['doc', 'review', 'maintenance'],
+                akucharska: ['code', 'design'],
+                derberg: ['infra', 'ideas'],
+            },
+        })
+    })
+
+    // TODO: Looks like this is gramatically incorrect
+    // test('Add multiple users in 1 hit - sentences seperated by commas :think:', () => {
     //     expect(
     //         parseComment(
-    //             `@${testBotName} add @kazydek for doc, review, maintenance. Please add akucharska for code, maintenance. Please add derberg for doc, examples, ideas`,
+    //             `@${testBotName} please add kazydek for doc, review, maintenance, please add akucharska for code, maintenance and please add derberg for doc, ideas`,
     //         ),
     //     ).toEqual({
     //         action: 'add',
     //         contributors: {
     //             kazydek: ['doc', 'review', 'maintenance'],
     //             akucharska: ['code', 'maintenance'],
-    //             derberg: ['examples', 'ideas'],
+    //             derberg: ['doc', 'ideas']
     //         },
     //     })
     // })
 
-    //
-    // test('Add multiple users in 1 hit - sentences seperated by commas :think:', () => {
-    //     expect(
-    //         parseComment(
-    //             `@${testBotName} please add kazydek for doc, review, maintenance, please add akucharska for code, maintenance and please add derberg for doc, examples, ideas`,
-    //         ),
-    //     ).toEqual({
-    //         action: 'add',
-    //         contributors: {
-    //             jakebolam: ['infra', 'fundingFinding'],
-    //         },
-    //     })
-    // })
-    //
-    // test('Add multiple users in 1 hit - from seperate lines', () => {
-    //     expect(
-    //         parseComment(
-    //             `
-    // @all-contributors please add @mikeattara for ideas
-    // @all-contributors please add @The24thDS for code`
-    // please add @tbenning for code`
-    //         ),
-    //     ).toEqual({
-    //         action: 'add',
-    //         contributors: {
-    //             jakebolam: ['infra', 'fundingFinding'],
-    //         },
-    //     })
-    // })
+    test('Add multiple users in 1 hit - from seperate lines', () => {
+        expect(
+            parseComment(
+                `
+                    @all-contributors 
+                    please add @mikeattara for ideas, infra and design
+                    please add @The24thDS for infra and review
+                    please add @tbenning for code
+                `
+            ),
+        ).toEqual({
+            action: 'add',
+            contributors: {
+                mikeattara: ['ideas', 'infra', 'design'],
+                The24thDS: ['infra', 'review'],
+                tbenning: ['code']
+            },
+        })
+    })
 
     test('Intent unknown', () => {
         expect(

@@ -152,10 +152,9 @@ function findWho(message, action) {
     }
 
     const whoMatchedByFor = findWhoSafe(`[.] for`)
-    // TODO: Unused
-    // if (whoMatchedByFor) {
-    //     return whoMatchedByFor
-    // }
+    if (whoMatchedByFor) {
+        return whoMatchedByFor
+    }
 }
 
 function parseAddSentence(message, action) {
@@ -242,7 +241,8 @@ function parseComment(message) {
         .normalize()
         .out('string')
 
-    if (action === 'add') {
+    // TODO: Check each sentennce
+    if (action.match('add')) {
         return parseAddComment(message, action)
     }
 
