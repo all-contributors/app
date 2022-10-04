@@ -87,6 +87,9 @@ Thanks goes to these wonderful people ([emoji key](https://github.com/all-contri
       <td align="center"><a href="https://github.com/aaltat"><img src="https://avatars.githubusercontent.com/u/2665023?v=4?s=100" width="100px;" alt="Tatu Aalto"/><br /><sub><b>Tatu Aalto</b></sub></a><br /><a href="https://github.com/all-contributors/app/issues?q=author%3Aaaltat" title="Bug reports">🐛</a></td>
       <td align="center"><a href="https://tenshiamd.com"><img src="https://avatars.githubusercontent.com/u/13580338?v=4?s=100" width="100px;" alt="Angel Aviel Domaoan"/><br /><sub><b>Angel Aviel Domaoan</b></sub></a><br /><a href="https://github.com/all-contributors/app/commits?author=tenshiAMD" title="Code">💻</a> <a href="#maintenance-tenshiAMD" title="Maintenance">🚧</a> <a href="https://github.com/all-contributors/app/issues?q=author%3AtenshiAMD" title="Bug reports">🐛</a> <a href="https://github.com/all-contributors/app/pulls?q=is%3Apr+reviewed-by%3AtenshiAMD" title="Reviewed Pull Requests">👀</a> <a href="https://github.com/all-contributors/app/commits?author=tenshiAMD" title="Tests">⚠️</a></td>
     </tr>
+    <tr>
+      <td align="center"><a href="http://mstomar.me"><img src="https://avatars.githubusercontent.com/u/89572392?v=4?s=100" width="100px;" alt="mayank singh tomar"/><br /><sub><b>mayank singh tomar</b></sub></a><br /><a href="https://github.com/all-contributors/app/commits?author=201B153" title="Code">💻</a></td>
+    </tr>
   </tbody>
   <tfoot>
     <tr>
