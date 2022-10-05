@@ -26,7 +26,6 @@
   "devDependencies": {
     "@types/jest": "^27.0.2",
     "codecov": "^3.8.3",
-    "got": ">=11.8.5",
     "jest": "^27.3.1",
     "nock": "^13.1.4",
     "pino": "^6.11.2",
