@@ -1,7 +1,24 @@
 const { 
+  generatePrBody,
   generatePrTitle,
   generateValidProfileLink,
 } = require('../../lib/modules/helpers');
+
+describe('generatePrBody', () => {
+  const message = 'This is a test';
+
+  test('returns message without skip ci', async () => {
+    const prBodyMessage = generatePrBody(message, false);
+
+    expect(prBodyMessage).toEqual(message);
+  });
+
+  test('returns message with skip ci', async () => {
+    const prBodyMessage = generatePrBody(message, true);
+
+    expect(prBodyMessage).toEqual(message.concat('\n\n[skip ci]'));
+  });
+});
 
 describe('generatePrTitle', () => {
   const message = 'add tenshiAMD as a contributor';
