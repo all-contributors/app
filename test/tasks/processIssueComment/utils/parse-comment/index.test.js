@@ -182,6 +182,7 @@ describe('parseComment', () => {
         })
     })
 
+    // TODO: Looks like this is impossible to parse correctly, maybe we can change the format instead
     // test('Add multiple users in 1 hit - for some contributions', () => {
     //     expect(
     //         parseComment(
