@@ -90,6 +90,7 @@ Thanks goes to these wonderful people ([emoji key](https://github.com/all-contri
     <tr>
       <td align="center"><a href="http://mstomar.me"><img src="https://avatars.githubusercontent.com/u/89572392?v=4?s=100" width="100px;" alt="mayank singh tomar"/><br /><sub><b>mayank singh tomar</b></sub></a><br /><a href="https://github.com/all-contributors/app/commits?author=201B153" title="Code">💻</a></td>
       <td align="center"><a href="http://www.codingale.dev"><img src="https://avatars.githubusercontent.com/u/12262852?v=4?s=100" width="100px;" alt="Alejandro Ulate"/><br /><sub><b>Alejandro Ulate</b></sub></a><br /><a href="https://github.com/all-contributors/app/issues?q=author%3ACodingAleCR" title="Bug reports">🐛</a></td>
+      <td align="center"><a href="https://github.com/KnorpelSenf"><img src="https://avatars.githubusercontent.com/u/12952387?v=4?s=100" width="100px;" alt="KnorpelSenf"/><br /><sub><b>KnorpelSenf</b></sub></a><br /><a href="https://github.com/all-contributors/app/commits?author=KnorpelSenf" title="Code">💻</a></td>
     </tr>
   </tbody>
   <tfoot>
