@@ -32,6 +32,13 @@ describe("Config", () => {
 
         expect(config.options.files).toStrictEqual(["README.md"]);
     });
+
+    test("invalid value for `commitConvention` option", async () => {
+        const config = new Config(null, { commitConvention: null });
+        config.get()
+
+        expect(config.options.commitConvention).toStrictEqual("angular");
+    });
  
     test("invalid value for `contributorsPerLine` option", async () => {
         const config = new Config(null, { contributorsPerLine: "7" });
