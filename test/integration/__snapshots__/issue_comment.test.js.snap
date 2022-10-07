@@ -282,26 +282,7 @@ We had trouble processing your request. Please try again later.",
 }
 `;
 
-exports[`issue_comment event Fail path, Unknown user intention: logs 1`] = `
-Array [
-  Object {
-    "account": 46410174,
-    "accountLogin": "all-contributors",
-    "accountType": "organization",
-    "action": false,
-    "createdBy": 3534236,
-    "createdByLogin": "jakebolam",
-    "createdByType": "user",
-    "id": "1",
-    "level": 30,
-    "msg": "Unknown action \\"false\\"",
-    "name": "event",
-    "private": false,
-    "repository": 164268911,
-    "success": false,
-  },
-]
-`;
+exports[`issue_comment event Fail path, Unknown user intention: logs 1`] = `Array []`;
 
 exports[`issue_comment event Fail path, Unknown user intention: request body 1`] = `
 Object {
