@@ -228,9 +228,19 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "KnorpelSenf",
+      "name": "KnorpelSenf",
+      "avatar_url": "https://avatars.githubusercontent.com/u/12952387?v=4",
+      "profile": "https://github.com/KnorpelSenf",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
   "linkToUsage": true,
-  "skipCi": true
+  "skipCi": true,
+  "commitConvention": "angular"
 }
