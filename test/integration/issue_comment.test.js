@@ -15,7 +15,6 @@ const issueCommentCreatedPayloadUnknownIntention = require("../fixtures/issue_co
 const issueCommentCreatedPayloadUnknownContribution = require("../fixtures/issue_comment.created-unknown-contribution.json");
 const issueCommentCreatedMultipleContributorsPayload = require("../fixtures/issue_comment.created-multiple-contributors.json");
 const reposGetContentsAllContributorsRCdata = require("../fixtures/repos.getContents.all-contributorsrc.json");
-const reposGetContentsAllContributorsRCBlankContributorsdata = require("../fixtures/repos.getContents.all-contributorsrc-blank-contributors.json");
 const reposGetContentsAllContributorsRCdata26files = require("../fixtures/repos.getContents.all-contributorsrc-26-files.json");
 const reposGetContentsAllContributorsRCdataSkipCiFalse = require("../fixtures/repos.getContents.all-contributorsrc-skip-ci-false.json");
 const reposGetContentsAllContributorsRCdataInvalidSyntax = require("../fixtures/repos.getContents.all-contributorsrc-invalid-syntax.json");
