@@ -781,6 +781,7 @@ describe("issue_comment event", () => {
       .get(
         "/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc?ref=master"
       )
+      .twice()
       .reply(200, reposGetContentsAllContributorsRCdata)
 
       .get("/users/gr2m")
@@ -792,17 +793,20 @@ describe("issue_comment event", () => {
       .get(
         "/repos/all-contributors/all-contributors-bot/contents/README.md?ref=master"
       )
+      .twice()
       .reply(200, reposGetContentsREADMEMDdata)
 
       .get(
         `/repos/all-contributors/all-contributors-bot/git/ref/heads%2Fmaster`
       )
+      .twice()
       .reply(200, gitGetRefdata)
 
       .post(`/repos/all-contributors/all-contributors-bot/git/refs`, (body) => {
         expect(body).toMatchSnapshot("request body");
         return true;
       })
+      .twice()
       .reply(201, gitCreateRefdata)
 
       .put(
@@ -812,6 +816,7 @@ describe("issue_comment event", () => {
           return true;
         }
       )
+      .twice()
       .reply(200, reposUpdateFiledata)
 
       .put(
@@ -821,12 +826,14 @@ describe("issue_comment event", () => {
           return true;
         }
       )
+      .twice()
       .reply(200, reposUpdateFiledata)
 
       .post(`/repos/all-contributors/all-contributors-bot/pulls`, (body) => {
         expect(body).toMatchSnapshot("request body");
         return true;
       })
+      .twice()
       .reply(201, pullsCreatedata)
 
       .post(
