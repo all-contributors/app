@@ -454,7 +454,7 @@ exports[`issue_comment event Happy path, add correct new contributor, but branch
 Object {
   "body": "@jakebolam 
 
-I've updated [the pull request](https://github.com/all-contributors/all-contributors-bot/pull/1) to add @jakebolam! :tada:",
+I've updated [the pull request](https://github.com/all-contributors/all-contributors-bot/pull/1)! :tada:",
 }
 `;
 
@@ -524,7 +524,7 @@ exports[`issue_comment event Happy path, add correct new contributor, but branch
 Object {
   "body": "@jakebolam 
 
-I've put up [a pull request](https://github.com/all-contributors/all-contributors-bot/pull/1347) to add @jakebolam! :tada:",
+I've put up [a pull request](https://github.com/all-contributors/all-contributors-bot/pull/1347)! :tada:",
 }
 `;
 
@@ -602,7 +602,7 @@ exports[`issue_comment event Happy path, add correct new contributor, no allcont
 Object {
   "body": "@jakebolam 
 
-I've put up [a pull request](https://github.com/all-contributors/all-contributors-bot/pull/1347) to add @jakebolam! :tada:",
+I've put up [a pull request](https://github.com/all-contributors/all-contributors-bot/pull/1347)! :tada:",
 }
 `;
 
@@ -679,7 +679,7 @@ exports[`issue_comment event Happy path, add correct new contributor: request bo
 Object {
   "body": "@jakebolam 
 
-I've put up [a pull request](https://github.com/all-contributors/all-contributors-bot/pull/1347) to add @jakebolam! :tada:",
+I've put up [a pull request](https://github.com/all-contributors/all-contributors-bot/pull/1347)! :tada:",
 }
 `;
 
@@ -828,9 +828,9 @@ exports[`issue_comment event Happy path, add correct new multiple contributors: 
 Object {
   "body": "@jakebolam 
 
-I've put up [a pull request](https://github.com/all-contributors/all-contributors-bot/pull/1347) to add @tenshiamd! :tada:
+I've put up [a pull request](https://github.com/all-contributors/all-contributors-bot/pull/1347)! :tada:
 
-I've put up [a pull request](https://github.com/all-contributors/all-contributors-bot/pull/1347) to add @gr2m! :tada:",
+I've put up [a pull request](https://github.com/all-contributors/all-contributors-bot/pull/1347)! :tada:",
 }
 `;
 
@@ -940,7 +940,7 @@ exports[`issue_comment event User has no name and blog: request body 5`] = `
 Object {
   "body": "@jakebolam 
 
-I've put up [a pull request](https://github.com/all-contributors/all-contributors-bot/pull/1347) to add @jakebolam! :tada:",
+I've put up [a pull request](https://github.com/all-contributors/all-contributors-bot/pull/1347)! :tada:",
 }
 `;
 
@@ -1038,6 +1038,6 @@ exports[`issue_comment event skipCi=false: request body 5`] = `
 Object {
   "body": "@jakebolam 
 
-I've put up [a pull request](https://github.com/all-contributors/all-contributors-bot/pull/1347) to add @jakebolam! :tada:",
+I've put up [a pull request](https://github.com/all-contributors/all-contributors-bot/pull/1347)! :tada:",
 }
 `;
