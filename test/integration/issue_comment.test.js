@@ -14,6 +14,7 @@ const issueCommentCreatedNotForAppPayload = require("../fixtures/issue_comment.c
 const issueCommentCreatedPayloadUnknownIntention = require("../fixtures/issue_commented.created.unknown-intention.json");
 const issueCommentCreatedPayloadUnknownContribution = require("../fixtures/issue_comment.created-unknown-contribution.json");
 const issueCommentCreatedMultipleContributorsPayload = require("../fixtures/issue_comment.created-multiple-contributors.json");
+const issueCommentCreatedPayloadRefreshActions = require("../fixtures/issue_comment.created.refresh_action.json");
 const reposGetContentsAllContributorsRCdata = require("../fixtures/repos.getContents.all-contributorsrc.json");
 const reposGetContentsAllContributorsRCdata26files = require("../fixtures/repos.getContents.all-contributorsrc-26-files.json");
 const reposGetContentsAllContributorsRCdataSkipCiFalse = require("../fixtures/repos.getContents.all-contributorsrc-skip-ci-false.json");
@@ -785,7 +786,7 @@ describe("issue_comment event", () => {
 
       .get("/users/gr2m")
       .reply(200, usersGetByUsernameGr2mData)
-      
+
       .get("/users/tenshiamd")
       .reply(200, usersGetByUsernameTenshiamdData)
 
@@ -848,6 +849,77 @@ describe("issue_comment event", () => {
       name: "issue_comment",
       id: "1",
       payload: issueCommentCreatedMultipleContributorsPayload,
+    });
+
+    expect(mock.activeMocks()).toStrictEqual([]);
+    expect(output).toMatchSnapshot("logs");
+  });
+
+  test("Happy path, refresh the contributors table", async () => {
+    const mock = nock("https://api.github.com")
+      .get(
+        `/repos/all-contributors/all-contributors-bot/git/ref/heads%2Fall-contributors%2Frefresh-contributors-table`
+      )
+      .reply(404)
+
+      .get(
+        "/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc?ref=master"
+      )
+      .reply(404)
+
+      .get(
+        "/repos/all-contributors/all-contributors-bot/contents/README.md?ref=master"
+      )
+      .reply(200, reposGetContentsREADMEMDdata)
+
+      .get(
+        `/repos/all-contributors/all-contributors-bot/git/ref/heads%2Fmaster`
+      )
+      .reply(200, gitGetRefdata)
+
+      .post(`/repos/all-contributors/all-contributors-bot/git/refs`, (body) => {
+        expect(body).toMatchSnapshot("request body");
+        return true;
+      })
+      .reply(201, gitCreateRefdata)
+
+      .put(
+        `/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc`,
+        (body) => {
+          expect(body).toMatchSnapshot("request body");
+          return true;
+        }
+      )
+      .reply(201, reposUpdateFiledata)
+
+      .put(
+        `/repos/all-contributors/all-contributors-bot/contents/README.md`,
+        (body) => {
+          expect(body).toMatchSnapshot("request body");
+          return true;
+        }
+      )
+      .reply(200, reposUpdateFiledata)
+
+      .post(`/repos/all-contributors/all-contributors-bot/pulls`, (body) => {
+        expect(body).toMatchSnapshot("request body");
+        return true;
+      })
+      .reply(201, pullsCreatedata)
+
+      .post(
+        "/repos/all-contributors/all-contributors-bot/issues/1/comments",
+        (body) => {
+          expect(body).toMatchSnapshot("request body");
+          return true;
+        }
+      )
+      .reply(200);
+
+    await probot.receive({
+      name: "issue_comment",
+      id: "1",
+      payload: issueCommentCreatedPayloadRefreshActions,
     });
 
     expect(mock.activeMocks()).toStrictEqual([]);

@@ -834,6 +834,74 @@ I've put up [a pull request](https://github.com/all-contributors/all-contributor
 }
 `;
 
+exports[`issue_comment event Happy path, refresh the contributors table: logs 1`] = `
+Array [
+  Object {
+    "account": 46410174,
+    "accountLogin": "all-contributors",
+    "accountType": "organization",
+    "action": "refresh",
+    "createdBy": 3534236,
+    "createdByLogin": "jakebolam",
+    "createdByType": "user",
+    "id": "1",
+    "level": 30,
+    "msg": "Contributors table refreshed",
+    "name": "event",
+    "private": false,
+    "pullCreated": true,
+    "repository": 164268911,
+    "success": true,
+  },
+]
+`;
+
+exports[`issue_comment event Happy path, refresh the contributors table: request body 1`] = `
+Object {
+  "ref": "refs/heads/all-contributors/refresh-contributors-table",
+  "sha": "aa218f56b14c9653891f9e74264a383fa43fefbd",
+}
+`;
+
+exports[`issue_comment event Happy path, refresh the contributors table: request body 2`] = `
+Object {
+  "branch": "all-contributors/refresh-contributors-table",
+  "content": "IyBBbGxDb250cmlidXRvcnNCb3QKPCEtLSBBTEwtQ09OVFJJQlVUT1JTLUJBREdFOlNUQVJUIC0gRG8gbm90IHJlbW92ZSBvciBtb2RpZnkgdGhpcyBzZWN0aW9uIC0tPgpbIVtBbGwgQ29udHJpYnV0b3JzXShodHRwczovL2ltZy5zaGllbGRzLmlvL2JhZGdlL2FsbF9jb250cmlidXRvcnMtMC1vcmFuZ2Uuc3ZnP3N0eWxlPWZsYXQtc3F1YXJlKV0oI2NvbnRyaWJ1dG9ycy0pCjwhLS0gQUxMLUNPTlRSSUJVVE9SUy1CQURHRTpFTkQgLS0+CkEgYm90IGZvciBhdXRvbWF0aWNhbGx5IGFkZGluZyBhbGwtY29udHJpYnV0b3JzLiDwn6SWCgpbIVtCdWlsZF0oaHR0cHM6Ly9pbWcuc2hpZWxkcy5pby9jaXJjbGVjaS9wcm9qZWN0L2dpdGh1Yi9hbGwtY29udHJpYnV0b3JzL2FsbC1jb250cmlidXRvcnMtYm90L21hc3Rlci5zdmcpXShodHRwczovL2NpcmNsZWNpLmNvbS9naC9hbGwtY29udHJpYnV0b3JzL2FsbC1jb250cmlidXRvcnMtYm90KQpbIVtDb3ZlcmFnZV0oaHR0cHM6Ly9pbWcuc2hpZWxkcy5pby9jb2RlY292L2MvZ2l0aHViL2FsbC1jb250cmlidXRvcnMvYWxsLWNvbnRyaWJ1dG9ycy1ib3Quc3ZnKV0oaHR0cHM6Ly9jb2RlY292LmlvL2dpdGh1Yi9hbGwtY29udHJpYnV0b3JzL2FsbC1jb250cmlidXRvcnMtYm90KQpbIVtBbGwgQ29udHJpYnV0b3JzXShodHRwczovL2ltZy5zaGllbGRzLmlvL2JhZGdlL2FsbF9jb250cmlidXRvcnMtMS1vcmFuZ2Uuc3ZnKV0oI2NvbnRyaWJ1dG9ycykKWyFbQ2hhdCBvbiBTbGFja10oaHR0cHM6Ly9pbWcuc2hpZWxkcy5pby9iYWRnZS9zbGFjay1qb2luLWZmNjliNC5zdmcpXShodHRwczovL2pvaW4uc2xhY2suY29tL3QvYWxsLWNvbnRyaWJ1dG9ycy9zaGFyZWRfaW52aXRlL2VuUXROVEUzT0RNeU1UQTROVGswTFRVd1pETXhaR1prTW1WaU16WXpZemsyWVRNMk5qUmtaR001WXpjMFpUYzVObVl6TldZM1kyUTBaVFkzWm1GaFpEZ3lZMkUzWm1Jek5XUXdNVFV4Wm1FKQoKCiMjIEluc3RhbGxhdGlvbgoxLiBJbnN0YWxsIEFwcAoyLiBQbGVhc2Ugc2V0dXAgeW91ciBgUkVBRE1FLm1kYCBhbmQgYC5hbGwtY29udHJpYnV0b3JzcmNgIHVzaW5nIHRoZSBbYWxsLWNvbnRyaWJ1dG9ycy1jbGkgdG9vbF0oaHR0cHM6Ly9naXRodWIuY29tL2FsbC1jb250cmlidXRvcnMvYWxsLWNvbnRyaWJ1dG9ycy1jbGkpCj4gSW4gdGhlIGZ1dHVyZSB3ZSB3YW50IHRvIHJlbW92ZSB0aGUgbmVlZCBmb3IgdGhlIENMSSB0b29sLCBpZiB5b3Ugd2FudCB0byBoZWxwIG91dCBbc2VlIHRoZSBpc3N1ZV0oaHR0cHM6Ly9naXRodWIuY29tL2FsbC1jb250cmlidXRvcnMvYWxsLWNvbnRyaWJ1dG9ycy1ib3QvaXNzdWVzLzMpCgoKIyMgVXNhZ2UKCiMjIyBBZGRpbmcgY29udHJpYnV0aW9ucwoxLiBDb21tZW50IG9uIElzc3VlL1BSIGV0YyB3aXRoIHRleHQ6IGBAQWxsQ29udHJpYnV0b3JCb3QgcGxlYXNlIGFkZCBqYWtlYm9sYW0gZm9yIGluZnJhc3RydWN0dXJlLCB0ZXN0aW5nIGFuZCBjb2RlYCAoQ2FuIGFsc28gdXNlIHRoZSBzaG9ydCB0ZXJtcywgZnVsbCBrZXkgY29taW5nIHNvb24pCjIuIEJvdCB3aWxsIGxvb2sgZm9yIGAuYWxsLWNvbnRyaWJ1dG9yc3JjYCBpZiBub3QgZm91bmQsIGNvbW1lbnRzIG9uIHByIHRvIHJ1biBzZXR1cAozLiBJZiB1c2VyIGV4aXN0cywgYWRkIG5ldyBjb250cmlidXRpb24sIGlmIG5vdCBhZGQgdXNlciBhbmQgYWRkIGNvbnRyaWJ1dGlvbgoKCiMjIENvbnRyaWJ1dGluZwpJZiB5b3UgaGF2ZSBzdWdnZXN0aW9ucyBmb3IgaG93IHRoZSBBbGxDb250cmlidXRvcnNCb3QgY291bGQgYmUgaW1wcm92ZWQsIG9yIHdhbnQgdG8gcmVwb3J0IGEgYnVnLCBbb3BlbiBhbiBpc3N1ZV0oaHR0cHM6Ly9naXRodWIuY29tL2FsbC1jb250cmlidXRvcnMvYWxsLWNvbnRyaWJ1dG9ycy1ib3QvaXNzdWVzKSEKCkZvciBtb3JlLCBjaGVjayBvdXQgdGhlIFtDb250cmlidXRpbmcgR3VpZGVdKENPTlRSSUJVVElORy5tZCkuCgojIyBDb250cmlidXRvcnMKClRoYW5rcyBnb2VzIHRvIHRoZXNlIHdvbmRlcmZ1bCBwZW9wbGUgKFtlbW9qaSBrZXldKGh0dHBzOi8vZ2l0aHViLmNvbS9hbGwtY29udHJpYnV0b3JzL2FsbC1jb250cmlidXRvcnMjZW1vamkta2V5KSk6CjwhLS0gQUxMLUNPTlRSSUJVVE9SUy1MSVNUOlNUQVJUIC0gRG8gbm90IHJlbW92ZSBvciBtb2RpZnkgdGhpcyBzZWN0aW9uIC0tPgo8IS0tIHByZXR0aWVyLWlnbm9yZS1zdGFydCAtLT4KPCEtLSBtYXJrZG93bmxpbnQtZGlzYWJsZSAtLT4KPCEtLSBtYXJrZG93bmxpbnQtcmVzdG9yZSAtLT4KPCEtLSBwcmV0dGllci1pZ25vcmUtZW5kIC0tPgoKPCEtLSBBTEwtQ09OVFJJQlVUT1JTLUxJU1Q6RU5EIC0tPgoKPCEtLSBBTEwtQ09OVFJJQlVUT1JTLUxJU1Q6U1RBUlQgLSBEbyBub3QgcmVtb3ZlIG9yIG1vZGlmeSB0aGlzIHNlY3Rpb24gLS0+CjwhLS0gcHJldHRpZXItaWdub3JlIC0tPgp8IFs8aW1nIHNyYz0iaHR0cHM6Ly9hdmF0YXJzMi5naXRodWJ1c2VyY29udGVudC5jb20vdS8zNTM0MjM2P3Y9NCIgd2lkdGg9IjEwMHB4OyIvPjxiciAvPjxzdWI+PGI+SmFrZSBCb2xhbTwvYj48L3N1Yj5dKGh0dHBzOi8vamFrZWJvbGFtLmNvbSk8YnIgLz5b8J+Su10oaHR0cHM6Ly9naXRodWIuY29tL2FsbC1jb250cmlidHVvcnMvYm90L2NvbW1pdHM/YXV0aG9yPWpha2Vib2xhbSAiQ29kZSIpIFvwn6SUXSgjaWRlYXMtamFrZWJvbGFtICJJZGVhcywgUGxhbm5pbmcsICYgRmVlZGJhY2siKSBb8J+ah10oI2luZnJhLWpha2Vib2xhbSAiSW5mcmFzdHJ1Y3R1cmUgKEhvc3RpbmcsIEJ1aWxkLVRvb2xzLCBldGMpIikgW+KaoO+4j10oaHR0cHM6Ly9naXRodWIuY29tL2FsbC1jb250cmlidHVvcnMvYm90L2NvbW1pdHM/YXV0aG9yPWpha2Vib2xhbSAiVGVzdHMiKSB8CnwgOi0tLTogfAo8IS0tIEFMTC1DT05UUklCVVRPUlMtTElTVDpFTkQgLS0+CgpUaGlzIHByb2plY3QgZm9sbG93cyB0aGUgW2FsbC1jb250cmlidXRvcnNdKGh0dHBzOi8vZ2l0aHViLmNvbS9hbGwtY29udHJpYnV0b3JzL2FsbC1jb250cmlidXRvcnMpIHNwZWNpZmljYXRpb24uIENvbnRyaWJ1dGlvbnMgb2YgYW55IGtpbmQgd2VsY29tZQoKIyMgTElDRU5TRQoKW01JVF0oTElDRU5TRSkK",
+  "message": "docs: update README.md [skip ci]",
+  "sha": "bfce087f5fbed22257de1ee5056b20de63da0a13",
+}
+`;
+
+exports[`issue_comment event Happy path, refresh the contributors table: request body 3`] = `
+Object {
+  "branch": "all-contributors/refresh-contributors-table",
+  "content": "ewogICJmaWxlcyI6IFsKICAgICJSRUFETUUubWQiCiAgXSwKICAiaW1hZ2VTaXplIjogMTAwLAogICJjb21taXQiOiBmYWxzZSwKICAiY29tbWl0Q29udmVudGlvbiI6ICJhbmd1bGFyIiwKICAiY29udHJpYnV0b3JzIjogW10sCiAgImNvbnRyaWJ1dG9yc1BlckxpbmUiOiA3LAogICJza2lwQ2kiOiB0cnVlLAogICJyZXBvVHlwZSI6ICJnaXRodWIiLAogICJyZXBvSG9zdCI6ICJodHRwczovL2dpdGh1Yi5jb20iLAogICJwcm9qZWN0TmFtZSI6ICJhbGwtY29udHJpYnV0b3JzLWJvdCIsCiAgInByb2plY3RPd25lciI6ICJhbGwtY29udHJpYnV0b3JzIgp9Cg==",
+  "message": "docs: create .all-contributorsrc [skip ci]",
+}
+`;
+
+exports[`issue_comment event Happy path, refresh the contributors table: request body 4`] = `
+Object {
+  "base": "master",
+  "body": "Refreshes the contributors table.
+
+This was requested by jakebolam [in this comment](https://github.com/all-contributors/all-contributors-bot/pull/1#issuecomment-453012966)
+
+[skip ci]",
+  "head": "all-contributors/refresh-contributors-table",
+  "maintainer_can_modify": true,
+  "title": "docs: refresh the contributors table",
+}
+`;
+
+exports[`issue_comment event Happy path, refresh the contributors table: request body 5`] = `
+Object {
+  "body": "@jakebolam 
+
+I've put up [a pull request](https://github.com/all-contributors/all-contributors-bot/pull/1347)! :tada:",
+}
+`;
+
 exports[`issue_comment event Unknown contribution: logs 1`] = `
 Array [
   Object {
