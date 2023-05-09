@@ -285,20 +285,10 @@ We had trouble processing your request. Please try again later.",
 exports[`issue_comment event Fail path, Unknown user intention: logs 1`] = `
 Array [
   Object {
-    "account": 46410174,
-    "accountLogin": "all-contributors",
-    "accountType": "organization",
-    "action": false,
-    "createdBy": 3534236,
-    "createdByLogin": "jakebolam",
-    "createdByType": "user",
     "id": "1",
     "level": 30,
     "msg": "Unknown action \\"false\\"",
     "name": "event",
-    "private": false,
-    "repository": 164268911,
-    "success": false,
   },
 ]
 `;
@@ -322,11 +312,9 @@ Array [
     "accountLogin": "all-contributors",
     "accountType": "organization",
     "action": "add",
-    "contributors": Object {
-      "jakebolam": Array [
-        "code",
-      ],
-    },
+    "contributions": Array [
+      "code",
+    ],
     "createdBy": 3534236,
     "createdByLogin": "jakebolam",
     "createdByType": "user",
@@ -337,6 +325,7 @@ Array [
     "private": false,
     "repository": 164268911,
     "success": true,
+    "who": "jakebolam",
   },
 ]
 `;
@@ -398,13 +387,11 @@ Array [
     "accountLogin": "all-contributors",
     "accountType": "organization",
     "action": "add",
-    "contributors": Object {
-      "jakebolam": Array [
-        "code",
-        "doc",
-        "infra",
-      ],
-    },
+    "contributions": Array [
+      "code",
+      "doc",
+      "infra",
+    ],
     "createdBy": 3534236,
     "createdByLogin": "jakebolam",
     "createdByType": "user",
@@ -416,6 +403,7 @@ Array [
     "pullCreated": false,
     "repository": 164268911,
     "success": true,
+    "who": "jakebolam",
   },
 ]
 `;
@@ -465,13 +453,11 @@ Array [
     "accountLogin": "all-contributors",
     "accountType": "organization",
     "action": "add",
-    "contributors": Object {
-      "jakebolam": Array [
-        "code",
-        "doc",
-        "infra",
-      ],
-    },
+    "contributions": Array [
+      "code",
+      "doc",
+      "infra",
+    ],
     "createdBy": 3534236,
     "createdByLogin": "jakebolam",
     "createdByType": "user",
@@ -486,6 +472,7 @@ Array [
     "pullCreated": true,
     "repository": 164268911,
     "success": true,
+    "who": "jakebolam",
   },
 ]
 `;
@@ -535,13 +522,11 @@ Array [
     "accountLogin": "all-contributors",
     "accountType": "organization",
     "action": "add",
-    "contributors": Object {
-      "jakebolam": Array [
-        "code",
-        "doc",
-        "infra",
-      ],
-    },
+    "contributions": Array [
+      "code",
+      "doc",
+      "infra",
+    ],
     "createdBy": 3534236,
     "createdByLogin": "jakebolam",
     "createdByType": "user",
@@ -556,6 +541,7 @@ Array [
     "pullCreated": true,
     "repository": 164268911,
     "success": true,
+    "who": "jakebolam",
   },
 ]
 `;
@@ -613,13 +599,11 @@ Array [
     "accountLogin": "all-contributors",
     "accountType": "organization",
     "action": "add",
-    "contributors": Object {
-      "jakebolam": Array [
-        "code",
-        "doc",
-        "infra",
-      ],
-    },
+    "contributions": Array [
+      "code",
+      "doc",
+      "infra",
+    ],
     "createdBy": 3534236,
     "createdByLogin": "jakebolam",
     "createdByType": "user",
@@ -634,6 +618,7 @@ Array [
     "pullCreated": true,
     "repository": 164268911,
     "success": true,
+    "who": "jakebolam",
   },
 ]
 `;
@@ -690,17 +675,11 @@ Array [
     "accountLogin": "all-contributors",
     "accountType": "organization",
     "action": "add",
-    "contributors": Object {
-      "gr2m": Array [
-        "design",
-        "test",
-      ],
-      "tenshiamd": Array [
-        "code",
-        "doc",
-        "infra",
-      ],
-    },
+    "contributions": Array [
+      "code",
+      "doc",
+      "infra",
+    ],
     "createdBy": 3534236,
     "createdByLogin": "jakebolam",
     "createdByType": "user",
@@ -715,23 +694,17 @@ Array [
     "pullCreated": true,
     "repository": 164268911,
     "success": true,
+    "who": "tenshiamd",
   },
   Object {
     "account": 46410174,
     "accountLogin": "all-contributors",
     "accountType": "organization",
     "action": "add",
-    "contributors": Object {
-      "gr2m": Array [
-        "design",
-        "test",
-      ],
-      "tenshiamd": Array [
-        "code",
-        "doc",
-        "infra",
-      ],
-    },
+    "contributions": Array [
+      "design",
+      "test",
+    ],
     "createdBy": 3534236,
     "createdByLogin": "jakebolam",
     "createdByType": "user",
@@ -746,6 +719,7 @@ Array [
     "pullCreated": true,
     "repository": 164268911,
     "success": true,
+    "who": "gr2m",
   },
 ]
 `;
@@ -841,9 +815,7 @@ Array [
     "accountLogin": "all-contributors",
     "accountType": "organization",
     "action": "add",
-    "contributors": Object {
-      "jakebolam": Array [],
-    },
+    "contributions": Array [],
     "createdBy": 3534236,
     "createdByLogin": "jakebolam",
     "createdByType": "user",
@@ -854,6 +826,7 @@ Array [
     "private": false,
     "repository": 164268911,
     "success": false,
+    "who": "jakebolam",
   },
 ]
 `;
@@ -874,13 +847,11 @@ Array [
     "accountLogin": "all-contributors",
     "accountType": "organization",
     "action": "add",
-    "contributors": Object {
-      "jakebolam": Array [
-        "code",
-        "doc",
-        "infra",
-      ],
-    },
+    "contributions": Array [
+      "code",
+      "doc",
+      "infra",
+    ],
     "createdBy": 3534236,
     "createdByLogin": "jakebolam",
     "createdByType": "user",
@@ -895,6 +866,7 @@ Array [
     "pullCreated": true,
     "repository": 164268911,
     "success": true,
+    "who": "jakebolam",
   },
 ]
 `;
@@ -972,13 +944,11 @@ Array [
     "accountLogin": "all-contributors",
     "accountType": "organization",
     "action": "add",
-    "contributors": Object {
-      "jakebolam": Array [
-        "code",
-        "doc",
-        "infra",
-      ],
-    },
+    "contributions": Array [
+      "code",
+      "doc",
+      "infra",
+    ],
     "createdBy": 3534236,
     "createdByLogin": "jakebolam",
     "createdByType": "user",
@@ -993,6 +963,7 @@ Array [
     "pullCreated": true,
     "repository": 164268911,
     "success": true,
+    "who": "jakebolam",
   },
 ]
 `;
