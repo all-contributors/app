@@ -31,10 +31,7 @@ Array [
         "action": "created",
         "comment": Object {
           "author_association": "MEMBER",
-          "body": "@all-contributors please add jakebolam for code, doc and infra
-🤖 Beep boop! This comment was added automatically by [all-contributors-auto-action](https://github.com/marketplace/actions/all-contributors-auto-action).
-Not all contributions can be detected from Git & GitHub alone. Please comment any missing contribution types this bot missed.
-...and of course, thank you for contributing! 💙",
+          "body": "@all-contributors please add jakebolam for code, doc and infra",
           "created_at": "2019-01-10T08:36:52Z",
           "html_url": "https://github.com/all-contributors/all-contributors-bot/pull/1#issuecomment-453012966",
           "id": 453012966,
@@ -671,6 +668,62 @@ I've put up [a pull request](https://github.com/all-contributors/all-contributor
 }
 `;
 
+exports[`issue_comment event Happy path, add correct new multiple contributors: logs 1`] = `
+Array [
+  Object {
+    "account": 46410174,
+    "accountLogin": "all-contributors",
+    "accountType": "organization",
+    "action": "add",
+    "contributions": Array [
+      "code",
+      "doc",
+      "infra",
+    ],
+    "createdBy": 3534236,
+    "createdByLogin": "jakebolam",
+    "createdByType": "user",
+    "createdFor": 13580338,
+    "createdForLogin": "tenshiamd",
+    "createdForType": "user",
+    "id": "1",
+    "level": 30,
+    "msg": "tenshiamd added for code, doc, infra",
+    "name": "event",
+    "private": false,
+    "pullCreated": true,
+    "repository": 164268911,
+    "success": true,
+    "who": "tenshiamd",
+  },
+  Object {
+    "account": 46410174,
+    "accountLogin": "all-contributors",
+    "accountType": "organization",
+    "action": "add",
+    "contributions": Array [
+      "design",
+      "test",
+    ],
+    "createdBy": 3534236,
+    "createdByLogin": "jakebolam",
+    "createdByType": "user",
+    "createdFor": 60179179,
+    "createdForLogin": "gr2m",
+    "createdForType": "user",
+    "id": "1",
+    "level": 30,
+    "msg": "gr2m added for design, test",
+    "name": "event",
+    "private": false,
+    "pullCreated": true,
+    "repository": 164268911,
+    "success": true,
+    "who": "gr2m",
+  },
+]
+`;
+
 exports[`issue_comment event Happy path, add correct new multiple contributors: request body 1`] = `
 Object {
   "ref": "refs/heads/all-contributors/add-tenshiamd",
@@ -710,9 +763,48 @@ This was requested by jakebolam [in this comment](https://github.com/all-contrib
 
 exports[`issue_comment event Happy path, add correct new multiple contributors: request body 5`] = `
 Object {
+  "ref": "refs/heads/all-contributors/add-gr2m",
+  "sha": "aa218f56b14c9653891f9e74264a383fa43fefbd",
+}
+`;
+
+exports[`issue_comment event Happy path, add correct new multiple contributors: request body 6`] = `
+Object {
+  "branch": "all-contributors/add-gr2m",
+  "content": "IyBBbGxDb250cmlidXRvcnNCb3QKQSBib3QgZm9yIGF1dG9tYXRpY2FsbHkgYWRkaW5nIGFsbC1jb250cmlidXRvcnMuIPCfpJYKClshW0J1aWxkXShodHRwczovL2ltZy5zaGllbGRzLmlvL2NpcmNsZWNpL3Byb2plY3QvZ2l0aHViL2FsbC1jb250cmlidXRvcnMvYWxsLWNvbnRyaWJ1dG9ycy1ib3QvbWFzdGVyLnN2ZyldKGh0dHBzOi8vY2lyY2xlY2kuY29tL2doL2FsbC1jb250cmlidXRvcnMvYWxsLWNvbnRyaWJ1dG9ycy1ib3QpClshW0NvdmVyYWdlXShodHRwczovL2ltZy5zaGllbGRzLmlvL2NvZGVjb3YvYy9naXRodWIvYWxsLWNvbnRyaWJ1dG9ycy9hbGwtY29udHJpYnV0b3JzLWJvdC5zdmcpXShodHRwczovL2NvZGVjb3YuaW8vZ2l0aHViL2FsbC1jb250cmlidXRvcnMvYWxsLWNvbnRyaWJ1dG9ycy1ib3QpClshW0FsbCBDb250cmlidXRvcnNdKGh0dHBzOi8vaW1nLnNoaWVsZHMuaW8vYmFkZ2UvYWxsX2NvbnRyaWJ1dG9ycy0xLW9yYW5nZS5zdmcpXSgjY29udHJpYnV0b3JzKQpbIVtDaGF0IG9uIFNsYWNrXShodHRwczovL2ltZy5zaGllbGRzLmlvL2JhZGdlL3NsYWNrLWpvaW4tZmY2OWI0LnN2ZyldKGh0dHBzOi8vam9pbi5zbGFjay5jb20vdC9hbGwtY29udHJpYnV0b3JzL3NoYXJlZF9pbnZpdGUvZW5RdE5URTNPRE15TVRBNE5UazBMVFV3WkRNeFpHWmtNbVZpTXpZell6azJZVE0yTmpSa1pHTTVZemMwWlRjNU5tWXpOV1kzWTJRMFpUWTNabUZoWkRneVkyRTNabUl6TldRd01UVXhabUUpCgoKIyMgSW5zdGFsbGF0aW9uCjEuIEluc3RhbGwgQXBwCjIuIFBsZWFzZSBzZXR1cCB5b3VyIGBSRUFETUUubWRgIGFuZCBgLmFsbC1jb250cmlidXRvcnNyY2AgdXNpbmcgdGhlIFthbGwtY29udHJpYnV0b3JzLWNsaSB0b29sXShodHRwczovL2dpdGh1Yi5jb20vYWxsLWNvbnRyaWJ1dG9ycy9hbGwtY29udHJpYnV0b3JzLWNsaSkKPiBJbiB0aGUgZnV0dXJlIHdlIHdhbnQgdG8gcmVtb3ZlIHRoZSBuZWVkIGZvciB0aGUgQ0xJIHRvb2wsIGlmIHlvdSB3YW50IHRvIGhlbHAgb3V0IFtzZWUgdGhlIGlzc3VlXShodHRwczovL2dpdGh1Yi5jb20vYWxsLWNvbnRyaWJ1dG9ycy9hbGwtY29udHJpYnV0b3JzLWJvdC9pc3N1ZXMvMykKCgojIyBVc2FnZQoKIyMjIEFkZGluZyBjb250cmlidXRpb25zCjEuIENvbW1lbnQgb24gSXNzdWUvUFIgZXRjIHdpdGggdGV4dDogYEBBbGxDb250cmlidXRvckJvdCBwbGVhc2UgYWRkIGpha2Vib2xhbSBmb3IgaW5mcmFzdHJ1Y3R1cmUsIHRlc3RpbmcgYW5kIGNvZGVgIChDYW4gYWxzbyB1c2UgdGhlIHNob3J0IHRlcm1zLCBmdWxsIGtleSBjb21pbmcgc29vbikKMi4gQm90IHdpbGwgbG9vayBmb3IgYC5hbGwtY29udHJpYnV0b3JzcmNgIGlmIG5vdCBmb3VuZCwgY29tbWVudHMgb24gcHIgdG8gcnVuIHNldHVwCjMuIElmIHVzZXIgZXhpc3RzLCBhZGQgbmV3IGNvbnRyaWJ1dGlvbiwgaWYgbm90IGFkZCB1c2VyIGFuZCBhZGQgY29udHJpYnV0aW9uCgoKIyMgQ29udHJpYnV0aW5nCklmIHlvdSBoYXZlIHN1Z2dlc3Rpb25zIGZvciBob3cgdGhlIEFsbENvbnRyaWJ1dG9yc0JvdCBjb3VsZCBiZSBpbXByb3ZlZCwgb3Igd2FudCB0byByZXBvcnQgYSBidWcsIFtvcGVuIGFuIGlzc3VlXShodHRwczovL2dpdGh1Yi5jb20vYWxsLWNvbnRyaWJ1dG9ycy9hbGwtY29udHJpYnV0b3JzLWJvdC9pc3N1ZXMpIQoKRm9yIG1vcmUsIGNoZWNrIG91dCB0aGUgW0NvbnRyaWJ1dGluZyBHdWlkZV0oQ09OVFJJQlVUSU5HLm1kKS4KCiMjIENvbnRyaWJ1dG9ycwoKVGhhbmtzIGdvZXMgdG8gdGhlc2Ugd29uZGVyZnVsIHBlb3BsZSAoW2Vtb2ppIGtleV0oaHR0cHM6Ly9naXRodWIuY29tL2FsbC1jb250cmlidXRvcnMvYWxsLWNvbnRyaWJ1dG9ycyNlbW9qaS1rZXkpKToKCjwhLS0gQUxMLUNPTlRSSUJVVE9SUy1MSVNUOlNUQVJUIC0gRG8gbm90IHJlbW92ZSBvciBtb2RpZnkgdGhpcyBzZWN0aW9uIC0tPgo8IS0tIHByZXR0aWVyLWlnbm9yZS1zdGFydCAtLT4KPCEtLSBtYXJrZG93bmxpbnQtZGlzYWJsZSAtLT4KPHRhYmxlPgogIDx0Ym9keT4KICAgIDx0cj4KICAgICAgPHRkIGFsaWduPSJjZW50ZXIiIHZhbGlnbj0idG9wIiB3aWR0aD0iMTQuMjglIj48YSBocmVmPSJodHRwczovL2pha2Vib2xhbS5jb20iPjxpbWcgc3JjPSJodHRwczovL2F2YXRhcnMyLmdpdGh1YnVzZXJjb250ZW50LmNvbS91LzM1MzQyMzY/dj00P3M9MTAwIiB3aWR0aD0iMTAwcHg7IiBhbHQ9Ikpha2UgQm9sYW0iLz48YnIgLz48c3ViPjxiPkpha2UgQm9sYW08L2I+PC9zdWI+PC9hPjxiciAvPjxhIGhyZWY9Imh0dHBzOi8vZ2l0aHViLmNvbS9hbGwtY29udHJpYnV0b3JzL2FsbC1jb250cmlidXRvcnMtYm90L2NvbW1pdHM/YXV0aG9yPWpha2Vib2xhbSIgdGl0bGU9IkNvZGUiPvCfkrs8L2E+IDxhIGhyZWY9IiNpZGVhcy1qYWtlYm9sYW0iIHRpdGxlPSJJZGVhcywgUGxhbm5pbmcsICYgRmVlZGJhY2siPvCfpJQ8L2E+IDxhIGhyZWY9IiNpbmZyYS1qYWtlYm9sYW0iIHRpdGxlPSJJbmZyYXN0cnVjdHVyZSAoSG9zdGluZywgQnVpbGQtVG9vbHMsIGV0YykiPvCfmoc8L2E+IDxhIGhyZWY9Imh0dHBzOi8vZ2l0aHViLmNvbS9hbGwtY29udHJpYnV0b3JzL2FsbC1jb250cmlidXRvcnMtYm90L2NvbW1pdHM/YXV0aG9yPWpha2Vib2xhbSIgdGl0bGU9IlRlc3RzIj7imqDvuI88L2E+PC90ZD4KICAgICAgPHRkIGFsaWduPSJjZW50ZXIiIHZhbGlnbj0idG9wIiB3aWR0aD0iMTQuMjglIj48YSBocmVmPSJodHRwczovL2dpdGh1Yi5jb20vZ3IybSI+PGltZyBzcmM9Imh0dHBzOi8vYXZhdGFycy5naXRodWJ1c2VyY29udGVudC5jb20vdS82MDE3OTE3OT92PTQ/cz0xMDAiIHdpZHRoPSIxMDBweDsiIGFsdD0iZ3IybSIvPjxiciAvPjxzdWI+PGI+Z3IybTwvYj48L3N1Yj48L2E+PGJyIC8+PGEgaHJlZj0iI2Rlc2lnbi1ncjJtIiB0aXRsZT0iRGVzaWduIj7wn46oPC9hPiA8YSBocmVmPSJodHRwczovL2dpdGh1Yi5jb20vYWxsLWNvbnRyaWJ1dG9ycy9hbGwtY29udHJpYnV0b3JzLWJvdC9jb21taXRzP2F1dGhvcj1ncjJtIiB0aXRsZT0iVGVzdHMiPuKaoO+4jzwvYT48L3RkPgogICAgPC90cj4KICA8L3Rib2R5Pgo8L3RhYmxlPgoKPCEtLSBtYXJrZG93bmxpbnQtcmVzdG9yZSAtLT4KPCEtLSBwcmV0dGllci1pZ25vcmUtZW5kIC0tPgoKPCEtLSBBTEwtQ09OVFJJQlVUT1JTLUxJU1Q6RU5EIC0tPgoKVGhpcyBwcm9qZWN0IGZvbGxvd3MgdGhlIFthbGwtY29udHJpYnV0b3JzXShodHRwczovL2dpdGh1Yi5jb20vYWxsLWNvbnRyaWJ1dG9ycy9hbGwtY29udHJpYnV0b3JzKSBzcGVjaWZpY2F0aW9uLiBDb250cmlidXRpb25zIG9mIGFueSBraW5kIHdlbGNvbWUKCiMjIExJQ0VOU0UKCltNSVRdKExJQ0VOU0UpCg==",
+  "message": "docs: update README.md",
+  "sha": "bfce087f5fbed22257de1ee5056b20de63da0a13",
+}
+`;
+
+exports[`issue_comment event Happy path, add correct new multiple contributors: request body 7`] = `
+Object {
+  "branch": "all-contributors/add-gr2m",
+  "content": "ewogICJwcm9qZWN0TmFtZSI6ICJhbGwtY29udHJpYnV0b3JzLWJvdCIsCiAgInByb2plY3RPd25lciI6ICJhbGwtY29udHJpYnV0b3JzIiwKICAicmVwb1R5cGUiOiAiZ2l0aHViIiwKICAicmVwb0hvc3QiOiAiaHR0cHM6Ly9naXRodWIuY29tIiwKICAiZmlsZXMiOiBbCiAgICAiUkVBRE1FLm1kIgogIF0sCiAgImltYWdlU2l6ZSI6IDEwMCwKICAiY29tbWl0IjogZmFsc2UsCiAgInNraXBDaSI6IGZhbHNlLAogICJjb250cmlidXRvcnMiOiBbCiAgICB7CiAgICAgICJsb2dpbiI6ICJqYWtlYm9sYW0iLAogICAgICAibmFtZSI6ICJKYWtlIEJvbGFtIiwKICAgICAgImF2YXRhcl91cmwiOiAiaHR0cHM6Ly9hdmF0YXJzMi5naXRodWJ1c2VyY29udGVudC5jb20vdS8zNTM0MjM2P3Y9NCIsCiAgICAgICJwcm9maWxlIjogImh0dHBzOi8vamFrZWJvbGFtLmNvbSIsCiAgICAgICJjb250cmlidXRpb25zIjogWwogICAgICAgICJjb2RlIiwKICAgICAgICAiaWRlYXMiLAogICAgICAgICJpbmZyYSIsCiAgICAgICAgInRlc3QiCiAgICAgIF0KICAgIH0sCiAgICB7CiAgICAgICJsb2dpbiI6ICJncjJtIiwKICAgICAgIm5hbWUiOiAiZ3IybSIsCiAgICAgICJhdmF0YXJfdXJsIjogImh0dHBzOi8vYXZhdGFycy5naXRodWJ1c2VyY29udGVudC5jb20vdS82MDE3OTE3OT92PTQiLAogICAgICAicHJvZmlsZSI6ICJodHRwczovL2dpdGh1Yi5jb20vZ3IybSIsCiAgICAgICJjb250cmlidXRpb25zIjogWwogICAgICAgICJkZXNpZ24iLAogICAgICAgICJ0ZXN0IgogICAgICBdCiAgICB9CiAgXSwKICAiY29tbWl0VHlwZSI6ICJkb2NzIiwKICAiY29tbWl0Q29udmVudGlvbiI6ICJhbmd1bGFyIiwKICAiY29udHJpYnV0b3JzUGVyTGluZSI6IDcKfQo=",
+  "message": "docs: update .all-contributorsrc",
+  "sha": "dff34f715bca51114c0336a49381456a926806d5",
+}
+`;
+
+exports[`issue_comment event Happy path, add correct new multiple contributors: request body 8`] = `
+Object {
+  "base": "master",
+  "body": "Adds @gr2m as a contributor for design, test.
+
+This was requested by jakebolam [in this comment](https://github.com/all-contributors/all-contributors-bot/pull/1#issuecomment-453012966)",
+  "head": "all-contributors/add-gr2m",
+  "maintainer_can_modify": true,
+  "title": "docs: add gr2m as a contributor for design, and test",
+}
+`;
+
+exports[`issue_comment event Happy path, add correct new multiple contributors: request body 9`] = `
+Object {
   "body": "@jakebolam 
 
-I've put up [a pull request](https://github.com/all-contributors/all-contributors-bot/pull/1347) to add @tenshiamd! :tada:",
+I've put up [a pull request](https://github.com/all-contributors/all-contributors-bot/pull/1347) to add @tenshiamd! :tada:
+
+I've put up [a pull request](https://github.com/all-contributors/all-contributors-bot/pull/1347) to add @gr2m! :tada:",
 }
 `;
 
@@ -729,7 +821,7 @@ Array [
     "createdByType": "user",
     "id": "1",
     "level": 30,
-    "msg": "No contributions for jakebolam",
+    "msg": "No contributions",
     "name": "event",
     "private": false,
     "repository": 164268911,
@@ -744,7 +836,7 @@ Object {
   "body": "@jakebolam 
 
 I couldn't determine any contributions to add, did you specify any contributions?
-        Please make sure to use [valid contribution names](https://allcontributors.org/docs/en/emoji-key).",
+          Please make sure to use [valid contribution names](https://allcontributors.org/docs/en/emoji-key).",
 }
 `;
 
@@ -831,7 +923,7 @@ Array [
     "id": "1",
     "isKnownError": true,
     "level": 30,
-    "msg": "This project's configuration file has malformed JSON: .all-contributorsrc. Error:: Unexpected token 'o', \\"nope\\" is not valid JSON",
+    "msg": "This project's configuration file has malformed JSON: .all-contributorsrc. Error:: Unexpected token o in JSON at position 1",
     "name": "event",
   },
 ]
@@ -841,7 +933,7 @@ exports[`issue_comment event invalid .all-contributorsrc: request body 1`] = `
 Object {
   "body": "@jakebolam 
 
-This project's configuration file has malformed JSON: .all-contributorsrc. Error:: Unexpected token 'o', \\"nope\\" is not valid JSON",
+This project's configuration file has malformed JSON: .all-contributorsrc. Error:: Unexpected token o in JSON at position 1",
 }
 `;
 
