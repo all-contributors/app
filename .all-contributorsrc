@@ -256,10 +256,20 @@
         "code",
         "test"
       ]
+    },
+    {
+      "login": "jpivarski",
+      "name": "Jim Pivarski",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1852447?v=4",
+      "profile": "https://github.com/jpivarski",
+      "contributions": [
+        "infra"
+      ]
     }
   ],
   "contributorsPerLine": 7,
   "linkToUsage": true,
   "skipCi": true,
-  "commitConvention": "angular"
+  "commitConvention": "angular",
+  "commitType": "docs"
 }
