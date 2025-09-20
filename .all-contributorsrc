@@ -256,10 +256,20 @@
         "code",
         "test"
       ]
+    },
+    {
+      "login": "EndBug",
+      "name": "Federico Grandi",
+      "avatar_url": "https://avatars.githubusercontent.com/u/26386270?v=4",
+      "profile": "https://github.com/EndBug",
+      "contributions": [
+        "maintenance"
+      ]
     }
   ],
   "contributorsPerLine": 7,
   "linkToUsage": true,
   "skipCi": true,
-  "commitConvention": "angular"
+  "commitConvention": "angular",
+  "commitType": "docs"
 }
