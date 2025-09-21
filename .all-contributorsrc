@@ -256,10 +256,20 @@
         "code",
         "test"
       ]
+    },
+    {
+      "login": "gu-does-git",
+      "name": "Gustavo R.",
+      "avatar_url": "https://avatars.githubusercontent.com/u/42705462?v=4",
+      "profile": "http://gudoes.dev",
+      "contributions": [
+        "content"
+      ]
     }
   ],
   "contributorsPerLine": 7,
   "linkToUsage": true,
   "skipCi": true,
-  "commitConvention": "angular"
+  "commitConvention": "angular",
+  "commitType": "docs"
 }
