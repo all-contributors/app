@@ -256,10 +256,21 @@
         "code",
         "test"
       ]
+    },
+    {
+      "login": "akarlaraytu",
+      "name": "Aytug Akarlar",
+      "avatar_url": "https://avatars.githubusercontent.com/u/118820543?v=4",
+      "profile": "https://www.linkedin.com/in/aytuakarlar/",
+      "contributions": [
+        "code",
+        "ideas"
+      ]
     }
   ],
   "contributorsPerLine": 7,
   "linkToUsage": true,
   "skipCi": true,
-  "commitConvention": "angular"
+  "commitConvention": "angular",
+  "commitType": "docs"
 }
