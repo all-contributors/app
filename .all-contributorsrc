@@ -292,6 +292,15 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "aidanwyber",
+      "name": "Aidan Wyber",
+      "avatar_url": "https://avatars.githubusercontent.com/u/7748305?v=4",
+      "profile": "https://github.com/aidanwyber",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
