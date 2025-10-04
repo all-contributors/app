@@ -301,6 +301,16 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "brandonlenz",
+      "name": "Brandon Lenz",
+      "avatar_url": "https://avatars.githubusercontent.com/u/15805554?v=4",
+      "profile": "http://brandonalenz.com",
+      "contributions": [
+        "bug",
+        "ideas"
+      ]
     }
   ],
   "contributorsPerLine": 7,
