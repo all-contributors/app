@@ -62,6 +62,17 @@ describe('parseComment', () => {
       })
   })
 
+  test('Basic intent to add - username with multiple dashes', () => {
+    expect(
+        parseComment(`@${testBotName} please add rishi-raj-jain for doc`),
+    ).toEqual({
+        action: 'add',
+        contributors: {
+            "rishi-raj-jain": ['doc'],
+        },
+    })
+})  
+
   test('Basic intent to add - with plurals', () => {
       expect(
           parseComment(`@${testBotName} please add dat2 for docs`),
