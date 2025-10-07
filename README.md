@@ -22,7 +22,7 @@
 </table>
 
 [![Build](https://github.com/all-contributors/app/actions/workflows/test.yml/badge.svg)](https://github.com/all-contributors/app/actions/workflows/test.yml)
-[![Coverage](https://codecov.io/gh/all-contributors/app/branch/master/graph/badge.svg?token=PduWRhZBYo)](https://codecov.io/gh/all-contributors/app)
+[![Coverage](https://codecov.io/gh/all-contributors/app/branch/main/graph/badge.svg?token=PduWRhZBYo)](https://codecov.io/gh/all-contributors/app)
 [![GitHub release](https://img.shields.io/github/release/all-contributors/all-contributors-bot.svg?style=flat-square)](https://github.com/all-contributors/all-contributors-bot/releases)
 [![All Contributors](https://img.shields.io/badge/all_contributors-13-orange.svg?style=flat-square)](#contributors)
 [![Star on Github](https://img.shields.io/github/stars/all-contributors/all-contributors-bot.svg?style=flat-square)](https://github.com/all-contributors/all-contributors-bot/stargazers)
@@ -38,7 +38,7 @@ Implementing the [All Contributors spec](https://github.com/all-contributors/all
 Enter the `@all-contributors bot`! The bot will automatically pull a user's profile, grab the contribution type emoji, update the project README and then open a Pull Request against the project :sparkles:
 
 <a href="https://allcontributors.org/docs/en/bot/usage">
-    <img alt="Example usage screenshot" src="https://raw.githubusercontent.com/all-contributors/all-contributors/master/docs/assets/bot-usage.png" width="500px">
+    <img alt="Example usage screenshot" src="https://raw.githubusercontent.com/all-contributors/all-contributors/main/docs/assets/bot-usage.png" width="500px">
 </a>
 
 ## Using the @all-contributors bot 🤖

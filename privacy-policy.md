@@ -20,7 +20,7 @@ When installing the the app you grant it access to the following three scopes
 
 3. **Read & write access to [contents](https://developer.github.com/v3/apps/permissions/#permission-on-contents)**
 
-   The app app uses `.all-contributorsrc` to manage configuration for the app per repo, and list of contributors. It also will read & write to the `README.md` file, or any other [files configurged](https://github.com/all-contributors/all-contributors-cli#configuration) in your `.all-contributorsrc` file under the `files` key. No files will be directly updated on the default/`master` branches, all files will be updated in branches and pull-requests created.
+   The app app uses `.all-contributorsrc` to manage configuration for the app per repo, and list of contributors. It also will read & write to the `README.md` file, or any other [files configurged](https://github.com/all-contributors/all-contributors-cli#configuration) in your `.all-contributorsrc` file under the `files` key. No files will be directly updated on the default/`main` branches, all files will be updated in branches and pull-requests created.
 
 The app receives [IssueComment](https://developer.github.com/v3/activity/events/types/#issuecommentevent) events from GitHub, but any data not required for the functionality of the app is discarded.
 
