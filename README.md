@@ -22,7 +22,7 @@
 </table>
 
 [![Build](https://github.com/all-contributors/app/actions/workflows/test.yml/badge.svg)](https://github.com/all-contributors/app/actions/workflows/test.yml)
-[![Coverage](https://codecov.io/gh/all-contributors/app/branch/master/graph/badge.svg?token=PduWRhZBYo)](https://codecov.io/gh/all-contributors/app)
+[![Coverage](https://codecov.io/gh/all-contributors/app/branch/main/graph/badge.svg?token=PduWRhZBYo)](https://codecov.io/gh/all-contributors/app)
 [![GitHub release](https://img.shields.io/github/release/all-contributors/all-contributors-bot.svg?style=flat-square)](https://github.com/all-contributors/all-contributors-bot/releases)
 [![All Contributors](https://img.shields.io/github/all-contributors/all-contributors/app?color=orange&style=flat-square)](#contributors)
 [![Star on Github](https://img.shields.io/github/stars/all-contributors/all-contributors-bot.svg?style=flat-square)](https://github.com/all-contributors/all-contributors-bot/stargazers)
@@ -38,7 +38,7 @@ Implementing the [All Contributors spec](https://github.com/all-contributors/all
 Enter the `@all-contributors bot`! The bot will automatically pull a user's profile, grab the contribution type emoji, update the project README and then open a Pull Request against the project :sparkles:
 
 <a href="https://allcontributors.org/docs/en/bot/usage">
-    <img alt="Example usage screenshot" src="https://raw.githubusercontent.com/all-contributors/all-contributors/master/docs/assets/bot-usage.png" width="500px">
+    <img alt="Example usage screenshot" src="https://raw.githubusercontent.com/all-contributors/all-contributors/main/docs/assets/bot-usage.png" width="500px">
 </a>
 
 ## Using the @all-contributors bot 🤖
@@ -93,6 +93,15 @@ Thanks goes to these wonderful people ([emoji key](https://github.com/all-contri
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/KnorpelSenf"><img src="https://avatars.githubusercontent.com/u/12952387?v=4?s=100" width="100px;" alt="KnorpelSenf"/><br /><sub><b>KnorpelSenf</b></sub></a><br /><a href="https://github.com/all-contributors/app/commits?author=KnorpelSenf" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://chjh.nl"><img src="https://avatars.githubusercontent.com/u/2946344?v=4?s=100" width="100px;" alt="Chris Hartgerink"/><br /><sub><b>Chris Hartgerink</b></sub></a><br /><a href="https://github.com/all-contributors/app/commits?author=chartgerink" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="http://linkedin.com/in/tbueschel"><img src="https://avatars.githubusercontent.com/u/13087421?v=4?s=100" width="100px;" alt="Tobias Büschel"/><br /><sub><b>Tobias Büschel</b></sub></a><br /><a href="https://github.com/all-contributors/app/commits?author=tobiasbueschel" title="Code">💻</a> <a href="https://github.com/all-contributors/app/commits?author=tobiasbueschel" title="Tests">⚠️</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="http://www.joshuakgoldberg.com"><img src="https://avatars.githubusercontent.com/u/3335181?v=4?s=100" width="100px;" alt="Josh Goldberg ✨"/><br /><sub><b>Josh Goldberg ✨</b></sub></a><br /><a href="https://github.com/all-contributors/app/issues?q=author%3AJoshuaKGoldberg" title="Bug reports">🐛</a> <a href="https://github.com/all-contributors/app/commits?author=JoshuaKGoldberg" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/jpivarski"><img src="https://avatars.githubusercontent.com/u/1852447?v=4?s=100" width="100px;" alt="Jim Pivarski"/><br /><sub><b>Jim Pivarski</b></sub></a><br /><a href="https://github.com/all-contributors/app/issues?q=author%3Ajpivarski" title="Bug reports">🐛</a></td>
+    </tr>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/peterdudfield"><img src="https://avatars.githubusercontent.com/u/34686298?v=4?s=100" width="100px;" alt="Peter Dudfield"/><br /><sub><b>Peter Dudfield</b></sub></a><br /><a href="https://github.com/all-contributors/app/issues?q=author%3Apeterdudfield" title="Bug reports">🐛</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://reshamas.github.io"><img src="https://avatars.githubusercontent.com/u/2507232?v=4?s=100" width="100px;" alt="Reshama Shaikh"/><br /><sub><b>Reshama Shaikh</b></sub></a><br /><a href="https://github.com/all-contributors/app/issues?q=author%3Areshamas" title="Bug reports">🐛</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/aidanwyber"><img src="https://avatars.githubusercontent.com/u/7748305?v=4?s=100" width="100px;" alt="Aidan Wyber"/><br /><sub><b>Aidan Wyber</b></sub></a><br /><a href="https://github.com/all-contributors/app/issues?q=author%3Aaidanwyber" title="Bug reports">🐛</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="http://brandonalenz.com"><img src="https://avatars.githubusercontent.com/u/15805554?v=4?s=100" width="100px;" alt="Brandon Lenz"/><br /><sub><b>Brandon Lenz</b></sub></a><br /><a href="https://github.com/all-contributors/app/issues?q=author%3Abrandonlenz" title="Bug reports">🐛</a> <a href="#ideas-brandonlenz" title="Ideas, Planning, & Feedback">🤔</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="http://www.leahwasser.com"><img src="https://avatars.githubusercontent.com/u/7649194?v=4?s=100" width="100px;" alt="Leah Wasser"/><br /><sub><b>Leah Wasser</b></sub></a><br /><a href="#infra-lwasser" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a></td>
     </tr>
   </tbody>
   <tfoot>

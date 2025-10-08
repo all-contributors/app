@@ -256,10 +256,76 @@
         "code",
         "test"
       ]
+    },
+    {
+      "login": "JoshuaKGoldberg",
+      "name": "Josh Goldberg ✨",
+      "avatar_url": "https://avatars.githubusercontent.com/u/3335181?v=4",
+      "profile": "http://www.joshuakgoldberg.com",
+      "contributions": [
+        "bug",
+        "code"
+      ]
+    },
+    {
+      "login": "jpivarski",
+      "name": "Jim Pivarski",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1852447?v=4",
+      "profile": "https://github.com/jpivarski",
+      "contributions": [
+        "bug"
+      ]
+    },
+    {
+      "login": "peterdudfield",
+      "name": "Peter Dudfield",
+      "avatar_url": "https://avatars.githubusercontent.com/u/34686298?v=4",
+      "profile": "https://github.com/peterdudfield",
+      "contributions": [
+        "bug"
+      ]
+    },
+    {
+      "login": "reshamas",
+      "name": "Reshama Shaikh",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2507232?v=4",
+      "profile": "https://reshamas.github.io",
+      "contributions": [
+        "bug"
+      ]
+    },
+    {
+      "login": "aidanwyber",
+      "name": "Aidan Wyber",
+      "avatar_url": "https://avatars.githubusercontent.com/u/7748305?v=4",
+      "profile": "https://github.com/aidanwyber",
+      "contributions": [
+        "bug"
+      ]
+    },
+    {
+      "login": "brandonlenz",
+      "name": "Brandon Lenz",
+      "avatar_url": "https://avatars.githubusercontent.com/u/15805554?v=4",
+      "profile": "http://brandonalenz.com",
+      "contributions": [
+        "bug",
+        "ideas"
+      ]
+    },
+    {
+      "login": "lwasser",
+      "name": "Leah Wasser",
+      "avatar_url": "https://avatars.githubusercontent.com/u/7649194?v=4",
+      "profile": "http://www.leahwasser.com",
+      "contributions": [
+        "infra"
+      ]
     }
   ],
   "contributorsPerLine": 7,
   "linkToUsage": true,
   "skipCi": true,
-  "commitConvention": "angular"
+  "commitConvention": "angular",
+  "commitType": "docs"
 }
