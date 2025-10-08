@@ -101,6 +101,7 @@ Thanks goes to these wonderful people ([emoji key](https://github.com/all-contri
       <td align="center" valign="top" width="14.28%"><a href="https://reshamas.github.io"><img src="https://avatars.githubusercontent.com/u/2507232?v=4?s=100" width="100px;" alt="Reshama Shaikh"/><br /><sub><b>Reshama Shaikh</b></sub></a><br /><a href="https://github.com/all-contributors/app/issues?q=author%3Areshamas" title="Bug reports">🐛</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/aidanwyber"><img src="https://avatars.githubusercontent.com/u/7748305?v=4?s=100" width="100px;" alt="Aidan Wyber"/><br /><sub><b>Aidan Wyber</b></sub></a><br /><a href="https://github.com/all-contributors/app/issues?q=author%3Aaidanwyber" title="Bug reports">🐛</a></td>
       <td align="center" valign="top" width="14.28%"><a href="http://brandonalenz.com"><img src="https://avatars.githubusercontent.com/u/15805554?v=4?s=100" width="100px;" alt="Brandon Lenz"/><br /><sub><b>Brandon Lenz</b></sub></a><br /><a href="https://github.com/all-contributors/app/issues?q=author%3Abrandonlenz" title="Bug reports">🐛</a> <a href="#ideas-brandonlenz" title="Ideas, Planning, & Feedback">🤔</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="http://www.leahwasser.com"><img src="https://avatars.githubusercontent.com/u/7649194?v=4?s=100" width="100px;" alt="Leah Wasser"/><br /><sub><b>Leah Wasser</b></sub></a><br /><a href="#infra-lwasser" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a></td>
     </tr>
   </tbody>
   <tfoot>
