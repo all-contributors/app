@@ -321,6 +321,15 @@
       "contributions": [
         "infra"
       ]
+    },
+    {
+      "login": "ChrisCarini",
+      "name": "Chris Carini",
+      "avatar_url": "https://avatars.githubusercontent.com/u/6374067?v=4",
+      "profile": "https://github.com/ChrisCarini",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
