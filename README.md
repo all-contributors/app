@@ -24,7 +24,7 @@
 [![Build](https://github.com/all-contributors/app/actions/workflows/test.yml/badge.svg)](https://github.com/all-contributors/app/actions/workflows/test.yml)
 [![Coverage](https://codecov.io/gh/all-contributors/app/branch/main/graph/badge.svg?token=PduWRhZBYo)](https://codecov.io/gh/all-contributors/app)
 [![GitHub release](https://img.shields.io/github/release/all-contributors/all-contributors-bot.svg?style=flat-square)](https://github.com/all-contributors/all-contributors-bot/releases)
-[![All Contributors](https://img.shields.io/badge/all_contributors-13-orange.svg?style=flat-square)](#contributors)
+[![All Contributors](https://img.shields.io/github/all-contributors/all-contributors/app?color=orange&style=flat-square)](#contributors)
 [![Star on Github](https://img.shields.io/github/stars/all-contributors/all-contributors-bot.svg?style=flat-square)](https://github.com/all-contributors/all-contributors-bot/stargazers)
 
 🤖 A GitHub bot to automate acknowledging contributors to your open source projects.
