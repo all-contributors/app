@@ -8,8 +8,8 @@ jobs:
     name: release
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
-      - uses: actions/setup-node@v5
+      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+      - uses: actions/setup-node@dbe1369d7be17e7823f8c1ee1ae8bec5779239dd # v3.9.0
         with:
           cache: npm
           node-version: lts/*
