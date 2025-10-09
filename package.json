@@ -21,7 +21,7 @@
     "all-contributors-cli": "^6.23.0",
     "commit-conv": "^1.0.3",
     "compromise": "^11.14.3",
-    "probot": "^12.2.8"
+    "probot": "^14.0.6"
   },
   "devDependencies": {
     "@types/jest": "^27.0.2",
@@ -31,7 +31,7 @@
     "nock": "^13.1.4",
     "prettier": "^2.4.1",
     "smee-client": "^1.2.3",
-    "vercel": "^28.15.3"
+    "vercel": "^48.2.9"
   },
   "jest": {
     "testEnvironment": "node"
