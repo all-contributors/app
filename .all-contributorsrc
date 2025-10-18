@@ -331,6 +331,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "GwynethLlewelyn",
+      "name": "Gwyneth Llewelyn",
+      "avatar_url": "https://avatars.githubusercontent.com/u/304404?v=4",
+      "profile": "https://gwynethllewelyn.net/",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
