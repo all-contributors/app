@@ -331,6 +331,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "ChickenWithACrown",
+      "name": "ChickenWithACrown",
+      "avatar_url": "https://avatars.githubusercontent.com/u/125937747?v=4",
+      "profile": "https://github.com/ChickenWithACrown",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
