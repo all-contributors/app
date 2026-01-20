@@ -31,7 +31,10 @@ Array [
         "action": "created",
         "comment": Object {
           "author_association": "MEMBER",
-          "body": "@all-contributors please add jakebolam for code, doc and infra",
+          "body": "@all-contributors please add jakebolam for code, doc and infra
+🤖 Beep boop! This comment was added automatically by [all-contributors-auto-action](https://github.com/marketplace/actions/all-contributors-auto-action).
+Not all contributions can be detected from Git & GitHub alone. Please comment any missing contribution types this bot missed.
+...and of course, thank you for contributing! 💙",
           "created_at": "2019-01-10T08:36:52Z",
           "html_url": "https://github.com/all-contributors/all-contributors-bot/pull/1#issuecomment-453012966",
           "id": 453012966,
@@ -405,6 +408,24 @@ Array [
     "success": true,
     "who": "jakebolam",
   },
+  Object {
+    "account": 46410174,
+    "accountLogin": "all-contributors",
+    "accountType": "organization",
+    "action": "add",
+    "contributions": Array [],
+    "createdBy": 3534236,
+    "createdByLogin": "jakebolam",
+    "createdByType": "user",
+    "id": "1",
+    "level": 30,
+    "msg": "No contributions for you",
+    "name": "event",
+    "private": false,
+    "repository": 164268911,
+    "success": false,
+    "who": "you",
+  },
 ]
 `;
 
@@ -474,6 +495,24 @@ Array [
     "success": true,
     "who": "jakebolam",
   },
+  Object {
+    "account": 46410174,
+    "accountLogin": "all-contributors",
+    "accountType": "organization",
+    "action": "add",
+    "contributions": Array [],
+    "createdBy": 3534236,
+    "createdByLogin": "jakebolam",
+    "createdByType": "user",
+    "id": "1",
+    "level": 30,
+    "msg": "No contributions for you",
+    "name": "event",
+    "private": false,
+    "repository": 164268911,
+    "success": false,
+    "who": "you",
+  },
 ]
 `;
 
@@ -542,6 +581,24 @@ Array [
     "repository": 164268911,
     "success": true,
     "who": "jakebolam",
+  },
+  Object {
+    "account": 46410174,
+    "accountLogin": "all-contributors",
+    "accountType": "organization",
+    "action": "add",
+    "contributions": Array [],
+    "createdBy": 3534236,
+    "createdByLogin": "jakebolam",
+    "createdByType": "user",
+    "id": "1",
+    "level": 30,
+    "msg": "No contributions for you",
+    "name": "event",
+    "private": false,
+    "repository": 164268911,
+    "success": false,
+    "who": "you",
   },
 ]
 `;
@@ -619,6 +676,24 @@ Array [
     "repository": 164268911,
     "success": true,
     "who": "jakebolam",
+  },
+  Object {
+    "account": 46410174,
+    "accountLogin": "all-contributors",
+    "accountType": "organization",
+    "action": "add",
+    "contributions": Array [],
+    "createdBy": 3534236,
+    "createdByLogin": "jakebolam",
+    "createdByType": "user",
+    "id": "1",
+    "level": 30,
+    "msg": "No contributions for you",
+    "name": "event",
+    "private": false,
+    "repository": 164268911,
+    "success": false,
+    "who": "you",
   },
 ]
 `;
@@ -821,7 +896,7 @@ Array [
     "createdByType": "user",
     "id": "1",
     "level": 30,
-    "msg": "No contributions",
+    "msg": "No contributions for jakebolam",
     "name": "event",
     "private": false,
     "repository": 164268911,
@@ -836,7 +911,7 @@ Object {
   "body": "@jakebolam 
 
 I couldn't determine any contributions to add, did you specify any contributions?
-          Please make sure to use [valid contribution names](https://allcontributors.org/docs/en/emoji-key).",
+        Please make sure to use [valid contribution names](https://allcontributors.org/docs/en/emoji-key).",
 }
 `;
 
@@ -867,6 +942,24 @@ Array [
     "repository": 164268911,
     "success": true,
     "who": "jakebolam",
+  },
+  Object {
+    "account": 46410174,
+    "accountLogin": "all-contributors",
+    "accountType": "organization",
+    "action": "add",
+    "contributions": Array [],
+    "createdBy": 3534236,
+    "createdByLogin": "jakebolam",
+    "createdByType": "user",
+    "id": "1",
+    "level": 30,
+    "msg": "No contributions for you",
+    "name": "event",
+    "private": false,
+    "repository": 164268911,
+    "success": false,
+    "who": "you",
   },
 ]
 `;
@@ -923,7 +1016,7 @@ Array [
     "id": "1",
     "isKnownError": true,
     "level": 30,
-    "msg": "This project's configuration file has malformed JSON: .all-contributorsrc. Error:: Unexpected token o in JSON at position 1",
+    "msg": "This project's configuration file has malformed JSON: .all-contributorsrc. Error:: Unexpected token 'o', \\"nope\\" is not valid JSON",
     "name": "event",
   },
 ]
@@ -933,7 +1026,7 @@ exports[`issue_comment event invalid .all-contributorsrc: request body 1`] = `
 Object {
   "body": "@jakebolam 
 
-This project's configuration file has malformed JSON: .all-contributorsrc. Error:: Unexpected token o in JSON at position 1",
+This project's configuration file has malformed JSON: .all-contributorsrc. Error:: Unexpected token 'o', \\"nope\\" is not valid JSON",
 }
 `;
 
@@ -964,6 +1057,24 @@ Array [
     "repository": 164268911,
     "success": true,
     "who": "jakebolam",
+  },
+  Object {
+    "account": 46410174,
+    "accountLogin": "all-contributors",
+    "accountType": "organization",
+    "action": "add",
+    "contributions": Array [],
+    "createdBy": 3534236,
+    "createdByLogin": "jakebolam",
+    "createdByType": "user",
+    "id": "1",
+    "level": 30,
+    "msg": "No contributions for you",
+    "name": "event",
+    "private": false,
+    "repository": 164268911,
+    "success": false,
+    "who": "you",
   },
 ]
 `;
