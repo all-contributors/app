@@ -107,6 +107,7 @@ Thanks goes to these wonderful people ([emoji key](https://github.com/all-contri
     </tr>
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="http://changerteck.com"><img src="https://avatars.githubusercontent.com/u/111064611?v=4?s=100" width="100px;" alt="Ger Teck"/><br /><sub><b>Ger Teck</b></sub></a><br /><a href="https://github.com/all-contributors/app/commits?author=gerteck" title="Tests">⚠️</a> <a href="https://github.com/all-contributors/app/issues?q=author%3Agerteck" title="Bug reports">🐛</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="http://gcanasherrera.com"><img src="https://avatars.githubusercontent.com/u/13239454?v=4?s=100" width="100px;" alt="Guadalupe Cañas-Herrera"/><br /><sub><b>Guadalupe Cañas-Herrera</b></sub></a><br /><a href="https://github.com/all-contributors/app/issues?q=author%3Agcanasherrera" title="Bug reports">🐛</a></td>
     </tr>
   </tbody>
   <tfoot>
