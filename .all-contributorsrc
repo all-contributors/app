@@ -340,6 +340,16 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "gerteck",
+      "name": "Ger Teck",
+      "avatar_url": "https://avatars.githubusercontent.com/u/111064611?v=4",
+      "profile": "http://changerteck.com",
+      "contributions": [
+        "test",
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,

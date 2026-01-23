@@ -105,6 +105,9 @@ Thanks goes to these wonderful people ([emoji key](https://github.com/all-contri
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/ChrisCarini"><img src="https://avatars.githubusercontent.com/u/6374067?v=4?s=100" width="100px;" alt="Chris Carini"/><br /><sub><b>Chris Carini</b></sub></a><br /><a href="https://github.com/all-contributors/app/commits?author=ChrisCarini" title="Documentation">📖</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/ChickenWithACrown"><img src="https://avatars.githubusercontent.com/u/125937747?v=4?s=100" width="100px;" alt="ChickenWithACrown"/><br /><sub><b>ChickenWithACrown</b></sub></a><br /><a href="https://github.com/all-contributors/app/issues?q=author%3AChickenWithACrown" title="Bug reports">🐛</a></td>
     </tr>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="http://changerteck.com"><img src="https://avatars.githubusercontent.com/u/111064611?v=4?s=100" width="100px;" alt="Ger Teck"/><br /><sub><b>Ger Teck</b></sub></a><br /><a href="https://github.com/all-contributors/app/commits?author=gerteck" title="Tests">⚠️</a> <a href="https://github.com/all-contributors/app/issues?q=author%3Agerteck" title="Bug reports">🐛</a></td>
+    </tr>
   </tbody>
   <tfoot>
     <tr>
