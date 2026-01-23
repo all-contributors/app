@@ -350,6 +350,15 @@
         "test",
         "bug"
       ]
+    },
+    {
+      "login": "gcanasherrera",
+      "name": "Guadalupe Cañas-Herrera",
+      "avatar_url": "https://avatars.githubusercontent.com/u/13239454?v=4",
+      "profile": "http://gcanasherrera.com",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
