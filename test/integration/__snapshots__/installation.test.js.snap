@@ -1,8 +1,8 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`installation event installation.created: logs 1`] = `
-Array [
-  Object {
+[
+  {
     "account": 2001,
     "accountLogin": "octocat",
     "accountType": "user",
@@ -20,8 +20,8 @@ Array [
 `;
 
 exports[`installation event installation.deleted: logs 1`] = `
-Array [
-  Object {
+[
+  {
     "account": 2001,
     "accountLogin": "octocat",
     "accountType": "user",
@@ -39,8 +39,8 @@ Array [
 `;
 
 exports[`installation event installation.suspend: logs 1`] = `
-Array [
-  Object {
+[
+  {
     "account": 2001,
     "accountLogin": "octocat",
     "accountType": "user",
@@ -58,8 +58,8 @@ Array [
 `;
 
 exports[`installation event installation_repositories.added: logs 1`] = `
-Array [
-  Object {
+[
+  {
     "account": 2001,
     "accountLogin": "octocat",
     "accountType": "user",

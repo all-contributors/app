@@ -24,13 +24,13 @@
     "probot": "^12.2.8"
   },
   "devDependencies": {
-    "@types/jest": "^27.0.2",
-    "got": ">=11.8.5",
-    "jest": "^27.3.1",
-    "nock": "^13.1.4",
-    "prettier": "^2.4.1",
-    "smee-client": "^1.2.3",
-    "vercel": "^28.15.3"
+    "@types/jest": "^30.0.0",
+    "got": ">=14.6.6",
+    "jest": "^30.2.0",
+    "nock": "^14.0.10",
+    "prettier": "^3.8.1",
+    "smee-client": "^5.0.0",
+    "vercel": "^50.5.0"
   },
   "jest": {
     "testEnvironment": "node"

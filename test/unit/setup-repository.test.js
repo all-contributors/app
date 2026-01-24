@@ -21,10 +21,10 @@ describe("Setup Repository", () => {
 
     await setupRepository({ branchName: mockBranchName, context: mockContext });
 
-    expect(Repository.prototype.getRef).toBeCalledWith(mockBranchName);
-    expect(Repository.prototype.deleteBranch).not.toBeCalled();
-    expect(Repository.prototype.getPullRequestsBy).not.toBeCalled();
-    expect(Repository.prototype.setBaseBranch).not.toBeCalled();
+    expect(Repository.prototype.getRef).toHaveBeenCalledWith(mockBranchName);
+    expect(Repository.prototype.deleteBranch).not.toHaveBeenCalled();
+    expect(Repository.prototype.getPullRequestsBy).not.toHaveBeenCalled();
+    expect(Repository.prototype.setBaseBranch).not.toHaveBeenCalled();
   });
 
   it("should delete existing dangling (already merged) branches then recreate new pr", async () => {
@@ -35,10 +35,10 @@ describe("Setup Repository", () => {
 
     await setupRepository({ branchName: mockBranchName, context: mockContext });
 
-    expect(Repository.prototype.getRef).toBeCalledWith(mockBranchName);
-    expect(Repository.prototype.deleteBranch).toBeCalledTimes(1);
-    expect(Repository.prototype.setBaseBranch).toBeCalledTimes(1);
-    expect(Repository.prototype.getPullRequestsBy).toBeCalledTimes(1);
+    expect(Repository.prototype.getRef).toHaveBeenCalledWith(mockBranchName);
+    expect(Repository.prototype.deleteBranch).toHaveBeenCalledTimes(1);
+    expect(Repository.prototype.setBaseBranch).toHaveBeenCalledTimes(1);
+    expect(Repository.prototype.getPullRequestsBy).toHaveBeenCalledTimes(1);
   });
 
   it("should use existing branch only if pr for it was not merged yet", async () => {
@@ -49,9 +49,9 @@ describe("Setup Repository", () => {
 
     await setupRepository({ branchName: mockBranchName, context: mockContext });
 
-    expect(Repository.prototype.getRef).toBeCalledWith(mockBranchName);
-    expect(Repository.prototype.deleteBranch).not.toBeCalled();
-    expect(Repository.prototype.getPullRequestsBy).toBeCalledTimes(1);
-    expect(Repository.prototype.setBaseBranch).toBeCalledTimes(1);
+    expect(Repository.prototype.getRef).toHaveBeenCalledWith(mockBranchName);
+    expect(Repository.prototype.deleteBranch).not.toHaveBeenCalled();
+    expect(Repository.prototype.getPullRequestsBy).toHaveBeenCalledTimes(1);
+    expect(Repository.prototype.setBaseBranch).toHaveBeenCalledTimes(1);
   });
 });
