@@ -4,8 +4,7 @@ This guide explains how the All Contributors app is built, how to run and test i
 
 ## Quick Start
 
-This guide assumes that you have `nvm` installed to manage Node versions. It also assumes that you are working in a fork that has been cloned locally of the 
-all-contributors/app repository.
+This guide assumes that you have `nvm` installed to manage Node versions. It also assumes that you are working in a cloned fork of the `all-contributors/app` GitHub repository.
 
 ### Environment setup
 
