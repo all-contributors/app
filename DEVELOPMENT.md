@@ -31,7 +31,7 @@ npm test
 ```
 
 We use Jest as our test runner.
-If Jest, what we use to run tests has been updated, you may have to update the Jest snapshots from time to time. To do that run:
+To update snapshots, which can need to happen when tests change and/or Jest is updated, run:
 
 ```sh
 # Update Jest snapshots
