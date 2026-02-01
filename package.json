@@ -30,7 +30,7 @@
     "nock": "^14.0.10",
     "prettier": "^3.8.1",
     "smee-client": "^5.0.0",
-    "vercel": "^50.5.0"
+    "vercel": "^50.9.6"
   },
   "jest": {
     "testEnvironment": "node"
