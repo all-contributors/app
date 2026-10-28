@@ -51,12 +51,6 @@ create a coverage report.
 npm test
 ```
 
-
-
-```sh
-npm test
-```
-
 ### Snapshots
 
 A snapshot is a saved copy of some output that one of our tests

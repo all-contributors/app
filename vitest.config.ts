@@ -7,7 +7,6 @@ export default defineConfig({
       reporter: ['lcov', 'text'],
     },
     environment: 'node',
-    globals: false,
     include: ['test/**/*.test.js'],
   },
 })
