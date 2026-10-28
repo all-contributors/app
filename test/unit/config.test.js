@@ -1,4 +1,5 @@
-const Config = require("../../lib/modules/config.js");
+import {describe, expect, test} from "vitest";
+import Config from "../../lib/modules/config.js";
 
 describe("Config", () => {
     test("ensure default options", async () => {

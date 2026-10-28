@@ -1,4 +1,5 @@
-const CommentReply = require("../../lib/modules/comment-reply");
+import {describe, expect, test} from "vitest";
+import CommentReply from "../../lib/modules/comment-reply.js";
 
 describe("CommentReply", () => {
   test("Won't send comment twice", async () => {
@@ -21,7 +22,7 @@ describe("CommentReply", () => {
     const commentReply = new CommentReply(contextMock);
     await commentReply.send();
 
-    expect(async () => {
+    await expect(async () => {
       await commentReply.send();
     }).rejects.toThrow("Message already sent");
   });

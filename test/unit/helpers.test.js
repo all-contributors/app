@@ -1,8 +1,9 @@
-const { 
+import {describe, expect, test} from "vitest";
+import {
   generatePrBody,
   generatePrTitle,
   generateValidProfileLink,
-} = require('../../lib/modules/helpers');
+} from "../../lib/modules/helpers.js";
 
 describe('generatePrBody', () => {
   const message = 'This is a test';

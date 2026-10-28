@@ -1,4 +1,5 @@
-const parseComment = require("../../lib/parse-comment");
+import {describe, expect, test} from "vitest";
+import parseComment from "../../lib/parse-comment.js";
 
 describe('parseComment', () => {
   const testBotName = 'all-contributors'
