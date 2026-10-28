@@ -15,7 +15,7 @@
     "start": "probot run ./app.js",
     "lint": "prettier --check '{src,test}/**/*.{js,json}' '*.{md,json,js}' 'contributing/*.md' '.github/**/*.{yml,md}'",
     "lint:fix": "prettier --write '{src,test}/**/*.{js,json}' '*.{md,json,js}' 'contributing/*.md' '.github/**/*.{yml,md}'",
-    "test": "jest --coverage"
+    "test": "vitest run --coverage"
   },
   "dependencies": {
     "all-contributors-cli": "^6.26.1",
@@ -24,15 +24,12 @@
     "probot": "^12.2.8"
   },
   "devDependencies": {
-    "@types/jest": "^30.0.0",
+    "@vitest/coverage-v8": "^5.0.0",
     "got": ">=14.6.6",
-    "jest": "^30.2.0",
     "nock": "^14.0.10",
     "prettier": "^3.8.1",
     "smee-client": "^5.0.0",
-    "vercel": "^50.5.0"
-  },
-  "jest": {
-    "testEnvironment": "node"
+    "vercel": "^50.5.0",
+    "vitest": "^5.0.0"
   }
 }
