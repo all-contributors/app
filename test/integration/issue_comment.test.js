@@ -853,4 +853,102 @@ describe("issue_comment event", () => {
     expect(mock.activeMocks()).toStrictEqual([]);
     expect(output).toMatchSnapshot("logs");
   });
+
+  test("does not @-mention the contributors being added", async () => {
+    const pullRequestBodies = [];
+    let issueCommentBody;
+
+    const mock = nock("https://api.github.com")
+      .get(
+        `/repos/all-contributors/all-contributors-bot/git/ref/heads%2Fall-contributors%2Fadd-gr2m`,
+      )
+      .reply(404)
+
+      .get(
+        `/repos/all-contributors/all-contributors-bot/git/ref/heads%2Fall-contributors%2Fadd-tenshiamd`,
+      )
+      .reply(404)
+
+      .get(
+        "/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc?ref=master",
+      )
+      .twice()
+      .reply(200, reposGetContentsAllContributorsRCdata)
+
+      .get("/users/gr2m")
+      .reply(200, usersGetByUsernameGr2mData)
+
+      .get("/users/tenshiamd")
+      .reply(200, usersGetByUsernameTenshiamdData)
+
+      .get(
+        "/repos/all-contributors/all-contributors-bot/contents/README.md?ref=master",
+      )
+      .twice()
+      .reply(200, reposGetContentsREADMEMDdata)
+
+      .get(
+        `/repos/all-contributors/all-contributors-bot/git/ref/heads%2Fmaster`,
+      )
+      .twice()
+      .reply(200, gitGetRefdata)
+
+      .post(`/repos/all-contributors/all-contributors-bot/git/refs`)
+      .twice()
+      .reply(201, gitCreateRefdata)
+
+      .put(
+        `/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc`,
+      )
+      .twice()
+      .reply(200, reposUpdateFiledata)
+
+      .put(`/repos/all-contributors/all-contributors-bot/contents/README.md`)
+      .twice()
+      .reply(200, reposUpdateFiledata)
+
+      .post(`/repos/all-contributors/all-contributors-bot/pulls`, (body) => {
+        pullRequestBodies.push(body.body);
+        return true;
+      })
+      .twice()
+      .reply(201, pullsCreatedata)
+
+      .post(
+        "/repos/all-contributors/all-contributors-bot/issues/1/comments",
+        (body) => {
+          issueCommentBody = body.body;
+          return true;
+        },
+      )
+      .reply(200);
+
+    await probot.receive({
+      name: "issue_comment",
+      id: "1",
+      payload: issueCommentCreatedMultipleContributorsPayload,
+    });
+
+    expect(mock.activeMocks()).toStrictEqual([]);
+
+    // The pull request describes the added contributors by plain username, so
+    // opening it does not notify them.
+    expect(pullRequestBodies).toHaveLength(2);
+    for (const body of pullRequestBodies) {
+      expect(body).not.toMatch(/@tenshiamd|@gr2m/);
+    }
+    expect(pullRequestBodies.join("\n")).toMatch(
+      /Adds tenshiamd as a contributor/,
+    );
+    expect(pullRequestBodies.join("\n")).toMatch(/Adds gr2m as a contributor/);
+
+    // Same for the comment the bot leaves behind...
+    expect(issueCommentBody).not.toMatch(/@tenshiamd|@gr2m/);
+    expect(issueCommentBody).toMatch(/to add tenshiamd! :tada:/);
+    expect(issueCommentBody).toMatch(/to add gr2m! :tada:/);
+
+    // ...but the person who asked for the change is still addressed directly,
+    // since they are expecting a reply to their own comment.
+    expect(issueCommentBody).toMatch(/^@jakebolam/);
+  });
 });

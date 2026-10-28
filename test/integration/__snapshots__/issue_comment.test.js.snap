@@ -337,7 +337,7 @@ exports[`issue_comment event Fail path, add existing contributor with already ex
 {
   "body": "@jakebolam 
 
-@jakebolam already contributed before to code",
+jakebolam already contributed before to code",
 }
 `;
 
@@ -450,7 +450,7 @@ exports[`issue_comment event Happy path, add correct new contributor, but branch
 exports[`issue_comment event Happy path, add correct new contributor, but branch exists and PR is open: request body 3`] = `
 {
   "base": "master",
-  "body": "Adds @jakebolam as a contributor for code, doc, infra.
+  "body": "Adds jakebolam as a contributor for code, doc, infra.
 
 This was requested by jakebolam [in this comment](https://github.com/all-contributors/all-contributors-bot/pull/1#issuecomment-453012966)",
   "head": "all-contributors/add-jakebolam",
@@ -463,7 +463,7 @@ exports[`issue_comment event Happy path, add correct new contributor, but branch
 {
   "body": "@jakebolam 
 
-I've updated [the pull request](https://github.com/all-contributors/all-contributors-bot/pull/1) to add @jakebolam! :tada:",
+I've updated [the pull request](https://github.com/all-contributors/all-contributors-bot/pull/1) to add jakebolam! :tada:",
 }
 `;
 
@@ -537,7 +537,7 @@ exports[`issue_comment event Happy path, add correct new contributor, but branch
 exports[`issue_comment event Happy path, add correct new contributor, but branch exists: request body 3`] = `
 {
   "base": "master",
-  "body": "Adds @jakebolam as a contributor for code, doc, infra.
+  "body": "Adds jakebolam as a contributor for code, doc, infra.
 
 This was requested by jakebolam [in this comment](https://github.com/all-contributors/all-contributors-bot/pull/1#issuecomment-453012966)",
   "head": "all-contributors/add-jakebolam",
@@ -550,7 +550,7 @@ exports[`issue_comment event Happy path, add correct new contributor, but branch
 {
   "body": "@jakebolam 
 
-I've put up [a pull request](https://github.com/all-contributors/all-contributors-bot/pull/1347) to add @jakebolam! :tada:",
+I've put up [a pull request](https://github.com/all-contributors/all-contributors-bot/pull/1347) to add jakebolam! :tada:",
 }
 `;
 
@@ -630,7 +630,7 @@ exports[`issue_comment event Happy path, add correct new contributor, no allcont
 exports[`issue_comment event Happy path, add correct new contributor, no allcontributors file (repo needs init first): request body 4`] = `
 {
   "base": "master",
-  "body": "Adds @jakebolam as a contributor for code, doc, infra.
+  "body": "Adds jakebolam as a contributor for code, doc, infra.
 
 This was requested by jakebolam [in this comment](https://github.com/all-contributors/all-contributors-bot/pull/1#issuecomment-453012966)
 
@@ -645,7 +645,7 @@ exports[`issue_comment event Happy path, add correct new contributor, no allcont
 {
   "body": "@jakebolam 
 
-I've put up [a pull request](https://github.com/all-contributors/all-contributors-bot/pull/1347) to add @jakebolam! :tada:",
+I've put up [a pull request](https://github.com/all-contributors/all-contributors-bot/pull/1347) to add jakebolam! :tada:",
 }
 `;
 
@@ -726,7 +726,7 @@ exports[`issue_comment event Happy path, add correct new contributor: request bo
 exports[`issue_comment event Happy path, add correct new contributor: request body 4`] = `
 {
   "base": "master",
-  "body": "Adds @jakebolam as a contributor for code, doc, infra.
+  "body": "Adds jakebolam as a contributor for code, doc, infra.
 
 This was requested by jakebolam [in this comment](https://github.com/all-contributors/all-contributors-bot/pull/1#issuecomment-453012966)",
   "head": "all-contributors/add-jakebolam",
@@ -739,7 +739,7 @@ exports[`issue_comment event Happy path, add correct new contributor: request bo
 {
   "body": "@jakebolam 
 
-I've put up [a pull request](https://github.com/all-contributors/all-contributors-bot/pull/1347) to add @jakebolam! :tada:",
+I've put up [a pull request](https://github.com/all-contributors/all-contributors-bot/pull/1347) to add jakebolam! :tada:",
 }
 `;
 
@@ -827,7 +827,7 @@ exports[`issue_comment event Happy path, add correct new multiple contributors: 
 exports[`issue_comment event Happy path, add correct new multiple contributors: request body 4`] = `
 {
   "base": "master",
-  "body": "Adds @tenshiamd as a contributor for code, doc, infra.
+  "body": "Adds tenshiamd as a contributor for code, doc, infra.
 
 This was requested by jakebolam [in this comment](https://github.com/all-contributors/all-contributors-bot/pull/1#issuecomment-453012966)",
   "head": "all-contributors/add-tenshiamd",
@@ -864,7 +864,7 @@ exports[`issue_comment event Happy path, add correct new multiple contributors: 
 exports[`issue_comment event Happy path, add correct new multiple contributors: request body 8`] = `
 {
   "base": "master",
-  "body": "Adds @gr2m as a contributor for design, test.
+  "body": "Adds gr2m as a contributor for design, test.
 
 This was requested by jakebolam [in this comment](https://github.com/all-contributors/all-contributors-bot/pull/1#issuecomment-453012966)",
   "head": "all-contributors/add-gr2m",
@@ -877,9 +877,9 @@ exports[`issue_comment event Happy path, add correct new multiple contributors: 
 {
   "body": "@jakebolam 
 
-I've put up [a pull request](https://github.com/all-contributors/all-contributors-bot/pull/1347) to add @tenshiamd! :tada:
+I've put up [a pull request](https://github.com/all-contributors/all-contributors-bot/pull/1347) to add tenshiamd! :tada:
 
-I've put up [a pull request](https://github.com/all-contributors/all-contributors-bot/pull/1347) to add @gr2m! :tada:",
+I've put up [a pull request](https://github.com/all-contributors/all-contributors-bot/pull/1347) to add gr2m! :tada:",
 }
 `;
 
@@ -992,7 +992,7 @@ exports[`issue_comment event User has no name and blog: request body 3`] = `
 exports[`issue_comment event User has no name and blog: request body 4`] = `
 {
   "base": "master",
-  "body": "Adds @jakebolam as a contributor for code, doc, infra.
+  "body": "Adds jakebolam as a contributor for code, doc, infra.
 
 This was requested by jakebolam [in this comment](https://github.com/all-contributors/all-contributors-bot/pull/1#issuecomment-453012966)",
   "head": "all-contributors/add-jakebolam",
@@ -1005,7 +1005,7 @@ exports[`issue_comment event User has no name and blog: request body 5`] = `
 {
   "body": "@jakebolam 
 
-I've put up [a pull request](https://github.com/all-contributors/all-contributors-bot/pull/1347) to add @jakebolam! :tada:",
+I've put up [a pull request](https://github.com/all-contributors/all-contributors-bot/pull/1347) to add jakebolam! :tada:",
 }
 `;
 
@@ -1107,7 +1107,7 @@ exports[`issue_comment event skipCi=false: request body 3`] = `
 exports[`issue_comment event skipCi=false: request body 4`] = `
 {
   "base": "master",
-  "body": "Adds @jakebolam as a contributor for code, doc, infra.
+  "body": "Adds jakebolam as a contributor for code, doc, infra.
 
 This was requested by jakebolam [in this comment](https://github.com/all-contributors/all-contributors-bot/pull/1#issuecomment-453012966)",
   "head": "all-contributors/add-jakebolam",
@@ -1120,6 +1120,6 @@ exports[`issue_comment event skipCi=false: request body 5`] = `
 {
   "body": "@jakebolam 
 
-I've put up [a pull request](https://github.com/all-contributors/all-contributors-bot/pull/1347) to add @jakebolam! :tada:",
+I've put up [a pull request](https://github.com/all-contributors/all-contributors-bot/pull/1347) to add jakebolam! :tada:",
 }
 `;
