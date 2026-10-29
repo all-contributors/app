@@ -1,15 +1,14 @@
-const Stream = require("stream");
-
-const { Probot, ProbotOctokit } = require("probot");
-const pino = require("pino");
-
-const app = require("../../app");
+import { beforeEach, describe, expect, test } from "vitest";
+import Stream from "stream";
+import { Probot, ProbotOctokit } from "probot";
+import pino from "pino";
+import app from "../../app.js";
 
 // fixtures
-const installationCreated = require("../fixtures/installation.created.json");
-const installationDeleted = require("../fixtures/installation.deleted.json");
-const installationRepositoriesAdded = require("../fixtures/installation_repositories.added.json");
-const installationSuspend = require("../fixtures/installation.suspend.json");
+import installationCreated from "../fixtures/installation.created.json";
+import installationDeleted from "../fixtures/installation.deleted.json";
+import installationRepositoriesAdded from "../fixtures/installation_repositories.added.json";
+import installationSuspend from "../fixtures/installation.suspend.json";
 
 let output = [];
 const streamLogsToOutput = new Stream.Writable({ objectMode: true });
