@@ -1,7 +1,7 @@
-const nock = require("nock");
-const { Probot } = require("probot");
-
-const app = require("../../app");
+import {test} from "vitest";
+import nock from "nock";
+import {Probot} from "probot";
+import app from "../../app.js";
 
 nock.disableNetConnect();
 

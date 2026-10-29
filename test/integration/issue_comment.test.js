@@ -1,32 +1,31 @@
-const Stream = require("stream");
-
-const { Probot, ProbotOctokit } = require("probot");
-const nock = require("nock");
-const pino = require("pino");
-
-const app = require("../../app");
+import {beforeEach, describe, expect, test} from "vitest";
+import Stream from "stream";
+import {Probot, ProbotOctokit} from "probot";
+import nock from "nock";
+import pino from "pino";
+import app from "../../app.js";
 
 // fixtures
-const issueCommentCreatedPayload = require("../fixtures/issue_comment.created.json");
-const issueCommentCreatedExistContributorPayload = require("../fixtures/issue_comment.created.exist-contributor.json");
-const issueCommentCreatedByAppPayload = require("../fixtures/issue_comment.created-by-app.json");
-const issueCommentCreatedNotForAppPayload = require("../fixtures/issue_comment.created-not-for-app.json");
-const issueCommentCreatedPayloadUnknownIntention = require("../fixtures/issue_commented.created.unknown-intention.json");
-const issueCommentCreatedPayloadUnknownContribution = require("../fixtures/issue_comment.created-unknown-contribution.json");
-const issueCommentCreatedMultipleContributorsPayload = require("../fixtures/issue_comment.created-multiple-contributors.json");
-const reposGetContentsAllContributorsRCdata = require("../fixtures/repos.getContents.all-contributorsrc.json");
-const reposGetContentsAllContributorsRCdata26files = require("../fixtures/repos.getContents.all-contributorsrc-26-files.json");
-const reposGetContentsAllContributorsRCdataSkipCiFalse = require("../fixtures/repos.getContents.all-contributorsrc-skip-ci-false.json");
-const reposGetContentsAllContributorsRCdataInvalidSyntax = require("../fixtures/repos.getContents.all-contributorsrc-invalid-syntax.json");
-const usersGetByUsernameGr2mData = require("../fixtures/users.getByUsername.gr2m.json");
-const usersGetByUsernameJakeBolamdata = require("../fixtures/users.getByUsername.jakebolam.json");
-const usersGetByUsernameTenshiamdData = require("../fixtures/users.getByUsername.tenshiamd.json");
-const usersGetByUsernameNoBlogAndNameData = require("../fixtures/users.getByUsername.without-name-and-blog.json");
-const reposGetContentsREADMEMDdata = require("../fixtures/repos.getContents.README.md.json");
-const gitGetRefdata = require("../fixtures/git.getRef.json");
-const gitCreateRefdata = require("../fixtures/git.createRef.json");
-const reposUpdateFiledata = require("../fixtures/repos.updateFile.json");
-const pullsCreatedata = require("../fixtures/pulls.create.json");
+import issueCommentCreatedPayload from "../fixtures/issue_comment.created.json";
+import issueCommentCreatedExistContributorPayload from "../fixtures/issue_comment.created.exist-contributor.json";
+import issueCommentCreatedByAppPayload from "../fixtures/issue_comment.created-by-app.json";
+import issueCommentCreatedNotForAppPayload from "../fixtures/issue_comment.created-not-for-app.json";
+import issueCommentCreatedPayloadUnknownIntention from "../fixtures/issue_commented.created.unknown-intention.json";
+import issueCommentCreatedPayloadUnknownContribution from "../fixtures/issue_comment.created-unknown-contribution.json";
+import issueCommentCreatedMultipleContributorsPayload from "../fixtures/issue_comment.created-multiple-contributors.json";
+import reposGetContentsAllContributorsRCdata from "../fixtures/repos.getContents.all-contributorsrc.json";
+import reposGetContentsAllContributorsRCdata26files from "../fixtures/repos.getContents.all-contributorsrc-26-files.json";
+import reposGetContentsAllContributorsRCdataSkipCiFalse from "../fixtures/repos.getContents.all-contributorsrc-skip-ci-false.json";
+import reposGetContentsAllContributorsRCdataInvalidSyntax from "../fixtures/repos.getContents.all-contributorsrc-invalid-syntax.json";
+import usersGetByUsernameGr2mData from "../fixtures/users.getByUsername.gr2m.json";
+import usersGetByUsernameJakeBolamdata from "../fixtures/users.getByUsername.jakebolam.json";
+import usersGetByUsernameTenshiamdData from "../fixtures/users.getByUsername.tenshiamd.json";
+import usersGetByUsernameNoBlogAndNameData from "../fixtures/users.getByUsername.without-name-and-blog.json";
+import reposGetContentsREADMEMDdata from "../fixtures/repos.getContents.README.md.json";
+import gitGetRefdata from "../fixtures/git.getRef.json";
+import gitCreateRefdata from "../fixtures/git.createRef.json";
+import reposUpdateFiledata from "../fixtures/repos.updateFile.json";
+import pullsCreatedata from "../fixtures/pulls.create.json";
 
 let output = [];
 const streamLogsToOutput = new Stream.Writable({ objectMode: true });
