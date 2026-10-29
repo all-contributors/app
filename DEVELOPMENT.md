@@ -51,11 +51,10 @@ create a coverage report.
 npm test
 ```
 
-NOTE: The integration tests are not converted to Vitest yet, so `npm test`
-fails until that work lands. The unit tests pass:
+
 
 ```sh
-npm test -- test/unit
+npm test
 ```
 
 ### Snapshots
