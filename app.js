@@ -1,13 +1,13 @@
-const isMessageByApp = require("./lib/is-message-by-app");
-const isMessageForApp = require("./lib/is-message-for-app");
-const CommentReply = require("./lib/modules/comment-reply");
-const processIssueComment = require("./lib/process-issue-comment");
-const { AllContributorBotError } = require("./lib/modules/errors");
+import isMessageByApp from "./lib/is-message-by-app.js";
+import isMessageForApp from "./lib/is-message-for-app.js";
+import CommentReply from "./lib/modules/comment-reply.js";
+import processIssueComment from "./lib/process-issue-comment.js";
+import { AllContributorBotError } from "./lib/modules/errors.js";
 
 /**
  * @param {import('probot').Probot} app
  */
-module.exports = (app) => {
+export default (app) => {
   app.on("issue_comment.created", async (context) => {
     if (isMessageByApp(context)) return;
     if (!isMessageForApp(context)) return;
