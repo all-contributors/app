@@ -1,6 +1,6 @@
-import {beforeEach, describe, expect, test} from "vitest";
+import { beforeEach, describe, expect, test } from "vitest";
 import Stream from "stream";
-import {Probot, ProbotOctokit} from "probot";
+import { Probot, ProbotOctokit } from "probot";
 import nock from "nock";
 import pino from "pino";
 import app from "../../app.js";
@@ -61,12 +61,12 @@ describe("issue_comment event", () => {
   test("Happy path, add correct new contributor", async () => {
     const mock = nock("https://api.github.com")
       .get(
-        `/repos/all-contributors/all-contributors-bot/git/ref/heads%2Fall-contributors%2Fadd-jakebolam`
+        `/repos/all-contributors/all-contributors-bot/git/ref/heads%2Fall-contributors%2Fadd-jakebolam`,
       )
       .reply(404)
 
       .get(
-        "/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc?ref=master"
+        "/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc?ref=master",
       )
       .reply(200, reposGetContentsAllContributorsRCdata)
 
@@ -74,12 +74,12 @@ describe("issue_comment event", () => {
       .reply(200, usersGetByUsernameJakeBolamdata)
 
       .get(
-        "/repos/all-contributors/all-contributors-bot/contents/README.md?ref=master"
+        "/repos/all-contributors/all-contributors-bot/contents/README.md?ref=master",
       )
       .reply(200, reposGetContentsREADMEMDdata)
 
       .get(
-        `/repos/all-contributors/all-contributors-bot/git/ref/heads%2Fmaster`
+        `/repos/all-contributors/all-contributors-bot/git/ref/heads%2Fmaster`,
       )
       .reply(200, gitGetRefdata)
 
@@ -94,7 +94,7 @@ describe("issue_comment event", () => {
         (body) => {
           expect(body).toMatchSnapshot("request body");
           return true;
-        }
+        },
       )
       .reply(200, reposUpdateFiledata)
 
@@ -103,7 +103,7 @@ describe("issue_comment event", () => {
         (body) => {
           expect(body).toMatchSnapshot("request body");
           return true;
-        }
+        },
       )
       .reply(200, reposUpdateFiledata)
 
@@ -118,7 +118,7 @@ describe("issue_comment event", () => {
         (body) => {
           expect(body).toMatchSnapshot("request body");
           return true;
-        }
+        },
       )
       .reply(200);
 
@@ -135,12 +135,12 @@ describe("issue_comment event", () => {
   test("Happy path, add correct new contributor, no allcontributors file (repo needs init first)", async () => {
     const mock = nock("https://api.github.com")
       .get(
-        `/repos/all-contributors/all-contributors-bot/git/ref/heads%2Fall-contributors%2Fadd-jakebolam`
+        `/repos/all-contributors/all-contributors-bot/git/ref/heads%2Fall-contributors%2Fadd-jakebolam`,
       )
       .reply(404)
 
       .get(
-        "/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc?ref=master"
+        "/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc?ref=master",
       )
       .reply(404)
 
@@ -148,12 +148,12 @@ describe("issue_comment event", () => {
       .reply(200, usersGetByUsernameJakeBolamdata)
 
       .get(
-        "/repos/all-contributors/all-contributors-bot/contents/README.md?ref=master"
+        "/repos/all-contributors/all-contributors-bot/contents/README.md?ref=master",
       )
       .reply(200, reposGetContentsREADMEMDdata)
 
       .get(
-        `/repos/all-contributors/all-contributors-bot/git/ref/heads%2Fmaster`
+        `/repos/all-contributors/all-contributors-bot/git/ref/heads%2Fmaster`,
       )
       .reply(200, gitGetRefdata)
 
@@ -168,7 +168,7 @@ describe("issue_comment event", () => {
         (body) => {
           expect(body).toMatchSnapshot("request body");
           return true;
-        }
+        },
       )
       .reply(201, reposUpdateFiledata)
 
@@ -177,7 +177,7 @@ describe("issue_comment event", () => {
         (body) => {
           expect(body).toMatchSnapshot("request body");
           return true;
-        }
+        },
       )
       .reply(200, reposUpdateFiledata)
 
@@ -192,7 +192,7 @@ describe("issue_comment event", () => {
         (body) => {
           expect(body).toMatchSnapshot("request body");
           return true;
-        }
+        },
       )
       .reply(200);
 
@@ -209,12 +209,12 @@ describe("issue_comment event", () => {
   test("Fail path, no readme file (configuration error)", async () => {
     const mock = nock("https://api.github.com")
       .get(
-        `/repos/all-contributors/all-contributors-bot/git/ref/heads%2Fall-contributors%2Fadd-jakebolam`
+        `/repos/all-contributors/all-contributors-bot/git/ref/heads%2Fall-contributors%2Fadd-jakebolam`,
       )
       .reply(404)
 
       .get(
-        "/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc?ref=master"
+        "/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc?ref=master",
       )
       .reply(200, reposGetContentsAllContributorsRCdata)
 
@@ -222,7 +222,7 @@ describe("issue_comment event", () => {
       .reply(200, usersGetByUsernameJakeBolamdata)
 
       .get(
-        "/repos/all-contributors/all-contributors-bot/contents/README.md?ref=master"
+        "/repos/all-contributors/all-contributors-bot/contents/README.md?ref=master",
       )
       .reply(404)
 
@@ -231,7 +231,7 @@ describe("issue_comment event", () => {
         (body) => {
           expect(body).toMatchSnapshot("request body");
           return true;
-        }
+        },
       )
       .reply(200);
 
@@ -248,12 +248,12 @@ describe("issue_comment event", () => {
   test("Fail path, no such user", async () => {
     const mock = nock("https://api.github.com")
       .get(
-        `/repos/all-contributors/all-contributors-bot/git/ref/heads%2Fall-contributors%2Fadd-jakebolam`
+        `/repos/all-contributors/all-contributors-bot/git/ref/heads%2Fall-contributors%2Fadd-jakebolam`,
       )
       .reply(404)
 
       .get(
-        "/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc?ref=master"
+        "/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc?ref=master",
       )
       .reply(200, reposGetContentsAllContributorsRCdata)
       .get("/users/jakebolam")
@@ -264,7 +264,7 @@ describe("issue_comment event", () => {
         (body) => {
           expect(body).toMatchSnapshot("request body");
           return true;
-        }
+        },
       )
       .reply(200);
 
@@ -285,7 +285,7 @@ describe("issue_comment event", () => {
         (body) => {
           expect(body).toMatchSnapshot("request body");
           return true;
-        }
+        },
       )
       .reply(200);
 
@@ -302,12 +302,12 @@ describe("issue_comment event", () => {
   test("Fail path, Unknown error (e.g. Network is dead, service down etc, our code is bad) crashes and sends error message", async () => {
     const mock = nock("https://api.github.com")
       .get(
-        `/repos/all-contributors/all-contributors-bot/git/ref/heads%2Fall-contributors%2Fadd-jakebolam`
+        `/repos/all-contributors/all-contributors-bot/git/ref/heads%2Fall-contributors%2Fadd-jakebolam`,
       )
       .reply(404)
 
       .get(
-        "/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc?ref=master"
+        "/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc?ref=master",
       )
       .reply(500)
 
@@ -316,7 +316,7 @@ describe("issue_comment event", () => {
         (body) => {
           expect(body).toMatchSnapshot("request body");
           return true;
-        }
+        },
       )
       .reply(200);
 
@@ -345,12 +345,12 @@ describe("issue_comment event", () => {
   test("Happy path, add correct new contributor, but branch exists", async () => {
     const mock = nock("https://api.github.com")
       .get(
-        `/repos/all-contributors/all-contributors-bot/git/ref/heads%2Fall-contributors%2Fadd-jakebolam`
+        `/repos/all-contributors/all-contributors-bot/git/ref/heads%2Fall-contributors%2Fadd-jakebolam`,
       )
       .reply(200, gitGetRefdata)
 
       .get(
-        "/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc"
+        "/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc",
       )
       .query({ ref: "all-contributors/add-jakebolam" })
       .reply(200, reposGetContentsAllContributorsRCdata)
@@ -367,7 +367,7 @@ describe("issue_comment event", () => {
         (body) => {
           expect(body).toMatchSnapshot("request body");
           return true;
-        }
+        },
       )
       .reply(200, reposUpdateFiledata)
 
@@ -376,7 +376,7 @@ describe("issue_comment event", () => {
         (body) => {
           expect(body).toMatchSnapshot("request body");
           return true;
-        }
+        },
       )
       .reply(200, reposUpdateFiledata)
 
@@ -391,7 +391,7 @@ describe("issue_comment event", () => {
         (body) => {
           expect(body).toMatchSnapshot("request body");
           return true;
-        }
+        },
       )
       .reply(200);
 
@@ -408,12 +408,12 @@ describe("issue_comment event", () => {
   test("Happy path, add correct new contributor, but branch exists and PR is open", async () => {
     const mock = nock("https://api.github.com")
       .get(
-        `/repos/all-contributors/all-contributors-bot/git/ref/heads%2Fall-contributors%2Fadd-jakebolam`
+        `/repos/all-contributors/all-contributors-bot/git/ref/heads%2Fall-contributors%2Fadd-jakebolam`,
       )
       .reply(200, gitGetRefdata)
 
       .get(
-        "/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc"
+        "/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc",
       )
       .query({ ref: "all-contributors/add-jakebolam" })
       .reply(200, reposGetContentsAllContributorsRCdata)
@@ -442,7 +442,7 @@ describe("issue_comment event", () => {
         (body) => {
           expect(body).toMatchSnapshot("request body");
           return true;
-        }
+        },
       )
       .reply(200, reposUpdateFiledata)
 
@@ -451,7 +451,7 @@ describe("issue_comment event", () => {
         (body) => {
           expect(body).toMatchSnapshot("request body");
           return true;
-        }
+        },
       )
       .reply(200, reposUpdateFiledata)
 
@@ -466,7 +466,7 @@ describe("issue_comment event", () => {
         (body) => {
           expect(body).toMatchSnapshot("request body");
           return true;
-        }
+        },
       )
       .reply(200);
 
@@ -483,12 +483,12 @@ describe("issue_comment event", () => {
   test("Fail path, add existing contributor with already exist contribution type", async () => {
     const mock = nock("https://api.github.com")
       .get(
-        `/repos/all-contributors/all-contributors-bot/git/ref/heads%2Fall-contributors%2Fadd-jakebolam`
+        `/repos/all-contributors/all-contributors-bot/git/ref/heads%2Fall-contributors%2Fadd-jakebolam`,
       )
       .reply(404)
 
       .get(
-        "/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc?ref=master"
+        "/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc?ref=master",
       )
       .reply(200, reposGetContentsAllContributorsRCdata)
 
@@ -500,7 +500,7 @@ describe("issue_comment event", () => {
         (body) => {
           expect(body).toMatchSnapshot("request body");
           return true;
-        }
+        },
       )
       .reply(200);
 
@@ -517,7 +517,7 @@ describe("issue_comment event", () => {
   test(".all-contributorsrc has 26 files", async () => {
     const mock = nock("https://api.github.com")
       .get(
-        `/repos/all-contributors/all-contributors-bot/git/ref/heads%2Fall-contributors%2Fadd-jakebolam`
+        `/repos/all-contributors/all-contributors-bot/git/ref/heads%2Fall-contributors%2Fadd-jakebolam`,
       )
       .reply(404)
 
@@ -525,7 +525,7 @@ describe("issue_comment event", () => {
       .reply(200, usersGetByUsernameJakeBolamdata)
 
       .get(
-        "/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc?ref=master"
+        "/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc?ref=master",
       )
       .reply(200, reposGetContentsAllContributorsRCdata26files)
 
@@ -534,7 +534,7 @@ describe("issue_comment event", () => {
         (body) => {
           expect(body).toMatchSnapshot("request body");
           return true;
-        }
+        },
       )
       .reply(200);
 
@@ -551,12 +551,12 @@ describe("issue_comment event", () => {
   test("invalid .all-contributorsrc", async () => {
     const mock = nock("https://api.github.com")
       .get(
-        `/repos/all-contributors/all-contributors-bot/git/ref/heads%2Fall-contributors%2Fadd-jakebolam`
+        `/repos/all-contributors/all-contributors-bot/git/ref/heads%2Fall-contributors%2Fadd-jakebolam`,
       )
       .reply(404)
 
       .get(
-        "/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc?ref=master"
+        "/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc?ref=master",
       )
       .reply(200, reposGetContentsAllContributorsRCdataInvalidSyntax)
 
@@ -565,7 +565,7 @@ describe("issue_comment event", () => {
         (body) => {
           expect(body).toMatchSnapshot("request body");
           return true;
-        }
+        },
       )
       .reply(200);
 
@@ -582,12 +582,12 @@ describe("issue_comment event", () => {
   test("User has no name and blog", async () => {
     const mock = nock("https://api.github.com")
       .get(
-        `/repos/all-contributors/all-contributors-bot/git/ref/heads%2Fall-contributors%2Fadd-jakebolam`
+        `/repos/all-contributors/all-contributors-bot/git/ref/heads%2Fall-contributors%2Fadd-jakebolam`,
       )
       .reply(404)
 
       .get(
-        "/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc?ref=master"
+        "/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc?ref=master",
       )
       .reply(200, reposGetContentsAllContributorsRCdata)
 
@@ -595,12 +595,12 @@ describe("issue_comment event", () => {
       .reply(200, usersGetByUsernameNoBlogAndNameData)
 
       .get(
-        "/repos/all-contributors/all-contributors-bot/contents/README.md?ref=master"
+        "/repos/all-contributors/all-contributors-bot/contents/README.md?ref=master",
       )
       .reply(200, reposGetContentsREADMEMDdata)
 
       .get(
-        `/repos/all-contributors/all-contributors-bot/git/ref/heads%2Fmaster`
+        `/repos/all-contributors/all-contributors-bot/git/ref/heads%2Fmaster`,
       )
       .reply(200, gitGetRefdata)
 
@@ -615,7 +615,7 @@ describe("issue_comment event", () => {
         (body) => {
           expect(body).toMatchSnapshot("request body");
           return true;
-        }
+        },
       )
       .reply(200, reposUpdateFiledata)
 
@@ -624,7 +624,7 @@ describe("issue_comment event", () => {
         (body) => {
           expect(body).toMatchSnapshot("request body");
           return true;
-        }
+        },
       )
       .reply(200, reposUpdateFiledata)
 
@@ -639,7 +639,7 @@ describe("issue_comment event", () => {
         (body) => {
           expect(body).toMatchSnapshot("request body");
           return true;
-        }
+        },
       )
       .reply(200);
 
@@ -656,12 +656,12 @@ describe("issue_comment event", () => {
   test("skipCi=false", async () => {
     const mock = nock("https://api.github.com")
       .get(
-        `/repos/all-contributors/all-contributors-bot/git/ref/heads%2Fall-contributors%2Fadd-jakebolam`
+        `/repos/all-contributors/all-contributors-bot/git/ref/heads%2Fall-contributors%2Fadd-jakebolam`,
       )
       .reply(404)
 
       .get(
-        "/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc?ref=master"
+        "/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc?ref=master",
       )
       .reply(200, reposGetContentsAllContributorsRCdataSkipCiFalse)
 
@@ -669,12 +669,12 @@ describe("issue_comment event", () => {
       .reply(200, usersGetByUsernameJakeBolamdata)
 
       .get(
-        "/repos/all-contributors/all-contributors-bot/contents/README.md?ref=master"
+        "/repos/all-contributors/all-contributors-bot/contents/README.md?ref=master",
       )
       .reply(200, reposGetContentsREADMEMDdata)
 
       .get(
-        `/repos/all-contributors/all-contributors-bot/git/ref/heads%2Fmaster`
+        `/repos/all-contributors/all-contributors-bot/git/ref/heads%2Fmaster`,
       )
       .reply(200, gitGetRefdata)
 
@@ -689,7 +689,7 @@ describe("issue_comment event", () => {
         (body) => {
           expect(body).toMatchSnapshot("request body");
           return true;
-        }
+        },
       )
       .reply(200, reposUpdateFiledata)
 
@@ -698,7 +698,7 @@ describe("issue_comment event", () => {
         (body) => {
           expect(body).toMatchSnapshot("request body");
           return true;
-        }
+        },
       )
       .reply(200, reposUpdateFiledata)
 
@@ -713,7 +713,7 @@ describe("issue_comment event", () => {
         (body) => {
           expect(body).toMatchSnapshot("request body");
           return true;
-        }
+        },
       )
       .reply(200);
 
@@ -734,7 +734,7 @@ describe("issue_comment event", () => {
         (body) => {
           expect(body).toMatchSnapshot("request body");
           return true;
-        }
+        },
       )
       .reply(200);
 
@@ -767,35 +767,35 @@ describe("issue_comment event", () => {
   test("Happy path, add correct new multiple contributors", async () => {
     const mock = nock("https://api.github.com")
       .get(
-        `/repos/all-contributors/all-contributors-bot/git/ref/heads%2Fall-contributors%2Fadd-gr2m`
+        `/repos/all-contributors/all-contributors-bot/git/ref/heads%2Fall-contributors%2Fadd-gr2m`,
       )
       .reply(404)
 
       .get(
-        `/repos/all-contributors/all-contributors-bot/git/ref/heads%2Fall-contributors%2Fadd-tenshiamd`
+        `/repos/all-contributors/all-contributors-bot/git/ref/heads%2Fall-contributors%2Fadd-tenshiamd`,
       )
       .reply(404)
 
       .get(
-        "/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc?ref=master"
+        "/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc?ref=master",
       )
       .twice()
       .reply(200, reposGetContentsAllContributorsRCdata)
 
       .get("/users/gr2m")
       .reply(200, usersGetByUsernameGr2mData)
-      
+
       .get("/users/tenshiamd")
       .reply(200, usersGetByUsernameTenshiamdData)
 
       .get(
-        "/repos/all-contributors/all-contributors-bot/contents/README.md?ref=master"
+        "/repos/all-contributors/all-contributors-bot/contents/README.md?ref=master",
       )
       .twice()
       .reply(200, reposGetContentsREADMEMDdata)
 
       .get(
-        `/repos/all-contributors/all-contributors-bot/git/ref/heads%2Fmaster`
+        `/repos/all-contributors/all-contributors-bot/git/ref/heads%2Fmaster`,
       )
       .twice()
       .reply(200, gitGetRefdata)
@@ -812,7 +812,7 @@ describe("issue_comment event", () => {
         (body) => {
           expect(body).toMatchSnapshot("request body");
           return true;
-        }
+        },
       )
       .twice()
       .reply(200, reposUpdateFiledata)
@@ -822,7 +822,7 @@ describe("issue_comment event", () => {
         (body) => {
           expect(body).toMatchSnapshot("request body");
           return true;
-        }
+        },
       )
       .twice()
       .reply(200, reposUpdateFiledata)
@@ -839,7 +839,7 @@ describe("issue_comment event", () => {
         (body) => {
           expect(body).toMatchSnapshot("request body");
           return true;
-        }
+        },
       )
       .reply(200);
 

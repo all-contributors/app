@@ -1,4 +1,4 @@
-import {describe, expect, test} from "vitest";
+import { describe, expect, test } from "vitest";
 import CommentReply from "../../lib/modules/comment-reply.js";
 
 describe("CommentReply", () => {

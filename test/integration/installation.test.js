@@ -1,6 +1,6 @@
-import {beforeEach, describe, expect, test} from "vitest";
+import { beforeEach, describe, expect, test } from "vitest";
 import Stream from "stream";
-import {Probot, ProbotOctokit} from "probot";
+import { Probot, ProbotOctokit } from "probot";
 import pino from "pino";
 import app from "../../app.js";
 
