@@ -360,6 +360,17 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "michaelfaith",
+      "name": "michael faith",
+      "avatar_url": "https://avatars.githubusercontent.com/u/8071845?v=4",
+      "profile": "https://github.com/michaelfaith",
+      "contributions": [
+        "review",
+        "test",
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
