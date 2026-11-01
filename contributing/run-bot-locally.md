@@ -1,28 +1,42 @@
 # Local bot setup
 
 > [!IMPORTANT]
-> Uninstall the production bot from your user account before you continue.
+> If you plan to test the bot by running it locally, be sure to uninstall the
+> production bot from your user account before you continue.
 > Otherwise, multiple bots will respond to your comments.
 
-To run the bot on your computer, you create a GitHub App, connect this
-repository to that app, and try it on a test repository.
+To run the bot on your computer, you:
+
+1. Create a GitHub App,
+2. Connect this repository to that app, and
+3. Test out the bot on a test repository.
 
 ## Key terms
 
 Three terms will help you understand how the pieces fit together:
 
-* **GitHub App:** The app you create in your GitHub settings. It holds the
-  bot's permissions, the webhook address, and the private key.
-* **Bot:** The Node.js program in this repository. You start it with
+* **GitHub App:** The app you create in your GitHub settings / account. The
+  app holds the bot's permissions, the webhook address where GitHub will send
+  webhooks, and the private key.
+* **Bot:** The Node.js program stored in this repository. You start it with
   `npm start`. When GitHub sends the bot a webhook, the bot uses the GitHub
   App's credentials to reply. GitHub shows that reply as a comment from a
   bot user.
 * **Webhook:** A message GitHub sends when something happens, such as a new
   comment. The bot reads the message and decides whether to reply.
 
+Here is how those three pieces connect:
+
+```mermaid
+flowchart LR
+  GitHub -->|"sends a webhook"| Bot
+  App["GitHub App"] -->|"gives credentials"| Bot
+  Bot -->|"replies as a comment"| GitHub
+```
+
 ## Before you start
 
-You need:
+You need the following to run the bot locally:
 
 * A GitHub account
 * [Node.js](https://nodejs.org/) and npm installed
@@ -30,14 +44,22 @@ You need:
 
 ## 1. Create a GitHub App for testing
 
+To begin, you need to create your own GitHub App. You will use this app to
+test the bot locally. You can think of it as an interface between your local
+server running the bot and GitHub.
+
 1. Go to your GitHub
    [developer settings](https://github.com/settings/developers).
 2. Create a [new GitHub App](https://github.com/settings/apps/new).
 3. Fill in the required fields:
    * **GitHub App name:** Any name you like. It must be unique across GitHub.
-   * **Homepage URL:** Anything.
-   * **Webhook URL:** Anything. You can change it later if you use smee.io.
-4. Fill in these important fields:
+   * **Homepage URL:** Any URL you like. It doesn't matter for local testing.
+   * **Webhook URL:** Enter `http://localhost:3000`. This is a placeholder.
+     GitHub can't reach your computer directly, so you will copy webhooks by
+     hand in step 6. If you want GitHub to send webhooks to your computer
+     automatically, replace this value with a smee.io URL later. See
+     [Alternative: use smee.io](#alternative-use-smeeio-to-receive-webhooks).
+4. Next, fill in these fields:
    * **Webhook secret:** Enter `development`.
    * **Permissions:** Match
      [app.yml](https://github.com/all-contributors/all-contributors-bot/blob/main/app.yml#L54).
@@ -54,11 +76,13 @@ You need:
 
    ![The "Where can this GitHub App be installed?" setting with "Only on this account" selected](where-can-this-app-be-installed.png)
 
-5. Click **Create GitHub App**.
+5. Click the **Create GitHub App** button.
 
 ## 2. Configure your GitHub App
 
-After you create the app, you see its settings page.
+After you create your test app, you need to configure it in the settings
+page. This is where you will generate a private key and install the app on
+your user account.
 
 ![The settings page of a newly created GitHub App](app-created.png)
 
@@ -113,7 +137,8 @@ After you create the app, you see its settings page.
 
 1. Create a repository under the GitHub account where you installed the app.
 2. Make sure issues and pull requests are enabled in that repository.
-3. Make sure the repository has atleast a single commit and a README.md file in it to accept a new contributor.
+3. Make sure the repository has at least a single commit and a `README.md`
+   file in it to accept a new contributor.
 4. Create a new issue in the repository.
 5. Comment on the issue with the text below. Replace `@yourusername` with your
    own username.
@@ -200,18 +225,66 @@ yourself.
 
 ## Alternative: use smee.io to receive webhooks
 
-Instead of sending a copy of the webhook with `curl`, you can have GitHub
-send webhooks straight to your computer using [smee.io](https://smee.io/).
+Copying webhooks by hand works, but it gets tedious. Instead, you can have
+GitHub send webhooks straight to your computer using
+[smee.io](https://smee.io/).
 
-1. Create a channel on smee.io and copy its URL.
-2. Add this line to your `.env` file:
+GitHub can't reach your computer directly. smee.io solves this: it receives
+the webhook from GitHub, and your bot pulls it down to your computer.
+
+```mermaid
+flowchart LR
+  GitHub -->|"sends a webhook"| Smee["smee.io channel"]
+  Smee -->|"streams events"| Client["smee client (built into Probot)"]
+  Client -->|"forwards to localhost:3000"| Bot
+  Bot -->|"replies as a comment"| GitHub
+```
+
+1. Go to [smee.io](https://smee.io/) and click **Start a new channel**.
+2. Copy the channel URL.
+3. Add this line to the `.env` file that you created in step 3 (this file
+   contains your GitHub App secret and ID values):
 
    ```text
    WEBHOOK_PROXY_URL=<your smee.io channel URL>
    ```
 
-3. In your GitHub App settings, set the **Webhook URL** to the same smee.io
-   channel URL.
-4. Restart the bot with `npm start`.
+4. In your [GitHub App settings](https://github.com/settings/apps), set the
+   **Webhook URL** to the same smee.io channel URL.
+5. Restart the bot with `npm start`.
+
+The output will look something like the output below. Note that the smee.io
+address is listed.
+
+```text
+➜ npm run start
+
+> all-contributors-bot@0.0.0-development start
+> probot run ./app.js
+
+WARNING :: Using the all-contributors node-api comes with zero guarantees of stability and may contain breaking changes without warning
+INFO (server): Running Probot v12.2.8 (Node.js: v22.22.0)
+INFO (server): Listening on http://localhost:3000
+INFO (server): Connected to https://smee.io/your-address-here
+INFO (server): Forwarding https://smee.io/your-address-here to http://localhost:3000
+```
 
 The bot now responds to new comments as they arrive.
+
+> [!NOTE]
+> smee.io has no accounts. The URL is the only thing that identifies your
+> channel, so you can't look it up later. You only create a channel once, and
+> you can reuse the same URL every time you test. Save it somewhere you can
+> find it again. If you lose it, create a new channel and update your GitHub
+> App and `.env` file. Anyone with the URL can see the events sent to it, so
+> don't share it.
+
+> [!TIP]
+> If you don't see the smee.io lines when the bot starts, run
+> `npm install --save-dev smee-client` and restart the bot.
+
+> [!TIP]
+> You don't need to post a new comment each time you test. Open your channel
+> URL in a browser to see the events smee.io received, and click **Redeliver**
+> to send one to the bot again. You can also redeliver from your app's
+> **Advanced** tab in GitHub, under **Recent Deliveries**.
