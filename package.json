@@ -3,6 +3,9 @@
   "version": "0.0.0-development",
   "private": true,
   "type": "module",
+  "engines": {
+    "node": "24.x"
+  },
   "description": "A bot for automatically adding all your contributors",
   "author": "Jake Bolam <jake.bolam@gmail.com> (https://jakebolam.com)",
   "repository": "https://github.com/all-contributors/app",
