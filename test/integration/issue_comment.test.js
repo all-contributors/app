@@ -338,6 +338,7 @@ describe("issue_comment event", () => {
     // Normalize output before comparing
     delete output[0].stack;
     delete output[0].request.headers["user-agent"];
+    delete output[0].request.headers["x-github-delivery"];
 
     expect(output).toMatchSnapshot("logs");
   });
