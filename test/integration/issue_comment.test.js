@@ -83,44 +83,36 @@ describe("issue_comment event", () => {
       )
       .reply(200, gitGetRefdata)
 
-      .post(`/repos/all-contributors/all-contributors-bot/git/refs`, (body) => {
-        expect(body).toMatchSnapshot("request body");
-        return true;
+      .post(`/repos/all-contributors/all-contributors-bot/git/refs`)
+      .reply(201, async (request) => {
+        expect(await request.json()).toMatchSnapshot("request body");
+        return gitCreateRefdata;
       })
-      .reply(201, gitCreateRefdata)
 
       .put(
         `/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc`,
-        (body) => {
-          expect(body).toMatchSnapshot("request body");
-          return true;
-        },
       )
-      .reply(200, reposUpdateFiledata)
-
-      .put(
-        `/repos/all-contributors/all-contributors-bot/contents/README.md`,
-        (body) => {
-          expect(body).toMatchSnapshot("request body");
-          return true;
-        },
-      )
-      .reply(200, reposUpdateFiledata)
-
-      .post(`/repos/all-contributors/all-contributors-bot/pulls`, (body) => {
-        expect(body).toMatchSnapshot("request body");
-        return true;
+      .reply(200, async (request) => {
+        expect(await request.json()).toMatchSnapshot("request body");
+        return reposUpdateFiledata;
       })
-      .reply(201, pullsCreatedata)
 
-      .post(
-        "/repos/all-contributors/all-contributors-bot/issues/1/comments",
-        (body) => {
-          expect(body).toMatchSnapshot("request body");
-          return true;
-        },
-      )
-      .reply(200);
+      .put(`/repos/all-contributors/all-contributors-bot/contents/README.md`)
+      .reply(200, async (request) => {
+        expect(await request.json()).toMatchSnapshot("request body");
+        return reposUpdateFiledata;
+      })
+
+      .post(`/repos/all-contributors/all-contributors-bot/pulls`)
+      .reply(201, async (request) => {
+        expect(await request.json()).toMatchSnapshot("request body");
+        return pullsCreatedata;
+      })
+
+      .post("/repos/all-contributors/all-contributors-bot/issues/1/comments")
+      .reply(200, async (request) => {
+        expect(await request.json()).toMatchSnapshot("request body");
+      });
 
     await probot.receive({
       name: "issue_comment",
@@ -157,44 +149,36 @@ describe("issue_comment event", () => {
       )
       .reply(200, gitGetRefdata)
 
-      .post(`/repos/all-contributors/all-contributors-bot/git/refs`, (body) => {
-        expect(body).toMatchSnapshot("request body");
-        return true;
+      .post(`/repos/all-contributors/all-contributors-bot/git/refs`)
+      .reply(201, async (request) => {
+        expect(await request.json()).toMatchSnapshot("request body");
+        return gitCreateRefdata;
       })
-      .reply(201, gitCreateRefdata)
 
       .put(
         `/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc`,
-        (body) => {
-          expect(body).toMatchSnapshot("request body");
-          return true;
-        },
       )
-      .reply(201, reposUpdateFiledata)
-
-      .put(
-        `/repos/all-contributors/all-contributors-bot/contents/README.md`,
-        (body) => {
-          expect(body).toMatchSnapshot("request body");
-          return true;
-        },
-      )
-      .reply(200, reposUpdateFiledata)
-
-      .post(`/repos/all-contributors/all-contributors-bot/pulls`, (body) => {
-        expect(body).toMatchSnapshot("request body");
-        return true;
+      .reply(201, async (request) => {
+        expect(await request.json()).toMatchSnapshot("request body");
+        return reposUpdateFiledata;
       })
-      .reply(201, pullsCreatedata)
 
-      .post(
-        "/repos/all-contributors/all-contributors-bot/issues/1/comments",
-        (body) => {
-          expect(body).toMatchSnapshot("request body");
-          return true;
-        },
-      )
-      .reply(200);
+      .put(`/repos/all-contributors/all-contributors-bot/contents/README.md`)
+      .reply(200, async (request) => {
+        expect(await request.json()).toMatchSnapshot("request body");
+        return reposUpdateFiledata;
+      })
+
+      .post(`/repos/all-contributors/all-contributors-bot/pulls`)
+      .reply(201, async (request) => {
+        expect(await request.json()).toMatchSnapshot("request body");
+        return pullsCreatedata;
+      })
+
+      .post("/repos/all-contributors/all-contributors-bot/issues/1/comments")
+      .reply(200, async (request) => {
+        expect(await request.json()).toMatchSnapshot("request body");
+      });
 
     await probot.receive({
       name: "issue_comment",
@@ -226,14 +210,10 @@ describe("issue_comment event", () => {
       )
       .reply(404)
 
-      .post(
-        "/repos/all-contributors/all-contributors-bot/issues/1/comments",
-        (body) => {
-          expect(body).toMatchSnapshot("request body");
-          return true;
-        },
-      )
-      .reply(200);
+      .post("/repos/all-contributors/all-contributors-bot/issues/1/comments")
+      .reply(200, async (request) => {
+        expect(await request.json()).toMatchSnapshot("request body");
+      });
 
     await probot.receive({
       name: "issue_comment",
@@ -259,14 +239,10 @@ describe("issue_comment event", () => {
       .get("/users/jakebolam")
       .reply(404)
 
-      .post(
-        "/repos/all-contributors/all-contributors-bot/issues/1/comments",
-        (body) => {
-          expect(body).toMatchSnapshot("request body");
-          return true;
-        },
-      )
-      .reply(200);
+      .post("/repos/all-contributors/all-contributors-bot/issues/1/comments")
+      .reply(200, async (request) => {
+        expect(await request.json()).toMatchSnapshot("request body");
+      });
 
     await probot.receive({
       name: "issue_comment",
@@ -280,14 +256,10 @@ describe("issue_comment event", () => {
 
   test("Fail path, Unknown user intention", async () => {
     const mock = nock("https://api.github.com")
-      .post(
-        "/repos/all-contributors/all-contributors-bot/issues/1/comments",
-        (body) => {
-          expect(body).toMatchSnapshot("request body");
-          return true;
-        },
-      )
-      .reply(200);
+      .post("/repos/all-contributors/all-contributors-bot/issues/1/comments")
+      .reply(200, async (request) => {
+        expect(await request.json()).toMatchSnapshot("request body");
+      });
 
     await probot.receive({
       name: "issue_comment",
@@ -311,14 +283,10 @@ describe("issue_comment event", () => {
       )
       .reply(500)
 
-      .post(
-        "/repos/all-contributors/all-contributors-bot/issues/1/comments",
-        (body) => {
-          expect(body).toMatchSnapshot("request body");
-          return true;
-        },
-      )
-      .reply(200);
+      .post("/repos/all-contributors/all-contributors-bot/issues/1/comments")
+      .reply(200, async (request) => {
+        expect(await request.json()).toMatchSnapshot("request body");
+      });
 
     try {
       await probot.receive({
@@ -365,36 +333,28 @@ describe("issue_comment event", () => {
 
       .put(
         `/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc`,
-        (body) => {
-          expect(body).toMatchSnapshot("request body");
-          return true;
-        },
       )
-      .reply(200, reposUpdateFiledata)
-
-      .put(
-        `/repos/all-contributors/all-contributors-bot/contents/README.md`,
-        (body) => {
-          expect(body).toMatchSnapshot("request body");
-          return true;
-        },
-      )
-      .reply(200, reposUpdateFiledata)
-
-      .post(`/repos/all-contributors/all-contributors-bot/pulls`, (body) => {
-        expect(body).toMatchSnapshot("request body");
-        return true;
+      .reply(200, async (request) => {
+        expect(await request.json()).toMatchSnapshot("request body");
+        return reposUpdateFiledata;
       })
-      .reply(201, pullsCreatedata)
 
-      .post(
-        "/repos/all-contributors/all-contributors-bot/issues/1/comments",
-        (body) => {
-          expect(body).toMatchSnapshot("request body");
-          return true;
-        },
-      )
-      .reply(200);
+      .put(`/repos/all-contributors/all-contributors-bot/contents/README.md`)
+      .reply(200, async (request) => {
+        expect(await request.json()).toMatchSnapshot("request body");
+        return reposUpdateFiledata;
+      })
+
+      .post(`/repos/all-contributors/all-contributors-bot/pulls`)
+      .reply(201, async (request) => {
+        expect(await request.json()).toMatchSnapshot("request body");
+        return pullsCreatedata;
+      })
+
+      .post("/repos/all-contributors/all-contributors-bot/issues/1/comments")
+      .reply(200, async (request) => {
+        expect(await request.json()).toMatchSnapshot("request body");
+      });
 
     await probot.receive({
       name: "issue_comment",
@@ -440,36 +400,27 @@ describe("issue_comment event", () => {
 
       .put(
         `/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc`,
-        (body) => {
-          expect(body).toMatchSnapshot("request body");
-          return true;
-        },
       )
-      .reply(200, reposUpdateFiledata)
-
-      .put(
-        `/repos/all-contributors/all-contributors-bot/contents/README.md`,
-        (body) => {
-          expect(body).toMatchSnapshot("request body");
-          return true;
-        },
-      )
-      .reply(200, reposUpdateFiledata)
-
-      .post(`/repos/all-contributors/all-contributors-bot/pulls`, (body) => {
-        expect(body).toMatchSnapshot("request body");
-        return true;
+      .reply(200, async (request) => {
+        expect(await request.json()).toMatchSnapshot("request body");
+        return reposUpdateFiledata;
       })
-      .reply(422)
 
-      .post(
-        "/repos/all-contributors/all-contributors-bot/issues/1/comments",
-        (body) => {
-          expect(body).toMatchSnapshot("request body");
-          return true;
-        },
-      )
-      .reply(200);
+      .put(`/repos/all-contributors/all-contributors-bot/contents/README.md`)
+      .reply(200, async (request) => {
+        expect(await request.json()).toMatchSnapshot("request body");
+        return reposUpdateFiledata;
+      })
+
+      .post(`/repos/all-contributors/all-contributors-bot/pulls`)
+      .reply(422, async (request) => {
+        expect(await request.json()).toMatchSnapshot("request body");
+      })
+
+      .post("/repos/all-contributors/all-contributors-bot/issues/1/comments")
+      .reply(200, async (request) => {
+        expect(await request.json()).toMatchSnapshot("request body");
+      });
 
     await probot.receive({
       name: "issue_comment",
@@ -496,14 +447,10 @@ describe("issue_comment event", () => {
       .get("/users/jakebolam")
       .reply(200, usersGetByUsernameJakeBolamdata)
 
-      .post(
-        "/repos/all-contributors/all-contributors-bot/issues/1/comments",
-        (body) => {
-          expect(body).toMatchSnapshot("request body");
-          return true;
-        },
-      )
-      .reply(200);
+      .post("/repos/all-contributors/all-contributors-bot/issues/1/comments")
+      .reply(200, async (request) => {
+        expect(await request.json()).toMatchSnapshot("request body");
+      });
 
     await probot.receive({
       name: "issue_comment",
@@ -530,14 +477,10 @@ describe("issue_comment event", () => {
       )
       .reply(200, reposGetContentsAllContributorsRCdata26files)
 
-      .post(
-        "/repos/all-contributors/all-contributors-bot/issues/1/comments",
-        (body) => {
-          expect(body).toMatchSnapshot("request body");
-          return true;
-        },
-      )
-      .reply(200);
+      .post("/repos/all-contributors/all-contributors-bot/issues/1/comments")
+      .reply(200, async (request) => {
+        expect(await request.json()).toMatchSnapshot("request body");
+      });
 
     await probot.receive({
       name: "issue_comment",
@@ -561,14 +504,10 @@ describe("issue_comment event", () => {
       )
       .reply(200, reposGetContentsAllContributorsRCdataInvalidSyntax)
 
-      .post(
-        "/repos/all-contributors/all-contributors-bot/issues/1/comments",
-        (body) => {
-          expect(body).toMatchSnapshot("request body");
-          return true;
-        },
-      )
-      .reply(200);
+      .post("/repos/all-contributors/all-contributors-bot/issues/1/comments")
+      .reply(200, async (request) => {
+        expect(await request.json()).toMatchSnapshot("request body");
+      });
 
     await probot.receive({
       name: "issue_comment",
@@ -605,44 +544,36 @@ describe("issue_comment event", () => {
       )
       .reply(200, gitGetRefdata)
 
-      .post(`/repos/all-contributors/all-contributors-bot/git/refs`, (body) => {
-        expect(body).toMatchSnapshot("request body");
-        return true;
+      .post(`/repos/all-contributors/all-contributors-bot/git/refs`)
+      .reply(201, async (request) => {
+        expect(await request.json()).toMatchSnapshot("request body");
+        return gitCreateRefdata;
       })
-      .reply(201, gitCreateRefdata)
 
       .put(
         `/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc`,
-        (body) => {
-          expect(body).toMatchSnapshot("request body");
-          return true;
-        },
       )
-      .reply(200, reposUpdateFiledata)
-
-      .put(
-        `/repos/all-contributors/all-contributors-bot/contents/README.md`,
-        (body) => {
-          expect(body).toMatchSnapshot("request body");
-          return true;
-        },
-      )
-      .reply(200, reposUpdateFiledata)
-
-      .post(`/repos/all-contributors/all-contributors-bot/pulls`, (body) => {
-        expect(body).toMatchSnapshot("request body");
-        return true;
+      .reply(200, async (request) => {
+        expect(await request.json()).toMatchSnapshot("request body");
+        return reposUpdateFiledata;
       })
-      .reply(201, pullsCreatedata)
 
-      .post(
-        "/repos/all-contributors/all-contributors-bot/issues/1/comments",
-        (body) => {
-          expect(body).toMatchSnapshot("request body");
-          return true;
-        },
-      )
-      .reply(200);
+      .put(`/repos/all-contributors/all-contributors-bot/contents/README.md`)
+      .reply(200, async (request) => {
+        expect(await request.json()).toMatchSnapshot("request body");
+        return reposUpdateFiledata;
+      })
+
+      .post(`/repos/all-contributors/all-contributors-bot/pulls`)
+      .reply(201, async (request) => {
+        expect(await request.json()).toMatchSnapshot("request body");
+        return pullsCreatedata;
+      })
+
+      .post("/repos/all-contributors/all-contributors-bot/issues/1/comments")
+      .reply(200, async (request) => {
+        expect(await request.json()).toMatchSnapshot("request body");
+      });
 
     await probot.receive({
       name: "issue_comment",
@@ -679,44 +610,36 @@ describe("issue_comment event", () => {
       )
       .reply(200, gitGetRefdata)
 
-      .post(`/repos/all-contributors/all-contributors-bot/git/refs`, (body) => {
-        expect(body).toMatchSnapshot("request body");
-        return true;
+      .post(`/repos/all-contributors/all-contributors-bot/git/refs`)
+      .reply(201, async (request) => {
+        expect(await request.json()).toMatchSnapshot("request body");
+        return gitCreateRefdata;
       })
-      .reply(201, gitCreateRefdata)
 
       .put(
         `/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc`,
-        (body) => {
-          expect(body).toMatchSnapshot("request body");
-          return true;
-        },
       )
-      .reply(200, reposUpdateFiledata)
-
-      .put(
-        `/repos/all-contributors/all-contributors-bot/contents/README.md`,
-        (body) => {
-          expect(body).toMatchSnapshot("request body");
-          return true;
-        },
-      )
-      .reply(200, reposUpdateFiledata)
-
-      .post(`/repos/all-contributors/all-contributors-bot/pulls`, (body) => {
-        expect(body).toMatchSnapshot("request body");
-        return true;
+      .reply(200, async (request) => {
+        expect(await request.json()).toMatchSnapshot("request body");
+        return reposUpdateFiledata;
       })
-      .reply(201, pullsCreatedata)
 
-      .post(
-        "/repos/all-contributors/all-contributors-bot/issues/1/comments",
-        (body) => {
-          expect(body).toMatchSnapshot("request body");
-          return true;
-        },
-      )
-      .reply(200);
+      .put(`/repos/all-contributors/all-contributors-bot/contents/README.md`)
+      .reply(200, async (request) => {
+        expect(await request.json()).toMatchSnapshot("request body");
+        return reposUpdateFiledata;
+      })
+
+      .post(`/repos/all-contributors/all-contributors-bot/pulls`)
+      .reply(201, async (request) => {
+        expect(await request.json()).toMatchSnapshot("request body");
+        return pullsCreatedata;
+      })
+
+      .post("/repos/all-contributors/all-contributors-bot/issues/1/comments")
+      .reply(200, async (request) => {
+        expect(await request.json()).toMatchSnapshot("request body");
+      });
 
     await probot.receive({
       name: "issue_comment",
@@ -730,14 +653,10 @@ describe("issue_comment event", () => {
 
   test("Unknown contribution", async () => {
     const mock = nock("https://api.github.com")
-      .post(
-        "/repos/all-contributors/all-contributors-bot/issues/1/comments",
-        (body) => {
-          expect(body).toMatchSnapshot("request body");
-          return true;
-        },
-      )
-      .reply(200);
+      .post("/repos/all-contributors/all-contributors-bot/issues/1/comments")
+      .reply(200, async (request) => {
+        expect(await request.json()).toMatchSnapshot("request body");
+      });
 
     await probot.receive({
       name: "issue_comment",
@@ -801,48 +720,40 @@ describe("issue_comment event", () => {
       .twice()
       .reply(200, gitGetRefdata)
 
-      .post(`/repos/all-contributors/all-contributors-bot/git/refs`, (body) => {
-        expect(body).toMatchSnapshot("request body");
-        return true;
-      })
+      .post(`/repos/all-contributors/all-contributors-bot/git/refs`)
       .twice()
-      .reply(201, gitCreateRefdata)
+      .reply(201, async (request) => {
+        expect(await request.json()).toMatchSnapshot("request body");
+        return gitCreateRefdata;
+      })
 
       .put(
         `/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc`,
-        (body) => {
-          expect(body).toMatchSnapshot("request body");
-          return true;
-        },
       )
       .twice()
-      .reply(200, reposUpdateFiledata)
-
-      .put(
-        `/repos/all-contributors/all-contributors-bot/contents/README.md`,
-        (body) => {
-          expect(body).toMatchSnapshot("request body");
-          return true;
-        },
-      )
-      .twice()
-      .reply(200, reposUpdateFiledata)
-
-      .post(`/repos/all-contributors/all-contributors-bot/pulls`, (body) => {
-        expect(body).toMatchSnapshot("request body");
-        return true;
+      .reply(200, async (request) => {
+        expect(await request.json()).toMatchSnapshot("request body");
+        return reposUpdateFiledata;
       })
-      .twice()
-      .reply(201, pullsCreatedata)
 
-      .post(
-        "/repos/all-contributors/all-contributors-bot/issues/1/comments",
-        (body) => {
-          expect(body).toMatchSnapshot("request body");
-          return true;
-        },
-      )
-      .reply(200);
+      .put(`/repos/all-contributors/all-contributors-bot/contents/README.md`)
+      .twice()
+      .reply(200, async (request) => {
+        expect(await request.json()).toMatchSnapshot("request body");
+        return reposUpdateFiledata;
+      })
+
+      .post(`/repos/all-contributors/all-contributors-bot/pulls`)
+      .twice()
+      .reply(201, async (request) => {
+        expect(await request.json()).toMatchSnapshot("request body");
+        return pullsCreatedata;
+      })
+
+      .post("/repos/all-contributors/all-contributors-bot/issues/1/comments")
+      .reply(200, async (request) => {
+        expect(await request.json()).toMatchSnapshot("request body");
+      });
 
     await probot.receive({
       name: "issue_comment",
