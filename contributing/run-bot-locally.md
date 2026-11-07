@@ -36,7 +36,7 @@ You should now have an app created
 
 Create a file named `.env` with the following template:
 
-```
+```properties
 APP_ID=
 WEBHOOK_SECRET=development
 PRIVATE_KEY=
@@ -65,7 +65,7 @@ To verify if the bot should have seen this goto [your app settings](https://gith
 3. Curl the bot (or use Postman, using the headers you got from the previous step and the content from `test-webhook-payload.json`)
    If you're using `curl`, this will look something like this:
 
-```
+```sh
 curl -vX POST http://localhost:3000/ -d @test-webhook-payload.json \
 --header "Content-Type: application/json" \
 --header "User-Agent: GitHub-Hookshot/4d63832" \
@@ -80,7 +80,7 @@ curl -vX POST http://localhost:3000/ -d @test-webhook-payload.json \
 
 If there are no errors in the bot console, check your github test issue to see the bot respond :tada:
 
-# Using [smee.io](https://smee.io/)
+## Using [smee.io](https://smee.io/)
 
 Alternatively, instead of having to mock the webhook payload using `curl`, you can add an additional environment variable called `WEBHOOK_PROXY_URL` and set it to a [smee.io](https://smee.io) channel URL.
 

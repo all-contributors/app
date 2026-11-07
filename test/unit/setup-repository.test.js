@@ -1,6 +1,7 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
-import Repository from "../../lib/modules/repository.js";
+
 import { BranchNotFoundError } from "../../lib/modules/errors.js";
+import Repository from "../../lib/modules/repository.js";
 import setupRepository from "../../lib/setup-repository.js";
 
 vi.mock("../../lib/modules/repository.js", () => {

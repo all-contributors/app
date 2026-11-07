@@ -2,38 +2,54 @@
   "name": "all-contributors-bot",
   "version": "0.0.0-development",
   "private": true,
-  "type": "module",
-  "engines": {
-    "node": "24.x"
-  },
   "description": "A bot for automatically adding all your contributors",
-  "author": "Jake Bolam <jake.bolam@gmail.com> (https://jakebolam.com)",
-  "repository": "https://github.com/all-contributors/app",
   "keywords": [
     "all-contributors",
     "probot",
     "github-app",
     "probot-app"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/all-contributors/app.git"
+  },
+  "author": "Jake Bolam <jake.bolam@gmail.com> (https://jakebolam.com)",
+  "type": "module",
   "scripts": {
-    "start": "probot run ./app.js",
     "format": "prettier . --write",
     "format:check": "prettier . --check",
+    "lint": "eslint .",
+    "start": "probot run ./app.js",
     "test": "vitest run --coverage"
   },
   "dependencies": {
+    "@vitest/eslint-plugin": "^1.6.28",
     "all-contributors-cli": "^7.0.0",
     "commit-conv": "^1.0.3",
     "compromise": "^14.19.0",
     "probot": "^12.2.8"
   },
   "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@eslint/markdown": "^8.0.3",
     "@vitest/coverage-v8": "^5.1.0",
+    "eslint": "^10.14.0",
+    "eslint-plugin-import-x": "^4.18.0",
+    "eslint-plugin-jsonc": "^3.4.2",
+    "eslint-plugin-package-json": "^1.14.0",
+    "eslint-plugin-perfectionist": "^5.13.0",
+    "eslint-plugin-yml": "^3.10.0",
+    "globals": "^17.14.0",
     "got": ">=14.6.6",
+    "jiti": "^2.7.0",
     "nock": "^15.0.5",
+    "pino": "6.14.0",
     "prettier": "^3.8.1",
     "smee-client": "^5.0.0",
     "vercel": "^65.11.0",
     "vitest": "^5.0.0"
+  },
+  "engines": {
+    "node": "24.x"
   }
 }

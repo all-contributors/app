@@ -1,4 +1,5 @@
 import { describe, expect, test } from "vitest";
+
 import parseComment from "../../lib/parse-comment.js";
 
 describe("parseComment", () => {

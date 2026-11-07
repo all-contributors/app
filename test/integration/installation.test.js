@@ -1,14 +1,15 @@
-import { beforeEach, describe, expect, test } from "vitest";
-import Stream from "stream";
-import { Probot, ProbotOctokit } from "probot";
 import pino from "pino";
+import { Probot, ProbotOctokit } from "probot";
+import Stream from "stream";
+import { beforeEach, describe, expect, test } from "vitest";
+
 import app from "../../app.js";
 
 // fixtures
 import installationCreated from "../fixtures/installation.created.json";
 import installationDeleted from "../fixtures/installation.deleted.json";
-import installationRepositoriesAdded from "../fixtures/installation_repositories.added.json";
 import installationSuspend from "../fixtures/installation.suspend.json";
+import installationRepositoriesAdded from "../fixtures/installation_repositories.added.json";
 
 let output = [];
 const streamLogsToOutput = new Stream.Writable({ objectMode: true });
