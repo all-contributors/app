@@ -56,7 +56,7 @@ PRIVATE_KEY=
 - Comment on the issue: `@all-contributors please add @jakebolam for design` (replace @jakebolam with your username)
 
 To verify if the bot should have seen this goto [your app settings](https://github.com/settings/apps/). On the Advanced Tab, Click the most recent deliver to see the payload. It should look something like this:
-![delivery comment](delivery-comment.png). Copy the payload and save it locally in a file called `test-webhook-payload.json`. Also make note of the headers under the 'Headers' section. 
+![delivery comment](delivery-comment.png). Copy the payload and save it locally in a file called `test-webhook-payload.json`. Also make note of the headers under the 'Headers' section.
 
 ## 5. Send your first hook
 
@@ -84,4 +84,4 @@ If there are no errors in the bot console, check your github test issue to see t
 
 Alternatively, instead of having to mock the webhook payload using `curl`, you can add an additional environment variable called `WEBHOOK_PROXY_URL` and set it to a [smee.io](https://smee.io) channel URL.
 
-Once you've done that, set the Webhook URL for you app in GitHub to the same channel URL and, after a server restart, your bot will be able to directly respond to incoming webhooks. 
+Once you've done that, set the Webhook URL for you app in GitHub to the same channel URL and, after a server restart, your bot will be able to directly respond to incoming webhooks.

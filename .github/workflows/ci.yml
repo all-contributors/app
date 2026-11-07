@@ -1,5 +1,6 @@
-name: Test
-"on":
+name: CI
+
+on:
   push:
     branches:
       - main
@@ -7,7 +8,19 @@ name: Test
     types:
       - opened
       - synchronize
+
 jobs:
+  format-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+      - uses: actions/setup-node@dbe1369d7be17e7823f8c1ee1ae8bec5779239dd # v3.9.0
+        with:
+          cache: npm
+          node-version: 24
+      - run: npm ci
+      - run: npm format:check
+
   test:
     runs-on: ubuntu-latest
     steps:
@@ -15,7 +28,7 @@ jobs:
       - uses: actions/setup-node@dbe1369d7be17e7823f8c1ee1ae8bec5779239dd # v3.9.0
         with:
           cache: npm
-          node-version: 22
+          node-version: 24
       - run: npm ci
       - run: npm test
       - name: Run code coverage

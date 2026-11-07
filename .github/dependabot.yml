@@ -6,18 +6,18 @@ updates:
     directory: "/"
     schedule:
       interval: "monthly"
-    
+
     commit-message:
       prefix: "chore"
       prefix-development: "chore(dev)"
       include: "scope"
-    
+
     groups:
       production-minor-patch:
         dependency-type: "production"
         update-types:
           - "minor"
           - "patch"
-      
+
       development-dependencies:
         dependency-type: "development"
