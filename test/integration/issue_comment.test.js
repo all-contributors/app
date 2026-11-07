@@ -1,37 +1,37 @@
-import nock from "nock";
-import pino from "pino";
-import { Probot, ProbotOctokit } from "probot";
-import Stream from "stream";
-import { beforeEach, describe, expect, test } from "vitest";
+import nock from 'nock';
+import pino from 'pino';
+import { Probot, ProbotOctokit } from 'probot';
+import Stream from 'stream';
+import { beforeEach, describe, expect, test } from 'vitest';
 
-import app from "../../app.js";
+import app from '../../app.js';
 
 // fixtures
-import gitCreateRefdata from "../fixtures/git.createRef.json";
-import gitGetRefdata from "../fixtures/git.getRef.json";
-import issueCommentCreatedByAppPayload from "../fixtures/issue_comment.created-by-app.json";
-import issueCommentCreatedMultipleContributorsPayload from "../fixtures/issue_comment.created-multiple-contributors.json";
-import issueCommentCreatedNotForAppPayload from "../fixtures/issue_comment.created-not-for-app.json";
-import issueCommentCreatedPayloadUnknownContribution from "../fixtures/issue_comment.created-unknown-contribution.json";
-import issueCommentCreatedExistContributorPayload from "../fixtures/issue_comment.created.exist-contributor.json";
-import issueCommentCreatedPayload from "../fixtures/issue_comment.created.json";
-import issueCommentCreatedPayloadUnknownIntention from "../fixtures/issue_commented.created.unknown-intention.json";
-import pullsCreatedata from "../fixtures/pulls.create.json";
-import reposGetContentsAllContributorsRCdata26files from "../fixtures/repos.getContents.all-contributorsrc-26-files.json";
-import reposGetContentsAllContributorsRCdataInvalidSyntax from "../fixtures/repos.getContents.all-contributorsrc-invalid-syntax.json";
-import reposGetContentsAllContributorsRCdataSkipCiFalse from "../fixtures/repos.getContents.all-contributorsrc-skip-ci-false.json";
-import reposGetContentsAllContributorsRCdata from "../fixtures/repos.getContents.all-contributorsrc.json";
-import reposGetContentsREADMEMDdata from "../fixtures/repos.getContents.README.md.json";
-import reposUpdateFiledata from "../fixtures/repos.updateFile.json";
-import usersGetByUsernameGr2mData from "../fixtures/users.getByUsername.gr2m.json";
-import usersGetByUsernameJakeBolamdata from "../fixtures/users.getByUsername.jakebolam.json";
-import usersGetByUsernameTenshiamdData from "../fixtures/users.getByUsername.tenshiamd.json";
-import usersGetByUsernameNoBlogAndNameData from "../fixtures/users.getByUsername.without-name-and-blog.json";
+import gitCreateRefdata from '../fixtures/git.createRef.json';
+import gitGetRefdata from '../fixtures/git.getRef.json';
+import issueCommentCreatedByAppPayload from '../fixtures/issue_comment.created-by-app.json';
+import issueCommentCreatedMultipleContributorsPayload from '../fixtures/issue_comment.created-multiple-contributors.json';
+import issueCommentCreatedNotForAppPayload from '../fixtures/issue_comment.created-not-for-app.json';
+import issueCommentCreatedPayloadUnknownContribution from '../fixtures/issue_comment.created-unknown-contribution.json';
+import issueCommentCreatedExistContributorPayload from '../fixtures/issue_comment.created.exist-contributor.json';
+import issueCommentCreatedPayload from '../fixtures/issue_comment.created.json';
+import issueCommentCreatedPayloadUnknownIntention from '../fixtures/issue_commented.created.unknown-intention.json';
+import pullsCreatedata from '../fixtures/pulls.create.json';
+import reposGetContentsAllContributorsRCdata26files from '../fixtures/repos.getContents.all-contributorsrc-26-files.json';
+import reposGetContentsAllContributorsRCdataInvalidSyntax from '../fixtures/repos.getContents.all-contributorsrc-invalid-syntax.json';
+import reposGetContentsAllContributorsRCdataSkipCiFalse from '../fixtures/repos.getContents.all-contributorsrc-skip-ci-false.json';
+import reposGetContentsAllContributorsRCdata from '../fixtures/repos.getContents.all-contributorsrc.json';
+import reposGetContentsREADMEMDdata from '../fixtures/repos.getContents.README.md.json';
+import reposUpdateFiledata from '../fixtures/repos.updateFile.json';
+import usersGetByUsernameGr2mData from '../fixtures/users.getByUsername.gr2m.json';
+import usersGetByUsernameJakeBolamdata from '../fixtures/users.getByUsername.jakebolam.json';
+import usersGetByUsernameTenshiamdData from '../fixtures/users.getByUsername.tenshiamd.json';
+import usersGetByUsernameNoBlogAndNameData from '../fixtures/users.getByUsername.without-name-and-blog.json';
 
 let output = [];
 const streamLogsToOutput = new Stream.Writable({ objectMode: true });
 streamLogsToOutput._write = (object, encoding, done) => {
-  const { _pid, _time, _hostname, ...data } = JSON.parse(object);
+  const { pid, time, hostname, ...data } = JSON.parse(object);
   output.push(data);
   done();
 };
@@ -45,13 +45,13 @@ const Octokit = ProbotOctokit.defaults({
 
 nock.disableNetConnect();
 
-describe("issue_comment event", () => {
+describe('issue_comment event', () => {
   let probot;
 
   beforeEach(async () => {
     output = [];
     probot = new Probot({
-      githubToken: "test",
+      githubToken: 'test',
       Octokit,
       log: pino(streamLogsToOutput),
     });
@@ -59,23 +59,23 @@ describe("issue_comment event", () => {
     await probot.load(app);
   });
 
-  test("Happy path, add correct new contributor", async () => {
-    const mock = nock("https://api.github.com")
+  test('Happy path, add correct new contributor', async () => {
+    const mock = nock('https://api.github.com')
       .get(
         `/repos/all-contributors/all-contributors-bot/git/ref/heads%2Fall-contributors%2Fadd-jakebolam`,
       )
       .reply(404)
 
       .get(
-        "/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc?ref=master",
+        '/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc?ref=master',
       )
       .reply(200, reposGetContentsAllContributorsRCdata)
 
-      .get("/users/jakebolam")
+      .get('/users/jakebolam')
       .reply(200, usersGetByUsernameJakeBolamdata)
 
       .get(
-        "/repos/all-contributors/all-contributors-bot/contents/README.md?ref=master",
+        '/repos/all-contributors/all-contributors-bot/contents/README.md?ref=master',
       )
       .reply(200, reposGetContentsREADMEMDdata)
 
@@ -86,7 +86,7 @@ describe("issue_comment event", () => {
 
       .post(`/repos/all-contributors/all-contributors-bot/git/refs`)
       .reply(201, async (request) => {
-        expect(await request.json()).toMatchSnapshot("request body");
+        expect(await request.json()).toMatchSnapshot('request body');
         return gitCreateRefdata;
       })
 
@@ -94,54 +94,54 @@ describe("issue_comment event", () => {
         `/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc`,
       )
       .reply(200, async (request) => {
-        expect(await request.json()).toMatchSnapshot("request body");
+        expect(await request.json()).toMatchSnapshot('request body');
         return reposUpdateFiledata;
       })
 
       .put(`/repos/all-contributors/all-contributors-bot/contents/README.md`)
       .reply(200, async (request) => {
-        expect(await request.json()).toMatchSnapshot("request body");
+        expect(await request.json()).toMatchSnapshot('request body');
         return reposUpdateFiledata;
       })
 
       .post(`/repos/all-contributors/all-contributors-bot/pulls`)
       .reply(201, async (request) => {
-        expect(await request.json()).toMatchSnapshot("request body");
+        expect(await request.json()).toMatchSnapshot('request body');
         return pullsCreatedata;
       })
 
-      .post("/repos/all-contributors/all-contributors-bot/issues/1/comments")
+      .post('/repos/all-contributors/all-contributors-bot/issues/1/comments')
       .reply(200, async (request) => {
-        expect(await request.json()).toMatchSnapshot("request body");
+        expect(await request.json()).toMatchSnapshot('request body');
       });
 
     await probot.receive({
-      name: "issue_comment",
-      id: "1",
+      name: 'issue_comment',
+      id: '1',
       payload: issueCommentCreatedPayload,
     });
 
     expect(mock.activeMocks()).toStrictEqual([]);
-    expect(output).toMatchSnapshot("logs");
+    expect(output).toMatchSnapshot('logs');
   });
 
-  test("Happy path, add correct new contributor, no allcontributors file (repo needs init first)", async () => {
-    const mock = nock("https://api.github.com")
+  test('Happy path, add correct new contributor, no allcontributors file (repo needs init first)', async () => {
+    const mock = nock('https://api.github.com')
       .get(
         `/repos/all-contributors/all-contributors-bot/git/ref/heads%2Fall-contributors%2Fadd-jakebolam`,
       )
       .reply(404)
 
       .get(
-        "/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc?ref=master",
+        '/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc?ref=master',
       )
       .reply(404)
 
-      .get("/users/jakebolam")
+      .get('/users/jakebolam')
       .reply(200, usersGetByUsernameJakeBolamdata)
 
       .get(
-        "/repos/all-contributors/all-contributors-bot/contents/README.md?ref=master",
+        '/repos/all-contributors/all-contributors-bot/contents/README.md?ref=master',
       )
       .reply(200, reposGetContentsREADMEMDdata)
 
@@ -152,7 +152,7 @@ describe("issue_comment event", () => {
 
       .post(`/repos/all-contributors/all-contributors-bot/git/refs`)
       .reply(201, async (request) => {
-        expect(await request.json()).toMatchSnapshot("request body");
+        expect(await request.json()).toMatchSnapshot('request body');
         return gitCreateRefdata;
       })
 
@@ -160,142 +160,142 @@ describe("issue_comment event", () => {
         `/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc`,
       )
       .reply(201, async (request) => {
-        expect(await request.json()).toMatchSnapshot("request body");
+        expect(await request.json()).toMatchSnapshot('request body');
         return reposUpdateFiledata;
       })
 
       .put(`/repos/all-contributors/all-contributors-bot/contents/README.md`)
       .reply(200, async (request) => {
-        expect(await request.json()).toMatchSnapshot("request body");
+        expect(await request.json()).toMatchSnapshot('request body');
         return reposUpdateFiledata;
       })
 
       .post(`/repos/all-contributors/all-contributors-bot/pulls`)
       .reply(201, async (request) => {
-        expect(await request.json()).toMatchSnapshot("request body");
+        expect(await request.json()).toMatchSnapshot('request body');
         return pullsCreatedata;
       })
 
-      .post("/repos/all-contributors/all-contributors-bot/issues/1/comments")
+      .post('/repos/all-contributors/all-contributors-bot/issues/1/comments')
       .reply(200, async (request) => {
-        expect(await request.json()).toMatchSnapshot("request body");
+        expect(await request.json()).toMatchSnapshot('request body');
       });
 
     await probot.receive({
-      name: "issue_comment",
-      id: "1",
+      name: 'issue_comment',
+      id: '1',
       payload: issueCommentCreatedPayload,
     });
 
     expect(mock.activeMocks()).toStrictEqual([]);
-    expect(output).toMatchSnapshot("logs");
+    expect(output).toMatchSnapshot('logs');
   });
 
-  test("Fail path, no readme file (configuration error)", async () => {
-    const mock = nock("https://api.github.com")
+  test('Fail path, no readme file (configuration error)', async () => {
+    const mock = nock('https://api.github.com')
       .get(
         `/repos/all-contributors/all-contributors-bot/git/ref/heads%2Fall-contributors%2Fadd-jakebolam`,
       )
       .reply(404)
 
       .get(
-        "/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc?ref=master",
+        '/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc?ref=master',
       )
       .reply(200, reposGetContentsAllContributorsRCdata)
 
-      .get("/users/jakebolam")
+      .get('/users/jakebolam')
       .reply(200, usersGetByUsernameJakeBolamdata)
 
       .get(
-        "/repos/all-contributors/all-contributors-bot/contents/README.md?ref=master",
+        '/repos/all-contributors/all-contributors-bot/contents/README.md?ref=master',
       )
       .reply(404)
 
-      .post("/repos/all-contributors/all-contributors-bot/issues/1/comments")
+      .post('/repos/all-contributors/all-contributors-bot/issues/1/comments')
       .reply(200, async (request) => {
-        expect(await request.json()).toMatchSnapshot("request body");
+        expect(await request.json()).toMatchSnapshot('request body');
       });
 
     await probot.receive({
-      name: "issue_comment",
-      id: "1",
+      name: 'issue_comment',
+      id: '1',
       payload: issueCommentCreatedPayload,
     });
 
     expect(mock.activeMocks()).toStrictEqual([]);
-    expect(output).toMatchSnapshot("logs");
+    expect(output).toMatchSnapshot('logs');
   });
 
-  test("Fail path, no such user", async () => {
-    const mock = nock("https://api.github.com")
+  test('Fail path, no such user', async () => {
+    const mock = nock('https://api.github.com')
       .get(
         `/repos/all-contributors/all-contributors-bot/git/ref/heads%2Fall-contributors%2Fadd-jakebolam`,
       )
       .reply(404)
 
       .get(
-        "/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc?ref=master",
+        '/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc?ref=master',
       )
       .reply(200, reposGetContentsAllContributorsRCdata)
-      .get("/users/jakebolam")
+      .get('/users/jakebolam')
       .reply(404)
 
-      .post("/repos/all-contributors/all-contributors-bot/issues/1/comments")
+      .post('/repos/all-contributors/all-contributors-bot/issues/1/comments')
       .reply(200, async (request) => {
-        expect(await request.json()).toMatchSnapshot("request body");
+        expect(await request.json()).toMatchSnapshot('request body');
       });
 
     await probot.receive({
-      name: "issue_comment",
-      id: "1",
+      name: 'issue_comment',
+      id: '1',
       payload: issueCommentCreatedPayload,
     });
 
     expect(mock.activeMocks()).toStrictEqual([]);
-    expect(output).toMatchSnapshot("logs");
+    expect(output).toMatchSnapshot('logs');
   });
 
-  test("Fail path, Unknown user intention", async () => {
-    const mock = nock("https://api.github.com")
-      .post("/repos/all-contributors/all-contributors-bot/issues/1/comments")
+  test('Fail path, Unknown user intention', async () => {
+    const mock = nock('https://api.github.com')
+      .post('/repos/all-contributors/all-contributors-bot/issues/1/comments')
       .reply(200, async (request) => {
-        expect(await request.json()).toMatchSnapshot("request body");
+        expect(await request.json()).toMatchSnapshot('request body');
       });
 
     await probot.receive({
-      name: "issue_comment",
-      id: "1",
+      name: 'issue_comment',
+      id: '1',
       payload: issueCommentCreatedPayloadUnknownIntention,
     });
 
     expect(mock.activeMocks()).toStrictEqual([]);
-    expect(output).toMatchSnapshot("logs");
+    expect(output).toMatchSnapshot('logs');
   });
 
-  test("Fail path, Unknown error (e.g. Network is dead, service down etc, our code is bad) crashes and sends error message", async () => {
-    /*const mock =*/ nock("https://api.github.com")
+  test('Fail path, Unknown error (e.g. Network is dead, service down etc, our code is bad) crashes and sends error message', async () => {
+    /*const mock =*/ nock('https://api.github.com')
       .get(
         `/repos/all-contributors/all-contributors-bot/git/ref/heads%2Fall-contributors%2Fadd-jakebolam`,
       )
       .reply(404)
 
       .get(
-        "/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc?ref=master",
+        '/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc?ref=master',
       )
       .reply(500)
 
-      .post("/repos/all-contributors/all-contributors-bot/issues/1/comments")
+      .post('/repos/all-contributors/all-contributors-bot/issues/1/comments')
       .reply(200, async (request) => {
-        expect(await request.json()).toMatchSnapshot("request body");
+        expect(await request.json()).toMatchSnapshot('request body');
       });
 
     try {
       await probot.receive({
-        name: "issue_comment",
-        id: "1",
+        name: 'issue_comment',
+        id: '1',
         payload: issueCommentCreatedPayload,
       });
-      throw new Error("should not resolve");
+      throw new Error('should not resolve');
     } catch (error) {
       expect(error instanceof Error).toBeTruthy();
     }
@@ -306,96 +306,96 @@ describe("issue_comment event", () => {
 
     // Normalize output before comparing
     delete output[0].stack;
-    delete output[0].request.headers["user-agent"];
-    delete output[0].request.headers["x-github-delivery"];
+    delete output[0].request.headers['user-agent'];
+    delete output[0].request.headers['x-github-delivery'];
 
-    expect(output).toMatchSnapshot("logs");
+    expect(output).toMatchSnapshot('logs');
   });
 
-  test("Happy path, add correct new contributor, but branch exists", async () => {
-    const mock = nock("https://api.github.com")
+  test('Happy path, add correct new contributor, but branch exists', async () => {
+    const mock = nock('https://api.github.com')
       .get(
         `/repos/all-contributors/all-contributors-bot/git/ref/heads%2Fall-contributors%2Fadd-jakebolam`,
       )
       .reply(200, gitGetRefdata)
 
       .get(
-        "/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc",
+        '/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc',
       )
-      .query({ ref: "all-contributors/add-jakebolam" })
+      .query({ ref: 'all-contributors/add-jakebolam' })
       .reply(200, reposGetContentsAllContributorsRCdata)
 
-      .get("/users/jakebolam")
+      .get('/users/jakebolam')
       .reply(200, usersGetByUsernameJakeBolamdata)
 
-      .get("/repos/all-contributors/all-contributors-bot/contents/README.md")
-      .query({ ref: "all-contributors/add-jakebolam" })
+      .get('/repos/all-contributors/all-contributors-bot/contents/README.md')
+      .query({ ref: 'all-contributors/add-jakebolam' })
       .reply(200, reposGetContentsREADMEMDdata)
 
       .put(
         `/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc`,
       )
       .reply(200, async (request) => {
-        expect(await request.json()).toMatchSnapshot("request body");
+        expect(await request.json()).toMatchSnapshot('request body');
         return reposUpdateFiledata;
       })
 
       .put(`/repos/all-contributors/all-contributors-bot/contents/README.md`)
       .reply(200, async (request) => {
-        expect(await request.json()).toMatchSnapshot("request body");
+        expect(await request.json()).toMatchSnapshot('request body');
         return reposUpdateFiledata;
       })
 
       .post(`/repos/all-contributors/all-contributors-bot/pulls`)
       .reply(201, async (request) => {
-        expect(await request.json()).toMatchSnapshot("request body");
+        expect(await request.json()).toMatchSnapshot('request body');
         return pullsCreatedata;
       })
 
-      .post("/repos/all-contributors/all-contributors-bot/issues/1/comments")
+      .post('/repos/all-contributors/all-contributors-bot/issues/1/comments')
       .reply(200, async (request) => {
-        expect(await request.json()).toMatchSnapshot("request body");
+        expect(await request.json()).toMatchSnapshot('request body');
       });
 
     await probot.receive({
-      name: "issue_comment",
-      id: "1",
+      name: 'issue_comment',
+      id: '1',
       payload: issueCommentCreatedPayload,
     });
 
     expect(mock.activeMocks()).toStrictEqual([]);
-    expect(output).toMatchSnapshot("logs");
+    expect(output).toMatchSnapshot('logs');
   });
 
-  test("Happy path, add correct new contributor, but branch exists and PR is open", async () => {
-    const mock = nock("https://api.github.com")
+  test('Happy path, add correct new contributor, but branch exists and PR is open', async () => {
+    const mock = nock('https://api.github.com')
       .get(
         `/repos/all-contributors/all-contributors-bot/git/ref/heads%2Fall-contributors%2Fadd-jakebolam`,
       )
       .reply(200, gitGetRefdata)
 
       .get(
-        "/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc",
+        '/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc',
       )
-      .query({ ref: "all-contributors/add-jakebolam" })
+      .query({ ref: 'all-contributors/add-jakebolam' })
       .reply(200, reposGetContentsAllContributorsRCdata)
 
-      .get("/users/jakebolam")
+      .get('/users/jakebolam')
       .reply(200, usersGetByUsernameJakeBolamdata)
 
-      .get("/repos/all-contributors/all-contributors-bot/contents/README.md")
-      .query({ ref: "all-contributors/add-jakebolam" })
+      .get('/repos/all-contributors/all-contributors-bot/contents/README.md')
+      .query({ ref: 'all-contributors/add-jakebolam' })
       .reply(200, reposGetContentsREADMEMDdata)
 
-      .get("/repos/all-contributors/all-contributors-bot/pulls")
+      .get('/repos/all-contributors/all-contributors-bot/pulls')
       .query({
-        state: "open",
-        head: "all-contributors:all-contributors/add-jakebolam",
+        state: 'open',
+        head: 'all-contributors:all-contributors/add-jakebolam',
       })
       .reply(200, [
         {
           html_url:
-            "https://github.com/all-contributors/all-contributors-bot/pull/1",
+            'https://github.com/all-contributors/all-contributors-bot/pull/1',
         },
       ])
 
@@ -403,140 +403,140 @@ describe("issue_comment event", () => {
         `/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc`,
       )
       .reply(200, async (request) => {
-        expect(await request.json()).toMatchSnapshot("request body");
+        expect(await request.json()).toMatchSnapshot('request body');
         return reposUpdateFiledata;
       })
 
       .put(`/repos/all-contributors/all-contributors-bot/contents/README.md`)
       .reply(200, async (request) => {
-        expect(await request.json()).toMatchSnapshot("request body");
+        expect(await request.json()).toMatchSnapshot('request body');
         return reposUpdateFiledata;
       })
 
       .post(`/repos/all-contributors/all-contributors-bot/pulls`)
       .reply(422, async (request) => {
-        expect(await request.json()).toMatchSnapshot("request body");
+        expect(await request.json()).toMatchSnapshot('request body');
       })
 
-      .post("/repos/all-contributors/all-contributors-bot/issues/1/comments")
+      .post('/repos/all-contributors/all-contributors-bot/issues/1/comments')
       .reply(200, async (request) => {
-        expect(await request.json()).toMatchSnapshot("request body");
+        expect(await request.json()).toMatchSnapshot('request body');
       });
 
     await probot.receive({
-      name: "issue_comment",
-      id: "1",
+      name: 'issue_comment',
+      id: '1',
       payload: issueCommentCreatedPayload,
     });
 
     expect(mock.activeMocks()).toStrictEqual([]);
-    expect(output).toMatchSnapshot("logs");
+    expect(output).toMatchSnapshot('logs');
   });
 
-  test("Fail path, add existing contributor with already exist contribution type", async () => {
-    const mock = nock("https://api.github.com")
+  test('Fail path, add existing contributor with already exist contribution type', async () => {
+    const mock = nock('https://api.github.com')
       .get(
         `/repos/all-contributors/all-contributors-bot/git/ref/heads%2Fall-contributors%2Fadd-jakebolam`,
       )
       .reply(404)
 
       .get(
-        "/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc?ref=master",
+        '/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc?ref=master',
       )
       .reply(200, reposGetContentsAllContributorsRCdata)
 
-      .get("/users/jakebolam")
+      .get('/users/jakebolam')
       .reply(200, usersGetByUsernameJakeBolamdata)
 
-      .post("/repos/all-contributors/all-contributors-bot/issues/1/comments")
+      .post('/repos/all-contributors/all-contributors-bot/issues/1/comments')
       .reply(200, async (request) => {
-        expect(await request.json()).toMatchSnapshot("request body");
+        expect(await request.json()).toMatchSnapshot('request body');
       });
 
     await probot.receive({
-      name: "issue_comment",
-      id: "1",
+      name: 'issue_comment',
+      id: '1',
       payload: issueCommentCreatedExistContributorPayload,
     });
 
     expect(mock.activeMocks()).toStrictEqual([]);
-    expect(output).toMatchSnapshot("logs");
+    expect(output).toMatchSnapshot('logs');
   });
 
-  test(".all-contributorsrc has 26 files", async () => {
-    const mock = nock("https://api.github.com")
+  test('.all-contributorsrc has 26 files', async () => {
+    const mock = nock('https://api.github.com')
       .get(
         `/repos/all-contributors/all-contributors-bot/git/ref/heads%2Fall-contributors%2Fadd-jakebolam`,
       )
       .reply(404)
 
-      .get("/users/jakebolam")
+      .get('/users/jakebolam')
       .reply(200, usersGetByUsernameJakeBolamdata)
 
       .get(
-        "/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc?ref=master",
+        '/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc?ref=master',
       )
       .reply(200, reposGetContentsAllContributorsRCdata26files)
 
-      .post("/repos/all-contributors/all-contributors-bot/issues/1/comments")
+      .post('/repos/all-contributors/all-contributors-bot/issues/1/comments')
       .reply(200, async (request) => {
-        expect(await request.json()).toMatchSnapshot("request body");
+        expect(await request.json()).toMatchSnapshot('request body');
       });
 
     await probot.receive({
-      name: "issue_comment",
-      id: "1",
+      name: 'issue_comment',
+      id: '1',
       payload: issueCommentCreatedPayload,
     });
 
     expect(mock.activeMocks()).toStrictEqual([]);
-    expect(output).toMatchSnapshot("logs");
+    expect(output).toMatchSnapshot('logs');
   });
 
-  test("invalid .all-contributorsrc", async () => {
-    const mock = nock("https://api.github.com")
+  test('invalid .all-contributorsrc', async () => {
+    const mock = nock('https://api.github.com')
       .get(
         `/repos/all-contributors/all-contributors-bot/git/ref/heads%2Fall-contributors%2Fadd-jakebolam`,
       )
       .reply(404)
 
       .get(
-        "/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc?ref=master",
+        '/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc?ref=master',
       )
       .reply(200, reposGetContentsAllContributorsRCdataInvalidSyntax)
 
-      .post("/repos/all-contributors/all-contributors-bot/issues/1/comments")
+      .post('/repos/all-contributors/all-contributors-bot/issues/1/comments')
       .reply(200, async (request) => {
-        expect(await request.json()).toMatchSnapshot("request body");
+        expect(await request.json()).toMatchSnapshot('request body');
       });
 
     await probot.receive({
-      name: "issue_comment",
-      id: "1",
+      name: 'issue_comment',
+      id: '1',
       payload: issueCommentCreatedPayload,
     });
 
     expect(mock.activeMocks()).toStrictEqual([]);
-    expect(output).toMatchSnapshot("logs");
+    expect(output).toMatchSnapshot('logs');
   });
 
-  test("User has no name and blog", async () => {
-    const mock = nock("https://api.github.com")
+  test('User has no name and blog', async () => {
+    const mock = nock('https://api.github.com')
       .get(
         `/repos/all-contributors/all-contributors-bot/git/ref/heads%2Fall-contributors%2Fadd-jakebolam`,
       )
       .reply(404)
 
       .get(
-        "/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc?ref=master",
+        '/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc?ref=master',
       )
       .reply(200, reposGetContentsAllContributorsRCdata)
 
-      .get("/users/jakebolam")
+      .get('/users/jakebolam')
       .reply(200, usersGetByUsernameNoBlogAndNameData)
 
       .get(
-        "/repos/all-contributors/all-contributors-bot/contents/README.md?ref=master",
+        '/repos/all-contributors/all-contributors-bot/contents/README.md?ref=master',
       )
       .reply(200, reposGetContentsREADMEMDdata)
 
@@ -547,7 +547,7 @@ describe("issue_comment event", () => {
 
       .post(`/repos/all-contributors/all-contributors-bot/git/refs`)
       .reply(201, async (request) => {
-        expect(await request.json()).toMatchSnapshot("request body");
+        expect(await request.json()).toMatchSnapshot('request body');
         return gitCreateRefdata;
       })
 
@@ -555,54 +555,54 @@ describe("issue_comment event", () => {
         `/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc`,
       )
       .reply(200, async (request) => {
-        expect(await request.json()).toMatchSnapshot("request body");
+        expect(await request.json()).toMatchSnapshot('request body');
         return reposUpdateFiledata;
       })
 
       .put(`/repos/all-contributors/all-contributors-bot/contents/README.md`)
       .reply(200, async (request) => {
-        expect(await request.json()).toMatchSnapshot("request body");
+        expect(await request.json()).toMatchSnapshot('request body');
         return reposUpdateFiledata;
       })
 
       .post(`/repos/all-contributors/all-contributors-bot/pulls`)
       .reply(201, async (request) => {
-        expect(await request.json()).toMatchSnapshot("request body");
+        expect(await request.json()).toMatchSnapshot('request body');
         return pullsCreatedata;
       })
 
-      .post("/repos/all-contributors/all-contributors-bot/issues/1/comments")
+      .post('/repos/all-contributors/all-contributors-bot/issues/1/comments')
       .reply(200, async (request) => {
-        expect(await request.json()).toMatchSnapshot("request body");
+        expect(await request.json()).toMatchSnapshot('request body');
       });
 
     await probot.receive({
-      name: "issue_comment",
-      id: "1",
+      name: 'issue_comment',
+      id: '1',
       payload: issueCommentCreatedPayload,
     });
 
     expect(mock.activeMocks()).toStrictEqual([]);
-    expect(output).toMatchSnapshot("logs");
+    expect(output).toMatchSnapshot('logs');
   });
 
-  test("skipCi=false", async () => {
-    const mock = nock("https://api.github.com")
+  test('skipCi=false', async () => {
+    const mock = nock('https://api.github.com')
       .get(
         `/repos/all-contributors/all-contributors-bot/git/ref/heads%2Fall-contributors%2Fadd-jakebolam`,
       )
       .reply(404)
 
       .get(
-        "/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc?ref=master",
+        '/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc?ref=master',
       )
       .reply(200, reposGetContentsAllContributorsRCdataSkipCiFalse)
 
-      .get("/users/jakebolam")
+      .get('/users/jakebolam')
       .reply(200, usersGetByUsernameJakeBolamdata)
 
       .get(
-        "/repos/all-contributors/all-contributors-bot/contents/README.md?ref=master",
+        '/repos/all-contributors/all-contributors-bot/contents/README.md?ref=master',
       )
       .reply(200, reposGetContentsREADMEMDdata)
 
@@ -613,7 +613,7 @@ describe("issue_comment event", () => {
 
       .post(`/repos/all-contributors/all-contributors-bot/git/refs`)
       .reply(201, async (request) => {
-        expect(await request.json()).toMatchSnapshot("request body");
+        expect(await request.json()).toMatchSnapshot('request body');
         return gitCreateRefdata;
       })
 
@@ -621,72 +621,72 @@ describe("issue_comment event", () => {
         `/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc`,
       )
       .reply(200, async (request) => {
-        expect(await request.json()).toMatchSnapshot("request body");
+        expect(await request.json()).toMatchSnapshot('request body');
         return reposUpdateFiledata;
       })
 
       .put(`/repos/all-contributors/all-contributors-bot/contents/README.md`)
       .reply(200, async (request) => {
-        expect(await request.json()).toMatchSnapshot("request body");
+        expect(await request.json()).toMatchSnapshot('request body');
         return reposUpdateFiledata;
       })
 
       .post(`/repos/all-contributors/all-contributors-bot/pulls`)
       .reply(201, async (request) => {
-        expect(await request.json()).toMatchSnapshot("request body");
+        expect(await request.json()).toMatchSnapshot('request body');
         return pullsCreatedata;
       })
 
-      .post("/repos/all-contributors/all-contributors-bot/issues/1/comments")
+      .post('/repos/all-contributors/all-contributors-bot/issues/1/comments')
       .reply(200, async (request) => {
-        expect(await request.json()).toMatchSnapshot("request body");
+        expect(await request.json()).toMatchSnapshot('request body');
       });
 
     await probot.receive({
-      name: "issue_comment",
-      id: "1",
+      name: 'issue_comment',
+      id: '1',
       payload: issueCommentCreatedPayload,
     });
 
     expect(mock.activeMocks()).toStrictEqual([]);
-    expect(output).toMatchSnapshot("logs");
+    expect(output).toMatchSnapshot('logs');
   });
 
-  test("Unknown contribution", async () => {
-    const mock = nock("https://api.github.com")
-      .post("/repos/all-contributors/all-contributors-bot/issues/1/comments")
+  test('Unknown contribution', async () => {
+    const mock = nock('https://api.github.com')
+      .post('/repos/all-contributors/all-contributors-bot/issues/1/comments')
       .reply(200, async (request) => {
-        expect(await request.json()).toMatchSnapshot("request body");
+        expect(await request.json()).toMatchSnapshot('request body');
       });
 
     await probot.receive({
-      name: "issue_comment",
-      id: "1",
+      name: 'issue_comment',
+      id: '1',
       payload: issueCommentCreatedPayloadUnknownContribution,
     });
 
     expect(mock.activeMocks()).toStrictEqual([]);
-    expect(output).toMatchSnapshot("logs");
+    expect(output).toMatchSnapshot('logs');
   });
 
-  test("Comment is by app itself", async () => {
+  test('Comment is by app itself', async () => {
     await probot.receive({
-      name: "issue_comment",
-      id: "1",
+      name: 'issue_comment',
+      id: '1',
       payload: issueCommentCreatedByAppPayload,
     });
   });
 
-  test("Comment is not for app", async () => {
+  test('Comment is not for app', async () => {
     await probot.receive({
-      name: "issue_comment",
-      id: "1",
+      name: 'issue_comment',
+      id: '1',
       payload: issueCommentCreatedNotForAppPayload,
     });
   });
 
-  test("Happy path, add correct new multiple contributors", async () => {
-    const mock = nock("https://api.github.com")
+  test('Happy path, add correct new multiple contributors', async () => {
+    const mock = nock('https://api.github.com')
       .get(
         `/repos/all-contributors/all-contributors-bot/git/ref/heads%2Fall-contributors%2Fadd-gr2m`,
       )
@@ -698,19 +698,19 @@ describe("issue_comment event", () => {
       .reply(404)
 
       .get(
-        "/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc?ref=master",
+        '/repos/all-contributors/all-contributors-bot/contents/.all-contributorsrc?ref=master',
       )
       .twice()
       .reply(200, reposGetContentsAllContributorsRCdata)
 
-      .get("/users/gr2m")
+      .get('/users/gr2m')
       .reply(200, usersGetByUsernameGr2mData)
 
-      .get("/users/tenshiamd")
+      .get('/users/tenshiamd')
       .reply(200, usersGetByUsernameTenshiamdData)
 
       .get(
-        "/repos/all-contributors/all-contributors-bot/contents/README.md?ref=master",
+        '/repos/all-contributors/all-contributors-bot/contents/README.md?ref=master',
       )
       .twice()
       .reply(200, reposGetContentsREADMEMDdata)
@@ -724,7 +724,7 @@ describe("issue_comment event", () => {
       .post(`/repos/all-contributors/all-contributors-bot/git/refs`)
       .twice()
       .reply(201, async (request) => {
-        expect(await request.json()).toMatchSnapshot("request body");
+        expect(await request.json()).toMatchSnapshot('request body');
         return gitCreateRefdata;
       })
 
@@ -733,36 +733,36 @@ describe("issue_comment event", () => {
       )
       .twice()
       .reply(200, async (request) => {
-        expect(await request.json()).toMatchSnapshot("request body");
+        expect(await request.json()).toMatchSnapshot('request body');
         return reposUpdateFiledata;
       })
 
       .put(`/repos/all-contributors/all-contributors-bot/contents/README.md`)
       .twice()
       .reply(200, async (request) => {
-        expect(await request.json()).toMatchSnapshot("request body");
+        expect(await request.json()).toMatchSnapshot('request body');
         return reposUpdateFiledata;
       })
 
       .post(`/repos/all-contributors/all-contributors-bot/pulls`)
       .twice()
       .reply(201, async (request) => {
-        expect(await request.json()).toMatchSnapshot("request body");
+        expect(await request.json()).toMatchSnapshot('request body');
         return pullsCreatedata;
       })
 
-      .post("/repos/all-contributors/all-contributors-bot/issues/1/comments")
+      .post('/repos/all-contributors/all-contributors-bot/issues/1/comments')
       .reply(200, async (request) => {
-        expect(await request.json()).toMatchSnapshot("request body");
+        expect(await request.json()).toMatchSnapshot('request body');
       });
 
     await probot.receive({
-      name: "issue_comment",
-      id: "1",
+      name: 'issue_comment',
+      id: '1',
       payload: issueCommentCreatedMultipleContributorsPayload,
     });
 
     expect(mock.activeMocks()).toStrictEqual([]);
-    expect(output).toMatchSnapshot("logs");
+    expect(output).toMatchSnapshot('logs');
   });
 });
