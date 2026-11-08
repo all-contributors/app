@@ -1,6 +1,6 @@
 {
   "name": "all-contributors-bot",
-  "version": "0.0.0-development",
+  "version": "2.1.0",
   "private": true,
   "description": "A bot for automatically adding all your contributors",
   "keywords": [

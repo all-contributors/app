@@ -1,21 +1,50 @@
 name: Release
 
 on:
-  push:
-    branches:
-      - main
+  release:
+    types: [published]
+  workflow_dispatch: ~
+
+permissions: {}
 
 jobs:
-  release:
-    name: release
+  test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
-      - uses: actions/setup-node@dbe1369d7be17e7823f8c1ee1ae8bec5779239dd # v3.9.0
-        with:
-          cache: npm
-          node-version: lts/*
-      - run: npm ci
-      - run: npx semantic-release
+      - uses: $/.github/actions/setup
+      - name: Check formatting
+        run: npm run format:check
+      - name: Lint
+        run: npm run lint
+      - name: Run unit and integration tests
+        run: npm test
+
+  deploy:
+    name: Deploy to Vercel
+    if:
+      github.repository_owner == 'all-contributors' && github.event_name ==
+      'release'
+    needs:
+      - test
+    runs-on: ubuntu-latest
+    environment:
+      name: vercel-deploy
+    permissions:
+      contents: read
+    steps:
+      - uses: $/.github/actions/setup
+      - name: Pull Vercel environment
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+        run:
+          npx vercel pull --yes --environment=production --token=$VERCEL_TOKEN
+      - name: Build for production
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        run: npx vercel build --prod --token=$VERCEL_TOKEN
+      - name: Deploy to production
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        run: npx vercel deploy --prebuilt --prod --token=$VERCEL_TOKEN

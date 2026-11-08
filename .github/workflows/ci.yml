@@ -14,19 +14,22 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: $/.github/actions/setup
-      - run: npm run format:check
+      - name: Check formatting
+        run: npm run format:check
 
   lint:
     runs-on: ubuntu-latest
     steps:
       - uses: $/.github/actions/setup
-      - run: npm run lint
+      - name: Lint
+        run: npm run lint
 
   test:
     runs-on: ubuntu-latest
     steps:
       - uses: $/.github/actions/setup
-      - run: npm test
+      - name: Run unit and integration tests
+        run: npm test
       - name: Run code coverage
         uses: codecov/codecov-action@671740ac38dd9b0130fbe1cec585b89eea48d3de # v5.5.2
         with:
