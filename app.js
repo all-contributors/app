@@ -1,8 +1,8 @@
 import isMessageByApp from "./lib/is-message-by-app.js";
 import isMessageForApp from "./lib/is-message-for-app.js";
 import CommentReply from "./lib/modules/comment-reply.js";
-import processIssueComment from "./lib/process-issue-comment.js";
 import { AllContributorBotError } from "./lib/modules/errors.js";
+import processIssueComment from "./lib/process-issue-comment.js";
 
 /**
  * @param {import('probot').Probot} app

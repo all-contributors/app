@@ -1,6 +1,7 @@
-import { test } from "vitest";
 import nock from "nock";
 import { Probot } from "probot";
+import { test } from "vitest";
+
 import app from "../../app.js";
 
 nock.disableNetConnect();

@@ -1,4 +1,5 @@
 import { describe, expect, test } from "vitest";
+
 import Config from "../../lib/modules/config.js";
 
 describe("Config", () => {

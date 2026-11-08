@@ -1,31 +1,32 @@
-import { beforeEach, describe, expect, test } from "vitest";
-import Stream from "stream";
-import { Probot, ProbotOctokit } from "probot";
 import nock from "nock";
 import pino from "pino";
+import { Probot, ProbotOctokit } from "probot";
+import Stream from "stream";
+import { beforeEach, describe, expect, test } from "vitest";
+
 import app from "../../app.js";
 
 // fixtures
-import issueCommentCreatedPayload from "../fixtures/issue_comment.created.json";
-import issueCommentCreatedExistContributorPayload from "../fixtures/issue_comment.created.exist-contributor.json";
+import gitCreateRefdata from "../fixtures/git.createRef.json";
+import gitGetRefdata from "../fixtures/git.getRef.json";
 import issueCommentCreatedByAppPayload from "../fixtures/issue_comment.created-by-app.json";
-import issueCommentCreatedNotForAppPayload from "../fixtures/issue_comment.created-not-for-app.json";
-import issueCommentCreatedPayloadUnknownIntention from "../fixtures/issue_commented.created.unknown-intention.json";
-import issueCommentCreatedPayloadUnknownContribution from "../fixtures/issue_comment.created-unknown-contribution.json";
 import issueCommentCreatedMultipleContributorsPayload from "../fixtures/issue_comment.created-multiple-contributors.json";
-import reposGetContentsAllContributorsRCdata from "../fixtures/repos.getContents.all-contributorsrc.json";
+import issueCommentCreatedNotForAppPayload from "../fixtures/issue_comment.created-not-for-app.json";
+import issueCommentCreatedPayloadUnknownContribution from "../fixtures/issue_comment.created-unknown-contribution.json";
+import issueCommentCreatedExistContributorPayload from "../fixtures/issue_comment.created.exist-contributor.json";
+import issueCommentCreatedPayload from "../fixtures/issue_comment.created.json";
+import issueCommentCreatedPayloadUnknownIntention from "../fixtures/issue_commented.created.unknown-intention.json";
+import pullsCreatedata from "../fixtures/pulls.create.json";
 import reposGetContentsAllContributorsRCdata26files from "../fixtures/repos.getContents.all-contributorsrc-26-files.json";
-import reposGetContentsAllContributorsRCdataSkipCiFalse from "../fixtures/repos.getContents.all-contributorsrc-skip-ci-false.json";
 import reposGetContentsAllContributorsRCdataInvalidSyntax from "../fixtures/repos.getContents.all-contributorsrc-invalid-syntax.json";
+import reposGetContentsAllContributorsRCdataSkipCiFalse from "../fixtures/repos.getContents.all-contributorsrc-skip-ci-false.json";
+import reposGetContentsAllContributorsRCdata from "../fixtures/repos.getContents.all-contributorsrc.json";
+import reposGetContentsREADMEMDdata from "../fixtures/repos.getContents.README.md.json";
+import reposUpdateFiledata from "../fixtures/repos.updateFile.json";
 import usersGetByUsernameGr2mData from "../fixtures/users.getByUsername.gr2m.json";
 import usersGetByUsernameJakeBolamdata from "../fixtures/users.getByUsername.jakebolam.json";
 import usersGetByUsernameTenshiamdData from "../fixtures/users.getByUsername.tenshiamd.json";
 import usersGetByUsernameNoBlogAndNameData from "../fixtures/users.getByUsername.without-name-and-blog.json";
-import reposGetContentsREADMEMDdata from "../fixtures/repos.getContents.README.md.json";
-import gitGetRefdata from "../fixtures/git.getRef.json";
-import gitCreateRefdata from "../fixtures/git.createRef.json";
-import reposUpdateFiledata from "../fixtures/repos.updateFile.json";
-import pullsCreatedata from "../fixtures/pulls.create.json";
 
 let output = [];
 const streamLogsToOutput = new Stream.Writable({ objectMode: true });
@@ -272,7 +273,7 @@ describe("issue_comment event", () => {
   });
 
   test("Fail path, Unknown error (e.g. Network is dead, service down etc, our code is bad) crashes and sends error message", async () => {
-    const mock = nock("https://api.github.com")
+    /*const mock =*/ nock("https://api.github.com")
       .get(
         `/repos/all-contributors/all-contributors-bot/git/ref/heads%2Fall-contributors%2Fadd-jakebolam`,
       )
