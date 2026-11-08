@@ -2,11 +2,11 @@ name: 📝 Documentation
 
 description: Report a typo or missing area of documentation
 
-title: '📝 Documentation: <short description of the request>'
+title: "📝 Documentation: <short description of the request>"
 
 labels:
-  - 'status: in discussion'
-  - 'type: documentation'
+  - "status: in discussion"
+  - "type: documentation"
 
 body:
   - type: checkboxes
