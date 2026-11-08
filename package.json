@@ -28,12 +28,12 @@
     "probot": "^12.2.8"
   },
   "devDependencies": {
-    "@vitest/coverage-v8": "^5.0.0",
+    "@vitest/coverage-v8": "^5.1.0",
     "got": ">=14.6.6",
     "nock": "^15.0.5",
     "prettier": "^3.8.1",
     "smee-client": "^5.0.0",
-    "vercel": "^65.9.0",
+    "vercel": "^65.11.0",
     "vitest": "^5.0.0"
   }
 }
