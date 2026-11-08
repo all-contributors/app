@@ -20,7 +20,7 @@ export default (app) => {
       const isKnownError = error instanceof AllContributorBotError;
       if (!isKnownError) {
         commentReply.reply(
-          `We had trouble processing your request. Please try again later.`
+          `We had trouble processing your request. Please try again later.`,
         );
 
         throw error;
@@ -48,10 +48,10 @@ export default (app) => {
         action === "created"
           ? repositories.length
           : action === "deleted"
-          ? -repositories.length
-          : repositories_added
-          ? repositories_added.length - repositories_removed.length
-          : 0;
+            ? -repositories.length
+            : repositories_added
+              ? repositories_added.length - repositories_removed.length
+              : 0;
 
       const meta = {
         event: name,
@@ -64,6 +64,6 @@ export default (app) => {
         repositoriesChange,
       };
       log.info(meta, `${meta.accountLogin}: ${name} ${action}`);
-    }
+    },
   );
 };

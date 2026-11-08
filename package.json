@@ -17,8 +17,8 @@
   ],
   "scripts": {
     "start": "probot run ./app.js",
-    "lint": "prettier --check '{src,test}/**/*.{js,json}' '*.{md,json,js}' 'contributing/*.md' '.github/**/*.{yml,md}'",
-    "lint:fix": "prettier --write '{src,test}/**/*.{js,json}' '*.{md,json,js}' 'contributing/*.md' '.github/**/*.{yml,md}'",
+    "format": "prettier . --write",
+    "format:check": "prettier . --check",
     "test": "vitest run --coverage"
   },
   "dependencies": {
