@@ -1,4 +1,4 @@
-# Hello, @all-contributors bot 🤖
+# Welcome to the  @all-contributors bot 🤖
 
 <table>
     <caption>Read this documentation in the following languages</caption>
