@@ -2,17 +2,16 @@ name: 📝 Documentation
 
 description: Report a typo or missing area of documentation
 
-title: "📝 Documentation: <short description of the request>"
+title: '📝 Documentation: <short description of the request>'
 
 labels:
-  - "status: in discussion"
-  - "type: documentation"
+  - 'status: in discussion'
+  - 'type: documentation'
 
 body:
   - type: checkboxes
     attributes:
-      description:
-        If any of these required steps are not taken, we may not be able to
+      description: If any of these required steps are not taken, we may not be able to
         review your issue. Help us to help you!
       label: Documentation Report Checklist
       options:

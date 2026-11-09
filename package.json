@@ -16,11 +16,21 @@
   "author": "Jake Bolam <jake.bolam@gmail.com> (https://jakebolam.com)",
   "type": "module",
   "scripts": {
-    "format": "prettier . --write",
-    "format:check": "prettier . --check",
+    "format": "oxfmt",
     "lint": "eslint .",
+    "prepare": "simple-git-hooks",
     "start": "probot run ./app.js",
-    "test": "vitest run --coverage"
+    "test": "vitest",
+    "test:coverage": "vitest --coverage"
+  },
+  "allowScripts": {
+    "simple-git-hooks": false
+  },
+  "simple-git-hooks": {
+    "pre-commit": "npx lint-staged"
+  },
+  "lint-staged": {
+    "*": "oxfmt --no-error-on-unmatched-pattern"
   },
   "dependencies": {
     "@vitest/eslint-plugin": "^1.6.28",
@@ -42,9 +52,11 @@
     "globals": "^17.14.0",
     "got": ">=14.6.6",
     "jiti": "^2.7.0",
+    "lint-staged": "^17.6.0",
     "nock": "^15.0.5",
+    "oxfmt": "^0.77.0",
     "pino": "6.14.0",
-    "prettier": "^3.8.1",
+    "simple-git-hooks": "^2.14.0",
     "smee-client": "^5.0.0",
     "vercel": "^65.11.0",
     "vitest": "^5.0.0"

@@ -2,17 +2,16 @@ name: 🛠 Tooling
 
 description: Report a bug or request an enhancement in repository tooling
 
-title: "🛠 Tooling: <short description of the change>"
+title: '🛠 Tooling: <short description of the change>'
 
 labels:
-  - "status: in discussion"
-  - "type: infrastructure"
+  - 'area: tooling'
+  - 'status: in discussion'
 
 body:
   - type: checkboxes
     attributes:
-      description:
-        If any of these required steps are not taken, we may not be able to
+      description: If any of these required steps are not taken, we may not be able to
         review your issue. Help us to help you!
       label: Tooling Report Checklist
       options:

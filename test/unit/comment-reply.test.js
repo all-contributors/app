@@ -1,14 +1,14 @@
-import { describe, expect, test } from "vitest";
+import { describe, expect, test } from 'vitest';
 
-import CommentReply from "../../lib/modules/comment-reply.js";
+import CommentReply from '../../lib/modules/comment-reply.js';
 
-describe("CommentReply", () => {
+describe('CommentReply', () => {
   test("Won't send comment twice", async () => {
     const contextMock = {
       payload: {
         comment: {
           user: {
-            login: "octocat",
+            login: 'octocat',
           },
         },
       },
@@ -25,6 +25,6 @@ describe("CommentReply", () => {
 
     await expect(async () => {
       await commentReply.send();
-    }).rejects.toThrow("Message already sent");
+    }).rejects.toThrow('Message already sent');
   });
 });
