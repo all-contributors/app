@@ -1,0 +1,49 @@
+name: 🐛 Bug Report
+
+description: Report a bug to help us improve
+
+title: "🐛 Bug: <short description of the bug>"
+
+labels:
+  - "status: in discussion"
+  - "type: bug"
+
+body:
+  - type: checkboxes
+    attributes:
+      description:
+        If any of these required steps are not taken, we may not be able to
+        review your issue. Help us to help you!
+      label: Bug Report Checklist
+      options:
+        - label: I have [searched for related
+            issues](https://github.com/all-contributors/app/issues?q=is%3Aissue)
+            and found none that matched my issue.
+          required: true
+  - type: textarea
+    attributes:
+      description: Describe the bug
+      label: Description
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      description:
+        Steps to Reproduce the bug. Please provide a minimal reproducible
+        example if possible.
+      label: Steps to Reproduce
+    validations:
+      required: true
+  - type: input
+    attributes:
+      description:
+        If possible, please create a repository that reproduces the issue with
+        the minimal amount of code possible.
+      label: Minimal Reproduction
+      placeholder: https://github.com/user/repo
+    validations:
+      required: false
+  - type: textarea
+    attributes:
+      description: Any additional info you'd like to provide.
+      label: Additional Info
