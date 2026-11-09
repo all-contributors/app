@@ -19,9 +19,9 @@ running in CI), then install all dependencies using the
 `package-lock.json` lockfile.
 
 ```console
-# Use Node 22 (same as CI)
-nvm install 22
-nvm use 22
+# Use Node 24 (same as CI)
+nvm install 24
+nvm use 24
 
 # Install dependencies specified in the `package-lock.json` lockfile
 npm ci

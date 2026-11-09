@@ -1,15 +1,15 @@
-import pino from "pino";
-import { Probot, ProbotOctokit } from "probot";
-import Stream from "stream";
-import { beforeEach, describe, expect, test } from "vitest";
+import Stream from 'stream';
 
-import app from "../../app.js";
+import pino from 'pino';
+import { Probot, ProbotOctokit } from 'probot';
+import { beforeEach, describe, expect, test } from 'vitest';
 
+import app from '../../app.js';
 // fixtures
-import installationCreated from "../fixtures/installation.created.json";
-import installationDeleted from "../fixtures/installation.deleted.json";
-import installationSuspend from "../fixtures/installation.suspend.json";
-import installationRepositoriesAdded from "../fixtures/installation_repositories.added.json";
+import installationCreated from '../fixtures/installation.created.json';
+import installationDeleted from '../fixtures/installation.deleted.json';
+import installationSuspend from '../fixtures/installation.suspend.json';
+import installationRepositoriesAdded from '../fixtures/installation_repositories.added.json';
 
 let output = [];
 const streamLogsToOutput = new Stream.Writable({ objectMode: true });
@@ -19,13 +19,13 @@ streamLogsToOutput._write = (object, encoding, done) => {
   done();
 };
 
-describe("installation event", () => {
+describe('installation event', () => {
   let probot;
 
   beforeEach(async () => {
     output = [];
     probot = new Probot({
-      githubToken: "test",
+      githubToken: 'test',
       Octokit: ProbotOctokit.defaults({
         log: pino(streamLogsToOutput),
         // Disable throttling & retrying requests for easier testing
@@ -38,43 +38,43 @@ describe("installation event", () => {
     await probot.load(app);
   });
 
-  test("installation.created", async () => {
+  test('installation.created', async () => {
     await probot.receive({
-      name: "installation",
-      id: "1",
+      name: 'installation',
+      id: '1',
       payload: installationCreated,
     });
 
-    expect(output).toMatchSnapshot("logs");
+    expect(output).toMatchSnapshot('logs');
   });
 
-  test("installation.deleted", async () => {
+  test('installation.deleted', async () => {
     await probot.receive({
-      name: "installation",
-      id: "1",
+      name: 'installation',
+      id: '1',
       payload: installationDeleted,
     });
 
-    expect(output).toMatchSnapshot("logs");
+    expect(output).toMatchSnapshot('logs');
   });
 
-  test("installation_repositories.added", async () => {
+  test('installation_repositories.added', async () => {
     await probot.receive({
-      name: "installation_repositories",
-      id: "1",
+      name: 'installation_repositories',
+      id: '1',
       payload: installationRepositoriesAdded,
     });
 
-    expect(output).toMatchSnapshot("logs");
+    expect(output).toMatchSnapshot('logs');
   });
 
-  test("installation.suspend", async () => {
+  test('installation.suspend', async () => {
     await probot.receive({
-      name: "installation",
-      id: "1",
+      name: 'installation',
+      id: '1',
       payload: installationSuspend,
     });
 
-    expect(output).toMatchSnapshot("logs");
+    expect(output).toMatchSnapshot('logs');
   });
 });

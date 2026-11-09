@@ -5,11 +5,11 @@ description: Sets up Node.js and installs dependencies for a CI job
 inputs:
   node-version:
     description: Node.js version to use
-    default: "24"
+    default: '24'
     required: false
   skip-checkout:
     description: Skip the checkout step if the repo is already checked out
-    default: "false"
+    default: 'false'
     required: false
 
 runs:

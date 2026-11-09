@@ -2,17 +2,16 @@ name: 🐛 Bug Report
 
 description: Report a bug to help us improve
 
-title: "🐛 Bug: <short description of the bug>"
+title: '🐛 Bug: <short description of the bug>'
 
 labels:
-  - "status: in discussion"
-  - "type: bug"
+  - 'status: in discussion'
+  - 'type: bug'
 
 body:
   - type: checkboxes
     attributes:
-      description:
-        If any of these required steps are not taken, we may not be able to
+      description: If any of these required steps are not taken, we may not be able to
         review your issue. Help us to help you!
       label: Bug Report Checklist
       options:
@@ -28,16 +27,14 @@ body:
       required: true
   - type: textarea
     attributes:
-      description:
-        Steps to Reproduce the bug. Please provide a minimal reproducible
+      description: Steps to Reproduce the bug. Please provide a minimal reproducible
         example if possible.
       label: Steps to Reproduce
     validations:
       required: true
   - type: input
     attributes:
-      description:
-        If possible, please create a repository that reproduces the issue with
+      description: If possible, please create a repository that reproduces the issue with
         the minimal amount of code possible.
       label: Minimal Reproduction
       placeholder: https://github.com/user/repo

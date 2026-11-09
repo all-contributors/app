@@ -10,23 +10,26 @@ on:
       - synchronize
 
 jobs:
-  format-check:
+  format_check:
+    name: Format Check
     runs-on: ubuntu-latest
     steps:
       - uses: $/.github/actions/setup
-      - run: npm run format:check
+      - run: npm run format -- --list-different
 
   lint:
+    name: Lint
     runs-on: ubuntu-latest
     steps:
       - uses: $/.github/actions/setup
       - run: npm run lint
 
   test:
+    name: Test
     runs-on: ubuntu-latest
     steps:
       - uses: $/.github/actions/setup
-      - run: npm test
+      - run: npm test -- --coverage
       - name: Run code coverage
         uses: codecov/codecov-action@671740ac38dd9b0130fbe1cec585b89eea48d3de # v5.5.2
         with:
