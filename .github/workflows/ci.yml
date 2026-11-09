@@ -10,19 +10,22 @@ on:
       - synchronize
 
 jobs:
-  format-check:
+  format_check:
+    name: Format Check
     runs-on: ubuntu-latest
     steps:
       - uses: $/.github/actions/setup
       - run: npm run format -- --list-different
 
   lint:
+    name: Lint
     runs-on: ubuntu-latest
     steps:
       - uses: $/.github/actions/setup
       - run: npm run lint
 
   test:
+    name: Test
     runs-on: ubuntu-latest
     steps:
       - uses: $/.github/actions/setup
