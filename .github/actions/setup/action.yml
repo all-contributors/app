@@ -18,7 +18,7 @@ runs:
     - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
       if: ${{ inputs.skip-checkout == 'false' }}
     - name: Setup Node.js
-      uses: actions/setup-node@dbe1369d7be17e7823f8c1ee1ae8bec5779239dd # v3.9.0
+      uses: actions/setup-node@3235b876344d2a9aa001b8d1453c930bba69e610 # v3.9.1
       with:
         cache: npm
         node-version: ${{ inputs.node-version }}
