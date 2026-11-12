@@ -58,7 +58,7 @@
     "pino": "6.14.0",
     "simple-git-hooks": "2.14.0",
     "smee-client": "5.0.0",
-    "vercel": "65.12.1",
+    "vercel": "65.14.0",
     "vitest": "5.1.0"
   },
   "engines": {
