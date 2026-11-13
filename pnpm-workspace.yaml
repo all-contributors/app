@@ -1,0 +1,7 @@
+permissions:
+  esbuild:
+    build: true
+  simple-git-hooks:
+    build: false
+
+trustPolicy: no-downgrade
