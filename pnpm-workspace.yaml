@@ -1,6 +1,6 @@
 permissions:
-  esbuild:
-    build: true
+  compromise:
+    skills: false
   simple-git-hooks:
     build: false
 
