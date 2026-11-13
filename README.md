@@ -5,7 +5,6 @@
     <tbody>
         <tr>
             <td><a href="https://allcontributors.org/docs/ko/bot/overview">한국어</a></td>
-            <td><a href="https://allcontributors.org/docs/zh-CN/bot/overview">中文</a></td>
             <td><a href="https://allcontributors.org/docs/id/bot/overview">Bahasa Indonesia</a></td>
             <td><a href="https://allcontributors.org/docs/de/bot/overview">Deutsch</a></td>
             <td><a href="https://allcontributors.org/docs/pl/bot/overview">Polski</a></td>
