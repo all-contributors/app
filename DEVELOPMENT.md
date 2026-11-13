@@ -14,9 +14,9 @@ assumes that you are working in a cloned fork of the
 
 ### Environment setup
 
-To begin, be sure that you are using Node version 22 (what we are
+To begin, be sure that you are using Node version 24 (what we are
 running in CI), then install all dependencies using the
-`package-lock.json` lockfile.
+`pnpm-lock.yaml` lockfile.
 
 ```sh
 nvm install 24
