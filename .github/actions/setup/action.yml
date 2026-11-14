@@ -17,6 +17,8 @@ runs:
   steps:
     - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       if: ${{ inputs.skip-checkout == 'false' }}
+      with:
+        persist-credentials: false
     - name: Setup Node.js
       uses: actions/setup-node@3235b876344d2a9aa001b8d1453c930bba69e610 # v3.9.1
       with:
