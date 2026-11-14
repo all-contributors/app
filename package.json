@@ -37,7 +37,7 @@
     "all-contributors-cli": "^7.0.0",
     "commit-conv": "^1.0.3",
     "compromise": "^14.19.0",
-    "probot": "^12.2.8"
+    "probot": "^14.0.0"
   },
   "devDependencies": {
     "@eslint/js": "10.0.1",
