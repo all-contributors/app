@@ -1,36 +1,42 @@
 name: CI
 
 on:
+  pull_request: ~
   push:
     branches:
       - main
-  pull_request:
-    types:
-      - opened
-      - synchronize
 
 jobs:
+  dedupe_check:
+    name: Dedupe Check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: $/.github/actions/setup
+      - run: pnpm dedupe --check
+
   format_check:
     name: Format Check
     runs-on: ubuntu-latest
     steps:
       - uses: $/.github/actions/setup
-      - run: npm run format -- --list-different
+      - run: pnpm format --list-different
 
   lint:
     name: Lint
     runs-on: ubuntu-latest
     steps:
       - uses: $/.github/actions/setup
-      - run: npm run lint
+      - run: pnpm lint
 
   test:
     name: Test
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write
     steps:
       - uses: $/.github/actions/setup
-      - run: npm test -- --coverage
-      - name: Run code coverage
-        uses: codecov/codecov-action@303a32d7a59b442fa8d48b6a1cc6825c09c847a5 # v7.1.1
+      - run: pnpm test --coverage
+      - uses: codecov/codecov-action@303a32d7a59b442fa8d48b6a1cc6825c09c847a5 # v7.1.1
         with:
-          token: ${{ secrets.CODECOV_TOKEN }}
+          fail_ci_if_error: false
+          use_oidc: true

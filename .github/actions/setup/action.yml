@@ -1,27 +1,37 @@
 name: Setup
 
-description: Sets up Node.js and installs dependencies for a CI job
+description: Sets up the repo for a typical CI job
 
 inputs:
+  cache:
+    description: Cache the pnpm store
+    default: true
+    required: false
+  install-flags:
+    description: Flags to pass to `pnpm install`
+    required: false
+    type: string
   node-version:
     description: Node.js version to use
-    default: '24'
+    default: 24
     required: false
   skip-checkout:
     description: Skip the checkout step if the repo is already checked out
-    default: 'false'
+    default: false
     required: false
 
 runs:
-  using: composite
   steps:
     - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       if: ${{ inputs.skip-checkout == 'false' }}
-    - name: Setup Node.js
-      uses: actions/setup-node@3235b876344d2a9aa001b8d1453c930bba69e610 # v3.9.1
       with:
-        cache: npm
-        node-version: ${{ inputs.node-version }}
-    - name: Install dependencies
-      run: npm ci
+        persist-credentials: false
+    - uses: pnpm/setup@fa36a5ef7dcdefc3a7cb25655c122e00cf6e636e # v3.1.2
+      with:
+        cache: ${{ inputs.cache }}
+        install: ${{ inputs.install-flags == '' }}
+        runtime: node@${{ inputs.node-version }}
+    - run: pnpm install ${{ inputs.install-flags }}
+      if: ${{ inputs.install-flags != '' }}
       shell: bash
+  using: composite

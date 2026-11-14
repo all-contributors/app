@@ -4,19 +4,19 @@
     <caption>Read this documentation in the following languages</caption>
     <tbody>
         <tr>
-            <td><a href="https://allcontributors.org/docs/ko/bot/overview">한국어</a></td>
-            <td><a href="https://allcontributors.org/docs/zh-CN/bot/overview">中文</a></td>
-            <td><a href="https://allcontributors.org/docs/id/bot/overview">Bahasa Indonesia</a></td>
-            <td><a href="https://allcontributors.org/docs/de/bot/overview">Deutsch</a></td>
-            <td><a href="https://allcontributors.org/docs/pl/bot/overview">Polski</a></td>
+            <td><a href="https://allcontributors.org/ko/app/">한국어</a></td>
+            <td><a href="https://allcontributors.org/zh/app/">中文</a></td>
+            <td><a href="https://allcontributors.org/id/app/">Bahasa Indonesia</a></td>
+            <td><a href="https://allcontributors.org/de/app/">Deutsch</a></td>
+            <td><a href="https://allcontributors.org/pl/app/">Polski</a></td>
         </tr>
         <tr>
-            <td><a href="https://allcontributors.org/docs/en/bot/overview">English</a></td>
-            <td><a href="https://allcontributors.org/docs/pt-BR/bot/overview">Português</a></td>
-            <td><a href="https://allcontributors.org/docs/es-ES/bot/overview">Español</a></td>
-            <td><a href="https://allcontributors.org/docs/fr/bot/overview">Français</a></td>
-            <td><a href="https://allcontributors.org/docs/ru/bot/overview">Русский</a></td>
-            <td><a href="https://allcontributors.org/docs/ja/bot/overview">日本語</a></td>
+            <td><a href="https://allcontributors.org/en/app/">English</a></td>
+            <td><a href="https://allcontributors.org/pt/app/">Português</a></td>
+            <td><a href="https://allcontributors.org/es/app/">Español</a></td>
+            <td><a href="https://allcontributors.org/fr/app/">Français</a></td>
+            <td><a href="https://allcontributors.org/ru/app/">Русский</a></td>
+            <td><a href="https://allcontributors.org/ja/app/">日本語</a></td>
         </tr>
     </tbody>
 </table>
@@ -37,13 +37,13 @@ Implementing the [All Contributors spec](https://github.com/all-contributors/all
 
 Enter the `@all-contributors bot`! The bot will automatically pull a user's profile, grab the contribution type emoji, update the project README and then open a Pull Request against the project :sparkles:
 
-<a href="https://allcontributors.org/docs/en/bot/usage">
+<a href="https://allcontributors.org/en/app/guides/usage/">
     <img alt="Example usage screenshot" src="https://raw.githubusercontent.com/all-contributors/all-contributors/main/docs/assets/bot-usage.png" width="500px">
 </a>
 
 ## Using the @all-contributors bot 🤖
 
-If you're looking to use the bot, head over to the [bot docs on allcontributors.org](https://allcontributors.org/docs/en/bot/overview). The all-contributors website contains all the information required to install, configure and use the bot.
+If you're looking to use the bot, head over to the [bot docs on allcontributors.org](https://allcontributors.org/en/app/). The all-contributors website contains all the information required to install, configure and use the bot.
 
 ## Contributing
 
