@@ -1,0 +1,7 @@
+permissions:
+  compromise:
+    skills: false
+  simple-git-hooks:
+    build: false
+
+trustPolicy: no-downgrade
