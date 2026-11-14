@@ -9,10 +9,14 @@ on:
       - opened
       - synchronize
 
+permissions: {}
+
 jobs:
   format_check:
     name: Format Check
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - uses: $/.github/actions/setup
       - run: npm run format -- --list-different
@@ -20,6 +24,8 @@ jobs:
   lint:
     name: Lint
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - uses: $/.github/actions/setup
       - run: npm run lint
@@ -27,6 +33,8 @@ jobs:
   test:
     name: Test
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - uses: $/.github/actions/setup
       - run: npm test -- --coverage
@@ -34,3 +42,18 @@ jobs:
         uses: codecov/codecov-action@303a32d7a59b442fa8d48b6a1cc6825c09c847a5 # v7.1.1
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
+
+  zizmor:
+    name: Run zizmor
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      security-events: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Run zizmor
+        uses: zizmorcore/zizmor-action@45d7276c9ca790aabd705e31ca99c6185c3e76dd # v0.8.1
