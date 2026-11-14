@@ -371,6 +371,16 @@
         "test",
         "code"
       ]
+    },
+    {
+      "login": "Vijay431",
+      "name": "Vijay Gangatharan",
+      "avatar_url": "https://avatars.githubusercontent.com/u/42581616?v=4",
+      "profile": "https://github.com/Vijay431",
+      "contributions": [
+        "doc",
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
