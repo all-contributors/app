@@ -21,6 +21,13 @@ jobs:
       - uses: $/.github/actions/setup
       - run: pnpm format --list-different
 
+  knip:
+    name: Knip
+    runs-on: ubuntu-latest
+    steps:
+      - uses: $/.github/actions/setup
+      - run: pnpm knip
+
   lint:
     name: Lint
     runs-on: ubuntu-latest
