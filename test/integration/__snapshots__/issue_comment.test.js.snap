@@ -304,7 +304,7 @@ I could not determine your intention.
 
 Basic usage: @all-contributors please add @someone for code, doc and infra
 
-For other usages see the [documentation](https://allcontributors.org/docs/en/bot/usage)",
+For other usages see the [documentation](https://allcontributors.org/en/app/guides/usage/)",
 }
 `;
 
@@ -911,7 +911,7 @@ exports[`issue_comment event > Unknown contribution > request body 1`] = `
   "body": "@jakebolam 
 
 I couldn't determine any contributions to add, did you specify any contributions?
-        Please make sure to use [valid contribution names](https://allcontributors.org/docs/en/emoji-key).",
+        Please make sure to use [valid contribution names](https://allcontributors.org/en/project/specification/emoji-key/).",
 }
 `;
 
