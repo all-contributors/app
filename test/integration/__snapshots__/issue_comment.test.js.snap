@@ -341,6 +341,27 @@ exports[`issue_comment event > Fail path, add existing contributor with already 
 }
 `;
 
+exports[`issue_comment event > Fail path, empty repository (no commits) > logs 1`] = `
+[
+  {
+    "error": "EmptyRepositoryError",
+    "id": "1",
+    "isKnownError": true,
+    "level": 30,
+    "msg": "I can't find any commits in the repository (all-contributors/all-contributors-bot). Please add at least one commit, including a README.md with the all-contributors table, and ask me again.",
+    "name": "event",
+  },
+]
+`;
+
+exports[`issue_comment event > Fail path, empty repository (no commits) > request body 1`] = `
+{
+  "body": "@jakebolam 
+
+I can't find any commits in the repository (all-contributors/all-contributors-bot). Please add at least one commit, including a README.md with the all-contributors table, and ask me again.",
+}
+`;
+
 exports[`issue_comment event > Fail path, no readme file (configuration error) > logs 1`] = `
 [
   {
