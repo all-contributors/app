@@ -51,7 +51,7 @@
     "eslint-plugin-yml": "3.10.0",
     "globals": "17.14.0",
     "jiti": "2.7.0",
-    "knip": "6.46.1",
+    "knip": "6.47.0",
     "lint-staged": "17.6.1",
     "nock": "15.0.6",
     "oxfmt": "0.79.0",
