@@ -369,7 +369,8 @@
       "contributions": [
         "review",
         "test",
-        "code"
+        "code",
+        "maintenance"
       ]
     },
     {
