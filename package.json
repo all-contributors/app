@@ -33,8 +33,8 @@
     "*": "oxfmt --no-error-on-unmatched-pattern"
   },
   "dependencies": {
+    "@all-contributors/cli": "^7.0.3",
     "@vitest/eslint-plugin": "^1.6.28",
-    "all-contributors-cli": "^7.0.0",
     "commit-conv": "^1.0.3",
     "compromise": "^14.19.0",
     "probot": "^12.2.8"
