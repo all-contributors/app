@@ -5,10 +5,16 @@ on:
     branches:
       - main
 
+permissions: {}
+
 jobs:
   release:
     name: release
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: write
     steps:
       - uses: $/.github/actions/setup
       - run: npx semantic-release
