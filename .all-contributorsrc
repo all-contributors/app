@@ -381,6 +381,15 @@
         "doc",
         "bug"
       ]
+    },
+    {
+      "login": "trueberryless",
+      "name": "Felix Schneider",
+      "avatar_url": "https://avatars.githubusercontent.com/u/99918022?v=4",
+      "profile": "https://felixs.dev",
+      "contributions": [
+        "infra"
+      ]
     }
   ],
   "contributorsPerLine": 7,
