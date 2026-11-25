@@ -385,7 +385,6 @@
   ],
   "contributorsPerLine": 7,
   "linkToUsage": true,
-  "skipCi": true,
   "commitConvention": "angular",
   "commitType": "docs"
 }
