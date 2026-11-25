@@ -10,7 +10,7 @@ import { defineConfig, globalIgnores } from 'eslint/config';
 import globals from 'globals';
 
 export default defineConfig([
-  globalIgnores(['coverage/**', 'dist/**', '.all-contributorsrc', 'CHANGELOG*']),
+  globalIgnores(['coverage/**', 'dist/**', '.all-contributorsrc', 'CHANGELOG*', 'pnpm-lock.yaml']),
   { linterOptions: { reportUnusedDisableDirectives: 'error' } },
   {
     extends: [js.configs.recommended, importX.flatConfigs.recommended],
@@ -68,6 +68,13 @@ export default defineConfig([
     rules: {
       'yml/file-extension': ['error', { extension: 'yml' }],
       'yml/sort-sequence-values': ['error', { order: { type: 'asc' }, pathPattern: '^.*$' }],
+    },
+  },
+  {
+    files: ['pnpm-workspace.yaml'],
+    rules: {
+      'yml/file-extension': 'off',
+      'yml/sort-keys': ['error', { order: { type: 'asc' }, pathPattern: '^.*$' }],
     },
   },
 ]);

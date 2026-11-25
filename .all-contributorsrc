@@ -369,13 +369,32 @@
       "contributions": [
         "review",
         "test",
-        "code"
+        "code",
+        "maintenance"
+      ]
+    },
+    {
+      "login": "Vijay431",
+      "name": "Vijay Gangatharan",
+      "avatar_url": "https://avatars.githubusercontent.com/u/42581616?v=4",
+      "profile": "https://github.com/Vijay431",
+      "contributions": [
+        "doc",
+        "bug"
+      ]
+    },
+    {
+      "login": "fjdufou",
+      "name": "François-Joseph du Fou",
+      "avatar_url": "https://avatars.githubusercontent.com/u/46401854?v=4",
+      "profile": "http://paypal.me/FJduFou",
+      "contributions": [
+        "doc"
       ]
     }
   ],
   "contributorsPerLine": 7,
   "linkToUsage": true,
-  "skipCi": true,
   "commitConvention": "angular",
   "commitType": "docs"
 }

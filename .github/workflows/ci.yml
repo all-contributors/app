@@ -1,17 +1,23 @@
 name: CI
 
 on:
+  pull_request: ~
   push:
     branches:
       - main
-  pull_request:
-    types:
-      - opened
-      - synchronize
 
 permissions: {}
 
 jobs:
+  dedupe_check:
+    name: Dedupe Check
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: $/.github/actions/setup
+      - run: pnpm dedupe --check
+
   format_check:
     name: Format Check
     runs-on: ubuntu-latest
@@ -19,7 +25,16 @@ jobs:
       contents: read
     steps:
       - uses: $/.github/actions/setup
-      - run: npm run format -- --list-different
+      - run: pnpm format --list-different
+
+  knip:
+    name: Knip
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: $/.github/actions/setup
+      - run: pnpm knip
 
   lint:
     name: Lint
@@ -28,20 +43,21 @@ jobs:
       contents: read
     steps:
       - uses: $/.github/actions/setup
-      - run: npm run lint
+      - run: pnpm lint
 
   test:
     name: Test
     runs-on: ubuntu-latest
     permissions:
       contents: read
+      id-token: write
     steps:
       - uses: $/.github/actions/setup
-      - run: npm test -- --coverage
-      - name: Run code coverage
-        uses: codecov/codecov-action@303a32d7a59b442fa8d48b6a1cc6825c09c847a5 # v7.1.1
+      - run: pnpm test --coverage
+      - uses: codecov/codecov-action@303a32d7a59b442fa8d48b6a1cc6825c09c847a5 # v7.1.1
         with:
-          token: ${{ secrets.CODECOV_TOKEN }}
+          fail_ci_if_error: false
+          use_oidc: true
 
   zizmor:
     name: Run zizmor
@@ -56,4 +72,4 @@ jobs:
           persist-credentials: false
 
       - name: Run zizmor
-        uses: zizmorcore/zizmor-action@45d7276c9ca790aabd705e31ca99c6185c3e76dd # v0.8.1
+        uses: zizmorcore/zizmor-action@1b4550e929643b8b26a62303c6bd64814271a4f1 # v0.9.2
