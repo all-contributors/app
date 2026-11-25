@@ -381,6 +381,15 @@
         "doc",
         "bug"
       ]
+    },
+    {
+      "login": "fjdufou",
+      "name": "François-Joseph du Fou",
+      "avatar_url": "https://avatars.githubusercontent.com/u/46401854?v=4",
+      "profile": "http://paypal.me/FJduFou",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
