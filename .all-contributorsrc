@@ -370,7 +370,8 @@
         "review",
         "test",
         "code",
-        "maintenance"
+        "maintenance",
+        "tool"
       ]
     },
     {
