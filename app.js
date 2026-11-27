@@ -3,6 +3,7 @@ import isMessageForApp from './lib/is-message-for-app.js';
 import CommentReply from './lib/modules/comment-reply.js';
 import { AllContributorBotError } from './lib/modules/errors.js';
 import processIssueComment from './lib/process-issue-comment.js';
+import { readInstallation } from './lib/webhook-payload-fields.js';
 
 /**
  * @param {import('probot').Probot} app
@@ -32,26 +33,35 @@ export default (app) => {
   });
 
   app.on(['installation', 'installation_repositories'], async ({ name, payload, log }) => {
-    const { action, repositories, repositories_added, repositories_removed, installation } =
-      payload;
+    const {
+      accountId,
+      accountLogin,
+      accountType,
+      action,
+      installationId,
+      repositories,
+      repositoriesAdded,
+      repositoriesRemoved,
+      repositorySelection,
+    } = readInstallation(payload);
 
     const repositoriesChange =
       action === 'created'
         ? repositories.length
         : action === 'deleted'
           ? -repositories.length
-          : repositories_added
-            ? repositories_added.length - repositories_removed.length
+          : repositoriesAdded
+            ? repositoriesAdded.length - repositoriesRemoved.length
             : 0;
 
     const meta = {
       event: name,
       action,
-      account: installation.account.id,
-      accountType: installation.account.type.toLowerCase(),
-      accountLogin: installation.account.login,
-      installation: installation.id,
-      selection: installation.repository_selection,
+      account: accountId,
+      accountType: accountType.toLowerCase(),
+      accountLogin,
+      installation: installationId,
+      selection: repositorySelection,
       repositoriesChange,
     };
     log.info(meta, `${meta.accountLogin}: ${name} ${action}`);

@@ -5,52 +5,39 @@ import { fileURLToPath } from 'node:url';
 import { schemas } from '@octokit/openapi-webhooks';
 import { describe, expect, test } from 'vitest';
 
+import {
+  installationFields as installation,
+  installationRepositoriesFields as installationRepositories,
+  issueCommentFields as issueComment,
+} from '../../lib/webhook-payload-fields.js';
+
 const openapi = schemas['api.github.com'];
 const fixturesDir = join(dirname(fileURLToPath(import.meta.url)), '../fixtures');
 
 // Structure only — we don't check types or values.
-const installationFields = [
-  'action',
-  'installation.id',
-  'installation.account.id',
-  'installation.account.login',
-  'installation.account.type',
-  'installation.repository_selection',
-];
+const installationFields = Object.values(installation);
+const { repositories, repositoriesAdded, repositoriesRemoved } = installationRepositories;
 
-const issueCommentFields = [
-  'action',
-  'comment.body',
-  'comment.html_url',
-  'comment.user.id',
-  'comment.user.login',
-  'comment.user.type',
-  'repository.default_branch',
-  'repository.id',
-  'repository.private',
-  'repository.owner.id',
-  'repository.owner.login',
-  'repository.owner.type',
-  'sender.login',
-];
+// Probot routes events on `action`; everything else is what the app reads.
+const issueCommentFields = ['action', ...Object.values(issueComment)];
 
 // [fixtureFile, schemaName, fields the bot reads]
 const fixtures = [
   [
     'installation.created.json',
     'webhook-installation-created',
-    [...installationFields, 'repositories'],
+    [...installationFields, repositories],
   ],
   [
     'installation.deleted.json',
     'webhook-installation-deleted',
-    [...installationFields, 'repositories'],
+    [...installationFields, repositories],
   ],
   ['installation.suspend.json', 'webhook-installation-suspend', installationFields],
   [
     'installation_repositories.added.json',
     'webhook-installation-repositories-added',
-    [...installationFields, 'repositories_added', 'repositories_removed'],
+    [...installationFields, repositoriesAdded, repositoriesRemoved],
   ],
   ['issue_comment.created.json', 'webhook-issue-comment-created', issueCommentFields],
   [
@@ -77,12 +64,12 @@ const fixtures = [
   [
     'issue_comment.created-by-app.json',
     'webhook-issue-comment-created',
-    ['action', 'sender.login'],
+    ['action', issueComment.senderLogin],
   ],
   [
     'issue_comment.created-not-for-app.json',
     'webhook-issue-comment-created',
-    ['action', 'comment.body', 'sender.login'],
+    ['action', issueComment.commentBody, issueComment.senderLogin],
   ],
 ];
 
@@ -102,11 +89,11 @@ function schemaDefinesPath(schema, path) {
   let current = resolveSchema(schema);
   for (const key of path.split('.')) {
     current = resolveSchema(current);
-    if (current?.anyOf) {
-      current = current.anyOf.map(resolveSchema).find((option) => option?.properties?.[key]);
-    } else {
-      current = current?.properties?.[key];
+    const options = current?.anyOf ?? current?.oneOf ?? current?.allOf;
+    if (options) {
+      current = options.map(resolveSchema).find((option) => option?.properties?.[key]);
     }
+    current = current?.properties?.[key];
     if (!current) {
       return false;
     }
