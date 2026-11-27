@@ -32,6 +32,26 @@ export default defineConfig([
     settings: { perfectionist: { partitionByComment: true, type: 'natural' } },
   },
   {
+    // Webhook payload fields must be read through lib/webhook-payload-fields.js so the
+    // fixtures test checks every field the app depends on.
+    files: ['app.js', 'lib/**/*.js'],
+    ignores: ['lib/webhook-payload-fields.js'],
+    rules: {
+      'no-restricted-syntax': [
+        'error',
+        ...[
+          "MemberExpression[object.name='payload']",
+          "MemberExpression[object.property.name='payload']",
+          "VariableDeclarator[init.name='payload'] > ObjectPattern",
+          "VariableDeclarator[init.property.name='payload'] > ObjectPattern",
+        ].map((selector) => ({
+          message: 'Read webhook payload fields via lib/webhook-payload-fields.js.',
+          selector,
+        })),
+      ],
+    },
+  },
+  {
     extends: [vitestPlugin.configs.recommended],
     files: ['**/__tests__/**/*.js'],
     languageOptions: {
