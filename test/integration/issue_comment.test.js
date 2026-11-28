@@ -206,6 +206,28 @@ describe('issue_comment event', () => {
     expect(output).toMatchSnapshot('logs');
   });
 
+  test('Fail path, empty repository (no commits)', async () => {
+    const mock = nock('https://api.github.com')
+      .get(
+        `/repos/all-contributors/all-contributors-bot/git/ref/heads%2Fall-contributors%2Fadd-jakebolam`,
+      )
+      .reply(409, { message: 'Git Repository is empty.' })
+
+      .post('/repos/all-contributors/all-contributors-bot/issues/1/comments')
+      .reply(200, async (request) => {
+        expect(await request.json()).toMatchSnapshot('request body');
+      });
+
+    await probot.receive({
+      name: 'issue_comment',
+      id: '1',
+      payload: issueCommentCreatedPayload,
+    });
+
+    expect(mock.activeMocks()).toStrictEqual([]);
+    expect(output).toMatchSnapshot('logs');
+  });
+
   test('Fail path, no such user', async () => {
     const mock = nock('https://api.github.com')
       .get(
